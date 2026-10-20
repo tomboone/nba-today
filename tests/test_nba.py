@@ -8,8 +8,9 @@ import pytest
 
 from nba_today.settings import Settings
 from nba_today.sources.fetched import Fetched, SourceUnavailable
+from nba_today.sources.models.nba_player_stats import PlayerAdvanced, PlayerBase
 from nba_today.sources.models.nba_schedule import Game, NbaSchedule
-from nba_today.sources.models.nba_stats import PlayerAdvanced, PlayerBase, TeamAdvanced
+from nba_today.sources.models.nba_team_stats import TeamAdvanced
 from nba_today.sources.nba import (
     fetch_player_advanced,
     fetch_player_base,
@@ -327,7 +328,7 @@ def test_stats_request_the_season_and_measure_and_snapshot_it(
 def test_stats_send_every_parameter_nba_api_sends(
     store: SnapshotStore, settings: Settings, endpoint: str
 ) -> None:
-    # stats.nba.com rejects a request missing any of these, blank or not (nba_api 1.11.4).
+    # nba_api 1.11.4's set, blanks included: stats.nba.com rejects a request missing some of them.
     team = {
         "Conference", "DateFrom", "DateTo", "Division", "GameScope", "GameSegment", "LastNGames",
         "LeagueID", "Location", "MeasureType", "Month", "OpponentTeamID", "Outcome", "PORound",
@@ -458,3 +459,11 @@ def test_stats_rows_tolerate_blank_null_and_string_numbers() -> None:
         None,
         None,
     )
+
+
+def test_traded_player_has_one_row_under_their_current_team() -> None:
+    rows = parse_result_set(_fixture("player_base_2025-26"))
+
+    traded = {r["PLAYER_NAME"]: r["TEAM_ABBREVIATION"] for r in rows if r["TEAM_COUNT"] > 1}
+    assert traded == {"Kevin Huerter": "DET", "Nikola Vučević": "BOS"}
+    assert len(rows) == len({r["PLAYER_ID"] for r in rows})

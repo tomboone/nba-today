@@ -13,8 +13,9 @@ labelled with any season other than the one `today` falls in does not parse, so 
 replaces a good snapshot: around the August rollover the CDN may still serve the old season.
 
 The dashboards take the season label explicitly (§4.2) and answer `resultSets[0].{headers,
-rowSet}`. stats.nba.com rejects a request that leaves out any parameter it expects, so each one
-sends the full set nba_api 1.11.4 sends, blanks included.
+rowSet}`. stats.nba.com rejects a request that leaves out some of its parameters, so each one
+sends the full set nba_api 1.11.4 sends, blanks included. It accepts a request without the others
+it echoes back (`GameSubtype`, `ISTRound`, and for players `ActiveRoster`).
 """
 
 from collections.abc import Callable
@@ -26,8 +27,9 @@ from pydantic import BaseModel
 from nba_today.season import season_label
 from nba_today.settings import Settings
 from nba_today.sources.fetched import Fetched, fetch_or_snapshot
+from nba_today.sources.models.nba_player_stats import PlayerAdvanced, PlayerBase
 from nba_today.sources.models.nba_schedule import NbaSchedule
-from nba_today.sources.models.nba_stats import PlayerAdvanced, PlayerBase, TeamAdvanced
+from nba_today.sources.models.nba_team_stats import TeamAdvanced
 from nba_today.sources.snapshot import Payload, SnapshotStore
 
 SCHEDULE_PATH = "/static/json/staticData/scheduleLeagueV2_1.json"
