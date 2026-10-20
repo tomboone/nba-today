@@ -17,6 +17,10 @@ in `tests/fixtures/espn/` on 2026-10-20:
 | 20260420 | playoffs                | 3             | `East 1st Round - Game 2`            |
 | 20261020 | 2026-27 opening night   | 2             | (none)                               |
 
+2025-26 had no postponement to record, so `20251116_edited` is the 20251116 scoreboard trimmed
+to two games, with the first hand-edited to `STATUS_POSTPONED` (period 0, scores `"0"`, no
+leaders).
+
 So season type separates preseason (1) from the regular season (2), the postseason (3), and the
 play-in (5), but the All-Star games are type 2 and only their note sets them apart. Every
 scoreboard's league-level `leagues[].season.type` said 2 regardless, so only the event's own

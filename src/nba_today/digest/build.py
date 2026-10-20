@@ -7,17 +7,21 @@ sources' times can differ by minutes, and the NBA plays no doubleheaders.
 
 import logging
 from dataclasses import dataclass
-from datetime import date
+from datetime import date, datetime, timedelta
 from zoneinfo import ZoneInfo
 
 from nba_today import teams
 from nba_today.digest.bundle import SourceBundle
 from nba_today.digest.models import (
     Broadcasts,
+    GameLeaders,
     InjuryReport,
     KeyPlayer,
+    Leader,
     Matchup,
     MatchupSide,
+    Result,
+    ResultSide,
     TeamRatings,
 )
 from nba_today.digest.qualify import is_qualified
@@ -30,6 +34,8 @@ from nba_today.sources.models.espn_scoreboard import (
     Competition,
     Competitor,
     Event,
+    LeaderCategory,
+    StatusType,
     is_counted,
 )
 from nba_today.sources.models.espn_standings import Entry, EspnStandings
@@ -49,6 +55,11 @@ CUP_LABEL = "NBA Cup"
 CUP_GROUP_LABEL = "Group"
 OUT = "Out"
 DAY_TO_DAY = "Day-To-Day"
+FINAL = "STATUS_FINAL"
+POSTPONED = "STATUS_POSTPONED"
+RESULT_FINAL = "final"
+RESULT_POSTPONED = "postponed"
+REGULATION_PERIODS = 4
 
 type Standings = dict[str, Entry]
 
@@ -95,6 +106,38 @@ def build_matchups(day: date, bundle: SourceBundle) -> list[Matchup]:
         except teams.UnknownTeam:
             log.warning("skipping game with an unknown team", extra={"event": event.id})
     return sorted(matchups, key=lambda m: (m.tip_off, m.home.tricode))
+
+
+def build_results(day: date, bundle: SourceBundle) -> list[Result]:
+    """Yesterday's counted games, those on the day before `day` (Eastern), in tip-off order.
+
+    Empty when yesterday's scoreboard is unavailable or had no counted game. As with matchups, a
+    stale snapshot can be an earlier day's scoreboard, so other days' games are dropped. A game
+    with no status, or with a team that is not in `teams.py`, is logged and skipped.
+    """
+    if bundle.espn_scoreboard_yesterday is None:
+        return []
+    schedule = None if bundle.nba_schedule is None else bundle.nba_schedule.data
+    yesterday = day - timedelta(days=1)
+    events: list[tuple[datetime, Event]] = [
+        (event.date, event)
+        for event in bundle.espn_scoreboard_yesterday.data.events
+        if is_counted(event)
+        and event.date is not None
+        and event.date.astimezone(EASTERN).date() == yesterday
+    ]
+    results: list[Result] = []
+    for _, event in sorted(events, key=lambda pair: pair[0]):
+        try:
+            result = _result(event, schedule)
+        except teams.UnknownTeam:
+            log.warning("skipping result with an unknown team", extra={"event": event.id})
+            continue
+        if result is None:
+            log.warning("skipping result with no status", extra={"event": event.id})
+            continue
+        results.append(result)
+    return results
 
 
 def match_nba_game(event: Event, schedule: NbaSchedule) -> NbaGame | None:
@@ -189,6 +232,70 @@ def _label(event: Event, competition: Competition, nba_game: NbaGame | None) -> 
     if season_type == REGULAR_SEASON and (CUP_LABEL not in label or CUP_GROUP_LABEL in label):
         return None
     return label
+
+
+def _result(event: Event, schedule: NbaSchedule | None) -> Result | None:
+    """The game's result, or `None` if ESPN sent neither a status name nor a detail.
+
+    Overtimes are the periods past the fourth. A game that never tipped off (postponed, or any
+    other status at period 0) has no score or leaders: ESPN sends `"0"` placeholders for both
+    sides.
+    """
+    status = event.status
+    status_type = None if status is None else status.type
+    result_status = None if status_type is None else _result_status(status_type)
+    if status is None or result_status is None:
+        return None
+    period = status.period or 0
+    played = result_status != RESULT_POSTPONED and period > 0
+    nba_game = None if schedule is None else match_nba_game(event, schedule)
+    return Result(
+        status=result_status,
+        overtimes=max(period - REGULATION_PERIODS, 0),
+        label=_label(event, _competition(event), nba_game),
+        away=_result_side(event, "away", played),
+        home=_result_side(event, "home", played),
+    )
+
+
+def _result_status(status_type: StatusType) -> str | None:
+    """`final`, `postponed`, or any other status as ESPN details it."""
+    if status_type.name == FINAL:
+        return RESULT_FINAL
+    if status_type.name == POSTPONED:
+        return RESULT_POSTPONED
+    return status_type.detail or status_type.name
+
+
+def _result_side(event: Event, home_away: str, played: bool) -> ResultSide:
+    tricode = _team(event, home_away).tricode
+    competitor = _competitor(event, home_away)
+    if not played or competitor is None:
+        return ResultSide(tricode=tricode, score=None)
+    return ResultSide(
+        tricode=tricode, score=competitor.score, leaders=_game_leaders(competitor.leaders)
+    )
+
+
+def _game_leaders(categories: list[LeaderCategory]) -> GameLeaders | None:
+    """Each category's top player; a category ESPN left out is `None`, and so is the whole when
+    ESPN sent none of them."""
+    leaders = {category.name: _leader(category) for category in categories}
+    game_leaders = GameLeaders(
+        points=leaders.get("points"),
+        rebounds=leaders.get("rebounds"),
+        assists=leaders.get("assists"),
+    )
+    return None if game_leaders == GameLeaders() else game_leaders
+
+
+def _leader(category: LeaderCategory) -> Leader | None:
+    top = category.leaders[0] if category.leaders else None
+    if top is None or top.value is None or top.athlete is None:
+        return None
+    if top.athlete.display_name is None:
+        return None
+    return Leader(name=top.athlete.display_name, value=int(top.value))
 
 
 def _nba_broadcasts(broadcasters: Broadcasters) -> Broadcasts:
