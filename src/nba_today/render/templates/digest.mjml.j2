@@ -168,6 +168,32 @@
     </mj-section>
     {% endif %}
 
+    {% if digest.postseason %}
+    {% set picture = digest.postseason %}
+    {{ heading("Postseason", "Playoff seeds in parentheses · series as of last night") }}
+    <mj-section>
+      <mj-column>
+        {% if picture.finals %}
+        <mj-text font-size="13px" font-weight="700" padding="8px 16px 2px">NBA Finals</mj-text>
+        <mj-text>{{ picture.finals | series_line }}</mj-text>
+        {% endif %}
+        {% for conference in picture.conferences if conference.rounds or conference.play_in %}
+        <mj-text font-size="13px" font-weight="700" padding="8px 16px 2px">{{ conference.conference }}</mj-text>
+        {% for round in conference.rounds %}
+        <mj-text padding="2px 16px 4px">
+          <span style="font-size:12px;color:{{ muted }};">{{ round.label }}</span>{% for s in round.series %}<br />{{ s | series_line }}{% endfor %}
+        </mj-text>
+        {% endfor %}
+        {% if conference.play_in %}
+        <mj-text padding="2px 16px 4px">
+          <span style="font-size:12px;color:{{ muted }};">Play-In</span>{% for g in conference.play_in %}<br />{{ g | play_in_line }}{% endfor %}
+        </mj-text>
+        {% endif %}
+        {% endfor %}
+      </mj-column>
+    </mj-section>
+    {% endif %}
+
     {% if digest.leaderboard %}
     {{ heading("PIE leaders", "Top 25 by Player Impact Estimate, among players with 70% of team games and 20+ minutes · NBA.com, as of " ~ (digest.leaderboard.as_of | stamp)) }}
     <mj-section>

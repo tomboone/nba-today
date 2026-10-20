@@ -101,6 +101,33 @@ STANDINGS (lines after the 6th seed and the 10th)
 {{ clinch_legend }}
 {% endif %}
 {% endif %}
+{% if digest.postseason %}
+{% set picture = digest.postseason %}
+
+
+POSTSEASON (playoff seeds in parentheses · series as of last night)
+{% if picture.finals %}
+
+NBA Finals
+  {{ picture.finals | series_line }}
+{% endif %}
+{% for conference in picture.conferences if conference.rounds or conference.play_in %}
+
+{{ conference.conference }}
+{% for round in conference.rounds %}
+  {{ round.label }}
+{% for s in round.series %}
+    {{ s | series_line }}
+{% endfor %}
+{% endfor %}
+{% if conference.play_in %}
+  Play-In
+{% for g in conference.play_in %}
+    {{ g | play_in_line }}
+{% endfor %}
+{% endif %}
+{% endfor %}
+{% endif %}
 {% if digest.leaderboard %}
 
 

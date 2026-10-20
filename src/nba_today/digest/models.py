@@ -139,6 +139,59 @@ class ConferenceStandings(_Model):
     rows: list[StandingsRow]  # 15, by seed
 
 
+class PostseasonTeam(_Model):
+    tricode: str
+    # The playoff seed; `None` where the standings are unavailable.
+    seed: int | None
+
+
+class PlayoffSeries(_Model):
+    # The better seed first; in the Finals, ESPN's first-listed team when the seeds tie.
+    high: PostseasonTeam
+    low: PostseasonTeam
+    # "BOS leads 3-1", "Series tied 2-2", or "NYK wins 4-1", after yesterday's games; `None`
+    # before game 1.
+    summary: str | None
+
+
+class PlayoffRound(_Model):
+    # "1st Round", "Semifinals", or "Finals" within a conference.
+    label: str
+    series: list[PlayoffSeries]  # by the better seed
+
+
+class PlayInSide(_Model):
+    tricode: str
+    # `None` until the game is final.
+    score: int | None
+
+
+class PlayInGame(_Model):
+    # The places that meet, from ESPN's note: "7th Place vs 8th Place", "8th Seed Game".
+    label: str
+    tip_off: datetime
+    away: PlayInSide
+    home: PlayInSide
+
+
+class ConferencePicture(_Model):
+    conference: Conference
+    rounds: list[PlayoffRound]  # the latest round first
+    # In tip-off order; empty once a playoff game has been played.
+    play_in: list[PlayInGame]
+
+
+class PostseasonPicture(_Model):
+    """The play-in and the playoff series so far, in place of the standings (spec §13).
+
+    Games before the digest date give the results and series state; the digest date's own games
+    only say which series and play-in games exist, since they have not been played at send time.
+    """
+
+    finals: PlayoffSeries | None
+    conferences: list[ConferencePicture]  # East, West
+
+
 class LeaderRow(_Model):
     rank: int
     name: str
@@ -162,7 +215,7 @@ type Phase = Literal["regular", "postseason"]
 class Digest(_Model):
     date: date  # Eastern
     kind: DigestKind
-    # Postseason when any counted game today or yesterday is play-in or playoff. It will swap the
+    # Postseason when any counted game today or yesterday is play-in or playoff. It swaps the
     # standings for the postseason picture (spec §13).
     phase: Phase = "regular"
     # Snapshot name → snapshot time, for each source that fell back to its snapshot.
@@ -173,7 +226,9 @@ class Digest(_Model):
     matchups: list[Matchup] = []
     # Yesterday's counted games, in tip-off order.
     results: list[Result] = []
-    # East, West; `None` when unavailable.
+    # East, West; `None` when unavailable, and always in the postseason.
     standings: list[ConferenceStandings] | None = None
+    # `None` outside the postseason, when unavailable, or before any postseason game exists.
+    postseason: PostseasonPicture | None = None
     # `None` when unavailable or no player is qualified yet.
     leaderboard: Leaderboard | None = None

@@ -14,7 +14,15 @@ import mjml
 from jinja2 import Environment, PackageLoader, StrictUndefined, select_autoescape
 
 from nba_today.digest.build import RESULT_FINAL, RESULT_POSTPONED
-from nba_today.digest.models import Clinch, Digest, Matchup, Result
+from nba_today.digest.models import (
+    Clinch,
+    Digest,
+    Matchup,
+    PlayInGame,
+    PlayoffSeries,
+    PostseasonTeam,
+    Result,
+)
 
 # Every time in the digest reads in Eastern, like the game day it belongs to.
 EASTERN = ZoneInfo("America/New_York")
@@ -24,6 +32,7 @@ SOURCE_LABELS = {
     "espn_standings": "ESPN standings",
     "espn_injuries": "ESPN injuries",
     "espn_athletes": "ESPN player stats",
+    "espn_postseason": "ESPN postseason",
     "nba_schedule": "NBA.com schedule",
     "nba_team_advanced": "NBA.com team ratings",
     # The leaderboard joins both; the banner collapses them into one line.
@@ -149,6 +158,25 @@ def game_label(game: Matchup | Result) -> str:
     return " · ".join(p for p in (series.round_label, number, series.summary) if p)
 
 
+def seeded(team: PostseasonTeam) -> str:
+    """`(1) DET`, or the tricode alone when the seed is unknown."""
+    return team.tricode if team.seed is None else f"({team.seed}) {team.tricode}"
+
+
+def series_line(series: PlayoffSeries) -> str:
+    """`(1) DET vs (8) ORL · DET wins 4-3`; the teams alone before game 1."""
+    teams = f"{seeded(series.high)} vs {seeded(series.low)}"
+    return teams if series.summary is None else f"{teams} · {series.summary}"
+
+
+def play_in_line(game: PlayInGame) -> str:
+    """`9th Place vs 10th Place: MIA 126, CHA 127`, or `ORL @ PHI` before it is final."""
+    away, home = game.away, game.home
+    if away.score is None or home.score is None:
+        return f"{game.label}: {away.tricode} @ {home.tricode}"
+    return f"{game.label}: {away.tricode} {away.score}, {home.tricode} {home.score}"
+
+
 def clinch_mark(clinch: Clinch | None) -> str:
     return "" if clinch is None else CLINCH_MARKS[clinch]
 
@@ -189,6 +217,8 @@ _FILTERS: dict[str, Callable[..., object]] = {
     "status": status,
     "score_note": score_note,
     "game_label": game_label,
+    "series_line": series_line,
+    "play_in_line": play_in_line,
     "clinch_mark": clinch_mark,
 }
 _ENV.filters.update(_FILTERS)

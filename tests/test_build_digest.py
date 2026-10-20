@@ -24,6 +24,7 @@ SNAPSHOT_NAMES = [
     "espn_standings",
     "espn_injuries",
     "espn_athletes",
+    "espn_postseason",
     "nba_schedule",
     "nba_team_advanced",
     "nba_player_advanced",
@@ -91,9 +92,10 @@ def test_an_unavailable_nba_source_drops_the_leaderboard_and_is_listed() -> None
 
 
 def test_unavailable_sources_are_listed_in_snapshot_order() -> None:
+    """Outside the postseason the postseason source is never fetched, so it is no gap."""
     digest = build_digest(FULL_DAY, SourceBundle())
 
-    assert digest.unavailable == SNAPSHOT_NAMES
+    assert digest.unavailable == [n for n in SNAPSHOT_NAMES if n != "espn_postseason"]
     assert digest.kind == "scores_only"
     assert (digest.matchups, digest.results) == ([], [])
     assert (digest.standings, digest.leaderboard) == (None, None)

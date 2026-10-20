@@ -7,7 +7,7 @@ sources' times can differ by minutes, and the NBA plays no doubleheaders.
 
 import logging
 import re
-from dataclasses import dataclass, fields
+from dataclasses import dataclass, field, fields
 from datetime import date, datetime, timedelta
 from zoneinfo import ZoneInfo
 
@@ -16,6 +16,7 @@ from nba_today.digest.bundle import SourceBundle
 from nba_today.digest.models import (
     Broadcasts,
     Clinch,
+    ConferencePicture,
     ConferenceStandings,
     Digest,
     GameLeaders,
@@ -27,6 +28,12 @@ from nba_today.digest.models import (
     Matchup,
     MatchupSide,
     Phase,
+    PlayInGame,
+    PlayInSide,
+    PlayoffRound,
+    PlayoffSeries,
+    PostseasonPicture,
+    PostseasonTeam,
     Result,
     ResultSide,
     SeriesState,
@@ -38,6 +45,7 @@ from nba_today.sources.fetched import Fetched
 from nba_today.sources.models.espn_athletes import AthleteStats, EspnAthletes
 from nba_today.sources.models.espn_injuries import EspnInjuries
 from nba_today.sources.models.espn_scoreboard import (
+    PLAY_IN,
     POSTSEASON,
     POSTSEASON_SEASON_TYPES,
     REGULAR_SEASON,
@@ -78,6 +86,13 @@ LEADER_GB = "-"
 # ESPN's playoff note, `East 1st Round - Game 4`, and NBA.com's `seriesGameNumber`, `Game 4`.
 ROUND_AND_GAME = re.compile(r"(?P<round>.+) - Game (?P<game>\d+)")
 GAME_NUMBER = re.compile(r"Game (?P<game>\d+)")
+# ESPN's play-in note, `NBA Play-In - East - 7th Place vs 8th Place`.
+PLAY_IN_NOTE = re.compile(r"NBA Play-In - (?:East|West) - (?P<label>.+)")
+PLAY_IN_LABEL = "Play-In"
+# A first-round pairing's seeds sum to nine: 1 v 8, 2 v 7, 3 v 6, 4 v 5.
+FIRST_ROUND_SEED_SUM = 9
+# Fetched only in the postseason phase, so its absence in the regular season is no gap.
+POSTSEASON_SOURCE = "espn_postseason"
 LEADERBOARD_SIZE = 25
 CONFERENCES: tuple[teams.Conference, ...] = ("East", "West")
 # ESPN's `clincher` codes, pinned against the final 2025-26 standings: `z` marks the best record
@@ -94,6 +109,31 @@ CLINCH_CODES = {
 }
 
 type Standings = dict[str, Entry]
+
+
+@dataclass(slots=True)
+class _Series:
+    """One playoff series as its games up to the digest date describe it."""
+
+    # As ESPN listed game 1: home, then away.
+    tricodes: tuple[str, str]
+    # `None` for the Finals, whose teams come from both conferences.
+    conference: teams.Conference | None
+    start: datetime
+    # ESPN's round, `East 1st Round` or `NBA Finals`, from the first game that names one.
+    round_label: str | None = None
+    # After the latest game played before the digest date.
+    summary: str | None = None
+    # Whether any game tipped off before the digest date, whether or not ESPN sent its state.
+    played: bool = False
+
+
+@dataclass(slots=True)
+class _Postseason:
+    play_in: dict[teams.Conference, list[PlayInGame]] = field(
+        default_factory=lambda: {c: [] for c in CONFERENCES}
+    )
+    series: dict[frozenset[str], _Series] = field(default_factory=lambda: {})
 
 
 @dataclass(frozen=True, slots=True)
@@ -114,18 +154,26 @@ def build_digest(day: date, bundle: SourceBundle) -> Digest:
     """Every section, plus which sources fell back to a snapshot and which had none.
 
     A day with matchups is a full digest; one without is scores-only.
+    In the postseason the postseason picture takes the standings' place.
     """
-    sources = [(field.name, getattr(bundle, field.name)) for field in fields(bundle)]
+    phase = build_phase(day, bundle)
+    postseason = phase == "postseason"
+    sources = [
+        (f.name, getattr(bundle, f.name))
+        for f in fields(bundle)
+        if postseason or f.name != POSTSEASON_SOURCE
+    ]
     matchups = build_matchups(day, bundle)
     return Digest(
         date=day,
         kind="full" if matchups else "scores_only",
-        phase=build_phase(day, bundle),
+        phase=phase,
         stale={name: f.fetched_at for name, f in sources if f is not None and f.stale},
         unavailable=[name for name, f in sources if f is None],
         matchups=matchups,
         results=build_results(day, bundle),
-        standings=build_standings(bundle),
+        standings=None if postseason else build_standings(bundle),
+        postseason=build_postseason(day, bundle) if postseason else None,
         leaderboard=build_leaderboard(bundle),
     )
 
@@ -213,6 +261,156 @@ def build_standings(bundle: SourceBundle) -> list[ConferenceStandings] | None:
         ConferenceStandings(conference=c, rows=sorted(rows[c], key=lambda r: (r.seed, r.tricode)))
         for c in CONFERENCES
     ]
+
+
+def build_postseason(day: date, bundle: SourceBundle) -> PostseasonPicture | None:
+    """The play-in games and each conference's playoff series by round, up to `day`.
+
+    `None` when the postseason source is unavailable or holds no game on or before `day`. Games
+    before `day` give scores and series state; `day`'s own have not tipped off at send time, so
+    they only add a play-in game or a series that starts tonight. The play-in is listed until a
+    playoff game has been played. A game with no tip-off or an unknown team is skipped.
+    """
+    if bundle.espn_postseason is None:
+        return None
+    postseason = _Postseason()
+    events = [e for e in bundle.espn_postseason.data.events if e.date is not None]
+    for event in sorted(events, key=_tip_off):
+        tip_off = _tip_off(event).astimezone(EASTERN).date()
+        if tip_off > day:
+            continue
+        try:
+            _add_postseason_game(postseason, event, played=tip_off < day)
+        except teams.UnknownTeam:
+            log.warning("skipping postseason game with an unknown team", extra={"event": event.id})
+    series = list(postseason.series.values())
+    if not series and not any(postseason.play_in.values()):
+        return None
+    started = any(s.played for s in series)
+    rounds = {c: _rounds([s for s in series if s.conference == c]) for c in CONFERENCES}
+    first_rounds = [s for c in CONFERENCES for r in rounds[c][:1] for s in r]
+    seeds = _playoff_seeds(first_rounds, bundle.espn_standings)
+    finals = next((s for s in series if s.conference is None), None)
+    return PostseasonPicture(
+        finals=None if finals is None else _playoff_series(finals, seeds),
+        conferences=[
+            ConferencePicture(
+                conference=c,
+                rounds=[
+                    PlayoffRound(
+                        label=_round_name(r[0], c),
+                        series=sorted(
+                            (_playoff_series(s, seeds) for s in r),
+                            key=lambda s: (s.high.seed is None, s.high.seed, s.high.tricode),
+                        ),
+                    )
+                    for r in reversed(rounds[c])
+                ],
+                play_in=[] if started else postseason.play_in[c],
+            )
+            for c in CONFERENCES
+        ],
+    )
+
+
+def _add_postseason_game(postseason: _Postseason, event: Event, played: bool) -> None:
+    """File a play-in game, or fold a playoff game into its series; `played` if before today."""
+    home, away = _team(event, "home"), _team(event, "away")
+    competition = _competition(event)
+    if _season_type(event) == PLAY_IN:
+        postseason.play_in[home.conference].append(_play_in_game(event, competition, played))
+        return
+    if _season_type(event) != POSTSEASON:
+        return
+    key = frozenset({home.tricode, away.tricode})
+    series = postseason.series.get(key)
+    if series is None:
+        conference = home.conference if home.conference == away.conference else None
+        series = _Series((home.tricode, away.tricode), conference, _tip_off(event))
+        postseason.series[key] = series
+    note = competition.notes[0].headline if competition.notes else None
+    match = ROUND_AND_GAME.fullmatch(note) if note else None
+    series.round_label = series.round_label or (match["round"] if match else None)
+    series.played = series.played or played
+    if played and competition.series is not None:
+        series.summary = _series_summary(competition.series) or series.summary
+
+
+def _play_in_game(event: Event, competition: Competition, played: bool) -> PlayInGame:
+    """The game with its places from ESPN's note, and scores once it is final."""
+    note = competition.notes[0].headline if competition.notes else None
+    match = PLAY_IN_NOTE.fullmatch(note) if note else None
+    status = None if event.status is None else event.status.type
+    final = played and status is not None and status.name == FINAL
+
+    def side(home_away: str) -> PlayInSide:
+        competitor = _competitor(event, home_away)
+        score = competitor.score if final and competitor is not None else None
+        return PlayInSide(tricode=_team(event, home_away).tricode, score=score)
+
+    return PlayInGame(
+        label=match["label"] if match else note or PLAY_IN_LABEL,
+        tip_off=_tip_off(event),
+        away=side("away"),
+        home=side("home"),
+    )
+
+
+def _rounds(series: list[_Series]) -> list[list[_Series]]:
+    """One conference's series grouped by ESPN's round, in the order the rounds began.
+
+    A series whose games name no round is logged and left out.
+    """
+    by_label: dict[str, list[_Series]] = {}
+    for s in sorted(series, key=lambda s: s.start):
+        if s.round_label is None:
+            log.warning("skipping a series with no round", extra={"teams": list(s.tricodes)})
+            continue
+        by_label.setdefault(s.round_label, []).append(s)
+    return list(by_label.values())
+
+
+def _round_name(series: _Series, conference: teams.Conference) -> str:
+    """`1st Round` for ESPN's `East 1st Round`: the conference already heads its rounds."""
+    assert series.round_label is not None
+    return series.round_label.removeprefix(f"{conference} ")
+
+
+def _playoff_seeds(
+    first_round: list[_Series], standings: Fetched[EspnStandings] | None
+) -> dict[str, int]:
+    """Each team's playoff seed by tricode: the standings' seed, but a play-in team's is the one
+    its first-round opponent's pairs with (1 v 8, 2 v 7).
+
+    ESPN's standings may still give a play-in team its regular-season place, while seeds 1-6
+    are settled when the regular season ends. Empty when the standings are unavailable.
+    """
+    if standings is None:
+        return {}
+    seeds = {
+        tricode: entry.playoff_seed
+        for tricode, entry in _standings(standings.data).items()
+        if entry.playoff_seed is not None
+    }
+    for series in first_round:
+        known = [seeds[t] for t in series.tricodes if t in seeds]
+        if not known:
+            continue
+        top = min(known)
+        for tricode in series.tricodes:
+            if seeds.get(tricode) != top:
+                seeds[tricode] = FIRST_ROUND_SEED_SUM - top
+    return seeds
+
+
+def _playoff_series(series: _Series, seeds: dict[str, int]) -> PlayoffSeries:
+    """The better seed first; teams with no seed after those with one, otherwise as ESPN lists."""
+    high, low = sorted(series.tricodes, key=lambda t: (t not in seeds, seeds.get(t, 0)))
+    return PlayoffSeries(
+        high=PostseasonTeam(tricode=high, seed=seeds.get(high)),
+        low=PostseasonTeam(tricode=low, seed=seeds.get(low)),
+        summary=series.summary,
+    )
 
 
 def build_leaderboard(bundle: SourceBundle) -> Leaderboard | None:

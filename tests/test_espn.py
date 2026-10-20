@@ -11,8 +11,10 @@ from nba_today.sources import http
 from nba_today.sources.espn import (
     fetch_athletes,
     fetch_injuries,
+    fetch_postseason,
     fetch_scoreboard,
     fetch_standings,
+    get_postseason,
 )
 from nba_today.sources.http import make_client
 from nba_today.sources.models.espn_athletes import EspnAthletes
@@ -35,6 +37,7 @@ CUP_FINAL = "20251216"
 PLAY_IN = "20260415"
 PLAYOFFS = "20260420"
 OPENING_NIGHT = "20261020"
+LAST_REGULAR_NIGHT = "20260412"
 PRESEASON = "20251005"
 ALL_STAR = "20260215"
 
@@ -130,6 +133,36 @@ def test_no_client_reads_the_snapshot_alone(store: SnapshotStore) -> None:
 
     assert result.stale is True
     assert len(result.data.events) == 5
+
+
+@respx.mock
+def test_postseason_requests_each_month_from_april_and_keeps_only_postseason_games(
+    client: httpx.Client, store: SnapshotStore
+) -> None:
+    april = {"events": _payload(LAST_REGULAR_NIGHT)["events"] + _payload(PLAY_IN)["events"]}
+    routes = [
+        respx.get(SCOREBOARD_URL, params__contains={"dates": month}).mock(
+            return_value=httpx.Response(200, json=payload)
+        )
+        for month, payload in (("202604", april), ("202605", _payload(PLAYOFFS)))
+    ]
+
+    result = fetch_postseason(client, store, date(2026, 5, 10))
+
+    assert [dict(r.calls.last.request.url.params) for r in routes] == [
+        {"dates": "202604", "limit": "1000"},
+        {"dates": "202605", "limit": "1000"},
+    ]
+    assert [e.season.type for e in result.data.events if e.season] == [5, 5, 3, 3, 3]
+    assert store.get("espn_postseason") is not None
+
+
+@respx.mock
+def test_postseason_before_the_postseason_year_requests_nothing(client: httpx.Client) -> None:
+    route = respx.get(SCOREBOARD_URL)
+
+    assert get_postseason(client, date(2026, 10, 20)) == {"events": []}
+    assert route.call_count == 0
 
 
 @pytest.mark.parametrize("path", sorted(FIXTURES.glob("scoreboard_*.json")), ids=lambda p: p.stem)

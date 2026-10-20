@@ -7,12 +7,17 @@ import pytest
 from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.single_file import SingleFileSnapshotExtension, WriteMode
 
-from nba_today.digest.build import build_digest
+from nba_today.digest.build import build_digest, build_postseason
 from nba_today.digest.models import (
     Clinch,
     Digest,
     InjuryReport,
     Leader,
+    PlayInGame,
+    PlayInSide,
+    PlayoffSeries,
+    PostseasonPicture,
+    PostseasonTeam,
     Result,
     ResultSide,
     SeriesState,
@@ -23,9 +28,11 @@ from nba_today.render.render import (
     game_label,
     overtime,
     percent,
+    play_in_line,
     record,
     render,
     score_note,
+    series_line,
     signed,
     stamp,
     status,
@@ -227,6 +234,86 @@ def test_postseason_games_show_their_series_in_place_of_the_label() -> None:
         assert line in rendered.text
         assert line in rendered.html
     assert "1st Round - Game 4" not in rendered.text
+
+
+def _picture(day: date) -> PostseasonPicture:
+    picture = build_postseason(day, postseason_bundle())
+    assert picture is not None
+    return picture
+
+
+def test_a_postseason_digest_shows_the_picture_in_place_of_the_standings() -> None:
+    rendered = render(_postseason())
+
+    for line in ("(1) DET vs (8) ORL · ORL leads 2-1", "(4) LAL vs (5) HOU · LAL leads 3-1"):
+        assert line in rendered.text
+        assert line in rendered.html
+    assert "POSTSEASON" in rendered.text
+    assert "STANDINGS" not in rendered.text
+    assert "Standings" not in rendered.html
+
+
+def test_the_play_in_lists_scores_and_unplayed_games() -> None:
+    digest = _postseason().model_copy(update={"postseason": _picture(date(2026, 4, 15))})
+
+    rendered = render(digest)
+
+    for line in ("9th Place vs 10th Place: MIA 126, CHA 127", "7th Place vs 8th Place: ORL @ PHI"):
+        assert line in rendered.text
+        assert line in rendered.html
+    assert "(1) DET vs (8) ORL" not in rendered.text
+
+
+def test_the_finals_head_the_picture() -> None:
+    digest = _postseason().model_copy(update={"postseason": _picture(date(2026, 6, 14))})
+
+    text = render(digest).text
+
+    assert "NBA Finals\n  (2) SAS vs (3) NYK · NYK wins 4-1" in text
+    assert text.index("NBA Finals") < text.index("East\n  Finals")
+
+
+def test_a_full_postseason_picture_is_under_the_size_budget() -> None:
+    # Every round so far, the morning after the Finals, beside a first-round night of eight games.
+    digest = _postseason()
+    full = digest.model_copy(
+        update={
+            "matchups": digest.matchups * 3,
+            "results": digest.results * 3,
+            "postseason": _picture(date(2026, 6, 14)),
+        }
+    )
+
+    assert len(render(full).html.encode()) < 150_000
+
+
+def test_series_line() -> None:
+    def team(tricode: str, seed: int | None) -> PostseasonTeam:
+        return PostseasonTeam(tricode=tricode, seed=seed)
+
+    started = PlayoffSeries(high=team("DET", 1), low=team("ORL", 8), summary="DET wins 4-3")
+    unseeded = PlayoffSeries(high=team("SAS", None), low=team("NYK", None), summary=None)
+
+    assert series_line(started) == "(1) DET vs (8) ORL · DET wins 4-3"
+    assert series_line(unseeded) == "SAS vs NYK"
+
+
+def test_play_in_line() -> None:
+    game = PlayInGame(
+        label="8th Seed Game",
+        tip_off=datetime(2026, 4, 17, 23, 30, tzinfo=UTC),
+        away=PlayInSide(tricode="CHA", score=90),
+        home=PlayInSide(tricode="ORL", score=121),
+    )
+    unplayed = game.model_copy(
+        update={
+            "away": PlayInSide(tricode="CHA", score=None),
+            "home": PlayInSide(tricode="ORL", score=None),
+        }
+    )
+
+    assert play_in_line(game) == "8th Seed Game: CHA 90, ORL 121"
+    assert play_in_line(unplayed) == "8th Seed Game: CHA @ ORL"
 
 
 def test_a_postponed_result_shows_its_status_and_no_score() -> None:

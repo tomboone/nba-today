@@ -11,10 +11,16 @@ The counted-game filter, `is_counted`, lives beside the scoreboard model in
 
 The scoreboard request sends only `dates`, despite §4.2's "pass the season and season type": the
 date already fixes the season, and a `seasontype` filter would hide the play-in and playoffs.
+
+The postseason so far (`espn_postseason`, spec §13) is the same scoreboard asked for a month at a
+time. ESPN rejects a date range: `dates=20260414-20260420` and every other range tried, from two
+days to ten weeks, returned `400 Failed to get events endpoint` on 2026-10-20 (with or without
+`seasontype` and `limit`). A month, `dates=202604`, returns that whole month in one page with
+`limit` set; without it ESPN stops at 100 events.
 """
 
 from datetime import date, timedelta
-from typing import Literal
+from typing import Literal, cast
 
 import httpx
 
@@ -22,7 +28,11 @@ from nba_today.season import espn_season
 from nba_today.sources.fetched import Fetched, fetch_or_snapshot
 from nba_today.sources.models.espn_athletes import EspnAthletes
 from nba_today.sources.models.espn_injuries import EspnInjuries
-from nba_today.sources.models.espn_scoreboard import REGULAR_SEASON, EspnScoreboard
+from nba_today.sources.models.espn_scoreboard import (
+    POSTSEASON_SEASON_TYPES,
+    REGULAR_SEASON,
+    EspnScoreboard,
+)
 from nba_today.sources.models.espn_standings import EspnStandings
 from nba_today.sources.snapshot import Payload, SnapshotStore
 
@@ -39,11 +49,16 @@ SCOREBOARD_SOURCE: dict[ScoreboardDay, str] = {
     "yesterday": "espn_scoreboard_yesterday",
 }
 
+POSTSEASON_SOURCE = "espn_postseason"
 STANDINGS_SOURCE = "espn_standings"
 INJURIES_SOURCE = "espn_injuries"
 ATHLETES_SOURCE = "espn_athletes"
 # Every athlete with any minutes, in one page: the key player needs each team's whole roster.
 ATHLETES_PARAMS = {"isqualified": "false", "limit": "1000", "sort": "offensive.avgPoints:desc"}
+# The play-in opens in mid-April (April 14 in 2026), so the postseason so far is that April's
+# month through today's. A regular-season month has about 230 games, well inside the limit.
+POSTSEASON_FIRST_MONTH = 4
+MONTH_PARAMS = {"limit": "1000"}
 
 
 def _get(client: httpx.Client, path: str, params: dict[str, str]) -> Payload:
@@ -69,6 +84,36 @@ def fetch_scoreboard(
     requested = today if day == "today" else today - timedelta(days=1)
     fetch = None if client is None else lambda: get_scoreboard(client, requested)
     return fetch_or_snapshot(SCOREBOARD_SOURCE[day], fetch, EspnScoreboard.model_validate, store)
+
+
+def get_postseason(client: httpx.Client, today: date) -> Payload:
+    """Every play-in and playoff game from April through `today`'s month, as one scoreboard.
+
+    One request per month; the regular-season games April also holds are dropped. Empty from
+    August to December, before the season's postseason year.
+    """
+    year = espn_season(today)
+    months = range(POSTSEASON_FIRST_MONTH, today.month + 1) if today.year == year else range(0)
+    events: list[Payload] = []
+    for month in months:
+        payload = _get(client, SCOREBOARD_PATH, {"dates": f"{year}{month:02d}"} | MONTH_PARAMS)
+        events += [
+            e for e in payload.get("events", []) if _season_type(e) in POSTSEASON_SEASON_TYPES
+        ]
+    return {"events": events}
+
+
+def _season_type(event: Payload) -> object:
+    season = event.get("season")
+    return cast(Payload, season).get("type") if isinstance(season, dict) else None
+
+
+def fetch_postseason(
+    client: httpx.Client | None, store: SnapshotStore, today: date
+) -> Fetched[EspnScoreboard]:
+    """The postseason so far, or its snapshot; with no client, the snapshot alone."""
+    fetch = None if client is None else lambda: get_postseason(client, today)
+    return fetch_or_snapshot(POSTSEASON_SOURCE, fetch, EspnScoreboard.model_validate, store)
 
 
 def get_standings(client: httpx.Client, today: date) -> Payload:
