@@ -8,6 +8,7 @@ from typing import Protocol
 
 from nba_today.clock import Clock
 from nba_today.digest.models import DigestKind
+from nba_today.heartbeat import Heartbeat
 from nba_today.settings import Settings
 from nba_today.sources.models.espn_scoreboard import EspnScoreboard, is_counted
 from nba_today.state import Marker, State
@@ -86,7 +87,8 @@ class Scheduler:
     scoreboards it needs is retried every `REPLAN_DELAY`, so an outage at `PLAN_TIME` delays the
     day's digest rather than skipping it. A failed send is retried once after `RETRY_DELAY`.
     Setting `stop` ends the loop at the next sleep; a send already under way finishes and records
-    its marker first.
+    its marker first. `heartbeat` is pinged after each recorded send, and pinged `/fail` when a
+    send's retry fails too.
 
     Only `TransportError` is handled. Anything else is a bug and propagates: the container restarts
     and the next boot retries, since no marker was written.
@@ -98,6 +100,7 @@ class Scheduler:
         state: State,
         settings: Settings,
         pipeline: Pipeline,
+        heartbeat: Heartbeat,
         *,
         stop: threading.Event | None = None,
     ) -> None:
@@ -105,6 +108,7 @@ class Scheduler:
         self._state = state
         self._settings = settings
         self._pipeline = pipeline
+        self._heartbeat = heartbeat
         self._stop = stop or threading.Event()
 
     def run_forever(self) -> None:
@@ -143,14 +147,16 @@ class Scheduler:
         log.warning("retrying send", extra={"date": day.isoformat(), "in": str(RETRY_DELAY)})
         if not self._sleep_until(self._clock.now() + RETRY_DELAY):
             return
-        if self._send(day, kind) is not None:
+        if (error := self._send(day, kind)) is not None:
             log.error(
                 "send failed twice, giving up until the next plan",
                 extra={"date": day.isoformat()},
             )
+            self._heartbeat.fail(f"send for {day.isoformat()} failed twice: {error}")
 
     def _send(self, day: date, kind: DigestKind) -> TransportError | None:
-        """Send the digest for `day` and record it in the marker; the error if nothing delivered it.
+        """Send the digest for `day`, record it in the marker and ping the heartbeat; the error if
+        nothing delivered it.
 
         A failed send leaves the marker alone, so a restart will try again (spec §3.2).
         """
@@ -170,6 +176,7 @@ class Scheduler:
                 planned_at=previous.planned_at if previous else None,
             )
         )
+        self._heartbeat.ok()
         return None
 
     def _sleep_until(self, when: datetime) -> bool:

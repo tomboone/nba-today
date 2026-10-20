@@ -4,26 +4,33 @@ import json
 import logging
 import signal
 import threading
+import time
 from dataclasses import asdict
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from pathlib import Path
 from types import FrameType
-from typing import Annotated, NoReturn
+from typing import Annotated
 
+import httpx
 import typer
 from pydantic import ValidationError
 
 from nba_today.clock import SystemClock
+from nba_today.heartbeat import Heartbeat
 from nba_today.logging import configure_logging
 from nba_today.pipeline import DigestPipeline, build, run_send
 from nba_today.scheduler import Scheduler
 from nba_today.settings import Settings
+from nba_today.sources.http import USER_AGENT
 from nba_today.state import State
 from nba_today.transport.base import TransportError
 from nba_today.transport.factory import TransportConfigError, build_transport
 
 app = typer.Typer(no_args_is_help=True, add_completion=False)
 log = logging.getLogger(__name__)
+
+# The scheduler touches the state file at least daily; 2 h of slack covers a late plan (spec §3.4).
+HEALTHY_STATE_AGE = timedelta(hours=26)
 
 
 def _bootstrap() -> Settings:
@@ -35,11 +42,6 @@ def _bootstrap() -> Settings:
         raise typer.Exit(2) from exc
     configure_logging(settings.log_level)
     return settings
-
-
-def _not_implemented(command: str) -> NoReturn:
-    log.error("command not implemented yet", extra={"command": command})
-    raise typer.Exit(1)
 
 
 # A plain alias, not `type`: Typer cannot see through a TypeAliasType.
@@ -75,7 +77,10 @@ def run() -> None:
     for signum in (signal.SIGTERM, signal.SIGINT):
         signal.signal(signum, on_signal)
     state = State(settings.data_dir / "state.json")
-    Scheduler(SystemClock(stop), state, settings, DigestPipeline(settings), stop=stop).run_forever()
+    with httpx.Client(headers={"User-Agent": USER_AGENT}) as http:
+        heartbeat = Heartbeat(settings.healthchecks_url, http)
+        pipeline = DigestPipeline(settings)
+        Scheduler(SystemClock(stop), state, settings, pipeline, heartbeat, stop=stop).run_forever()
     log.info("scheduler stopped")
 
 
@@ -125,8 +130,17 @@ def preview(
 def health() -> None:
     """Exit 0 if the scheduler touched the state file in the last 26 hours, else 1."""
     try:
-        _bootstrap()
+        settings = _bootstrap()
     except typer.Exit as exc:
         # Docker reserves health-check exit code 2; a config the scheduler cannot load is unhealthy.
         raise typer.Exit(1) from exc
-    _not_implemented("health")
+    path = settings.data_dir / "state.json"
+    try:
+        age = timedelta(seconds=time.time() - path.stat().st_mtime)
+    except FileNotFoundError:
+        typer.echo(f"unhealthy: no state file at {path}")
+        raise typer.Exit(1) from None
+    if age > HEALTHY_STATE_AGE:
+        hours = age / timedelta(hours=1)
+        typer.echo(f"unhealthy: state file last updated {hours:.1f} hours ago")
+        raise typer.Exit(1)
