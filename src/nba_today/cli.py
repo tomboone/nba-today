@@ -1,15 +1,21 @@
 """Command-line entry point (spec §9)."""
 
+import json
 import logging
-from datetime import datetime
+from dataclasses import asdict
+from datetime import date, datetime
 from pathlib import Path
 from typing import Annotated, NoReturn
 
 import typer
 from pydantic import ValidationError
 
+from nba_today.clock import SystemClock
 from nba_today.logging import configure_logging
+from nba_today.pipeline import build, run_send
 from nba_today.settings import Settings
+from nba_today.transport.base import TransportError
+from nba_today.transport.factory import TransportConfigError
 
 app = typer.Typer(no_args_is_help=True, add_completion=False)
 log = logging.getLogger(__name__)
@@ -38,6 +44,13 @@ DateOption = Annotated[
 ]
 
 
+def _day(option: datetime | None, settings: Settings) -> date:
+    """The `--date` given, else today in `TZ_LOCAL`."""
+    if option is not None:
+        return option.date()
+    return SystemClock().now().astimezone(settings.tz_local).date()
+
+
 @app.command()
 def run() -> None:
     """Run the scheduler loop (container entrypoint)."""
@@ -53,8 +66,19 @@ def send(
     ] = False,
 ) -> None:
     """Build and send one digest now."""
-    _bootstrap()
-    _not_implemented("send")
+    settings = _bootstrap()
+    if dry_run:
+        settings = settings.model_copy(update={"dry_run": True})
+    digest_day = _day(day, settings)
+    try:
+        receipt = run_send(digest_day, settings)
+    except TransportConfigError as exc:
+        log.error("invalid configuration", extra={"error": str(exc)})
+        raise typer.Exit(2) from exc
+    except TransportError as exc:
+        log.error("send failed", extra={"date": digest_day.isoformat(), "error": str(exc)})
+        raise typer.Exit(1) from exc
+    typer.echo(json.dumps(asdict(receipt), default=str))
 
 
 @app.command()
@@ -68,8 +92,12 @@ def preview(
     ] = False,
 ) -> None:
     """Render a digest to a file without sending."""
-    _bootstrap()
-    _not_implemented("preview")
+    settings = _bootstrap()
+    _, rendered = build(_day(day, settings), settings, offline=from_snapshots)
+    text_out = out.with_suffix(".txt")
+    out.write_text(rendered.html)
+    text_out.write_text(rendered.text)
+    typer.echo(f"{out}\n{text_out}")
 
 
 @app.command()
