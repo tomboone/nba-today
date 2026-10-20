@@ -1,0 +1,10 @@
+name: nba-today
+
+services:
+  nba-today:
+    # `latest` tracks main.
+    image: ghcr.io/tomboone/nba-today:latest
+    env_file: .env
+    volumes:
+      - ./data:/data
+    restart: unless-stopped

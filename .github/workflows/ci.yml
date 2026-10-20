@@ -38,3 +38,40 @@ jobs:
       - name: Pytest
         # Coverage is reported, not gated (spec §10).
         run: uv run pytest -q --cov=nba_today --cov-report=term-missing
+
+  image:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v4
+
+      # Build only; publishing to GHCR is image.yml's job (spec §11). `load` hands the image to the
+      # local daemon so the smoke steps can run it.
+      - name: Build image
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          push: false
+          load: true
+          tags: nba-today:ci
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      # curl_cffi bundles a native curl-impersonate; prove its wheel loads on the slim base (ADR-0004).
+      - name: Smoke-test curl_cffi
+        run: docker run --rm nba-today:ci python -c "import curl_cffi"
+
+      # Bare assignments, so a failed `docker run` fails the step under the runner's `bash -e`.
+      - name: Smoke-test CLI
+        run: |
+          help="$(docker run --rm nba-today:ci nba-today --help)"
+          echo "$help"
+          for command in run send preview health; do grep -qw "$command" <<<"$help"; done
+
+      - name: Check non-root user
+        run: |
+          uid="$(docker run --rm nba-today:ci id -u)"
+          test "$uid" != "0"
