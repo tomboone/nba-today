@@ -2,6 +2,26 @@
 
 Every field defaults, so one game missing a field never fails the whole scoreboard; the digest
 builder decides what a gap means.
+
+`is_counted` is the only counted-game filter. What ESPN sent for each kind of game, as recorded
+in `tests/fixtures/espn/` on 2026-10-20:
+
+| Fixture  | Games                   | `season.type` | `notes[0].headline`                  |
+|----------|-------------------------|---------------|--------------------------------------|
+| 20251005 | preseason               | 1             | (none)                               |
+| 20251116 | regular season, OT, 2OT | 2             | (none)                               |
+| 20251210 | NBA Cup quarterfinals   | 2             | `NBA Cup - Quarterfinals`            |
+| 20251216 | NBA Cup final           | 2             | `NBA Cup Championship`               |
+| 20260215 | All-Star                | 2             | `NBA All-Star - Championship`, ...   |
+| 20260415 | play-in                 | 5             | `NBA Play-In - East - 7th Place ...` |
+| 20260420 | playoffs                | 3             | `East 1st Round - Game 2`            |
+| 20261020 | 2026-27 opening night   | 2             | (none)                               |
+
+So season type separates preseason (1) from the regular season (2), the postseason (3), and the
+play-in (5), but the All-Star games are type 2 and only their note sets them apart. Every
+scoreboard's league-level `leagues[].season.type` said 2 regardless, so only the event's own
+`season.type` is read. Probing other 2025-26 dates live (not recorded) also showed the
+regular-season notes `NBA Cup - Group Play` and `NBA Mexico City Game 2025`; both are counted.
 """
 
 from datetime import datetime
@@ -108,3 +128,21 @@ class Event(_Model):
 
 class EspnScoreboard(_Model):
     events: list[Event] = []
+
+
+REGULAR_SEASON = 2
+POSTSEASON = 3
+PLAY_IN = 5
+COUNTED_SEASON_TYPES = frozenset({REGULAR_SEASON, POSTSEASON, PLAY_IN})
+ALL_STAR_NOTE_PREFIX = "NBA All-Star"
+
+
+def is_counted(event: Event) -> bool:
+    """Whether a game belongs in the digest: regular season, NBA Cup, play-in, or playoffs."""
+    if event.season is None or event.season.type not in COUNTED_SEASON_TYPES:
+        return False
+    return not any(
+        note.headline is not None and note.headline.startswith(ALL_STAR_NOTE_PREFIX)
+        for competition in event.competitions
+        for note in competition.notes
+    )

@@ -54,9 +54,11 @@ src/nba_today/
     fetched.py           # Fetched[T] + fetch_or_snapshot                                 (port)
     espn.py              # ESPN client: scoreboard, standings, injuries, athlete stats
     nba.py               # NBA.com client: season schedule, team advanced, player base + advanced
-    models/              # pydantic models of raw payloads, one module per endpoint
+    models/              # pydantic models of raw payloads, one module per endpoint; the scoreboard
+                         # module also holds `is_counted`, so `digest/` can use it without httpx
   digest/
     models.py            # Digest and children (§6)
+    bundle.py            # SourceBundle: one Fetched[...] | None per snapshot name
     build.py             # raw payloads → Digest (pure functions, no I/O)
   render/
     templates/digest.mjml.j2
@@ -182,9 +184,10 @@ Digest
   standings: list[ConferenceStandings] | None   # East, West; None when unavailable
   leaderboard: Leaderboard | None  # None when unavailable or no qualified players
 
-Matchup: tip_off (tz-aware), label: str | None, arena: str, city: str,
+Matchup: tip_off (tz-aware), label: str | None, arena: str | None, city: str | None,  # None: no venue
          away: MatchupSide, home: MatchupSide, tv: Broadcasts
-MatchupSide: tricode, wins, losses, last_ten: str | None, streak: str | None,
+MatchupSide: tricode, wins: int | None, losses: int | None,  # scoreboard record, else standings
+             last_ten: str | None, streak: str | None,
              injuries: InjuryReport, ratings: TeamRatings | None, key_player: KeyPlayer | None
 InjuryReport: out: list[str], day_to_day: list[str], other: list[tuple[str, str]]  # (name, status)
 TeamRatings: off_rtg, def_rtg, net_rtg, pace
@@ -209,7 +212,8 @@ LeaderRow: rank, name, tricode, pts, reb, ast, ts_pct, pie
 Build rules:
 - **Counted-game filter** applies to both scoreboards (§4.2).
 - **Broadcasts:** if the NBA schedule is available (fresh or stale), use its national, home, and away lists for the matched game. Otherwise, or when no NBA game matches, use ESPN `broadcasts`: `market` national/home/away maps to the same buckets, and a `NBA League Pass` name is dropped.
-- **Label:** ESPN `notes[0].headline` if present, else NBA `gameLabel`/`gameSubLabel`, else `None`. Regular-season Cup group games carry no label.
+- **Label:** ESPN `notes[0].headline` if present, else NBA `gameLabel` · `gameSubLabel`, else `None`. A regular-season game keeps its label only if it is an NBA Cup knockout (the label names the NBA Cup and not a group): Cup group games (`NBA Cup - Group Play`) and one-offs such as `NBA Mexico City Game 2025` carry no label.
+- **Matchups:** only today's counted games, and only those whose tip-off falls on the digest date (Eastern), since a stale snapshot can be an earlier day's scoreboard. Records come from the scoreboard's `records[type=total]`, else from `espn_standings` (the Cup final has no scoreboard record).
 - **Qualified player:** `player.GP >= ceil(0.70 * team_games_played)` and `player.MIN >= 20.0`. For the leaderboard, team games played comes from `nba_team_advanced.GP`, keeping the leaderboard NBA-only. For key players, it comes from `espn_standings`, keeping that ESPN-only. A team with no qualified player has `key_player = None`.
 - **Key player:** the qualified player on that team with the highest PPG. Ties break on RPG, then name.
 - **Leaderboard:** qualified players sorted by PIE desc, then PTS desc; top 25. `ts_pct` and `pie` render as percentages with one decimal.
