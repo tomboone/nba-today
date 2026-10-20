@@ -11,7 +11,7 @@ import respx
 from nba_today.pipeline import DigestPipeline, build, fetch_bundle, run_send
 from nba_today.settings import Settings
 from nba_today.sources.snapshot import SnapshotStore
-from tests.bundles import FULL_DAY
+from tests.bundles import FULL_DAY, POSTSEASON_DAY, fixture
 from tests.mocked_sources import (
     NBA_SOURCES,
     PAYLOADS,
@@ -188,6 +188,33 @@ def test_offline_without_snapshots_builds_a_digest_saying_so(
     assert anything.call_count == 0
     assert digest.kind == "scores_only"
     assert digest.unavailable == SOURCES
+
+
+def test_a_postseason_day_also_fetches_the_postseason_so_far(
+    settings: Settings, session: FakeNbaSession
+) -> None:
+    scoreboard = "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard"
+    with respx.mock(assert_all_called=False) as router:
+        for dates, name in (
+            ("20260427", "scoreboard_20260427"),
+            ("20260426", "scoreboard_20260426"),
+        ):
+            router.get(scoreboard, params__contains={"dates": dates}).mock(
+                return_value=httpx.Response(200, json=fixture(f"espn/{name}"))
+            )
+        april = router.get(scoreboard, params__contains={"dates": "202604"}).mock(
+            return_value=httpx.Response(200, json=fixture("espn/postseason_2026"))
+        )
+        router.route().mock(return_value=httpx.Response(500))
+
+        digest, rendered = build(POSTSEASON_DAY, settings)
+
+    assert april.call_count == 1
+    assert digest.phase == "postseason"
+    assert digest.postseason is not None
+    assert "espn_postseason" not in digest.unavailable
+    assert "POSTSEASON" in rendered.text
+    assert SnapshotStore(settings.data_dir).get("espn_postseason") is not None
 
 
 @respx.mock

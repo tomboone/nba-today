@@ -51,49 +51,21 @@ BOS 128, PHI 96
   PHI: Joel Embiid 26 pts · Joel Embiid 10 reb · Joel Embiid 6 ast
 
 
-STANDINGS (lines after the 6th seed and the 10th)
+POSTSEASON (playoff seeds in parentheses · series as of last night)
 
 East
-              W   L   PCT    GB   L10  STRK
-  1 DET z    60  22  .732     -   8-2    W3
-  2 BOS y    56  26  .683     4   8-2    W2
-  3 NYK x    53  29  .646     7   6-4    L1
-  4 CLE x    52  30  .634     8   7-3    W1
-  5 TOR x    46  36  .561    14   6-4    W1
-  6 ATL y    46  36  .561    14   6-4    L1
--------------------------------------------
-  7 PHI pi   45  37  .549    15   6-4    W2
-  8 ORL pi   45  37  .549    15   7-3    L1
-  9 CHA pi   44  38  .537    16   6-4    W1
- 10 MIA pi   43  39  .524    17   5-5    W2
--------------------------------------------
- 11 MIL e    32  50  .390    28   3-7    L1
- 12 CHI e    31  51  .378    29   2-8    L2
- 13 BKN e    20  62  .244    40   3-7    L3
- 14 IND e    19  63  .232    41   3-7    L2
- 15 WAS e    17  65  .207    43  0-10   L10
+  1st Round
+    (1) DET vs (8) ORL · ORL leads 2-1
+    (2) BOS vs (7) PHI · BOS leads 3-1
+    (3) NYK vs (6) ATL · Series tied 2-2
+    (4) CLE vs (5) TOR · Series tied 2-2
 
 West
-              W   L   PCT    GB   L10  STRK
-  1 OKC z    64  18  .780     -   7-3    L2
-  2 SAS y    62  20  .756     2   8-2    L1
-  3 DEN x    54  28  .659    10  10-0   W12
-  4 LAL y    53  29  .646    11   7-3    W3
-  5 HOU x    52  30  .634    12   9-1    W1
-  6 MIN x    49  33  .598    15   5-5    W2
--------------------------------------------
-  7 POR pi   42  40  .512    22   7-3    W2
-  8 PHX pi   45  37  .549    19   5-5    W1
-  9 LAC pi   42  40  .512    22   6-4    W1
- 10 GSW pi   37  45  .451    27   3-7    L3
--------------------------------------------
- 11 NOP e    26  56  .317    38   1-9    L2
- 12 DAL e    26  56  .317    38   3-7    W1
- 13 MEM e    25  57  .305    39   1-9    L8
- 14 SAC e    22  60  .268    42   3-7    L1
- 15 UTA e    22  60  .268    42   1-9    L1
-
-z best record · y division · x playoffs · pi play-in · e eliminated
+  1st Round
+    (1) OKC vs (8) PHX · OKC leads 3-0
+    (2) SAS vs (7) POR · SAS leads 3-1
+    (3) DEN vs (6) MIN · MIN leads 3-1
+    (4) LAL vs (5) HOU · LAL leads 3-1
 
 
 PIE LEADERS (top 25 among players with 70% of team games and 20+ minutes · NBA.com, as of Oct 20, 8:00 AM ET)

@@ -17,7 +17,13 @@ from typing import Any, Literal, cast
 
 from nba_today.season import espn_season, season_label
 from nba_today.settings import Settings
-from nba_today.sources.espn import get_athletes, get_injuries, get_scoreboard, get_standings
+from nba_today.sources.espn import (
+    get_athletes,
+    get_injuries,
+    get_postseason,
+    get_scoreboard,
+    get_standings,
+)
 from nba_today.sources.http import make_client
 from nba_today.sources.nba import (
     Session,
@@ -129,6 +135,36 @@ def record_espn_scoreboard(day: date) -> None:
         payload = get_scoreboard(client, day)
     payload["events"] = _trim_events(payload.get("events", []))
     write_fixture("espn", f"scoreboard_{day:%Y%m%d}", _drop_keys(payload, SCOREBOARD_DROPPED_KEYS))
+
+
+# The postseason picture reads only teams, notes, status, and series, and keeps every game.
+POSTSEASON_DROPPED_KEYS = SCOREBOARD_DROPPED_KEYS | {
+    "alternateColor",
+    "broadcast",
+    "broadcasts",
+    "color",
+    "href",
+    "leaders",
+    "linescores",
+    "logo",
+    "logoDark",
+    "records",
+    "tickets",
+    "uid",
+    "venue",
+}
+
+
+@recorder(
+    "espn_postseason",
+    "ESPN play-in and playoff games from April through the month of --date, every game kept",
+)
+def record_espn_postseason(day: date) -> None:
+    with make_client(_default("espn_site_api_base")) as client:
+        payload = get_postseason(client, day)
+    write_fixture(
+        "espn", f"postseason_{espn_season(day)}", _drop_keys(payload, POSTSEASON_DROPPED_KEYS)
+    )
 
 
 # Logos and links ride along on every team and athlete in the endpoints below.

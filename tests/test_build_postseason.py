@@ -1,21 +1,44 @@
-"""The postseason (spec §13): the digest's phase, and series state on playoff matchups and results.
+"""The postseason (spec §13): the digest's phase, series state on playoff matchups and results,
+and the postseason picture in place of the standings.
 
 Fixtures are 2025-26 nights: the last regular-season night (0412), the first and last play-in
 nights (0414, 0417), first-round games 2 and 4 (0420, 0426), a sweep (0427), and the Finals
-clincher (0613).
+clincher (0613). The picture reads `postseason_2026`, every 2025-26 play-in and playoff game.
 """
 
+from dataclasses import replace
 from datetime import date, timedelta
 
 import pytest
 
-from nba_today.digest.build import build_digest, build_matchups, build_phase, build_results
+from nba_today.digest.build import (
+    build_digest,
+    build_matchups,
+    build_phase,
+    build_postseason,
+    build_results,
+)
 from nba_today.digest.bundle import SourceBundle
-from nba_today.digest.models import SeriesState
+from nba_today.digest.models import (
+    PlayInGame,
+    PlayInSide,
+    PostseasonPicture,
+    PostseasonTeam,
+    SeriesState,
+)
 from nba_today.sources.models.espn_scoreboard import EspnScoreboard
+from nba_today.sources.models.espn_standings import EspnStandings
 from nba_today.sources.models.nba_schedule import NbaSchedule
 from nba_today.sources.snapshot import Payload
-from tests.bundles import EMPTY_SCOREBOARD, FULL_DAY, fixture, fresh, full_day_bundle
+from tests.bundles import (
+    EMPTY_SCOREBOARD,
+    FULL_DAY,
+    POSTSEASON_DAY,
+    fixture,
+    fresh,
+    full_day_bundle,
+    postseason_bundle,
+)
 
 LAST_REGULAR_NIGHT = date(2026, 4, 12)
 FIRST_PLAY_IN = date(2026, 4, 14)
@@ -24,6 +47,11 @@ GAME_TWOS = date(2026, 4, 20)
 GAME_FOURS = date(2026, 4, 26)
 SWEEP = date(2026, 4, 27)
 FINALS_CLINCHER = date(2026, 6, 13)
+# The morning after the first round's first games, the morning of conference finals games 5
+# (the East swept the night before), and the morning after the Finals.
+FIRST_ROUND_OPENS = date(2026, 4, 18)
+CONFERENCE_FINALS = date(2026, 5, 26)
+AFTER_THE_FINALS = date(2026, 6, 14)
 
 
 def _scoreboard(night: date) -> Payload:
@@ -203,3 +231,199 @@ def test_a_stale_postseason_snapshot_does_not_make_the_phase() -> None:
 
 def test_no_scoreboards_is_regular() -> None:
     assert build_phase(GAME_FOURS, SourceBundle()) == "regular"
+
+
+def _picture(day: date, standings: Payload | None = None) -> PostseasonPicture:
+    """The picture on `day` from the whole 2025-26 postseason and the final standings."""
+    bundle = SourceBundle(
+        espn_standings=fresh(
+            EspnStandings.model_validate(
+                fixture("espn/standings_2026") if standings is None else standings
+            )
+        ),
+        espn_postseason=fresh(EspnScoreboard.model_validate(fixture("espn/postseason_2026"))),
+    )
+    picture = build_postseason(day, bundle)
+    assert picture is not None
+    return picture
+
+
+def _rounds(picture: PostseasonPicture) -> dict[str, dict[str, list[tuple[str, str, str | None]]]]:
+    """Each conference's rounds, latest first: (better seed, other seed, state) per series."""
+    return {
+        c.conference: {
+            r.label: [
+                (f"{s.high.seed} {s.high.tricode}", f"{s.low.seed} {s.low.tricode}", s.summary)
+                for s in r.series
+            ]
+            for r in c.rounds
+        }
+        for c in picture.conferences
+    }
+
+
+def _side(tricode: str, score: int | None = None) -> PlayInSide:
+    return PlayInSide(tricode=tricode, score=score)
+
+
+def test_mid_play_in_lists_the_play_in_games() -> None:
+    """The night's own games are listed unplayed: at send time they have not tipped off."""
+    picture = _picture(date(2026, 4, 15))
+
+    east, west = picture.conferences
+    assert picture.finals is None
+    assert (east.rounds, west.rounds) == ([], [])
+    assert [(g.label, g.away, g.home) for g in east.play_in] == [
+        ("9th Place vs 10th Place", _side("MIA", 126), _side("CHA", 127)),
+        ("7th Place vs 8th Place", _side("ORL"), _side("PHI")),
+    ]
+    assert [(g.label, g.away, g.home) for g in west.play_in] == [
+        ("7th Place vs 8th Place", _side("POR", 114), _side("PHX", 110)),
+        ("9th Place vs 10th Place", _side("GSW"), _side("LAC")),
+    ]
+
+
+def test_the_play_in_stays_until_a_playoff_game_is_played() -> None:
+    """The first round's opening night lists its series beside the finished play-in."""
+    east, _ = _picture(FIRST_ROUND_OPENS).conferences
+
+    assert _rounds(_picture(FIRST_ROUND_OPENS))["East"] == {
+        "1st Round": [("3 NYK", "6 ATL", None), ("4 CLE", "5 TOR", None)]
+    }
+    assert [g.label for g in east.play_in] == [
+        "9th Place vs 10th Place",
+        "7th Place vs 8th Place",
+        "8th Seed Game",
+    ]
+    assert east.play_in[-1] == PlayInGame(
+        label="8th Seed Game",
+        tip_off=east.play_in[-1].tip_off,
+        away=_side("CHA", 90),
+        home=_side("ORL", 121),
+    )
+    assert [c.play_in for c in _picture(date(2026, 4, 19)).conferences] == [[], []]
+
+
+def test_the_play_in_goes_once_a_playoff_game_is_played_even_without_espn_series() -> None:
+    postseason = fixture("espn/postseason_2026")
+    for event in postseason["events"]:
+        event["competitions"][0].pop("series", None)
+    bundle = SourceBundle(espn_postseason=fresh(EspnScoreboard.model_validate(postseason)))
+
+    picture = build_postseason(GAME_FOURS, bundle)
+
+    assert picture is not None
+    assert [c.play_in for c in picture.conferences] == [[], []]
+    assert {s.summary for c in picture.conferences for s in c.rounds[0].series} == {None}
+
+
+def test_mid_first_round_has_four_series_per_conference_each_with_its_state() -> None:
+    assert _rounds(_picture(GAME_FOURS)) == {
+        "East": {
+            "1st Round": [
+                ("1 DET", "8 ORL", "ORL leads 2-1"),
+                ("2 BOS", "7 PHI", "BOS leads 2-1"),
+                ("3 NYK", "6 ATL", "Series tied 2-2"),
+                ("4 CLE", "5 TOR", "CLE leads 2-1"),
+            ]
+        },
+        "West": {
+            "1st Round": [
+                ("1 OKC", "8 PHX", "OKC leads 3-0"),
+                ("2 SAS", "7 POR", "SAS leads 2-1"),
+                ("3 DEN", "6 MIN", "MIN leads 3-1"),
+                ("4 LAL", "5 HOU", "LAL leads 3-0"),
+            ]
+        },
+    }
+
+
+def test_the_conference_finals_list_every_round_latest_first() -> None:
+    rounds = _rounds(_picture(CONFERENCE_FINALS))
+
+    assert list(rounds["East"]) == ["Finals", "Semifinals", "1st Round"]
+    assert rounds["East"]["Finals"] == [("3 NYK", "4 CLE", "NYK wins 4-0")]
+    assert rounds["West"]["Finals"] == [("1 OKC", "2 SAS", "Series tied 2-2")]
+    assert rounds["East"]["Semifinals"] == [
+        ("1 DET", "4 CLE", "CLE wins 4-3"),
+        ("3 NYK", "7 PHI", "NYK wins 4-0"),
+    ]
+    assert [len(r) for r in rounds["West"].values()] == [1, 2, 4]
+
+
+def test_the_finals() -> None:
+    picture = _picture(AFTER_THE_FINALS)
+
+    assert picture.finals is not None
+    assert (picture.finals.high, picture.finals.low, picture.finals.summary) == (
+        PostseasonTeam(tricode="SAS", seed=2),
+        PostseasonTeam(tricode="NYK", seed=3),
+        "NYK wins 4-1",
+    )
+    assert _rounds(picture)["West"]["Finals"] == [("1 OKC", "2 SAS", "SAS wins 4-3")]
+
+
+def test_play_in_teams_take_the_seed_their_first_round_opponent_pairs_with() -> None:
+    """Standings that still give the play-in teams their regular-season places: PHX finished
+    7th and POR 8th, but POR won the 7th-place game."""
+    standings = fixture("espn/standings_2026")
+    for conference in standings["children"]:
+        for entry in conference["standings"]["entries"]:
+            seed = next(s for s in entry["stats"] if s["name"] == "playoffSeed")
+            seed["value"] = {"PHX": 7.0, "POR": 8.0}.get(
+                entry["team"]["abbreviation"], seed["value"]
+            )
+
+    west = _rounds(_picture(GAME_FOURS, standings))["West"]["1st Round"]
+
+    assert [(high, low) for high, low, _ in west[:2]] == [("1 OKC", "8 PHX"), ("2 SAS", "7 POR")]
+
+
+def test_no_standings_means_no_seeds() -> None:
+    bundle = SourceBundle(
+        espn_postseason=fresh(EspnScoreboard.model_validate(fixture("espn/postseason_2026")))
+    )
+    picture = build_postseason(GAME_FOURS, bundle)
+
+    assert picture is not None
+    first_round = picture.conferences[0].rounds[0]
+    assert len(first_round.series) == 4
+    assert {s.high.seed for s in first_round.series} | {s.low.seed for s in first_round.series} == {
+        None
+    }
+
+
+def test_before_the_first_play_in_there_is_no_picture() -> None:
+    bundle = SourceBundle(
+        espn_postseason=fresh(EspnScoreboard.model_validate(fixture("espn/postseason_2026")))
+    )
+
+    assert build_postseason(date(2026, 4, 13), bundle) is None
+    assert build_postseason(GAME_FOURS, SourceBundle()) is None
+
+
+def test_a_postseason_digest_shows_the_picture_and_no_standings() -> None:
+    digest = build_digest(POSTSEASON_DAY, postseason_bundle())
+
+    assert digest.phase == "postseason"
+    assert digest.standings is None
+    assert digest.postseason is not None
+    assert digest.unavailable == []
+
+
+def test_an_unavailable_postseason_source_is_listed_in_the_postseason() -> None:
+    bundle = replace(postseason_bundle(), espn_postseason=None)
+
+    digest = build_digest(POSTSEASON_DAY, bundle)
+
+    assert (digest.standings, digest.postseason) == (None, None)
+    assert digest.unavailable == ["espn_postseason"]
+
+
+def test_a_regular_digest_has_standings_and_no_picture() -> None:
+    bundle = replace(full_day_bundle(), espn_postseason=postseason_bundle().espn_postseason)
+
+    digest = build_digest(FULL_DAY, bundle)
+
+    assert digest.standings is not None
+    assert digest.postseason is None

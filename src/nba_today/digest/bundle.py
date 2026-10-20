@@ -16,7 +16,8 @@ from nba_today.sources.models.nba_team_stats import TeamAdvanced
 class SourceBundle:
     """Each source as fetched or loaded from its snapshot; `None` where it had no snapshot either.
 
-    An NBA.com source is also `None` when `NBA_ENRICHMENT` is off. A dataclass rather than a
+    An NBA.com source is also `None` when `NBA_ENRICHMENT` is off, and `espn_postseason` outside
+    the postseason phase, when it is not fetched (spec §13). A dataclass rather than a
     pydantic model: it carries already-parsed `Fetched` values, which must not be validated a
     second time.
     """
@@ -26,6 +27,7 @@ class SourceBundle:
     espn_standings: Fetched[EspnStandings] | None = None
     espn_injuries: Fetched[EspnInjuries] | None = None
     espn_athletes: Fetched[EspnAthletes] | None = None
+    espn_postseason: Fetched[EspnScoreboard] | None = None
     nba_schedule: Fetched[NbaSchedule] | None = None
     nba_team_advanced: Fetched[list[TeamAdvanced]] | None = None
     nba_player_advanced: Fetched[list[PlayerAdvanced]] | None = None

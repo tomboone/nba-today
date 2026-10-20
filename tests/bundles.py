@@ -1,6 +1,7 @@
 """Whole source bundles built from recorded fixtures, shared by the digest and render tests."""
 
 import json
+from dataclasses import replace
 from datetime import UTC, date, datetime, timedelta
 from pathlib import Path
 
@@ -79,10 +80,13 @@ def opening_day_bundle() -> SourceBundle:
 
 def postseason_bundle() -> SourceBundle:
     """2025-26 first round: tonight's games 4 and 5, including OKC's sweep, and last night's
-    games 4."""
-    return bundle(
-        fixture("espn/scoreboard_20260427"),
-        fixture("espn/scoreboard_20260426"),
-        "standings_2026",
-        "2025-26",
+    games 4, with the whole 2025-26 postseason for the picture."""
+    return replace(
+        bundle(
+            fixture("espn/scoreboard_20260427"),
+            fixture("espn/scoreboard_20260426"),
+            "standings_2026",
+            "2025-26",
+        ),
+        espn_postseason=fresh(EspnScoreboard.model_validate(fixture("espn/postseason_2026"))),
     )

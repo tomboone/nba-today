@@ -4,11 +4,12 @@ import logging
 import time
 from collections.abc import Callable, Generator
 from contextlib import ExitStack, contextmanager
+from dataclasses import replace
 from datetime import date
 
 import httpx
 
-from nba_today.digest.build import build_digest
+from nba_today.digest.build import build_digest, build_phase
 from nba_today.digest.bundle import SourceBundle
 from nba_today.digest.models import Digest
 from nba_today.render.render import Rendered, render
@@ -32,11 +33,13 @@ def fetch_bundle(day: date, settings: Settings, *, offline: bool = False) -> Sou
 
     `offline` reads the snapshots alone, with no network (`preview --from-snapshots`). A source
     with no snapshot either is logged and left `None`, so one source failing never aborts the
-    others; each source logs one line saying how it went and how long it took.
+    others; each source logs one line saying how it went and how long it took. The postseason so
+    far is fetched only when today's or yesterday's scoreboard puts the digest in the postseason
+    (spec §13).
     """
     store = SnapshotStore(settings.data_dir)
     with _clients(settings, offline=offline) as (site, web, session):
-        return SourceBundle(
+        bundle = SourceBundle(
             espn_scoreboard_today=_timed(
                 espn.SCOREBOARD_SOURCE["today"],
                 lambda: espn.fetch_scoreboard(site, store, day, "today"),
@@ -70,6 +73,10 @@ def fetch_bundle(day: date, settings: Settings, *, offline: bool = False) -> Sou
                 lambda: nba.fetch_player_base(session, store, settings, day),
             ),
         )
+        if build_phase(day, bundle) != "postseason":
+            return bundle
+        postseason = _timed(espn.POSTSEASON_SOURCE, lambda: espn.fetch_postseason(site, store, day))
+        return replace(bundle, espn_postseason=postseason)
 
 
 def build(day: date, settings: Settings, *, offline: bool = False) -> tuple[Digest, Rendered]:

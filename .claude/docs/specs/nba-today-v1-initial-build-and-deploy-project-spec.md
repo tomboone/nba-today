@@ -138,6 +138,7 @@ Games are matched across sources on **(Eastern date, home tricode, away tricode)
 | `espn_standings` | `GET {ESPN_SITE_API_BASE}/apis/v2/sports/basketball/nba/standings?season={espn_year}&seasontype=2` | Standings, last-10, streak, team games played |
 | `espn_injuries` | `GET {ESPN_SITE_API_BASE}/apis/site/v2/sports/basketball/nba/injuries` | Injury report |
 | `espn_athletes` | `GET {ESPN_WEB_API_BASE}/apis/common/v3/sports/basketball/nba/statistics/byathlete?season={espn_year}&seasontype=2&isqualified=false&limit=1000&sort=offensive.avgPoints:desc` | Key players |
+| `espn_postseason` | `GET {ESPN_SITE_API_BASE}/apis/site/v2/sports/basketball/nba/scoreboard?dates={YYYYMM}&limit=1000`, once per month from April | Postseason picture (§13); postseason phase only |
 
 Scoreboard fields:
 - `events[].date` (UTC tip-off), `events[].season.type` (counted-game filter), `status.type.{name,state,completed,detail}`, `status.period`.
@@ -181,7 +182,9 @@ Digest
   unavailable: list[str]           # snapshot names with no snapshot either
   matchups: list[Matchup]          # empty on scores_only; sorted by tip-off, then home tricode
   results: list[Result]            # yesterday's counted games, in tip-off order
-  standings: list[ConferenceStandings] | None   # East, West; None when unavailable
+  standings: list[ConferenceStandings] | None   # East, West; None when unavailable or postseason
+  postseason: PostseasonPicture | None  # postseason phase only (§13): finals, then East and West,
+                                        # each with rounds (latest first) and play-in games
   leaderboard: Leaderboard | None  # None when unavailable or no qualified players
 
 Matchup: tip_off (tz-aware), label: str | None, arena: str | None, city: str | None,  # None: no venue
@@ -299,7 +302,11 @@ Built after go-live and verified against 2025-26 postseason fixtures before the 
 
 - **Phase detection:** the digest's `phase` is `postseason` when any counted game today or yesterday (the same games the matchups and results read) has ESPN season type 3 or 5. Decided in NEU-1793.
 - **Series state:** on playoff matchups and results (season type 3 only; the play-in keeps its label and has no series), pinned against the 2025-26 fixtures in NEU-1793. The round and game number come from ESPN's note (`East 1st Round - Game 4`), else NBA `gameLabel` and `seriesGameNumber`. The summary is built from ESPN `series.competitors[].{id, wins}` and `completed` in NBA.com's wording and tricodes (`BOS leads 3-1`, `Series tied 2-2`, `NYK wins 4-1`), else NBA `seriesText`. ESPN's own `summary` is not used: it carries ESPN abbreviations (`SA`). ESPN also attaches a playoff `series` to the regular-season meeting of the same teams, which is why the season type gates it. The email shows the series line in place of the label.
-- **Postseason picture:** replaces standings. Play-in games (with results) while the play-in runs, then each conference's series by round with their state. Source: an ESPN scoreboard date-range query over the postseason so far (`dates=YYYYMMDD-YYYYMMDD`), reduced to series, under a tenth snapshot name `espn_postseason` (fetched only in the postseason phase). Note: on 2026-10-20 that range query returned `400 Failed to get events endpoint` for every range tried (two days, three days, a month, ten weeks), while single dates worked. If that proves unworkable, a `/planit` pass on that ticket picks the NBA schedule's `seriesText` instead.
+- **Postseason picture:** replaces standings. Play-in games (with results) while the play-in runs, then each conference's series by round with their state. Source: the ESPN scoreboard asked one month at a time (`dates=YYYYMM&limit=1000`) from April through today's month, keeping only play-in and playoff events, under a tenth snapshot name `espn_postseason` (fetched only in the postseason phase), and reduced to series in the builder. A date range (`dates=YYYYMMDD-YYYYMMDD`) returned `400 Failed to get events endpoint` for every range tried on 2026-10-20, while months and single dates worked, so NEU-1794 chose months over the NBA schedule's `seriesText`: ESPN is primary (ADR-0004), while the NBA schedule is enrichment and absent whenever `NBA_ENRICHMENT` is off or NBA.com blocks the fetch. Decided in NEU-1794:
+  - Games before the digest date give scores and series state; the digest date's own games only add a play-in game or a series that starts tonight, since they have not tipped off at send time.
+  - The play-in is listed until a playoff game has been played, so the first round's opening day shows both.
+  - Seeds 1-6 come from `espn_standings`; a play-in team takes the seed its first-round opponent pairs with (1 v 8, 2 v 7), since ESPN's standings may still show its regular-season place. Play-in games carry their places in ESPN's note (`7th Place vs 8th Place`) and no seeds.
+  - Rounds are listed latest first under each conference, the NBA Finals above both.
 - **Leaderboard and team ratings** stay on regular-season stats during the postseason.
 
 ## 14. Out of scope
