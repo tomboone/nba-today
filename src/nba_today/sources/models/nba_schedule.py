@@ -56,7 +56,10 @@ class Game(_Model):
     away_team: Team | None = None
     game_label: LaxStr = None
     game_sub_label: LaxStr = None
+    # "BOS leads 3-1", "Series tied 2-2", "NYK wins 4-1"; on a play-in game, "PHI clinch 7 seed".
     series_text: LaxStr = None
+    # "Game 4" on a playoff game; blank otherwise.
+    series_game_number: LaxStr = None
     if_necessary: bool | None = None
     broadcasters: Broadcasters | None = None
 

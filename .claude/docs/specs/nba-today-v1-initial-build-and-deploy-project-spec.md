@@ -185,7 +185,9 @@ Digest
   leaderboard: Leaderboard | None  # None when unavailable or no qualified players
 
 Matchup: tip_off (tz-aware), label: str | None, arena: str | None, city: str | None,  # None: no venue
-         away: MatchupSide, home: MatchupSide, tv: Broadcasts
+         away: MatchupSide, home: MatchupSide, tv: Broadcasts,
+         series: SeriesState | None        # playoff games only (§13)
+SeriesState: round_label: str | None, game_number: int | None, summary: str | None  # "BOS leads 3-1"
 MatchupSide: tricode, wins: int | None, losses: int | None,  # scoreboard record, else standings
              last_ten: str | None, streak: str | None,
              injuries: InjuryReport, ratings: TeamRatings | None, key_player: KeyPlayer | None
@@ -195,7 +197,7 @@ KeyPlayer: name, ppg, rpg, apg
 Broadcasts: national: list[str], home: list[str], away: list[str]   # TV and streaming merged, deduped, in source order
 
 Result: status: "final" | "postponed" | str, overtimes: int (0 = regulation), label: str | None,
-        away: ResultSide, home: ResultSide
+        away: ResultSide, home: ResultSide, series: SeriesState | None
 ResultSide: tricode, score: int | None, leaders: GameLeaders | None
 GameLeaders: points: Leader | None, rebounds: Leader | None, assists: Leader | None
 Leader: name, value: int
@@ -295,9 +297,9 @@ Port from mlb-today unchanged: `Transport` protocol, `Message`, `SendReceipt`, `
 
 Built after go-live and verified against 2025-26 postseason fixtures before the April 2027 play-in.
 
-- **Phase detection:** the digest's `phase` is `postseason` when the date is after the last regular-season game (from the NBA schedule, or ESPN season type 3/5 on the scoreboard).
-- **Series state:** on postseason matchups and results, from ESPN `competitions[0].series` (summary such as "BOS leads series 2-1") or NBA `seriesText`, and the game number from the NBA schedule's `gameLabel`/`seriesGameNumber`. The exact fields are pinned against recorded fixtures.
-- **Postseason picture:** replaces standings. Play-in games (with results) while the play-in runs, then each conference's series by round with their state. Source: an ESPN scoreboard date-range query over the postseason so far (`dates=YYYYMMDD-YYYYMMDD`), reduced to series, under a tenth snapshot name `espn_postseason` (fetched only in the postseason phase). If that proves unworkable, a `/planit` pass on that ticket picks the NBA schedule's `seriesText` instead.
+- **Phase detection:** the digest's `phase` is `postseason` when any counted game today or yesterday (the same games the matchups and results read) has ESPN season type 3 or 5. Decided in NEU-1793.
+- **Series state:** on playoff matchups and results (season type 3 only; the play-in keeps its label and has no series), pinned against the 2025-26 fixtures in NEU-1793. The round and game number come from ESPN's note (`East 1st Round - Game 4`), else NBA `gameLabel` and `seriesGameNumber`. The summary is built from ESPN `series.competitors[].{id, wins}` and `completed` in NBA.com's wording and tricodes (`BOS leads 3-1`, `Series tied 2-2`, `NYK wins 4-1`), else NBA `seriesText`. ESPN's own `summary` is not used: it carries ESPN abbreviations (`SA`). ESPN also attaches a playoff `series` to the regular-season meeting of the same teams, which is why the season type gates it. The email shows the series line in place of the label.
+- **Postseason picture:** replaces standings. Play-in games (with results) while the play-in runs, then each conference's series by round with their state. Source: an ESPN scoreboard date-range query over the postseason so far (`dates=YYYYMMDD-YYYYMMDD`), reduced to series, under a tenth snapshot name `espn_postseason` (fetched only in the postseason phase). Note: on 2026-10-20 that range query returned `400 Failed to get events endpoint` for every range tried (a week, a month, ten weeks), while single dates worked. If that proves unworkable, a `/planit` pass on that ticket picks the NBA schedule's `seriesText` instead.
 - **Leaderboard and team ratings** stay on regular-season stats during the postseason.
 
 ## 14. Out of scope

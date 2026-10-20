@@ -6,6 +6,7 @@ sources' times can differ by minutes, and the NBA plays no doubleheaders.
 """
 
 import logging
+import re
 from dataclasses import dataclass, fields
 from datetime import date, datetime, timedelta
 from zoneinfo import ZoneInfo
@@ -25,8 +26,10 @@ from nba_today.digest.models import (
     LeaderRow,
     Matchup,
     MatchupSide,
+    Phase,
     Result,
     ResultSide,
+    SeriesState,
     StandingsRow,
     TeamRatings,
 )
@@ -35,12 +38,16 @@ from nba_today.sources.fetched import Fetched
 from nba_today.sources.models.espn_athletes import AthleteStats, EspnAthletes
 from nba_today.sources.models.espn_injuries import EspnInjuries
 from nba_today.sources.models.espn_scoreboard import (
+    POSTSEASON,
+    POSTSEASON_SEASON_TYPES,
     REGULAR_SEASON,
     Broadcast,
     Competition,
     Competitor,
+    EspnScoreboard,
     Event,
     LeaderCategory,
+    Series,
     StatusType,
     is_counted,
 )
@@ -68,6 +75,9 @@ RESULT_FINAL = "final"
 RESULT_POSTPONED = "postponed"
 REGULATION_PERIODS = 4
 LEADER_GB = "-"
+# ESPN's playoff note, `East 1st Round - Game 4`, and NBA.com's `seriesGameNumber`, `Game 4`.
+ROUND_AND_GAME = re.compile(r"(?P<round>.+) - Game (?P<game>\d+)")
+GAME_NUMBER = re.compile(r"Game (?P<game>\d+)")
 LEADERBOARD_SIZE = 25
 CONFERENCES: tuple[teams.Conference, ...] = ("East", "West")
 # ESPN's `clincher` codes, pinned against the final 2025-26 standings: `z` marks the best record
@@ -103,15 +113,14 @@ class _ByTeam:
 def build_digest(day: date, bundle: SourceBundle) -> Digest:
     """Every section, plus which sources fell back to a snapshot and which had none.
 
-    A day with matchups is a full digest; one without is scores-only. The postseason is not built
-    yet (spec §13), so the phase is always regular.
+    A day with matchups is a full digest; one without is scores-only.
     """
     sources = [(field.name, getattr(bundle, field.name)) for field in fields(bundle)]
     matchups = build_matchups(day, bundle)
     return Digest(
         date=day,
         kind="full" if matchups else "scores_only",
-        phase="regular",
+        phase=build_phase(day, bundle),
         stale={name: f.fetched_at for name, f in sources if f is not None and f.stale},
         unavailable=[name for name, f in sources if f is None],
         matchups=matchups,
@@ -121,6 +130,19 @@ def build_digest(day: date, bundle: SourceBundle) -> Digest:
     )
 
 
+def build_phase(day: date, bundle: SourceBundle) -> Phase:
+    """Postseason when any counted game today or yesterday is a play-in or playoff game.
+
+    Read from the same games the matchups and results show, so a stale snapshot of another day
+    does not count. With neither scoreboard available, the phase is regular.
+    """
+    games = _games_on(bundle.espn_scoreboard_today, day) + _games_on(
+        bundle.espn_scoreboard_yesterday, day - timedelta(days=1)
+    )
+    postseason = any(_season_type(event) in POSTSEASON_SEASON_TYPES for event in games)
+    return "postseason" if postseason else "regular"
+
+
 def build_matchups(day: date, bundle: SourceBundle) -> list[Matchup]:
     """Today's counted games, sorted by tip-off, then home tricode.
 
@@ -128,7 +150,8 @@ def build_matchups(day: date, bundle: SourceBundle) -> list[Matchup]:
     snapshot can be an earlier day's scoreboard. A game with no tip-off, or with a team that is
     not in `teams.py`, is logged and skipped.
     """
-    if bundle.espn_scoreboard_today is None:
+    games = _games_on(bundle.espn_scoreboard_today, day)
+    if not games:
         return []
     schedule = None if bundle.nba_schedule is None else bundle.nba_schedule.data
     standings = {} if bundle.espn_standings is None else _standings(bundle.espn_standings.data)
@@ -139,11 +162,7 @@ def build_matchups(day: date, bundle: SourceBundle) -> list[Matchup]:
         key_players=_key_players(bundle.espn_athletes, standings),
     )
     matchups: list[Matchup] = []
-    for event in bundle.espn_scoreboard_today.data.events:
-        if not is_counted(event) or event.date is None:
-            continue
-        if event.date.astimezone(EASTERN).date() != day:
-            continue
+    for event in games:
         try:
             matchups.append(_matchup(event, schedule, by_team))
         except teams.UnknownTeam:
@@ -158,19 +177,10 @@ def build_results(day: date, bundle: SourceBundle) -> list[Result]:
     stale snapshot can be an earlier day's scoreboard, so other days' games are dropped. A game
     with no status, or with a team that is not in `teams.py`, is logged and skipped.
     """
-    if bundle.espn_scoreboard_yesterday is None:
-        return []
     schedule = None if bundle.nba_schedule is None else bundle.nba_schedule.data
-    yesterday = day - timedelta(days=1)
-    events: list[tuple[datetime, Event]] = [
-        (event.date, event)
-        for event in bundle.espn_scoreboard_yesterday.data.events
-        if is_counted(event)
-        and event.date is not None
-        and event.date.astimezone(EASTERN).date() == yesterday
-    ]
+    games = _games_on(bundle.espn_scoreboard_yesterday, day - timedelta(days=1))
     results: list[Result] = []
-    for _, event in sorted(events, key=lambda pair: pair[0]):
+    for event in sorted(games, key=_tip_off):
         try:
             result = _result(event, schedule)
         except teams.UnknownTeam:
@@ -256,6 +266,32 @@ def match_nba_game(event: Event, schedule: NbaSchedule) -> NbaGame | None:
     return None
 
 
+def _games_on(scoreboard: Fetched[EspnScoreboard] | None, day: date) -> list[Event]:
+    """The scoreboard's counted games that tip off on `day` (Eastern), in ESPN's order.
+
+    Empty when the scoreboard is unavailable. A stale snapshot can be an earlier day's
+    scoreboard, so other days' games are dropped, as are games with no tip-off.
+    """
+    if scoreboard is None:
+        return []
+    return [
+        event
+        for event in scoreboard.data.events
+        if is_counted(event)
+        and event.date is not None
+        and event.date.astimezone(EASTERN).date() == day
+    ]
+
+
+def _tip_off(event: Event) -> datetime:
+    assert event.date is not None
+    return event.date
+
+
+def _season_type(event: Event) -> int | None:
+    return None if event.season is None else event.season.type
+
+
 def _matchup(event: Event, schedule: NbaSchedule | None, by_team: _ByTeam) -> Matchup:
     assert event.date is not None
     competition = _competition(event)
@@ -275,6 +311,7 @@ def _matchup(event: Event, schedule: NbaSchedule | None, by_team: _ByTeam) -> Ma
         away=_side(event, "away", by_team),
         home=_side(event, "home", by_team),
         tv=tv,
+        series=_series(event, competition, nba_game),
     )
 
 
@@ -326,8 +363,9 @@ def _label(event: Event, competition: Competition, nba_game: NbaGame | None) -> 
         label = LABEL_SEPARATOR.join(parts) or None
     if label is None:
         return None
-    season_type = None if event.season is None else event.season.type
-    if season_type == REGULAR_SEASON and (CUP_LABEL not in label or CUP_GROUP_LABEL in label):
+    if _season_type(event) == REGULAR_SEASON and (
+        CUP_LABEL not in label or CUP_GROUP_LABEL in label
+    ):
         return None
     return label
 
@@ -347,13 +385,65 @@ def _result(event: Event, schedule: NbaSchedule | None) -> Result | None:
     period = status.period or 0
     played = result_status != RESULT_POSTPONED and period > 0
     nba_game = None if schedule is None else match_nba_game(event, schedule)
+    competition = _competition(event)
     return Result(
         status=result_status,
         overtimes=max(period - REGULATION_PERIODS, 0),
-        label=_label(event, _competition(event), nba_game),
+        label=_label(event, competition, nba_game),
         away=_result_side(event, "away", played),
         home=_result_side(event, "home", played),
+        series=_series(event, competition, nba_game),
     )
+
+
+def _series(event: Event, competition: Competition, nba_game: NbaGame | None) -> SeriesState | None:
+    """A playoff game's series state; `None` for any other game, or if neither source has any.
+
+    Each part comes from ESPN, else NBA.com: the round and game number from ESPN's note, else
+    `gameLabel` and `seriesGameNumber`; the summary from ESPN's series wins, else `seriesText`.
+    Only season type 3 is read, since ESPN also hangs the series on a regular-season meeting of
+    the same teams.
+    """
+    if _season_type(event) != POSTSEASON:
+        return None
+    note = competition.notes[0].headline if competition.notes else None
+    espn = ROUND_AND_GAME.fullmatch(note) if note else None
+    round_label, game = (espn["round"], espn["game"]) if espn else (None, None)
+    summary = None if competition.series is None else _series_summary(competition.series)
+    if nba_game is not None:
+        number = GAME_NUMBER.fullmatch(nba_game.series_game_number or "")
+        round_label = round_label or nba_game.game_label
+        game = game or (number["game"] if number else None)
+        summary = summary or nba_game.series_text
+    if round_label is None and game is None and summary is None:
+        return None
+    return SeriesState(
+        round_label=round_label,
+        game_number=None if game is None else int(game),
+        summary=summary,
+    )
+
+
+def _series_summary(series: Series) -> str | None:
+    """`BOS leads 3-1`, `Series tied 2-2`, or `NYK wins 4-1`, worded as NBA.com words its
+    `seriesText` and in tricodes; `None` before game 1, or if a team or its wins is missing."""
+    wins: list[tuple[int, str]] = []
+    for competitor in series.competitors:
+        if competitor.id is None or competitor.wins is None:
+            return None
+        try:
+            wins.append((competitor.wins, teams.by_espn_id(competitor.id).tricode))
+        except teams.UnknownTeam:
+            log.warning("skipping series with an unknown team", extra={"id": competitor.id})
+            return None
+    if len(wins) != 2:
+        return None
+    (high, leader), (low, _) = sorted(wins, reverse=True)
+    if high == 0:
+        return None
+    if high == low:
+        return f"Series tied {high}-{low}"
+    return f"{leader} {'wins' if series.completed else 'leads'} {high}-{low}"
 
 
 def _result_status(status_type: StatusType) -> str | None:

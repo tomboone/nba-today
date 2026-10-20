@@ -15,10 +15,12 @@ from nba_today.digest.models import (
     Leader,
     Result,
     ResultSide,
+    SeriesState,
 )
 from nba_today.render.render import (
     ampm,
     clinch_mark,
+    game_label,
     overtime,
     percent,
     record,
@@ -34,10 +36,12 @@ from tests.bundles import (
     EMPTY_SCOREBOARD,
     FULL_DAY,
     OPENING_DAY,
+    POSTSEASON_DAY,
     SNAPSHOT_AT,
     fresh,
     full_day_bundle,
     opening_day_bundle,
+    postseason_bundle,
 )
 
 
@@ -81,11 +85,16 @@ def _enrichment_unavailable() -> Digest:
     return build_digest(FULL_DAY, bundle)
 
 
+def _postseason() -> Digest:
+    return build_digest(POSTSEASON_DAY, postseason_bundle())
+
+
 DIGESTS = {
     "full": _full,
     "scores_only": _scores_only,
     "stale": _stale,
     "enrichment_unavailable": _enrichment_unavailable,
+    "postseason": _postseason,
 }
 
 
@@ -207,6 +216,19 @@ def test_a_matchup_label_and_every_injury_status_show() -> None:
     assert "NBA Cup Semifinal" in rendered.html
 
 
+def test_postseason_games_show_their_series_in_place_of_the_label() -> None:
+    rendered = render(_postseason())
+
+    # The matchup's state is the sweep: its scoreboard was recorded after the game.
+    for line in (
+        "West 1st Round · Game 4 · OKC wins 4-0",
+        "West 1st Round · Game 4 · SAS leads 3-1",
+    ):
+        assert line in rendered.text
+        assert line in rendered.html
+    assert "1st Round - Game 4" not in rendered.text
+
+
 def test_a_postponed_result_shows_its_status_and_no_score() -> None:
     side = ResultSide(tricode="LAC", score=None)
     postponed = Result(
@@ -321,3 +343,32 @@ def test_score_note(result_status: str, overtimes: int, expected: str) -> None:
 def test_every_clinch_has_a_mark() -> None:
     assert [clinch_mark(c) for c in Clinch] == ["z", "y", "x", "pi", "e"]
     assert clinch_mark(None) == ""
+
+
+@pytest.mark.parametrize(
+    ("label", "series", "expected"),
+    [
+        (None, None, ""),
+        ("NBA Cup Semifinal", None, "NBA Cup Semifinal"),
+        (
+            "NBA Finals - Game 5",
+            SeriesState(round_label="NBA Finals", game_number=5, summary="NYK wins 4-1"),
+            "NBA Finals · Game 5 · NYK wins 4-1",
+        ),
+        (
+            None,
+            SeriesState(round_label="East 1st Round", game_number=1, summary=None),
+            "East 1st Round · Game 1",
+        ),
+        (
+            None,
+            SeriesState(round_label=None, game_number=None, summary="Series tied 2-2"),
+            "Series tied 2-2",
+        ),
+    ],
+)
+def test_game_label(label: str | None, series: SeriesState | None, expected: str) -> None:
+    side = ResultSide(tricode="BOS", score=100)
+    result = Result(status="final", overtimes=0, label=label, away=side, home=side, series=series)
+
+    assert game_label(result) == expected

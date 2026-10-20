@@ -26,6 +26,23 @@ play-in (5), but the All-Star games are type 2 and only their note sets them apa
 scoreboard's league-level `leagues[].season.type` said 2 regardless, so only the event's own
 `season.type` is read. Probing other 2025-26 dates live (not recorded) also showed the
 regular-season notes `NBA Cup - Group Play` and `NBA Mexico City Game 2025`; both are counted.
+
+`competitions[0].series`, recorded from the 2025-26 postseason (20260412-20260613):
+
+| Fixture  | Games                         | `series.summary`                                 |
+|----------|-------------------------------|--------------------------------------------------|
+| 20260412 | last regular-season night     | `OKC wins series 4-0` on OKC-PHX, `type: playoff` |
+| 20260414 | first play-in night           | (none)                                           |
+| 20260417 | last play-in night            | (none)                                           |
+| 20260420 | 1st round, game 2             | `CLE leads series 2-0`, `Series tied 1-1`        |
+| 20260426 | 1st round, game 4             | `Series tied 2-2`, `SA leads series 3-1`, ...    |
+| 20260427 | 1st round, a sweep            | `OKC wins series 4-0`, `completed: true`         |
+| 20260613 | Finals, game 5                | `NY wins series 4-1`, `completed: true`          |
+
+ESPN hangs a playoff series on a regular-season game between the two teams that later met in it,
+so only an event of season type 3 has a series. The summary uses ESPN abbreviations and verbs
+("LAL lead series"), so the builder reads `competitors[].{id, wins}` and `completed` instead. The
+round and game number come from the note: `East 1st Round - Game 4`, `NBA Finals - Game 5`.
 """
 
 from datetime import datetime
@@ -138,6 +155,7 @@ REGULAR_SEASON = 2
 POSTSEASON = 3
 PLAY_IN = 5
 COUNTED_SEASON_TYPES = frozenset({REGULAR_SEASON, POSTSEASON, PLAY_IN})
+POSTSEASON_SEASON_TYPES = frozenset({POSTSEASON, PLAY_IN})
 ALL_STAR_NOTE_PREFIX = "NBA All-Star"
 
 

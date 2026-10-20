@@ -26,6 +26,8 @@ SNAPSHOT_AT = datetime(2026, 10, 19, 12, 0, tzinfo=UTC)
 # tonight's games are the 11-16 slate moved forward a day.
 FULL_DAY = date(2025, 11, 17)
 OPENING_DAY = date(2026, 10, 20)
+# A first-round night of games 4 and 5, the morning after games 4 (one a 3-1 lead, one tied).
+POSTSEASON_DAY = date(2026, 4, 27)
 EMPTY_SCOREBOARD: Payload = {"events": []}
 
 
@@ -72,4 +74,15 @@ def opening_day_bundle() -> SourceBundle:
     """2026-27 opening night: no results yet, and nobody qualifies for the leaderboard."""
     return bundle(
         fixture("espn/scoreboard_20261020"), EMPTY_SCOREBOARD, "standings_2027", "2026-27"
+    )
+
+
+def postseason_bundle() -> SourceBundle:
+    """2025-26 first round: tonight's games 4 and 5, including OKC's sweep, and last night's
+    games 4."""
+    return bundle(
+        fixture("espn/scoreboard_20260427"),
+        fixture("espn/scoreboard_20260426"),
+        "standings_2026",
+        "2025-26",
     )

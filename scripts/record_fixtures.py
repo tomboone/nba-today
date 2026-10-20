@@ -80,6 +80,8 @@ SCOREBOARD_EDGE_CASES: tuple[Callable[[Payload], bool], ...] = (
     lambda e: _overtimes(e) == 1,
     lambda e: _overtimes(e) >= 2,
     lambda e: e["status"]["type"]["name"] == "STATUS_POSTPONED",
+    # ESPN hangs a playoff series on a regular-season game between the same two teams.
+    lambda e: any(c.get("series") for c in e["competitions"]),
 )
 
 
@@ -223,16 +225,24 @@ def record_espn_athletes(day: date) -> None:
 
 
 # Dates kept from each season's schedule, chosen to pair with the ESPN scoreboard fixtures: a
-# regular night with local TV, a Cup knockout, the Cup final, a play-in, a playoff night with
-# `seriesText`; then the 2026-27 opening night and the night after, with local TV and team OTT.
+# regular night with local TV, a Cup knockout, the Cup final, the last regular-season night, the
+# first, second, and last play-in nights, playoff nights with `seriesText` (tied, 3-1 leads, a
+# clinch), and the Finals clincher; then the 2026-27 opening night and the night after, with
+# local TV and team OTT.
 SCHEDULE_DATES = {
     "2025-26": frozenset(
         {
             date(2025, 11, 16),
             date(2025, 12, 10),
             date(2025, 12, 16),
+            date(2026, 4, 12),
+            date(2026, 4, 14),
             date(2026, 4, 15),
+            date(2026, 4, 17),
             date(2026, 4, 20),
+            date(2026, 4, 26),
+            date(2026, 4, 27),
+            date(2026, 6, 13),
         }
     ),
     "2026-27": frozenset({date(2026, 10, 20), date(2026, 10, 21)}),
