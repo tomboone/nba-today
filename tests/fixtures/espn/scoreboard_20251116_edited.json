@@ -1,0 +1,705 @@
+{
+  "events": [
+    {
+      "competitions": [
+        {
+          "attendance": 19156,
+          "broadcast": "",
+          "broadcasts": [
+            {
+              "market": "home",
+              "names": [
+                "NBC Sports BO"
+              ]
+            },
+            {
+              "market": "away",
+              "names": [
+                "FanDuel SN SoCal",
+                "NBA League Pass"
+              ]
+            }
+          ],
+          "competitors": [
+            {
+              "homeAway": "home",
+              "id": "2",
+              "leaders": [],
+              "order": 0,
+              "records": [
+                {
+                  "abbreviation": "Game",
+                  "name": "overall",
+                  "summary": "7-7",
+                  "type": "total"
+                },
+                {
+                  "name": "Home",
+                  "summary": "4-3",
+                  "type": "home"
+                },
+                {
+                  "name": "Road",
+                  "summary": "3-4",
+                  "type": "road"
+                }
+              ],
+              "score": "0",
+              "team": {
+                "abbreviation": "BOS",
+                "alternateColor": "ffffff",
+                "color": "008348",
+                "displayName": "Boston Celtics",
+                "id": "2",
+                "isActive": true,
+                "location": "Boston",
+                "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/bos.png",
+                "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/scoreboard/bos.png",
+                "name": "Celtics",
+                "shortDisplayName": "Celtics",
+                "uid": "s:40~l:46~t:2",
+                "venue": {
+                  "id": "1824"
+                }
+              },
+              "type": "team",
+              "uid": "s:40~l:46~t:2"
+            },
+            {
+              "homeAway": "away",
+              "id": "12",
+              "leaders": [],
+              "order": 1,
+              "records": [
+                {
+                  "abbreviation": "Game",
+                  "name": "overall",
+                  "summary": "4-9",
+                  "type": "total"
+                },
+                {
+                  "name": "Home",
+                  "summary": "3-5",
+                  "type": "home"
+                },
+                {
+                  "name": "Road",
+                  "summary": "1-4",
+                  "type": "road"
+                }
+              ],
+              "score": "0",
+              "team": {
+                "abbreviation": "LAC",
+                "alternateColor": "c8102e",
+                "color": "12173f",
+                "displayName": "LA Clippers",
+                "id": "12",
+                "isActive": true,
+                "location": "LA",
+                "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/lac.png",
+                "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/scoreboard/lac.png",
+                "name": "Clippers",
+                "shortDisplayName": "Clippers",
+                "uid": "s:40~l:46~t:12",
+                "venue": {
+                  "id": "1841"
+                }
+              },
+              "type": "team",
+              "uid": "s:40~l:46~t:12"
+            }
+          ],
+          "conferenceCompetition": false,
+          "date": "2025-11-16T20:30Z",
+          "format": {
+            "regulation": {
+              "periods": 4
+            }
+          },
+          "id": "401810088",
+          "neutralSite": false,
+          "notes": [],
+          "playByPlayAvailable": true,
+          "recent": false,
+          "startDate": "2025-11-16T20:30Z",
+          "status": {
+            "clock": 0.0,
+            "displayClock": "0:00",
+            "period": 0,
+            "type": {
+              "completed": false,
+              "description": "Postponed",
+              "detail": "Postponed",
+              "id": "6",
+              "name": "STATUS_POSTPONED",
+              "shortDetail": "Postponed",
+              "state": "post"
+            }
+          },
+          "timeValid": true,
+          "type": {
+            "abbreviation": "STD",
+            "id": "1"
+          },
+          "uid": "s:40~l:46~e:401810088~c:401810088",
+          "venue": {
+            "address": {
+              "city": "Boston",
+              "state": "MA"
+            },
+            "fullName": "TD Garden",
+            "id": "1824",
+            "indoor": true
+          }
+        }
+      ],
+      "date": "2025-11-16T20:30Z",
+      "id": "401810088",
+      "name": "LA Clippers at Boston Celtics",
+      "season": {
+        "slug": "regular-season",
+        "type": 2,
+        "year": 2026
+      },
+      "shortName": "LAC @ BOS",
+      "status": {
+        "clock": 0.0,
+        "displayClock": "0:00",
+        "period": 0,
+        "type": {
+          "completed": false,
+          "description": "Postponed",
+          "detail": "Postponed",
+          "id": "6",
+          "name": "STATUS_POSTPONED",
+          "shortDetail": "Postponed",
+          "state": "post"
+        }
+      },
+      "uid": "s:40~l:46~e:401810088"
+    },
+    {
+      "competitions": [
+        {
+          "attendance": 18354,
+          "broadcast": "",
+          "broadcasts": [
+            {
+              "market": "away",
+              "names": [
+                "NBC Sports CA",
+                "NBA League Pass"
+              ]
+            },
+            {
+              "market": "home",
+              "names": [
+                "FanDuel SN SW"
+              ]
+            }
+          ],
+          "competitors": [
+            {
+              "homeAway": "home",
+              "id": "24",
+              "leaders": [
+                {
+                  "abbreviation": "Pts",
+                  "displayName": "Points",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "De'Aaron Fox",
+                        "fullName": "De'Aaron Fox",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4066259.png",
+                        "id": "4066259",
+                        "jersey": "4",
+                        "position": {
+                          "abbreviation": "G"
+                        },
+                        "shortName": "D. Fox",
+                        "team": {
+                          "id": "24"
+                        }
+                      },
+                      "displayValue": "28",
+                      "team": {
+                        "id": "24"
+                      },
+                      "value": 28.0
+                    }
+                  ],
+                  "name": "points",
+                  "shortDisplayName": "Pts"
+                },
+                {
+                  "abbreviation": "Reb",
+                  "displayName": "Rebounds",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "Keldon Johnson",
+                        "fullName": "Keldon Johnson",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4395723.png",
+                        "id": "4395723",
+                        "jersey": "3",
+                        "position": {
+                          "abbreviation": "F"
+                        },
+                        "shortName": "K. Johnson",
+                        "team": {
+                          "id": "24"
+                        }
+                      },
+                      "displayValue": "12",
+                      "team": {
+                        "id": "24"
+                      },
+                      "value": 12.0
+                    }
+                  ],
+                  "name": "rebounds",
+                  "shortDisplayName": "Reb"
+                },
+                {
+                  "abbreviation": "Ast",
+                  "displayName": "Assists",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "De'Aaron Fox",
+                        "fullName": "De'Aaron Fox",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4066259.png",
+                        "id": "4066259",
+                        "jersey": "4",
+                        "position": {
+                          "abbreviation": "G"
+                        },
+                        "shortName": "D. Fox",
+                        "team": {
+                          "id": "24"
+                        }
+                      },
+                      "displayValue": "11",
+                      "team": {
+                        "id": "24"
+                      },
+                      "value": 11.0
+                    }
+                  ],
+                  "name": "assists",
+                  "shortDisplayName": "Ast"
+                },
+                {
+                  "abbreviation": "RAT",
+                  "displayName": "Rating",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "De'Aaron Fox",
+                        "fullName": "De'Aaron Fox",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4066259.png",
+                        "id": "4066259",
+                        "jersey": "4",
+                        "position": {
+                          "abbreviation": "G"
+                        },
+                        "shortName": "D. Fox",
+                        "team": {
+                          "id": "24"
+                        }
+                      },
+                      "displayValue": "28 PTS, 11 AST",
+                      "team": {
+                        "id": "24"
+                      },
+                      "value": 51.29999923706055
+                    }
+                  ],
+                  "name": "rating",
+                  "shortDisplayName": "RAT"
+                }
+              ],
+              "linescores": [
+                {
+                  "displayValue": "36",
+                  "period": 1,
+                  "value": 36.0
+                },
+                {
+                  "displayValue": "31",
+                  "period": 2,
+                  "value": 31.0
+                },
+                {
+                  "displayValue": "28",
+                  "period": 3,
+                  "value": 28.0
+                },
+                {
+                  "displayValue": "28",
+                  "period": 4,
+                  "value": 28.0
+                }
+              ],
+              "order": 0,
+              "records": [
+                {
+                  "abbreviation": "Game",
+                  "name": "overall",
+                  "summary": "9-4",
+                  "type": "total"
+                },
+                {
+                  "name": "Home",
+                  "summary": "6-2",
+                  "type": "home"
+                },
+                {
+                  "name": "Road",
+                  "summary": "3-2",
+                  "type": "road"
+                }
+              ],
+              "score": "123",
+              "team": {
+                "abbreviation": "SA",
+                "alternateColor": "c4ced4",
+                "color": "000000",
+                "displayName": "San Antonio Spurs",
+                "id": "24",
+                "isActive": true,
+                "location": "San Antonio",
+                "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/sa.png",
+                "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/scoreboard/sa.png",
+                "name": "Spurs",
+                "shortDisplayName": "Spurs",
+                "uid": "s:40~l:46~t:24",
+                "venue": {
+                  "id": "780"
+                }
+              },
+              "type": "team",
+              "uid": "s:40~l:46~t:24",
+              "winner": true
+            },
+            {
+              "homeAway": "away",
+              "id": "23",
+              "leaders": [
+                {
+                  "abbreviation": "Pts",
+                  "displayName": "Points",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "DeMar DeRozan",
+                        "fullName": "DeMar DeRozan",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3978.png",
+                        "id": "3978",
+                        "jersey": "10",
+                        "position": {
+                          "abbreviation": "G"
+                        },
+                        "shortName": "D. DeRozan",
+                        "team": {
+                          "id": "23"
+                        }
+                      },
+                      "displayValue": "27",
+                      "team": {
+                        "id": "23"
+                      },
+                      "value": 27.0
+                    }
+                  ],
+                  "name": "points",
+                  "shortDisplayName": "Pts"
+                },
+                {
+                  "abbreviation": "Reb",
+                  "displayName": "Rebounds",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "Domantas Sabonis",
+                        "fullName": "Domantas Sabonis",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3155942.png",
+                        "id": "3155942",
+                        "jersey": "11",
+                        "position": {
+                          "abbreviation": "F"
+                        },
+                        "shortName": "D. Sabonis",
+                        "team": {
+                          "id": "23"
+                        }
+                      },
+                      "displayValue": "13",
+                      "team": {
+                        "id": "23"
+                      },
+                      "value": 13.0
+                    }
+                  ],
+                  "name": "rebounds",
+                  "shortDisplayName": "Reb"
+                },
+                {
+                  "abbreviation": "Ast",
+                  "displayName": "Assists",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": false,
+                        "displayName": "Russell Westbrook",
+                        "fullName": "Russell Westbrook",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3468.png",
+                        "id": "3468",
+                        "jersey": "18",
+                        "position": {
+                          "abbreviation": "G"
+                        },
+                        "shortName": "R. Westbrook",
+                        "team": {
+                          "id": "23"
+                        }
+                      },
+                      "displayValue": "7",
+                      "team": {
+                        "id": "23"
+                      },
+                      "value": 7.0
+                    }
+                  ],
+                  "name": "assists",
+                  "shortDisplayName": "Ast"
+                },
+                {
+                  "abbreviation": "RAT",
+                  "displayName": "Rating",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "DeMar DeRozan",
+                        "fullName": "DeMar DeRozan",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3978.png",
+                        "id": "3978",
+                        "jersey": "10",
+                        "position": {
+                          "abbreviation": "G"
+                        },
+                        "shortName": "D. DeRozan",
+                        "team": {
+                          "id": "23"
+                        }
+                      },
+                      "displayValue": "27 PTS",
+                      "team": {
+                        "id": "23"
+                      },
+                      "value": 46.5
+                    }
+                  ],
+                  "name": "rating",
+                  "shortDisplayName": "RAT"
+                }
+              ],
+              "linescores": [
+                {
+                  "displayValue": "24",
+                  "period": 1,
+                  "value": 24.0
+                },
+                {
+                  "displayValue": "35",
+                  "period": 2,
+                  "value": 35.0
+                },
+                {
+                  "displayValue": "26",
+                  "period": 3,
+                  "value": 26.0
+                },
+                {
+                  "displayValue": "25",
+                  "period": 4,
+                  "value": 25.0
+                }
+              ],
+              "order": 1,
+              "records": [
+                {
+                  "abbreviation": "Game",
+                  "name": "overall",
+                  "summary": "3-11",
+                  "type": "total"
+                },
+                {
+                  "name": "Home",
+                  "summary": "2-5",
+                  "type": "home"
+                },
+                {
+                  "name": "Road",
+                  "summary": "1-6",
+                  "type": "road"
+                }
+              ],
+              "score": "110",
+              "team": {
+                "abbreviation": "SAC",
+                "alternateColor": "6a7a82",
+                "color": "5a2d81",
+                "displayName": "Sacramento Kings",
+                "id": "23",
+                "isActive": true,
+                "location": "Sacramento",
+                "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/sac.png",
+                "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/scoreboard/sac.png",
+                "name": "Kings",
+                "shortDisplayName": "Kings",
+                "uid": "s:40~l:46~t:23",
+                "venue": {
+                  "id": "2247"
+                }
+              },
+              "type": "team",
+              "uid": "s:40~l:46~t:23",
+              "winner": false
+            }
+          ],
+          "conferenceCompetition": false,
+          "date": "2025-11-16T21:00Z",
+          "format": {
+            "regulation": {
+              "periods": 4
+            }
+          },
+          "id": "401810089",
+          "neutralSite": false,
+          "notes": [],
+          "playByPlayAvailable": true,
+          "recent": false,
+          "startDate": "2025-11-16T21:00Z",
+          "status": {
+            "clock": 720.0,
+            "displayClock": "12:00",
+            "period": 4,
+            "type": {
+              "completed": true,
+              "description": "Final",
+              "detail": "Final",
+              "id": "3",
+              "name": "STATUS_FINAL",
+              "shortDetail": "Final",
+              "state": "post"
+            }
+          },
+          "timeValid": true,
+          "type": {
+            "abbreviation": "STD",
+            "id": "1"
+          },
+          "uid": "s:40~l:46~e:401810089~c:401810089",
+          "venue": {
+            "address": {
+              "city": "San Antonio",
+              "state": "TX"
+            },
+            "fullName": "Frost Bank Center",
+            "id": "780",
+            "indoor": true
+          }
+        }
+      ],
+      "date": "2025-11-16T21:00Z",
+      "id": "401810089",
+      "name": "Sacramento Kings at San Antonio Spurs",
+      "season": {
+        "slug": "regular-season",
+        "type": 2,
+        "year": 2026
+      },
+      "shortName": "SAC @ SA",
+      "status": {
+        "clock": 720.0,
+        "displayClock": "12:00",
+        "period": 4,
+        "type": {
+          "completed": true,
+          "description": "Final",
+          "detail": "Final",
+          "id": "3",
+          "name": "STATUS_FINAL",
+          "shortDetail": "Final",
+          "state": "post"
+        }
+      },
+      "uid": "s:40~l:46~e:401810089"
+    }
+  ],
+  "leagues": [
+    {
+      "abbreviation": "NBA",
+      "calendarEndDate": "2026-06-27T06:59Z",
+      "calendarIsWhitelist": true,
+      "calendarStartDate": "2025-10-01T07:00Z",
+      "calendarType": "day",
+      "id": "46",
+      "logos": [
+        {
+          "alt": "",
+          "height": 500,
+          "href": "https://a.espncdn.com/i/teamlogos/leagues/500/nba.png",
+          "lastUpdated": "2018-06-05T12:07Z",
+          "rel": [
+            "full",
+            "default"
+          ],
+          "width": 500
+        },
+        {
+          "alt": "",
+          "height": 500,
+          "href": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/leagues/500-dark/nba.png&w=500&h=500&transparent=true",
+          "lastUpdated": "2026-10-19T21:04Z",
+          "rel": [
+            "full",
+            "dark"
+          ],
+          "width": 500
+        }
+      ],
+      "name": "National Basketball Association",
+      "season": {
+        "displayName": "2025-26",
+        "endDate": "2026-06-27T06:59Z",
+        "startDate": "2025-10-01T07:00Z",
+        "type": {
+          "abbreviation": "reg",
+          "id": "2",
+          "name": "Regular Season",
+          "type": 2
+        },
+        "year": 2026
+      },
+      "slug": "nba",
+      "uid": "s:40~l:46"
+    }
+  ],
+  "provider": {
+    "displayName": "Draft Kings",
+    "id": "100",
+    "name": "Draft Kings",
+    "priority": 1
+  }
+}
