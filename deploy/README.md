@@ -13,8 +13,7 @@ Images are published by `.github/workflows/image.yml` on every push to `main`:
 | `latest` | what kumadrome runs |
 | `sha-<7>` | pinning or rolling back to one commit |
 
-Commands below run on kumadrome (`ssh kumadrome`) unless they start with `ssh`. A step that needs `sudo` is written
-as `ssh -t kumadrome 'sudo …'` so it can prompt for the password.
+Commands below run on kumadrome, in a shell opened with `ssh kumadrome`.
 
 ## 1. Make sure kumadrome can pull the image
 
@@ -42,7 +41,7 @@ cannot write:
 
 ```sh
 mkdir -p ~/nba-today/deploy/data
-ssh -t kumadrome 'sudo chown 999:999 ~/nba-today/deploy/data'
+sudo chown 999:999 ~/nba-today/deploy/data
 ```
 
 ## 3. Create the healthchecks.io check
@@ -101,8 +100,8 @@ docker compose exec nba-today nba-today preview --date 2026-12-25 --out /data/di
 docker compose exec nba-today nba-today preview --from-snapshots --out /data/digest.html   # no network
 ```
 
-Each writes `data/digest.html` and `data/digest.txt`; copy them off kumadrome to view, e.g.
-`scp kumadrome:nba-today/deploy/data/digest.html .`.
+Each writes `data/digest.html` and `data/digest.txt`; to view one, copy it off kumadrome by running this on your own
+machine: `scp kumadrome:nba-today/deploy/data/digest.html .`.
 
 **Send one now:** `docker compose exec nba-today nba-today send` (add `--dry-run` to write to `data/outbox/`
 instead). A manual send does not record the last-sent marker, so the scheduler still sends that day's digest at its
