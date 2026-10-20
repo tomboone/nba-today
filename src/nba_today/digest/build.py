@@ -138,7 +138,8 @@ def _matchup(event: Event, schedule: NbaSchedule | None, by_team: _ByTeam) -> Ma
 
 
 def _side(event: Event, home_away: str, by_team: _ByTeam) -> MatchupSide:
-    """Records from the scoreboard, else the standings; last-10 and streak from the standings.
+    """Records from the scoreboard, else the standings; last-10 and streak from the standings;
+    injuries, ratings, and key player from their own sources.
 
     The NBA Cup final carries no record on the scoreboard, since it does not count in the
     standings.
