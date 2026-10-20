@@ -1,6 +1,8 @@
 import json
+import os
 import re
 import signal
+import time
 from collections.abc import Callable
 from datetime import UTC, datetime
 from pathlib import Path
@@ -198,9 +200,33 @@ def test_run_drives_the_scheduler_until_a_signal_stops_it(
     assert '"msg": "scheduler stopped"' in result.output
 
 
-@pytest.mark.usefixtures("env")
-def test_stub_exits_1() -> None:
+def _state_file(data_dir: Path, age_hours: float) -> Path:
+    path = data_dir / "state.json"
+    path.write_text("{}")
+    mtime = time.time() - age_hours * 3600
+    os.utime(path, (mtime, mtime))
+    return path
+
+
+def test_health_exits_0_with_a_fresh_state_file(env: Path) -> None:
+    _state_file(env, age_hours=1)
+
+    result = runner.invoke(app, ["health"])
+
+    assert result.exit_code == 0, result.output
+
+
+def test_health_exits_1_with_a_27_hour_old_state_file(env: Path) -> None:
+    _state_file(env, age_hours=27)
+
     result = runner.invoke(app, ["health"])
 
     assert result.exit_code == 1
-    assert '"msg": "command not implemented yet"' in result.output
+    assert "state file last updated 27.0 hours ago" in result.output
+
+
+def test_health_exits_1_without_a_state_file(env: Path) -> None:
+    result = runner.invoke(app, ["health"])
+
+    assert result.exit_code == 1
+    assert "no state file" in result.output
