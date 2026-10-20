@@ -148,7 +148,7 @@ Scoreboard fields:
 
 Standings fields: `children[]` (one per conference) → `standings.entries[]` → `team.{id,abbreviation}` and `stats[name]` for `wins`, `losses`, `winPercent`, `gamesBehind`, `playoffSeed`, `streak`, `clincher`, plus `Last Ten Games` (`displayValue`).
 - Entries are **not sorted**: sort by `playoffSeed`.
-- `clincher` codes seen in 2025-26: `z` (clinched best record in league), `y` (clinched division), `x` (clinched playoff berth), `xp`/`pb` (clinched play-in), `e` (eliminated), `*`. Map them to the enum in §6. The exact mapping is pinned against fixtures in the standings ticket.
+- `clincher` codes seen in 2025-26: `z` (clinched best record in conference), `*` (clinched best record in league), `y` (clinched division), `x` (clinched playoff berth), `xp`/`pb` (clinched play-in, seeds 7-8 and 9-10), `e` (eliminated). Map them to the enum in §6: `z` and `*` are both `best_record`, `xp` and `pb` both `play_in`, and an unknown code is `None` with a warning. Pinned against the final 2025-26 standings fixture in NEU-1786 (DET is `z`, OKC `*`).
 
 Injuries: `injuries[]` per team → `injuries[].{status, athlete.displayName, athlete.team.abbreviation}`. `status` is `Out` or `Day-To-Day`. Any other value renders verbatim.
 

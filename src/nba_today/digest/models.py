@@ -1,7 +1,6 @@
-"""The digest: everything the email shows (spec §6).
+"""The digest: everything the email shows (spec §6), field for field.
 
-Fields a later builder fills (results, standings, leaderboard) default to empty or `None`, so
-each section can be built and tested on its own.
+The sections default to empty or `None`, so each builder can be tested on its own.
 """
 
 from datetime import date, datetime
