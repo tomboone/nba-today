@@ -89,6 +89,17 @@ def test_nba_tv_and_streaming_are_merged_in_source_order() -> None:
     assert tv["CLE"].away == ["TSN"]
 
 
+def test_nba_broadcasts_are_deduped() -> None:
+    schedule = _schedule_payload()
+    game = schedule["leagueSchedule"]["gameDates"][0]["games"][0]
+    home = game["broadcasters"]["homeTvBroadcasters"][0]["broadcasterDisplay"]
+    game["broadcasters"]["homeOttBroadcasters"] = [{"broadcasterDisplay": home}, {}]
+
+    matchups = build_matchups(REGULAR_NIGHT, _bundle(_scoreboard_payload(REGULAR_NIGHT), schedule))
+
+    assert matchups[0].tv.home == [home]
+
+
 def test_nba_schedule_unavailable_falls_back_to_espn_without_league_pass() -> None:
     bundle = _bundle(_scoreboard_payload(REGULAR_NIGHT))
 
@@ -206,10 +217,22 @@ def test_same_time_tip_offs_are_ordered_by_home_tricode() -> None:
 
 
 def test_digest_imports_no_networking_modules() -> None:
+    """Checked in a fresh interpreter, so transitive imports count too."""
+    networking = {
+        "socket",
+        "ssl",
+        "http.client",
+        "urllib.request",
+        "requests",
+        "httpx",
+        "curl_cffi",
+        "resend",
+        "smtplib",
+    }
     code = (
         "import sys\n"
         "import nba_today.digest.build, nba_today.digest.bundle, nba_today.digest.models\n"
-        "print(sorted({'httpx', 'curl_cffi', 'resend', 'smtplib'} & set(sys.modules)))\n"
+        f"print(sorted({networking!r} & set(sys.modules)))\n"
     )
 
     result = subprocess.run(
