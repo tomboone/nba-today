@@ -6,7 +6,7 @@ sources' times can differ by minutes, and the NBA plays no doubleheaders.
 """
 
 import logging
-from dataclasses import dataclass
+from dataclasses import dataclass, fields
 from datetime import date, datetime, timedelta
 from zoneinfo import ZoneInfo
 
@@ -14,14 +14,20 @@ from nba_today import teams
 from nba_today.digest.bundle import SourceBundle
 from nba_today.digest.models import (
     Broadcasts,
+    Clinch,
+    ConferenceStandings,
+    Digest,
     GameLeaders,
     InjuryReport,
     KeyPlayer,
     Leader,
+    Leaderboard,
+    LeaderRow,
     Matchup,
     MatchupSide,
     Result,
     ResultSide,
+    StandingsRow,
     TeamRatings,
 )
 from nba_today.digest.qualify import is_qualified
@@ -39,6 +45,7 @@ from nba_today.sources.models.espn_scoreboard import (
     is_counted,
 )
 from nba_today.sources.models.espn_standings import Entry, EspnStandings
+from nba_today.sources.models.nba_player_stats import PlayerAdvanced, PlayerBase
 from nba_today.sources.models.nba_schedule import Broadcaster, Broadcasters, NbaSchedule
 from nba_today.sources.models.nba_schedule import Game as NbaGame
 from nba_today.sources.models.nba_schedule import Team as NbaTeam
@@ -60,6 +67,21 @@ POSTPONED = "STATUS_POSTPONED"
 RESULT_FINAL = "final"
 RESULT_POSTPONED = "postponed"
 REGULATION_PERIODS = 4
+LEADER_GB = "-"
+LEADERBOARD_SIZE = 25
+CONFERENCES: tuple[teams.Conference, ...] = ("East", "West")
+# ESPN's `clincher` codes, pinned against the final 2025-26 standings: `z` marks the best record
+# in a conference (DET) and `*` the best in the league (OKC), and both are the best record here;
+# `xp` (seeds 7-8) and `pb` (seeds 9-10) are both a play-in berth.
+CLINCH_CODES = {
+    "z": Clinch.BEST_RECORD,
+    "*": Clinch.BEST_RECORD,
+    "y": Clinch.DIVISION,
+    "x": Clinch.PLAYOFF,
+    "xp": Clinch.PLAY_IN,
+    "pb": Clinch.PLAY_IN,
+    "e": Clinch.ELIMINATED,
+}
 
 type Standings = dict[str, Entry]
 
@@ -76,6 +98,27 @@ class _ByTeam:
     injuries: dict[str, InjuryReport]
     ratings: dict[str, TeamRatings]
     key_players: dict[str, KeyPlayer]
+
+
+def build_digest(day: date, bundle: SourceBundle) -> Digest:
+    """Every section, plus which sources fell back to a snapshot and which had none.
+
+    A day with matchups is a full digest; one without is scores-only. The postseason is not built
+    yet (spec §13), so the phase is always regular.
+    """
+    sources = [(field.name, getattr(bundle, field.name)) for field in fields(bundle)]
+    matchups = build_matchups(day, bundle)
+    return Digest(
+        date=day,
+        kind="full" if matchups else "scores_only",
+        phase="regular",
+        stale={name: f.fetched_at for name, f in sources if f is not None and f.stale},
+        unavailable=[name for name, f in sources if f is None],
+        matchups=matchups,
+        results=build_results(day, bundle),
+        standings=build_standings(bundle),
+        leaderboard=build_leaderboard(bundle),
+    )
 
 
 def build_matchups(day: date, bundle: SourceBundle) -> list[Matchup]:
@@ -138,6 +181,61 @@ def build_results(day: date, bundle: SourceBundle) -> list[Result]:
             continue
         results.append(result)
     return results
+
+
+def build_standings(bundle: SourceBundle) -> list[ConferenceStandings] | None:
+    """East, then West, each in seed order; `None` when the standings are unavailable.
+
+    ESPN sends entries unsorted, and before a season's first game every team is seed 1, so seeds
+    tie-break on tricode. An entry with no seed or record is logged and skipped.
+    """
+    if bundle.espn_standings is None:
+        return None
+    rows: dict[teams.Conference, list[StandingsRow]] = {c: [] for c in CONFERENCES}
+    for tricode, entry in _standings(bundle.espn_standings.data).items():
+        row = _standings_row(tricode, entry)
+        if row is None:
+            log.warning("skipping standings entry with no seed or record", extra={"team": tricode})
+            continue
+        rows[teams.by_tricode(tricode).conference].append(row)
+    return [
+        ConferenceStandings(conference=c, rows=sorted(rows[c], key=lambda r: (r.seed, r.tricode)))
+        for c in CONFERENCES
+    ]
+
+
+def build_leaderboard(bundle: SourceBundle) -> Leaderboard | None:
+    """The top 25 qualified players by PIE, then points; `None` if a source is unavailable or
+    nobody qualifies yet.
+
+    Team games played come from NBA.com's team stats, keeping the leaderboard NBA-only. Base and
+    advanced rows join on player id; a player missing a stat from either is left out. `as_of` is
+    when the advanced stats, the source of PIE, were fetched.
+    """
+    advanced, base, team_advanced = (
+        bundle.nba_player_advanced,
+        bundle.nba_player_base,
+        bundle.nba_team_advanced,
+    )
+    if advanced is None or base is None or team_advanced is None:
+        return None
+    # Keyed `int | None` so a row with no id looks up nothing rather than failing to type-check.
+    base_by_id: dict[int | None, PlayerBase] = {
+        row.player_id: row for row in base.data if row.player_id is not None
+    }
+    team_games = {row.team_id: row.gp for row in team_advanced.data if row.team_id is not None}
+    players = [
+        player
+        for row in advanced.data
+        if (player := _leader_row(row, base_by_id.get(row.player_id), team_games)) is not None
+    ]
+    if not players:
+        return None
+    top = sorted(players, key=lambda p: (-p.pie, -p.pts))[:LEADERBOARD_SIZE]
+    return Leaderboard(
+        rows=[p.model_copy(update={"rank": rank}) for rank, p in enumerate(top, start=1)],
+        as_of=advanced.fetched_at,
+    )
 
 
 def match_nba_game(event: Event, schedule: NbaSchedule) -> NbaGame | None:
@@ -346,6 +444,79 @@ def _standings(standings: EspnStandings) -> Standings:
                 continue
             by_tricode[tricode] = entry
     return by_tricode
+
+
+def _standings_row(tricode: str, entry: Entry) -> StandingsRow | None:
+    """The entry as a row; `None` if ESPN left out its seed or record."""
+    seed, wins, losses = entry.playoff_seed, entry.wins, entry.losses
+    if seed is None or wins is None or losses is None:
+        return None
+    return StandingsRow(
+        seed=seed,
+        tricode=tricode,
+        wins=wins,
+        losses=losses,
+        pct=_pct(entry.win_percent, wins, losses),
+        gb=LEADER_GB if seed == 1 else _games_behind(entry.games_behind),
+        last_ten=entry.last_ten_games,
+        streak=entry.streak,
+        clinch=_clinch(tricode, entry.clincher),
+    )
+
+
+def _pct(win_percent: float | None, wins: int, losses: int) -> str:
+    """`.732`, or `1.000`; computed from the record if ESPN left the percentage out."""
+    if win_percent is None:
+        win_percent = wins / (wins + losses) if wins + losses else 0.0
+    return f"{win_percent:.3f}".removeprefix("0")
+
+
+def _games_behind(games_behind: float | None) -> str:
+    """`4`, or `4.5` for a half game; blank if ESPN left it out, since a dash would read as
+    tied for first."""
+    if games_behind is None:
+        return ""
+    return f"{games_behind:g}"
+
+
+def _clinch(tricode: str, code: str | None) -> Clinch | None:
+    if not code:
+        return None
+    clinch = CLINCH_CODES.get(code)
+    if clinch is None:
+        log.warning("unknown clinch code", extra={"team": tricode, "code": code})
+    return clinch
+
+
+def _leader_row(
+    advanced: PlayerAdvanced, base: PlayerBase | None, team_games: dict[int, int | None]
+) -> LeaderRow | None:
+    """The player's line, unranked, if they qualify; `None` if not, or if a stat is missing."""
+    a = advanced
+    if base is None or a.player_name is None or a.team_id is None:
+        return None
+    if a.gp is None or a.min is None or a.pie is None or a.ts_pct is None:
+        return None
+    if base.pts is None or base.reb is None or base.ast is None:
+        return None
+    games = team_games.get(a.team_id)
+    if games is None or not is_qualified(a.gp, a.min, games):
+        return None
+    try:
+        tricode = teams.by_nba_id(a.team_id).tricode
+    except teams.UnknownTeam:
+        log.warning("skipping leaderboard row with an unknown team", extra={"id": a.team_id})
+        return None
+    return LeaderRow(
+        rank=0,
+        name=a.player_name,
+        tricode=tricode,
+        pts=base.pts,
+        reb=base.reb,
+        ast=base.ast,
+        ts_pct=a.ts_pct,
+        pie=a.pie,
+    )
 
 
 def _injury_reports(injuries: Fetched[EspnInjuries] | None) -> dict[str, InjuryReport]:
