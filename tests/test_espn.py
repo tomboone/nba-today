@@ -13,12 +13,11 @@ from nba_today.sources.espn import (
     fetch_injuries,
     fetch_scoreboard,
     fetch_standings,
-    is_counted,
 )
 from nba_today.sources.http import make_client
 from nba_today.sources.models.espn_athletes import EspnAthletes
 from nba_today.sources.models.espn_injuries import EspnInjuries
-from nba_today.sources.models.espn_scoreboard import EspnScoreboard, Event
+from nba_today.sources.models.espn_scoreboard import EspnScoreboard, Event, is_counted
 from nba_today.sources.models.espn_standings import Entry, EspnStandings
 from nba_today.sources.snapshot import Payload, SnapshotStore
 

@@ -1,4 +1,4 @@
-"""ESPN API client: scoreboard, standings, injuries, athlete stats, and the counted-game filter.
+"""ESPN API client: scoreboard, standings, injuries, and athlete stats.
 
 Spec §4.2, §5.1. Every request but the scoreboard's sends `season` (ESPN's end year, from
 `season.espn_season`) and `seasontype=2`. The standings fall back to the preseason without
@@ -6,25 +6,8 @@ them. The injuries endpoint ignored both when probed on 2026-10-20 (`season=2026
 `seasontype=1` returned the same 2026-27 report), but they are sent all the same, per §4.2.
 The athlete stats come from a second host, `ESPN_WEB_API_BASE`, so they take their own client.
 
-`is_counted` is the only counted-game filter. What ESPN sent for each kind of game, as recorded
-in `tests/fixtures/espn/` on 2026-10-20:
-
-| Fixture  | Games                   | `season.type` | `notes[0].headline`                  |
-|----------|-------------------------|---------------|--------------------------------------|
-| 20251005 | preseason               | 1             | (none)                               |
-| 20251116 | regular season, OT, 2OT | 2             | (none)                               |
-| 20251210 | NBA Cup quarterfinals   | 2             | `NBA Cup - Quarterfinals`            |
-| 20251216 | NBA Cup final           | 2             | `NBA Cup Championship`               |
-| 20260215 | All-Star                | 2             | `NBA All-Star - Championship`, ...   |
-| 20260415 | play-in                 | 5             | `NBA Play-In - East - 7th Place ...` |
-| 20260420 | playoffs                | 3             | `East 1st Round - Game 2`            |
-| 20261020 | 2026-27 opening night   | 2             | (none)                               |
-
-So season type separates preseason (1) from the regular season (2), the postseason (3), and the
-play-in (5), but the All-Star games are type 2 and only their note sets them apart. Every
-scoreboard's league-level `leagues[].season.type` said 2 regardless, so only the event's own
-`season.type` is read. Probing other 2025-26 dates live (not recorded) also showed the
-regular-season notes `NBA Cup - Group Play` and `NBA Mexico City Game 2025`; both are counted.
+The counted-game filter, `is_counted`, lives beside the scoreboard model in
+`models/espn_scoreboard.py`, so the digest builder can use it without importing httpx.
 
 The scoreboard request sends only `dates`, despite §4.2's "pass the season and season type": the
 date already fixes the season, and a `seasontype` filter would hide the play-in and playoffs.
@@ -39,7 +22,7 @@ from nba_today.season import espn_season
 from nba_today.sources.fetched import Fetched, fetch_or_snapshot
 from nba_today.sources.models.espn_athletes import EspnAthletes
 from nba_today.sources.models.espn_injuries import EspnInjuries
-from nba_today.sources.models.espn_scoreboard import EspnScoreboard, Event
+from nba_today.sources.models.espn_scoreboard import REGULAR_SEASON, EspnScoreboard
 from nba_today.sources.models.espn_standings import EspnStandings
 from nba_today.sources.snapshot import Payload, SnapshotStore
 
@@ -55,12 +38,6 @@ SCOREBOARD_SOURCE: dict[ScoreboardDay, str] = {
     "today": "espn_scoreboard_today",
     "yesterday": "espn_scoreboard_yesterday",
 }
-
-REGULAR_SEASON = 2
-POSTSEASON = 3
-PLAY_IN = 5
-COUNTED_SEASON_TYPES = frozenset({REGULAR_SEASON, POSTSEASON, PLAY_IN})
-ALL_STAR_NOTE_PREFIX = "NBA All-Star"
 
 STANDINGS_SOURCE = "espn_standings"
 INJURIES_SOURCE = "espn_injuries"
@@ -128,14 +105,3 @@ def fetch_athletes(
 ) -> Fetched[EspnAthletes]:
     fetch = None if web_client is None else lambda: get_athletes(web_client, today)
     return fetch_or_snapshot(ATHLETES_SOURCE, fetch, EspnAthletes.model_validate, store)
-
-
-def is_counted(event: Event) -> bool:
-    """Whether a game belongs in the digest: regular season, NBA Cup, play-in, or playoffs."""
-    if event.season is None or event.season.type not in COUNTED_SEASON_TYPES:
-        return False
-    return not any(
-        note.headline is not None and note.headline.startswith(ALL_STAR_NOTE_PREFIX)
-        for competition in event.competitions
-        for note in competition.notes
-    )
