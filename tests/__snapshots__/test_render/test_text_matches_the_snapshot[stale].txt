@@ -1,0 +1,153 @@
+NBA Today — Monday, November 17, 2025
+
+! ESPN injuries could not be fetched; showing its snapshot from Oct 19, 8:00 AM ET.
+
+
+TODAY'S MATCHUPS
+
+3:30 PM ET
+  LAC (4-9), L10 6-4, W1
+      Out: Bradley Beal, Max Strus, Yanic Konan Niederhauser, Jordan Miller
+      ORtg 116.3 · DRtg 115.2 · Net +1.1 · Pace 97.3
+  @ BOS (7-7), L10 8-2, W2
+      Out: Devin Carter
+      ORtg 120.0 · DRtg 111.7 · Net +8.3 · Pace 95.6
+      Key: Jaylen Brown 28.7/6.9/5.1
+    TD Garden, Boston
+    TV: BOS: NBC Sports BO · LAC: FanDuel SN SoCal
+
+4:00 PM ET
+  SAC (3-11), L10 3-7, L1
+      ORtg 110.6 · DRtg 120.3 · Net -9.7 · Pace 100.1
+  @ SAS (9-4), L10 8-2, L1
+      ORtg 118.7 · DRtg 110.4 · Net +8.4 · Pace 100.7
+      Key: Victor Wembanyama 25.0/11.5/3.1
+    Frost Bank Center, San Antonio
+    TV: SAS: FanDuel SN SW · SAC: NBC Sports CA
+
+6:00 PM ET
+  BKN (2-11), L10 3-7, L3
+      Out: Tyler Bilodeau
+      ORtg 108.2 · DRtg 118.2 · Net -10.0 · Pace 97.6
+  @ WAS (1-12), L10 0-10, L10
+      ORtg 109.7 · DRtg 121.5 · Net -11.8 · Pace 102.5
+    Capital One Arena, Washington
+    TV: WAS: MNMT · BKN: YES
+
+7:00 PM ET
+  ORL (7-7), L10 7-3, L1
+      ORtg 114.2 · DRtg 113.6 · Net +0.6 · Pace 100.6
+  @ HOU (9-3), L10 9-1, W1
+      ORtg 117.5 · DRtg 112.1 · Net +5.4 · Pace 97.0
+    Toyota Center (Houston), Houston
+    TV: HOU: Space City Home Network · ORL: FanDuel SN FL
+
+8:00 PM ET
+  CHI (6-6), L10 2-8, L2
+      ORtg 112.1 · DRtg 117.4 · Net -5.3 · Pace 103.2
+  @ UTA (5-8), L10 1-9, L1
+      ORtg 112.7 · DRtg 120.8 · Net -8.2 · Pace 103.5
+    Delta Center, Salt Lake City
+    TV: UTA: KJZZ-TV, Jazz+, NBA G League TV on Tubi · CHI: CHSN
+
+
+LAST NIGHT'S RESULTS
+
+LAC 118, BOS 121
+  LAC: James Harden 37 pts · Ivica Zubac 12 reb · James Harden 8 ast
+  BOS: Jaylen Brown 33 pts · Jaylen Brown 13 reb · Derrick White 9 ast
+
+SAC 110, SAS 123
+  SAC: DeMar DeRozan 27 pts · Domantas Sabonis 13 reb · Russell Westbrook 7 ast
+  SAS: De'Aaron Fox 28 pts · Keldon Johnson 12 reb · De'Aaron Fox 11 ast
+
+BKN 129, WAS 106
+  BKN: Michael Porter Jr. 34 pts · Michael Porter Jr. 9 reb · Michael Porter Jr. 7 ast
+  WAS: Kyshawn George 29 pts · Kyshawn George 6 reb · Kyshawn George 5 ast
+
+ORL 113, HOU 117 (OT)
+  ORL: Franz Wagner 29 pts · Wendell Carter Jr. 6 reb · Franz Wagner 4 ast
+  HOU: Kevin Durant 35 pts · Steven Adams 13 reb · Alperen Sengun 8 ast
+
+CHI 147, UTA 150 (2OT)
+  CHI: Coby White 27 pts · Josh Giddey 13 reb · Josh Giddey 13 ast
+  UTA: Lauri Markkanen 47 pts · Jusuf Nurkic 14 reb · Isaiah Collier 9 ast
+
+
+STANDINGS (lines after the 6th seed and the 10th)
+
+East
+              W   L   PCT    GB   L10  STRK
+  1 DET z    60  22  .732     -   8-2    W3
+  2 BOS y    56  26  .683     4   8-2    W2
+  3 NYK x    53  29  .646     7   6-4    L1
+  4 CLE x    52  30  .634     8   7-3    W1
+  5 TOR x    46  36  .561    14   6-4    W1
+  6 ATL y    46  36  .561    14   6-4    L1
+-------------------------------------------
+  7 PHI pi   45  37  .549    15   6-4    W2
+  8 ORL pi   45  37  .549    15   7-3    L1
+  9 CHA pi   44  38  .537    16   6-4    W1
+ 10 MIA pi   43  39  .524    17   5-5    W2
+-------------------------------------------
+ 11 MIL e    32  50  .390    28   3-7    L1
+ 12 CHI e    31  51  .378    29   2-8    L2
+ 13 BKN e    20  62  .244    40   3-7    L3
+ 14 IND e    19  63  .232    41   3-7    L2
+ 15 WAS e    17  65  .207    43  0-10   L10
+
+West
+              W   L   PCT    GB   L10  STRK
+  1 OKC z    64  18  .780     -   7-3    L2
+  2 SAS y    62  20  .756     2   8-2    L1
+  3 DEN x    54  28  .659    10  10-0   W12
+  4 LAL y    53  29  .646    11   7-3    W3
+  5 HOU x    52  30  .634    12   9-1    W1
+  6 MIN x    49  33  .598    15   5-5    W2
+-------------------------------------------
+  7 POR pi   42  40  .512    22   7-3    W2
+  8 PHX pi   45  37  .549    19   5-5    W1
+  9 LAC pi   42  40  .512    22   6-4    W1
+ 10 GSW pi   37  45  .451    27   3-7    L3
+-------------------------------------------
+ 11 NOP e    26  56  .317    38   1-9    L2
+ 12 DAL e    26  56  .317    38   3-7    W1
+ 13 MEM e    25  57  .305    39   1-9    L8
+ 14 SAC e    22  60  .268    42   3-7    L1
+ 15 UTA e    22  60  .268    42   1-9    L1
+
+z best record · y division · x playoffs · pi play-in · e eliminated
+
+
+PIE LEADERS (top 25 among players with 70% of team games and 20+ minutes · NBA.com, as of Oct 20, 8:00 AM ET)
+
+     Player                   Team   PTS   REB   AST   TS%   PIE
+  1  Victor Wembanyama        SAS   25.0  11.5   3.1  62.6  20.9
+  2  Shai Gilgeous-Alexander  OKC   31.1   4.3   6.6  66.5  20.7
+  3  Jalen Duren              DET   19.5  10.5   2.0  68.8  17.7
+  4  Cade Cunningham          DET   23.9   5.5   9.9  56.4  15.9
+  5  Karl-Anthony Towns       NYK   20.1  11.9   3.0  61.9  15.4
+  6  Chet Holmgren            OKC   17.1   8.9   1.7  65.3  15.4
+  7  Jaylen Brown             BOS   28.7   6.9   5.1  57.3  15.2
+  8  Tyrese Maxey             PHI   28.3   4.1   6.6  58.8  15.0
+  9  Jalen Brunson            NYK   26.0   3.3   6.8  58.0  13.5
+ 10  Neemias Queta            BOS   10.2   8.4   1.7  67.4  13.0
+ 11  Nikola Vučević           BOS   15.1   8.4   3.3  57.4  12.7
+ 12  Payton Pritchard         BOS   17.0   3.9   5.2  58.4  12.0
+ 13  Keldon Johnson           SAS   13.2   5.4   1.4  61.3  11.8
+ 14  Josh Hart                NYK   12.0   7.4   4.8  61.2  11.8
+ 15  De'Aaron Fox             SAS   18.6   3.8   6.2  57.8  11.7
+ 16  Stephon Castle           SAS   16.7   5.3   7.4  57.5  11.7
+ 17  Dylan Harper             SAS   11.8   3.4   3.9  57.4  11.3
+ 18  Tobias Harris            DET   13.3   5.1   2.5  57.4  11.2
+ 19  Derrick White            BOS   16.5   4.4   5.4  52.9  10.9
+ 20  Ausar Thompson           DET    9.9   5.7   3.1  54.5  10.1
+ 21  OG Anunoby               NYK   16.7   5.2   2.2  62.0   9.9
+ 22  Mikal Bridges            NYK   14.4   3.8   3.7  58.7   9.9
+ 23  Isaiah Joe               OKC   11.1   2.5   1.3  65.7   9.9
+ 24  Isaiah Stewart           DET   10.0   5.0   1.1  63.2   9.5
+ 25  Kevin Huerter            DET   10.0   3.5   2.6  55.2   9.3
+
+
+--
+Data: ESPN, NBA.com. Not affiliated with the NBA.

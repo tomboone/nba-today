@@ -1,0 +1,196 @@
+{#- The digest email (spec §6), authored for a 600 px column and compiled by `mjml` (ADR-0003).
+    Styles are inline or attributes rather than an authored <mj-style> block, which several mail
+    clients drop (MJML's own responsive <style> is a progressive enhancement). Table cells use
+    `align` and the table's `cellpadding` rather than per-cell styles, to keep a full slate's HTML
+    well under the 150 KB budget. Cells are `nowrap` except player names, so a phone wraps names, not numbers. -#}
+{% set ink = "#1a1a1a" %}
+{% set muted = "#666666" %}
+{% set rule = "#e5e5e5" %}
+{% set line = "#999999" %}
+{% set navy = "#17408b" %}
+{% set alert = "#c8102e" %}
+{% macro th(label, align="right") -%}
+<th align="{{ align }}" nowrap="nowrap" style="color:{{ muted }};border-bottom:1px solid {{ rule }};">{{ label }}</th>
+{%- endmacro %}
+{% macro td(value, align="right", style="", wrap=false) -%}
+<td align="{{ align }}"{% if not wrap %} nowrap="nowrap"{% endif %}{% if style %} style="{{ style }}"{% endif %}>{{ value }}</td>
+{%- endmacro %}
+{% macro heading(title, note=none) %}
+    <mj-section padding="24px 0 4px">
+      <mj-column>
+        <mj-text font-size="18px" font-weight="700" color="{{ navy }}">{{ title }}</mj-text>
+        {% if note %}
+        <mj-text font-size="12px" color="{{ muted }}">{{ note }}</mj-text>
+        {% endif %}
+      </mj-column>
+    </mj-section>
+{% endmacro %}
+{% macro side(s, prefix="") -%}
+{% set rec = s.wins | record(s.losses) %}
+{% set form = [] %}
+{% if s.last_ten %}{% set _ = form.append("L10 " ~ s.last_ten) %}{% endif %}
+{% if s.streak %}{% set _ = form.append(s.streak) %}{% endif %}
+<td width="50%" valign="top" style="padding:0 8px 0 0;">
+<strong>{{ prefix }}{{ s.tricode }}</strong>{% if rec %} <span style="color:{{ muted }};">({{ rec }})</span>{% endif %}
+{%- if form %}<br /><span style="font-size:12px;color:{{ muted }};">{{ form | join(" · ") }}</span>{% endif %}
+<span style="font-size:12px;">
+{%- if s.injuries.out %}<br /><span style="color:{{ alert }};">Out:</span> {{ s.injuries.out | join(", ") }}{% endif %}
+{%- if s.injuries.day_to_day %}<br /><span style="color:{{ alert }};">DTD:</span> {{ s.injuries.day_to_day | join(", ") }}{% endif %}
+{%- for name, injury in s.injuries.other %}<br /><span style="color:{{ alert }};">{{ injury }}:</span> {{ name }}{% endfor %}
+{%- if s.ratings %}<br />ORtg {{ s.ratings.off_rtg | one }} · DRtg {{ s.ratings.def_rtg | one }}<br />Net {{ s.ratings.net_rtg | signed }} · Pace {{ s.ratings.pace | one }}{% endif %}
+{%- if s.key_player %}<br /><strong>{{ s.key_player.name }}</strong> {{ s.key_player.ppg | one }}/{{ s.key_player.rpg | one }}/{{ s.key_player.apg | one }}{% endif %}
+</span>
+</td>
+{%- endmacro %}
+{% macro leaders(s) -%}
+{% set l = s.leaders %}
+{% set parts = [] %}
+{% if l.points %}{% set _ = parts.append(l.points.name ~ " " ~ l.points.value ~ " pts") %}{% endif %}
+{% if l.rebounds %}{% set _ = parts.append(l.rebounds.name ~ " " ~ l.rebounds.value ~ " reb") %}{% endif %}
+{% if l.assists %}{% set _ = parts.append(l.assists.name ~ " " ~ l.assists.value ~ " ast") %}{% endif %}
+{{ s.tricode }}: {{ parts | join(" · ") }}
+{%- endmacro %}
+<mjml>
+  <mj-head>
+    <mj-title>{{ subject }}</mj-title>
+    <mj-attributes>
+      <mj-all font-family="Helvetica, Arial, sans-serif" />
+      <mj-text font-size="14px" line-height="1.45" color="{{ ink }}" padding="0 16px" />
+      <mj-table font-size="12px" line-height="1.4" color="{{ ink }}" padding="0 16px" cellpadding="3" />
+      <mj-section padding="0" />
+      <mj-column padding="0" />
+    </mj-attributes>
+  </mj-head>
+  <mj-body width="600px" background-color="#f4f4f4">
+    <mj-wrapper padding="0" background-color="#ffffff">
+
+    <mj-section background-color="{{ navy }}" padding="20px 0">
+      <mj-column>
+        <mj-text font-size="24px" font-weight="700" color="#ffffff">{{ "NBA Today" if digest.kind == "full" else "NBA Scores" }}</mj-text>
+        <mj-text font-size="14px" color="#c9d3e8">{{ digest.date | long_date }}</mj-text>
+      </mj-column>
+    </mj-section>
+
+    {% if stale or unavailable %}
+    <mj-section padding="16px 16px 0">
+      <mj-column background-color="#fff4e5" border-left="4px solid #f0a020" padding="8px 0">
+        {% for label, when in stale %}
+        <mj-text font-size="13px">{{ label }} could not be fetched; showing its snapshot from {{ when | stamp }}.</mj-text>
+        {% endfor %}
+        {% if unavailable %}
+        <mj-text font-size="13px">Not available today: {{ unavailable | join(", ") }}.</mj-text>
+        {% endif %}
+      </mj-column>
+    </mj-section>
+    {% endif %}
+
+    {% if digest.kind == "full" and digest.matchups %}
+    {{ heading("Today's matchups", "Ratings per 100 possessions, season to date · key player PPG/RPG/APG") }}
+    <mj-section>
+      <mj-column>
+        {% for tip_off, matchups in digest.matchups | groupby("tip_off") %}
+        <mj-text font-size="13px" font-weight="700" color="{{ muted }}" padding="12px 16px 0">{{ tip_off | ampm }} ET</mj-text>
+        {% for m in matchups %}
+        {% if m.label %}
+        <mj-text font-size="12px" font-weight="700" color="{{ alert }}" padding="6px 16px 0">{{ m.label }}</mj-text>
+        {% endif %}
+        <mj-table font-size="14px" line-height="1.45" padding="6px 16px 0" cellpadding="0">
+          <tr>{{ side(m.away) }}{{ side(m.home, prefix="@ ") }}</tr>
+        </mj-table>
+        {% set where = [m.arena, m.city] | select | join(", ") %}
+        {% set tv = [] %}
+        {% if m.tv.national %}{% set _ = tv.append("National: " ~ m.tv.national | join(", ")) %}{% endif %}
+        {% if m.tv.home %}{% set _ = tv.append(m.home.tricode ~ ": " ~ m.tv.home | join(", ")) %}{% endif %}
+        {% if m.tv.away %}{% set _ = tv.append(m.away.tricode ~ ": " ~ m.tv.away | join(", ")) %}{% endif %}
+        {% if where or tv %}
+        <mj-text font-size="12px" color="{{ muted }}" padding="4px 16px 8px">
+          {{ where }}{% if where and tv %}<br />{% endif %}{% if tv %}TV: {{ tv | join(" · ") }}{% endif %}
+        </mj-text>
+        {% endif %}
+        {% if not loop.last %}
+        <mj-divider border-width="1px" border-color="{{ rule }}" padding="0 16px" />
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+      </mj-column>
+    </mj-section>
+    {% endif %}
+
+    {% if digest.results %}
+    {{ heading("Last night's results") }}
+    <mj-section>
+      <mj-column>
+        {% for r in digest.results %}
+        {% if r.label %}
+        <mj-text font-size="12px" font-weight="700" color="{{ alert }}" padding="10px 16px 0">{{ r.label }}</mj-text>
+        {% endif %}
+        {% if r.away.score is not none and r.home.score is not none %}
+        {% set note = r | score_note %}
+        <mj-text padding="{{ '2px' if r.label else '10px' }} 16px 0">
+          <strong>{{ r.away.tricode }} {{ r.away.score }}, {{ r.home.tricode }} {{ r.home.score }}</strong>{% if note %} <span style="color:{{ muted }};">({{ note }})</span>{% endif %}
+        </mj-text>
+        {% if r.away.leaders or r.home.leaders %}
+        <mj-text font-size="12px" color="{{ muted }}">
+          {% for s in (r.away, r.home) if s.leaders %}{{ leaders(s) }}{% if not loop.last %}<br />{% endif %}{% endfor %}
+        </mj-text>
+        {% endif %}
+        {% else %}
+        <mj-text padding="{{ '2px' if r.label else '10px' }} 16px 0">
+          <strong>{{ r.away.tricode }} @ {{ r.home.tricode }}</strong> <span style="color:{{ alert }};">{{ r | status }}</span>
+        </mj-text>
+        {% endif %}
+        {% endfor %}
+      </mj-column>
+    </mj-section>
+    {% endif %}
+
+    {% if digest.standings %}
+    {{ heading("Standings", "Lines fall after the 6th seed (playoffs) and the 10th (play-in)") }}
+    <mj-section>
+      <mj-column>
+        {% for conference in digest.standings %}
+        <mj-text font-size="13px" font-weight="700" padding="8px 16px 2px">{{ conference.conference }}</mj-text>
+        <mj-table>
+          <tr>{{ th("", "left") }}{{ th("", "left") }}{{ th("W") }}{{ th("L") }}{{ th("PCT") }}{{ th("GB") }}{{ th("L10") }}{{ th("STRK") }}</tr>
+          {% for row in conference.rows %}
+          {% set below = "border-bottom:1px solid " ~ line ~ ";" if row.seed in line_seeds else "" %}
+          {% set mark = row.clinch | clinch_mark %}
+          <tr>{{ td(row.seed, "left", below) }}<td align="left"{% if below %} style="{{ below }}"{% endif %}>{{ row.tricode }}{% if mark %} <span style="color:{{ muted }};">{{ mark }}</span>{% endif %}</td>{{ td(row.wins, style=below) }}{{ td(row.losses, style=below) }}{{ td(row.pct, style=below) }}{{ td(row.gb, style=below) }}{{ td(row.last_ten or "", style=below) }}{{ td(row.streak or "", style=below) }}</tr>
+          {% endfor %}
+        </mj-table>
+        {% endfor %}
+        {% if clinch_legend %}
+        <mj-text font-size="11px" color="{{ muted }}" padding="6px 16px 0">{{ clinch_legend }}</mj-text>
+        {% endif %}
+      </mj-column>
+    </mj-section>
+    {% endif %}
+
+    {% if digest.leaderboard %}
+    {{ heading("PIE leaders", "Top 25 by Player Impact Estimate, among players with 70% of team games and 20+ minutes · NBA.com, as of " ~ (digest.leaderboard.as_of | stamp)) }}
+    <mj-section>
+      <mj-column>
+        <mj-table>
+          <tr>{{ th("", "left") }}{{ th("Player", "left") }}{{ th("Team", "left") }}{{ th("PTS") }}{{ th("REB") }}{{ th("AST") }}{{ th("TS%") }}{{ th("PIE") }}</tr>
+          {% for row in digest.leaderboard.rows %}
+          <tr>{{ td(row.rank, "left") }}{{ td(row.name, "left", wrap=true) }}{{ td(row.tricode, "left") }}{{ td(row.pts | one) }}{{ td(row.reb | one) }}{{ td(row.ast | one) }}{{ td(row.ts_pct | percent) }}{{ td(row.pie | percent) }}</tr>
+          {% endfor %}
+        </mj-table>
+      </mj-column>
+    </mj-section>
+    {% elif no_qualified_players %}
+    {{ heading("PIE leaders", "No qualified players yet") }}
+    {% endif %}
+
+    <mj-section padding="24px 0">
+      <mj-column>
+        <mj-divider border-width="1px" border-color="{{ rule }}" padding="0 16px 12px" />
+        <mj-text font-size="11px" color="{{ muted }}">
+          Data: ESPN, NBA.com. Not affiliated with the NBA.
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    </mj-wrapper>
+  </mj-body>
+</mjml>
