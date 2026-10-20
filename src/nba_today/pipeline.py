@@ -16,6 +16,7 @@ from nba_today.settings import Settings
 from nba_today.sources import espn, nba
 from nba_today.sources.fetched import Fetched, SourceUnavailable
 from nba_today.sources.http import make_client
+from nba_today.sources.models.espn_scoreboard import EspnScoreboard
 from nba_today.sources.nba_http import make_nba_session
 from nba_today.sources.snapshot import SnapshotStore
 from nba_today.transport.base import Message, SendReceipt
@@ -106,6 +107,47 @@ def run_send(day: date, settings: Settings) -> SendReceipt:
         },
     )
     return receipt
+
+
+class DigestPipeline:
+    """The pipeline as the scheduler drives it: the scoreboards a plan needs, and a send."""
+
+    def __init__(self, settings: Settings) -> None:
+        self._settings = settings
+
+    def scoreboards(self, day: date) -> tuple[EspnScoreboard | None, EspnScoreboard | None]:
+        """The scoreboards for `day` and the day before, each fresh or from a snapshot taken today.
+
+        A source's snapshot is whatever it last fetched, so one taken on an earlier day describes
+        an earlier day's games; it counts as unavailable rather than as today's scoreboard.
+        """
+        store = SnapshotStore(self._settings.data_dir)
+        with make_client(self._settings.espn_site_api_base) as site:
+            today = _timed(
+                espn.SCOREBOARD_SOURCE["today"],
+                lambda: espn.fetch_scoreboard(site, store, day, "today"),
+            )
+            yesterday = _timed(
+                espn.SCOREBOARD_SOURCE["yesterday"],
+                lambda: espn.fetch_scoreboard(site, store, day, "yesterday"),
+            )
+        return self._taken_on(day, today), self._taken_on(day, yesterday)
+
+    def send(self, day: date) -> SendReceipt:
+        return run_send(day, self._settings)
+
+    def _taken_on(
+        self, day: date, fetched: Fetched[EspnScoreboard] | None
+    ) -> EspnScoreboard | None:
+        if fetched is None:
+            return None
+        if fetched.stale and fetched.fetched_at.astimezone(self._settings.tz_local).date() != day:
+            log.error(
+                "scoreboard snapshot is from another day",
+                extra={"date": day.isoformat(), "fetched_at": fetched.fetched_at.isoformat()},
+            )
+            return None
+        return fetched.data
 
 
 def _timed[T](source: str, fetch: Callable[[], Fetched[T] | None]) -> Fetched[T] | None:

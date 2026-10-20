@@ -2,9 +2,12 @@
 
 import json
 import logging
+import signal
+import threading
 from dataclasses import asdict
 from datetime import date, datetime
 from pathlib import Path
+from types import FrameType
 from typing import Annotated, NoReturn
 
 import typer
@@ -12,10 +15,12 @@ from pydantic import ValidationError
 
 from nba_today.clock import SystemClock
 from nba_today.logging import configure_logging
-from nba_today.pipeline import build, run_send
+from nba_today.pipeline import DigestPipeline, build, run_send
+from nba_today.scheduler import Scheduler
 from nba_today.settings import Settings
+from nba_today.state import State
 from nba_today.transport.base import TransportError
-from nba_today.transport.factory import TransportConfigError
+from nba_today.transport.factory import TransportConfigError, build_transport
 
 app = typer.Typer(no_args_is_help=True, add_completion=False)
 log = logging.getLogger(__name__)
@@ -54,8 +59,24 @@ def _day(option: datetime | None, settings: Settings) -> date:
 @app.command()
 def run() -> None:
     """Run the scheduler loop (container entrypoint)."""
-    _bootstrap()
-    _not_implemented("run")
+    settings = _bootstrap()
+    try:
+        # Fail at boot, not at the first send hours later, when nothing could ever be sent.
+        build_transport(settings)
+    except TransportConfigError as exc:
+        log.error("invalid configuration", extra={"error": str(exc)})
+        raise typer.Exit(2) from exc
+    stop = threading.Event()
+
+    def on_signal(signum: int, frame: FrameType | None) -> None:
+        stop.set()
+
+    # Docker stops a container with SIGTERM; finish any send under way, then exit 0.
+    for signum in (signal.SIGTERM, signal.SIGINT):
+        signal.signal(signum, on_signal)
+    state = State(settings.data_dir / "state.json")
+    Scheduler(SystemClock(stop), state, settings, DigestPipeline(settings), stop=stop).run_forever()
+    log.info("scheduler stopped")
 
 
 @app.command()
