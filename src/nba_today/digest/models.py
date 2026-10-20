@@ -45,6 +45,19 @@ class Broadcasts(_Model):
     away: list[str] = []
 
 
+class SeriesState(_Model):
+    """Where a playoff series stands: `East 1st Round`, game 4, `BOS leads 3-1`.
+
+    Each part is `None` when neither source sent it. The summary is the state when the scoreboard
+    was fetched: going into the game for a matchup sent before tip-off, after it for a result.
+    """
+
+    round_label: str | None
+    game_number: int | None
+    # "BOS leads 3-1", "Series tied 2-2", or "NYK wins 4-1"; `None` before game 1.
+    summary: str | None
+
+
 class MatchupSide(_Model):
     tricode: str
     # `None` only when neither the scoreboard nor the standings has the team's record.
@@ -67,6 +80,8 @@ class Matchup(_Model):
     away: MatchupSide
     home: MatchupSide
     tv: Broadcasts
+    # Playoff games only; the play-in has no series and keeps its label.
+    series: SeriesState | None = None
 
 
 class Leader(_Model):
@@ -95,6 +110,8 @@ class Result(_Model):
     label: str | None
     away: ResultSide
     home: ResultSide
+    # Playoff games only, as on `Matchup`.
+    series: SeriesState | None = None
 
 
 class Clinch(StrEnum):
@@ -145,7 +162,8 @@ type Phase = Literal["regular", "postseason"]
 class Digest(_Model):
     date: date  # Eastern
     kind: DigestKind
-    # The postseason swaps the standings for the postseason picture (spec §13).
+    # Postseason when any counted game today or yesterday is play-in or playoff. It will swap the
+    # standings for the postseason picture (spec §13).
     phase: Phase = "regular"
     # Snapshot name → snapshot time, for each source that fell back to its snapshot.
     stale: dict[str, datetime] = {}

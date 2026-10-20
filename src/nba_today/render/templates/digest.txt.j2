@@ -16,8 +16,9 @@ TODAY'S MATCHUPS
 
 {{ tip_off | ampm }} ET
 {% for m in matchups %}
-{% if m.label %}
-  {{ m.label }}
+{% set label = m | game_label %}
+{% if label %}
+  {{ label }}
 {% endif %}
 {% for s in (m.away, m.home) %}
 {% set rec = s.wins | record(s.losses) %}
@@ -59,8 +60,9 @@ TODAY'S MATCHUPS
 LAST NIGHT'S RESULTS
 {% for r in digest.results %}
 
-{% if r.label %}
-{{ r.label }}
+{% set label = r | game_label %}
+{% if label %}
+{{ label }}
 {% endif %}
 {% if r.away.score is not none and r.home.score is not none %}
 {% set note = r | score_note %}

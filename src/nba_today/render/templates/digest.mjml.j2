@@ -91,8 +91,9 @@
         {% for tip_off, matchups in digest.matchups | groupby("tip_off") %}
         <mj-text font-size="13px" font-weight="700" color="{{ muted }}" padding="12px 16px 0">{{ tip_off | ampm }} ET</mj-text>
         {% for m in matchups %}
-        {% if m.label %}
-        <mj-text font-size="12px" font-weight="700" color="{{ alert }}" padding="6px 16px 0">{{ m.label }}</mj-text>
+        {% set label = m | game_label %}
+        {% if label %}
+        <mj-text font-size="12px" font-weight="700" color="{{ alert }}" padding="6px 16px 0">{{ label }}</mj-text>
         {% endif %}
         <mj-table font-size="14px" line-height="1.45" padding="6px 16px 0" cellpadding="0">
           <tr>{{ side(m.away) }}{{ side(m.home, prefix="@ ") }}</tr>
@@ -121,12 +122,13 @@
     <mj-section>
       <mj-column>
         {% for r in digest.results %}
-        {% if r.label %}
-        <mj-text font-size="12px" font-weight="700" color="{{ alert }}" padding="10px 16px 0">{{ r.label }}</mj-text>
+        {% set label = r | game_label %}
+        {% if label %}
+        <mj-text font-size="12px" font-weight="700" color="{{ alert }}" padding="10px 16px 0">{{ label }}</mj-text>
         {% endif %}
         {% if r.away.score is not none and r.home.score is not none %}
         {% set note = r | score_note %}
-        <mj-text padding="{{ '2px' if r.label else '10px' }} 16px 0">
+        <mj-text padding="{{ '2px' if label else '10px' }} 16px 0">
           <strong>{{ r.away.tricode }} {{ r.away.score }}, {{ r.home.tricode }} {{ r.home.score }}</strong>{% if note %} <span style="color:{{ muted }};">({{ note }})</span>{% endif %}
         </mj-text>
         {% if r.away.leaders or r.home.leaders %}
@@ -135,7 +137,7 @@
         </mj-text>
         {% endif %}
         {% else %}
-        <mj-text padding="{{ '2px' if r.label else '10px' }} 16px 0">
+        <mj-text padding="{{ '2px' if label else '10px' }} 16px 0">
           <strong>{{ r.away.tricode }} @ {{ r.home.tricode }}</strong> <span style="color:{{ alert }};">{{ r | status }}</span>
         </mj-text>
         {% endif %}

@@ -14,7 +14,7 @@ import mjml
 from jinja2 import Environment, PackageLoader, StrictUndefined, select_autoescape
 
 from nba_today.digest.build import RESULT_FINAL, RESULT_POSTPONED
-from nba_today.digest.models import Clinch, Digest, Result
+from nba_today.digest.models import Clinch, Digest, Matchup, Result
 
 # Every time in the digest reads in Eastern, like the game day it belongs to.
 EASTERN = ZoneInfo("America/New_York")
@@ -139,6 +139,16 @@ def score_note(result: Result) -> str:
     return ", ".join(parts)
 
 
+def game_label(game: Matchup | Result) -> str:
+    """What heads a game: its series state on a playoff game, `East 1st Round · Game 4 · BOS
+    leads 3-1`, else its label. Empty for a game with neither."""
+    series = game.series
+    if series is None:
+        return game.label or ""
+    number = None if series.game_number is None else f"Game {series.game_number}"
+    return " · ".join(p for p in (series.round_label, number, series.summary) if p)
+
+
 def clinch_mark(clinch: Clinch | None) -> str:
     return "" if clinch is None else CLINCH_MARKS[clinch]
 
@@ -178,6 +188,7 @@ _FILTERS: dict[str, Callable[..., object]] = {
     "overtime": overtime,
     "status": status,
     "score_note": score_note,
+    "game_label": game_label,
     "clinch_mark": clinch_mark,
 }
 _ENV.filters.update(_FILTERS)
