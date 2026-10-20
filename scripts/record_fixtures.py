@@ -19,7 +19,13 @@ from nba_today.season import espn_season, season_label
 from nba_today.settings import Settings
 from nba_today.sources.espn import get_athletes, get_injuries, get_scoreboard, get_standings
 from nba_today.sources.http import make_client
-from nba_today.sources.nba import Session, get_schedule
+from nba_today.sources.nba import (
+    Session,
+    get_player_advanced,
+    get_player_base,
+    get_schedule,
+    get_team_advanced,
+)
 from nba_today.sources.nba_http import make_nba_session
 
 FIXTURES = Path(__file__).resolve().parent.parent / "tests" / "fixtures"
@@ -271,6 +277,64 @@ def record_nba_schedule(day: date) -> None:
     schedule = payload["leagueSchedule"]
     schedule["gameDates"] = [d for d in schedule["gameDates"] if _schedule_date(d) in kept]
     write_fixture("nba", f"schedule_{label}", _drop_keys(payload, SCHEDULE_DROPPED_KEYS))
+
+
+@recorder(
+    "nba_team_advanced",
+    "stats.nba.com advanced team dashboard for the regular season of --date, all 30 teams",
+)
+def record_nba_team_advanced(day: date) -> None:
+    with make_nba_session() as session:
+        payload = get_team_advanced(session, _default("nba_stats_base"), day)
+    write_fixture("nba", f"team_advanced_{season_label(day)}", payload)
+
+
+# The NBA tricodes of the ESPN athlete fixture's teams, so the two sources' players can be paired.
+PLAYER_TEAMS = frozenset({"DET", "BOS", "NYK", "PHI", "SAS", "OKC"})
+PLAYERS_PER_TEAM = 7
+
+
+def _rows(payload: Payload) -> tuple[list[str], list[list[Any]]]:
+    result_set = payload["resultSets"][0]
+    return result_set["headers"], result_set["rowSet"]
+
+
+def _top_scorers(base: Payload) -> set[int]:
+    """The ids of each team's leading scorers by points per game, from the base dashboard."""
+    headers, rows = _rows(base)
+    players = [dict(zip(headers, row, strict=True)) for row in rows]
+    players.sort(key=lambda r: r["PTS"], reverse=True)
+    per_team: dict[str, int] = {}
+    kept: set[int] = set()
+    for player in players:
+        team = player["TEAM_ABBREVIATION"]
+        if team in PLAYER_TEAMS and per_team.get(team, 0) < PLAYERS_PER_TEAM:
+            per_team[team] = per_team.get(team, 0) + 1
+            kept.add(player["PLAYER_ID"])
+    return kept
+
+
+def _keep_players(payload: Payload, ids: set[int]) -> Payload:
+    headers, rows = _rows(payload)
+    player_id = headers.index("PLAYER_ID")
+    payload["resultSets"][0]["rowSet"] = [r for r in rows if r[player_id] in ids]
+    return payload
+
+
+@recorder(
+    "nba_players",
+    f"stats.nba.com base and advanced player dashboards for the regular season of --date, the "
+    f"same {PLAYERS_PER_TEAM} leading scorers per team for {len(PLAYER_TEAMS)} teams in both",
+)
+def record_nba_players(day: date) -> None:
+    stats_base = _default("nba_stats_base")
+    with make_nba_session() as session:
+        base = get_player_base(session, stats_base, day)
+        advanced = get_player_advanced(session, stats_base, day)
+    ids = _top_scorers(base)
+    label = season_label(day)
+    write_fixture("nba", f"player_base_{label}", _keep_players(base, ids))
+    write_fixture("nba", f"player_advanced_{label}", _keep_players(advanced, ids))
 
 
 def _registry() -> str:
