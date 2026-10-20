@@ -67,7 +67,7 @@ A team's position in its conference standings, 1–15.
 The play-in tournament and the playoffs. During the postseason the standings section is replaced by the postseason picture.
 
 **Series**:
-A best-of-seven playoff pairing between two teams. Its state (game number, who leads, by how much) is shown on every postseason matchup and result.
+A best-of-seven playoff pairing between two teams. Its state (round, game number, who leads, by how much) is shown on every playoff matchup and result. Play-in games have no series; they carry only their label.
 
 **Postseason picture**:
 The list of play-in games and playoff series with their current state, shown instead of the standings during the postseason.

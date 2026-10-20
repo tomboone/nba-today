@@ -134,7 +134,8 @@ def build_phase(day: date, bundle: SourceBundle) -> Phase:
     """Postseason when any counted game today or yesterday is a play-in or playoff game.
 
     Read from the same games the matchups and results show, so a stale snapshot of another day
-    does not count. With neither scoreboard available, the phase is regular.
+    does not count. With neither scoreboard available, the phase is regular. The rule needs no
+    memory across off days: a day with no game today or yesterday sends no digest at all.
     """
     games = _games_on(bundle.espn_scoreboard_today, day) + _games_on(
         bundle.espn_scoreboard_yesterday, day - timedelta(days=1)

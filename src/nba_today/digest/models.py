@@ -48,8 +48,8 @@ class Broadcasts(_Model):
 class SeriesState(_Model):
     """Where a playoff series stands: `East 1st Round`, game 4, `BOS leads 3-1`.
 
-    Each part is `None` when neither source sent it. On a matchup the summary is the state going
-    into the game; on a result, the state after it.
+    Each part is `None` when neither source sent it. The summary is the state when the scoreboard
+    was fetched: going into the game for a matchup sent before tip-off, after it for a result.
     """
 
     round_label: str | None
