@@ -11,14 +11,16 @@ import argparse
 import json
 from collections.abc import Callable
 from dataclasses import dataclass
-from datetime import date
+from datetime import date, datetime
 from pathlib import Path
 from typing import Any, Literal, cast
 
-from nba_today.season import espn_season
+from nba_today.season import espn_season, season_label
 from nba_today.settings import Settings
 from nba_today.sources.espn import get_athletes, get_injuries, get_scoreboard, get_standings
 from nba_today.sources.http import make_client
+from nba_today.sources.nba import Session, get_schedule
+from nba_today.sources.nba_http import make_nba_session
 
 FIXTURES = Path(__file__).resolve().parent.parent / "tests" / "fixtures"
 
@@ -212,6 +214,63 @@ def record_espn_athletes(day: date) -> None:
         payload = get_athletes(client, day)
     payload["athletes"] = _trim_athletes(payload.get("athletes", []))
     write_fixture("espn", f"athletes_{espn_season(day)}", _drop_keys(payload, ATHLETE_DROPPED_KEYS))
+
+
+# Dates kept from each season's schedule, chosen to pair with the ESPN scoreboard fixtures: a
+# regular night with local TV, a Cup knockout, the Cup final, a play-in, a playoff night with
+# `seriesText`; then the 2026-27 opening night and the night after, with local TV and team OTT.
+SCHEDULE_DATES = {
+    "2025-26": frozenset(
+        {
+            date(2025, 11, 16),
+            date(2025, 12, 10),
+            date(2025, 12, 16),
+            date(2026, 4, 15),
+            date(2026, 4, 20),
+        }
+    ),
+    "2026-27": frozenset({date(2026, 10, 20), date(2026, 10, 21)}),
+}
+# The CDN file holds only the current season; stats.nba.com serves past ones in the same shape.
+PAST_SCHEDULE_URL = "/stats/scheduleleaguev2int"
+SCHEDULE_DROPPED_KEYS = frozenset(
+    {
+        "broadcasterList",
+        "intlOttBroadcasters",
+        "intlRadioBroadcasters",
+        "intlTvBroadcasters",
+        "pointsLeaders",
+        "weeks",
+    }
+)
+
+
+def _get_json(session: Session, url: str, params: dict[str, str]) -> Payload:
+    response = session.get(url, params=params)
+    response.raise_for_status()
+    return response.json()
+
+
+def _schedule_date(game_date: Payload) -> date:
+    return datetime.strptime(game_date["gameDate"], "%m/%d/%Y %H:%M:%S").date()
+
+
+@recorder(
+    "nba_schedule",
+    "NBA.com season schedule for the season of --date, trimmed to that season's fixture dates "
+    "(or --date alone for any other season)",
+)
+def record_nba_schedule(day: date) -> None:
+    label = season_label(day)
+    with make_nba_session() as session:
+        payload = get_schedule(session, _default("nba_cdn_base"))
+        if payload["leagueSchedule"]["seasonYear"] != label:
+            url = f"{_default('nba_stats_base')}{PAST_SCHEDULE_URL}"
+            payload = _get_json(session, url, {"LeagueID": "00", "Season": label})
+    kept = SCHEDULE_DATES.get(label, frozenset({day}))
+    schedule = payload["leagueSchedule"]
+    schedule["gameDates"] = [d for d in schedule["gameDates"] if _schedule_date(d) in kept]
+    write_fixture("nba", f"schedule_{label}", _drop_keys(payload, SCHEDULE_DROPPED_KEYS))
 
 
 def _registry() -> str:
