@@ -116,7 +116,7 @@ def test_every_fixture_parses_with_both_sides_identified(path: Path) -> None:
 
     assert scoreboard.events
     for event in scoreboard.events:
-        assert event.date.tzinfo is not None
+        assert event.id and event.date and event.date.tzinfo is not None
         [competition] = event.competitions
         assert sorted(c.home_away or "" for c in competition.competitors) == ["away", "home"]
         assert all(c.team and c.team.id and c.team.abbreviation for c in competition.competitors)
@@ -186,6 +186,12 @@ def test_missing_and_blank_fields_default_to_none() -> None:
     assert competitor.team and competitor.team.id == 2
 
 
+def test_event_missing_its_id_and_date_still_parses() -> None:
+    [event] = EspnScoreboard.model_validate({"events": [{"season": {"type": 2}}]}).events
+
+    assert (event.id, event.date) == (None, None)
+
+
 def test_empty_scoreboard_parses() -> None:
     assert EspnScoreboard.model_validate({}).events == []
 
@@ -206,6 +212,12 @@ def test_uncounted_games(night: str) -> None:
 
     assert events
     assert not any(is_counted(e) for e in events)
+
+
+def test_all_star_fixture_includes_the_championship_game() -> None:
+    headlines = {n.headline for e in _events(ALL_STAR) for c in e.competitions for n in c.notes}
+
+    assert headlines == {"NBA All-Star - Round Robin", "NBA All-Star - Championship"}
 
 
 def test_event_without_a_season_is_not_counted() -> None:

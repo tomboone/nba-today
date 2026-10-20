@@ -83,8 +83,16 @@ def _drop_bulk(value: Any) -> Any:
     return value
 
 
+def _headlines(event: Payload) -> tuple[str, ...]:
+    return tuple(n.get("headline", "") for c in event["competitions"] for n in c.get("notes", []))
+
+
 def _trim_events(events: list[Payload]) -> list[Payload]:
-    """The first few events plus the first of each edge case they lack, in original order."""
+    """The first few events plus the first of each edge case they lack, in original order.
+
+    Also the first event for each set of notes they lack, since `is_counted` reads the notes:
+    the All-Star championship otherwise falls behind three round-robin games.
+    """
     kept = set(range(min(SCOREBOARD_GAMES, len(events))))
     for is_case in SCOREBOARD_EDGE_CASES:
         if any(is_case(events[i]) for i in kept):
@@ -92,6 +100,11 @@ def _trim_events(events: list[Payload]) -> list[Payload]:
         first = next((i for i, e in enumerate(events) if is_case(e)), None)
         if first is not None:
             kept.add(first)
+    seen = {_headlines(events[i]) for i in kept}
+    for i, event in enumerate(events):
+        if _headlines(event) not in seen:
+            seen.add(_headlines(event))
+            kept.add(i)
     return [e for i, e in enumerate(events) if i in kept]
 
 

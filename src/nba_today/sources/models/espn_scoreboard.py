@@ -1,7 +1,7 @@
 """The ESPN scoreboard response: the fields spec §5.1 reads, everything else ignored.
 
-Every field but an event's `id` and `date` defaults, so one game missing a field never fails the
-whole scoreboard; the digest builder decides what a gap means. ESPN sends numbers such as team
+Every field defaults, so one game missing a field never fails the whole scoreboard; the digest
+builder decides what a gap means. ESPN sends numbers such as team
 ids and scores as strings, which coerce; a blank one becomes None.
 """
 
@@ -113,8 +113,8 @@ class EventSeason(_Model):
 
 
 class Event(_Model):
-    id: str
-    date: datetime
+    id: str | None = None
+    date: datetime | None = None
     season: EventSeason | None = None
     status: Status | None = None
     competitions: list[Competition] = []

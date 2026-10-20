@@ -1187,6 +1187,396 @@
         }
       },
       "uid": "s:40~l:46~e:401838142"
+    },
+    {
+      "competitions": [
+        {
+          "attendance": 15973,
+          "broadcast": "NBC/Peacock",
+          "broadcasts": [
+            {
+              "market": "national",
+              "names": [
+                "NBC",
+                "Peacock"
+              ]
+            }
+          ],
+          "competitors": [
+            {
+              "homeAway": "home",
+              "id": "132375",
+              "leaders": [
+                {
+                  "abbreviation": "Pts",
+                  "displayName": "Points",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "Donovan Mitchell",
+                        "fullName": "Donovan Mitchell",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3908809.png",
+                        "id": "3908809",
+                        "jersey": "45",
+                        "position": {
+                          "abbreviation": "G"
+                        },
+                        "shortName": "D. Mitchell",
+                        "team": {
+                          "id": "5"
+                        }
+                      },
+                      "displayValue": "6",
+                      "team": {
+                        "id": "132375"
+                      },
+                      "value": 6.0
+                    }
+                  ],
+                  "name": "points",
+                  "shortDisplayName": "Pts"
+                },
+                {
+                  "abbreviation": "Reb",
+                  "displayName": "Rebounds",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "LeBron James",
+                        "fullName": "LeBron James",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/1966.png",
+                        "id": "1966",
+                        "jersey": "23",
+                        "position": {
+                          "abbreviation": "F"
+                        },
+                        "shortName": "L. James",
+                        "team": {
+                          "id": "13"
+                        }
+                      },
+                      "displayValue": "4",
+                      "team": {
+                        "id": "132375"
+                      },
+                      "value": 4.0
+                    }
+                  ],
+                  "name": "rebounds",
+                  "shortDisplayName": "Reb"
+                },
+                {
+                  "abbreviation": "Ast",
+                  "displayName": "Assists",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "De'Aaron Fox",
+                        "fullName": "De'Aaron Fox",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4066259.png",
+                        "id": "4066259",
+                        "jersey": "4",
+                        "position": {
+                          "abbreviation": "G"
+                        },
+                        "shortName": "D. Fox",
+                        "team": {
+                          "id": "24"
+                        }
+                      },
+                      "displayValue": "2",
+                      "team": {
+                        "id": "132375"
+                      },
+                      "value": 2.0
+                    }
+                  ],
+                  "name": "assists",
+                  "shortDisplayName": "Ast"
+                },
+                {
+                  "abbreviation": "RAT",
+                  "displayName": "Rating",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "LeBron James",
+                        "fullName": "LeBron James",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/1966.png",
+                        "id": "1966",
+                        "jersey": "23",
+                        "position": {
+                          "abbreviation": "F"
+                        },
+                        "shortName": "L. James",
+                        "team": {
+                          "id": "13"
+                        }
+                      },
+                      "displayValue": "5 PTS",
+                      "team": {
+                        "id": "132375"
+                      },
+                      "value": 8.5
+                    }
+                  ],
+                  "name": "rating",
+                  "shortDisplayName": "RAT"
+                }
+              ],
+              "linescores": [
+                {
+                  "displayValue": "21",
+                  "period": 1,
+                  "value": 21.0
+                }
+              ],
+              "order": 0,
+              "score": "21",
+              "team": {
+                "abbreviation": "STRIPES",
+                "displayName": "Team Stripes",
+                "id": "132375",
+                "isActive": false,
+                "location": "Team Stripes",
+                "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/stripes.png",
+                "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/scoreboard/stripes.png",
+                "name": "Team Stripes",
+                "shortDisplayName": "Team Stripes",
+                "uid": "s:40~l:46~t:132375"
+              },
+              "type": "team",
+              "uid": "s:40~l:46~t:132375",
+              "winner": false
+            },
+            {
+              "homeAway": "away",
+              "id": "132374",
+              "leaders": [
+                {
+                  "abbreviation": "Pts",
+                  "displayName": "Points",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "Tyrese Maxey",
+                        "fullName": "Tyrese Maxey",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4431678.png",
+                        "id": "4431678",
+                        "jersey": "0",
+                        "position": {
+                          "abbreviation": "G"
+                        },
+                        "shortName": "T. Maxey",
+                        "team": {
+                          "id": "20"
+                        }
+                      },
+                      "displayValue": "9",
+                      "team": {
+                        "id": "132374"
+                      },
+                      "value": 9.0
+                    }
+                  ],
+                  "name": "points",
+                  "shortDisplayName": "Pts"
+                },
+                {
+                  "abbreviation": "Reb",
+                  "displayName": "Rebounds",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "Anthony Edwards",
+                        "fullName": "Anthony Edwards",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4594268.png",
+                        "id": "4594268",
+                        "jersey": "5",
+                        "position": {
+                          "abbreviation": "G"
+                        },
+                        "shortName": "A. Edwards",
+                        "team": {
+                          "id": "16"
+                        }
+                      },
+                      "displayValue": "4",
+                      "team": {
+                        "id": "132374"
+                      },
+                      "value": 4.0
+                    }
+                  ],
+                  "name": "rebounds",
+                  "shortDisplayName": "Reb"
+                },
+                {
+                  "abbreviation": "Ast",
+                  "displayName": "Assists",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "Anthony Edwards",
+                        "fullName": "Anthony Edwards",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4594268.png",
+                        "id": "4594268",
+                        "jersey": "5",
+                        "position": {
+                          "abbreviation": "G"
+                        },
+                        "shortName": "A. Edwards",
+                        "team": {
+                          "id": "16"
+                        }
+                      },
+                      "displayValue": "2",
+                      "team": {
+                        "id": "132374"
+                      },
+                      "value": 2.0
+                    }
+                  ],
+                  "name": "assists",
+                  "shortDisplayName": "Ast"
+                },
+                {
+                  "abbreviation": "RAT",
+                  "displayName": "Rating",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "Tyrese Maxey",
+                        "fullName": "Tyrese Maxey",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4431678.png",
+                        "id": "4431678",
+                        "jersey": "0",
+                        "position": {
+                          "abbreviation": "G"
+                        },
+                        "shortName": "T. Maxey",
+                        "team": {
+                          "id": "20"
+                        }
+                      },
+                      "displayValue": "9 PTS, 3 STL",
+                      "team": {
+                        "id": "132374"
+                      },
+                      "value": 16.700000762939453
+                    }
+                  ],
+                  "name": "rating",
+                  "shortDisplayName": "RAT"
+                }
+              ],
+              "linescores": [
+                {
+                  "displayValue": "47",
+                  "period": 1,
+                  "value": 47.0
+                }
+              ],
+              "order": 1,
+              "score": "47",
+              "team": {
+                "abbreviation": "STARS",
+                "displayName": "Team Stars",
+                "id": "132374",
+                "isActive": false,
+                "location": "Team Stars",
+                "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/stars.png",
+                "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/scoreboard/stars.png",
+                "name": "Team Stars",
+                "shortDisplayName": "Team Stars",
+                "uid": "s:40~l:46~t:132374"
+              },
+              "type": "team",
+              "uid": "s:40~l:46~t:132374",
+              "winner": true
+            }
+          ],
+          "conferenceCompetition": false,
+          "date": "2026-02-16T00:10Z",
+          "format": {
+            "regulation": {
+              "periods": 1
+            }
+          },
+          "id": "401838143",
+          "neutralSite": false,
+          "notes": [
+            {
+              "headline": "NBA All-Star - Championship",
+              "type": "event"
+            }
+          ],
+          "playByPlayAvailable": true,
+          "recent": false,
+          "startDate": "2026-02-16T00:10Z",
+          "status": {
+            "clock": 0.0,
+            "displayClock": "0.0",
+            "period": 1,
+            "type": {
+              "completed": true,
+              "description": "Final",
+              "detail": "Final",
+              "id": "3",
+              "name": "STATUS_FINAL",
+              "shortDetail": "Final",
+              "state": "post"
+            }
+          },
+          "timeValid": true,
+          "type": {
+            "abbreviation": "ALLSTAR",
+            "id": "4"
+          },
+          "uid": "s:40~l:46~e:401838143~c:401838143",
+          "venue": {
+            "address": {
+              "city": "Inglewood",
+              "state": "CA"
+            },
+            "fullName": "Intuit Dome",
+            "id": "10642",
+            "indoor": true
+          }
+        }
+      ],
+      "date": "2026-02-16T00:10Z",
+      "id": "401838143",
+      "name": "Team Stars Team Stars at Team Stripes Team Stripes",
+      "season": {
+        "slug": "regular-season",
+        "type": 2,
+        "year": 2026
+      },
+      "shortName": "STARS @ STRIPES",
+      "status": {
+        "clock": 0.0,
+        "displayClock": "0.0",
+        "period": 1,
+        "type": {
+          "completed": true,
+          "description": "Final",
+          "detail": "Final",
+          "id": "3",
+          "name": "STATUS_FINAL",
+          "shortDetail": "Final",
+          "state": "post"
+        }
+      },
+      "uid": "s:40~l:46~e:401838143"
     }
   ],
   "leagues": [
