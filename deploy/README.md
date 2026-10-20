@@ -2,8 +2,9 @@
 
 nba-today runs as one container on kumadrome, with its own Watchtower beside it pulling new images from GHCR.
 Docker and the Compose plugin are already installed there, and mlb-today runs on the same host. Besides this
-GitHub repository, the only outside accounts involved are [Resend](https://resend.com) (email, reusing mlb-today's
-verified domain) and [healthchecks.io](https://healthchecks.io) (alerting).
+GitHub repository, the outside accounts involved are [Resend](https://resend.com) (email, reusing mlb-today's
+verified domain), [healthchecks.io](https://healthchecks.io) (alerting), and optionally Fastmail as the SMTP
+fallback.
 
 Images are published by `.github/workflows/image.yml` on every push to `main`:
 
@@ -67,7 +68,9 @@ Edit `.env`. At minimum set `RECIPIENTS`, `RESEND_API_KEY`, `RESEND_FROM`, and `
 to run Resend alone. Every variable and its default is documented in `.env.example`.
 
 For a first run, set `DRY_RUN=true`: digests are written to `data/outbox/<date>.html` instead of emailed, so you
-can check a few days' output before going live.
+can check a few days' output before going live. A dry-run send still records that day's last-sent marker, so switch
+`DRY_RUN` off before the day's send time; switching it off afterwards means the first real digest goes out the next
+day.
 
 ## 5. Start it
 
@@ -89,8 +92,8 @@ docker compose logs -f nba-today
 docker compose logs -f watchtower    # image updates
 ```
 
-**Preview a digest** without sending it. Write into `/data` (the only directory the container can write), which is
-`./data` on the host:
+**Preview a digest** without sending it. Write into `/data` (the only container directory that persists on the
+host), which is `./data` on the host:
 
 ```sh
 docker compose exec nba-today nba-today preview --out /data/digest.html
@@ -118,4 +121,5 @@ on the host ([Watchtower docs](https://containrrr.dev/watchtower/running-multipl
 
 **Roll back** by pinning a commit: change the `image` tag in `docker-compose.yml` to `sha-<7>` and run
 `docker compose up -d`. Watchtower keeps following that tag, which never moves, so updates stop until you switch
-back.
+back. The pin is a local edit to a tracked file, so drop it with `git restore docker-compose.yml` before the next
+`git pull`.
