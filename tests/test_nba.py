@@ -1,4 +1,5 @@
 import json
+from collections.abc import Callable
 from datetime import UTC, date, datetime
 from pathlib import Path
 from typing import Any
@@ -6,9 +7,16 @@ from typing import Any
 import pytest
 
 from nba_today.settings import Settings
-from nba_today.sources.fetched import SourceUnavailable
+from nba_today.sources.fetched import Fetched, SourceUnavailable
 from nba_today.sources.models.nba_schedule import Game, NbaSchedule
-from nba_today.sources.nba import fetch_schedule
+from nba_today.sources.models.nba_stats import PlayerAdvanced, PlayerBase, TeamAdvanced
+from nba_today.sources.nba import (
+    fetch_player_advanced,
+    fetch_player_base,
+    fetch_schedule,
+    fetch_team_advanced,
+    parse_result_set,
+)
 from nba_today.sources.snapshot import Payload, SnapshotStore
 
 SCHEDULE_URL = "https://cdn.nba.com/static/json/staticData/scheduleLeagueV2_1.json"
@@ -252,3 +260,201 @@ def test_missing_and_blank_fields_default_to_none() -> None:
 
 def test_empty_schedule_parses() -> None:
     assert NbaSchedule.model_validate({}).league_schedule is None
+
+
+STATS_BASE = "https://stats.nba.com/stats"
+
+type FetchStats = Callable[
+    [FakeSession | None, SnapshotStore, Settings, date], Fetched[list[Any]] | None
+]
+
+# (fetch function, snapshot name, fixture stem, endpoint, MeasureType)
+STATS_FETCHES: list[tuple[FetchStats, str, str, str, str]] = [
+    (
+        fetch_team_advanced,
+        "nba_team_advanced",
+        "team_advanced",
+        "leaguedashteamstats",
+        "Advanced",
+    ),
+    (
+        fetch_player_advanced,
+        "nba_player_advanced",
+        "player_advanced",
+        "leaguedashplayerstats",
+        "Advanced",
+    ),
+    (fetch_player_base, "nba_player_base", "player_base", "leaguedashplayerstats", "Base"),
+]
+STATS_IDS = ["team_advanced", "player_advanced", "player_base"]
+
+
+def _rows(name: str) -> list[list[Any]]:
+    return _fixture(name)["resultSets"][0]["rowSet"]
+
+
+@pytest.mark.parametrize(
+    ("fetch", "source", "stem", "endpoint", "measure"), STATS_FETCHES, ids=STATS_IDS
+)
+def test_stats_request_the_season_and_measure_and_snapshot_it(
+    store: SnapshotStore,
+    settings: Settings,
+    fetch: FetchStats,
+    source: str,
+    stem: str,
+    endpoint: str,
+    measure: str,
+) -> None:
+    payload = _fixture(f"{stem}_2025-26")
+    session = FakeSession(FakeResponse(200, payload))
+
+    result = fetch(session, store, settings, OPENING_NIGHT)
+
+    [(url, params)] = session.calls
+    assert url == f"{STATS_BASE}/{endpoint}"
+    assert params is not None
+    assert (params["Season"], params["MeasureType"], params["SeasonType"]) == (
+        "2026-27",
+        measure,
+        "Regular Season",
+    )
+    assert (params["PerMode"], params["LeagueID"]) == ("PerGame", "00")
+    assert result and result.stale is False and len(result.data) == len(_rows(f"{stem}_2025-26"))
+    assert store.get(source) == (payload, result.fetched_at)
+
+
+@pytest.mark.parametrize("endpoint", ["leaguedashteamstats", "leaguedashplayerstats"])
+def test_stats_send_every_parameter_nba_api_sends(
+    store: SnapshotStore, settings: Settings, endpoint: str
+) -> None:
+    # stats.nba.com rejects a request missing any of these, blank or not (nba_api 1.11.4).
+    team = {
+        "Conference", "DateFrom", "DateTo", "Division", "GameScope", "GameSegment", "LastNGames",
+        "LeagueID", "Location", "MeasureType", "Month", "OpponentTeamID", "Outcome", "PORound",
+        "PaceAdjust", "PerMode", "Period", "PlayerExperience", "PlayerPosition", "PlusMinus",
+        "Rank", "Season", "SeasonSegment", "SeasonType", "ShotClockRange", "StarterBench",
+        "TeamID", "TwoWay", "VsConference", "VsDivision",
+    }  # fmt: skip
+    player = team | {"College", "Country", "DraftPick", "DraftYear", "Height", "Weight"}
+    fetch = fetch_team_advanced if endpoint == "leaguedashteamstats" else fetch_player_base
+    session = FakeSession(FakeResponse(200, _fixture("player_base_2026-27")))
+
+    fetch(session, store, settings, OPENING_NIGHT)
+
+    [(_, params)] = session.calls
+    assert params is not None
+    assert set(params) == (team if endpoint == "leaguedashteamstats" else player)
+
+
+def test_enrichment_off_skips_every_stats_fetch(store: SnapshotStore) -> None:
+    settings = Settings(recipients=["a@example.com"], nba_enrichment=False)
+    session = FakeSession(FakeResponse(200, _fixture("team_advanced_2025-26")))
+
+    for fetch, source, stem, *_ in STATS_FETCHES:
+        store.put(source, _fixture(f"{stem}_2025-26"))
+        assert fetch(session, store, settings, OPENING_NIGHT) is None
+        assert fetch(None, store, settings, OPENING_NIGHT) is None
+    assert session.calls == []
+
+
+@pytest.mark.parametrize(
+    ("fetch", "source", "stem", "endpoint", "measure"), STATS_FETCHES, ids=STATS_IDS
+)
+def test_failing_stats_request_returns_the_snapshot_as_stale(
+    store: SnapshotStore,
+    settings: Settings,
+    fetch: FetchStats,
+    source: str,
+    stem: str,
+    endpoint: str,
+    measure: str,
+) -> None:
+    snapshot_at = store.put(source, _fixture(f"{stem}_2025-26"))
+    session = FakeSession(FakeResponse(403, "<html>Access Denied</html>"))
+
+    result = fetch(session, store, settings, OPENING_NIGHT)
+
+    assert result and (result.stale, result.fetched_at) == (True, snapshot_at)
+    assert len(result.data) == len(_rows(f"{stem}_2025-26"))
+
+
+def test_malformed_stats_never_replace_the_snapshot(
+    store: SnapshotStore, settings: Settings
+) -> None:
+    good = _fixture("team_advanced_2025-26")
+    snapshot_at = store.put("nba_team_advanced", good)
+    short_row = _fixture("team_advanced_2025-26")
+    short_row["resultSets"][0]["rowSet"][0].pop()
+    for bad in ({"resource": "leaguedashteamstats"}, short_row):
+        session = FakeSession(FakeResponse(200, bad))
+
+        result = fetch_team_advanced(session, store, settings, OPENING_NIGHT)
+
+        assert result and (result.stale, result.fetched_at) == (True, snapshot_at)
+    assert store.get("nba_team_advanced") == (good, snapshot_at)
+
+
+def test_parse_result_set_zips_each_row_with_the_headers() -> None:
+    payload = _fixture("player_advanced_2025-26")
+
+    rows = parse_result_set(payload)
+
+    assert len(rows) == len(_rows("player_advanced_2025-26")) == 42
+    assert all(isinstance(row["PIE"], float) for row in rows)
+    assert list(rows[0]) == payload["resultSets"][0]["headers"]
+
+
+def test_team_fixture_has_every_team_with_ratings() -> None:
+    teams = [
+        TeamAdvanced.model_validate(r) for r in parse_result_set(_fixture("team_advanced_2025-26"))
+    ]
+
+    assert len(teams) == len({t.team_id for t in teams}) == 30
+    for team in teams:
+        assert team.gp == 82
+        assert team.off_rating and team.def_rating and team.pace
+        assert team.net_rating is not None
+    hawks = next(t for t in teams if t.team_id == 1610612737)
+    assert (hawks.off_rating, hawks.def_rating, hawks.net_rating, hawks.pace) == (
+        115.0,
+        112.9,
+        2.2,
+        102.5,
+    )
+
+
+def test_player_fixtures_hold_the_same_players_with_every_field() -> None:
+    advanced = [
+        PlayerAdvanced.model_validate(r)
+        for r in parse_result_set(_fixture("player_advanced_2025-26"))
+    ]
+    base = [PlayerBase.model_validate(r) for r in parse_result_set(_fixture("player_base_2025-26"))]
+
+    assert {p.player_id for p in advanced} == {p.player_id for p in base}
+    for player in advanced:
+        assert player.player_id and player.player_name and player.team_id
+        assert player.gp and player.min and player.pie is not None and player.ts_pct
+    for player in base:
+        assert player.pts and player.reb is not None and player.ast is not None
+
+
+@pytest.mark.parametrize("stem", ["team_advanced", "player_advanced", "player_base"])
+def test_season_with_no_games_final_has_no_rows(stem: str) -> None:
+    payload = _fixture(f"{stem}_2026-27")
+
+    assert payload["resultSets"][0]["headers"]
+    assert parse_result_set(payload) == []
+
+
+def test_stats_rows_tolerate_blank_null_and_string_numbers() -> None:
+    player = PlayerAdvanced.model_validate(
+        {"PLAYER_ID": "1630639", "GP": "", "MIN": "9.4", "PIE": None, "OTHER": 1}
+    )
+
+    assert (player.player_id, player.gp, player.min, player.pie, player.ts_pct) == (
+        1630639,
+        None,
+        9.4,
+        None,
+        None,
+    )
