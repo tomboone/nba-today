@@ -1,0 +1,3 @@
+# Email is authored in MJML and compiled by the Python port, not the Node CLI
+
+The digest is a responsive HTML email that must render in mail clients, which is what MJML exists for. The reference MJML compiler is a Node package, and pulling Node into a Python container doubles the image and the toolchain. nba-today uses `mjml-python`, which wraps the Rust `mrml` compiler and ships prebuilt wheels, so the container stays Python-only. Jinja2 renders the MJML source from typed digest models, and the port compiles it to HTML. This is the decision mlb-today v2 reached (its ADR-0003). If `mrml` ever lags the MJML spec on a component we need, the fallback is the Node CLI in a build stage, not a hand-written table template.
