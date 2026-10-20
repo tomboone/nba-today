@@ -1,27 +1,18 @@
 """The ESPN scoreboard response: the fields spec §5.1 reads, everything else ignored.
 
 Every field defaults, so one game missing a field never fails the whole scoreboard; the digest
-builder decides what a gap means. ESPN sends numbers such as team
-ids and scores as strings, which coerce; a blank one becomes None.
+builder decides what a gap means.
 """
 
 from datetime import datetime
-from typing import Annotated
 
-from pydantic import BaseModel, BeforeValidator, ConfigDict
-from pydantic.alias_generators import to_camel
+from pydantic import BaseModel
 
-
-def _blank_to_none(value: object) -> object:
-    return None if value == "" else value
-
-
-type LaxInt = Annotated[int | None, BeforeValidator(_blank_to_none)]
-type LaxFloat = Annotated[float | None, BeforeValidator(_blank_to_none)]
+from nba_today.sources.models.espn_base import ESPN_CONFIG, LaxFloat, LaxInt, Team
 
 
 class _Model(BaseModel):
-    model_config = ConfigDict(alias_generator=to_camel, frozen=True)
+    model_config = ESPN_CONFIG
 
 
 class Address(_Model):
@@ -53,11 +44,6 @@ class Series(_Model):
 class Broadcast(_Model):
     market: str | None = None
     names: list[str] = []
-
-
-class Team(_Model):
-    id: LaxInt = None
-    abbreviation: str | None = None
 
 
 class Record(_Model):

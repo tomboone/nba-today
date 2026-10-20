@@ -1,0 +1,1067 @@
+{
+  "injuries": [
+    {
+      "displayName": "Atlanta Hawks",
+      "id": "1",
+      "injuries": [
+        {
+          "athlete": {
+            "displayName": "Mouhamed Gueye",
+            "firstName": "Mouhamed",
+            "lastName": "Gueye",
+            "notes": {
+              "items": [
+                {
+                  "date": "2026-10-19T19:38Z",
+                  "headline": "Gueye underwent surgery Tuesday to repair a fractured left foot that he suffered during a workout last week, Brad Rowland of the Locked On Podcast Network reports.",
+                  "id": "-58751",
+                  "injury": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/basketball/leagues/nba/seasons/2027/athletes/4712863/injuries/-58751?lang=en&region=us"
+                  },
+                  "source": "RotoWire",
+                  "text": "Gueye will be re-evaluated by medical staff in 3-to-4 months, which means he'll miss all of training camp and preseason and likely the start of the 2026-27 regular season. It's a brutal blow for the fourth-year big man, given that the Hawks used the No. 23 overall pick of the 2026 NBA Draft to select St. John's product Zuby Ejiofor. Gueye's absence means Ejiofor will have more opportunities in the preseason, and the rookie could establish a key role off the bench behind Onyeka Okongwu and projected backup center Jock Landale (ankle).",
+                  "type": "news"
+                }
+              ]
+            },
+            "position": {
+              "abbreviation": "F",
+              "displayName": "Forward",
+              "id": "7",
+              "leaf": false,
+              "name": "Forward"
+            },
+            "shortName": "M. Gueye",
+            "status": {
+              "abbreviation": "Active",
+              "id": "1",
+              "name": "Active",
+              "type": "active"
+            },
+            "team": {
+              "abbreviation": "ATL",
+              "displayName": "Atlanta Hawks",
+              "id": "1",
+              "name": "Hawks",
+              "slug": "atlanta-hawks",
+              "uid": "s:40~l:46~t:1"
+            }
+          },
+          "date": "2026-10-19T19:38Z",
+          "details": {
+            "detail": "Fracture",
+            "fantasyStatus": {
+              "abbreviation": "OUT",
+              "description": "OUT"
+            },
+            "location": "Leg",
+            "returnDate": "2026-11-20",
+            "side": "Left",
+            "type": "Foot"
+          },
+          "id": "-58751",
+          "source": {
+            "description": "basic/manual",
+            "id": "1",
+            "state": "basic"
+          },
+          "status": "Out",
+          "type": {
+            "abbreviation": "O",
+            "description": "out",
+            "id": "4",
+            "name": "INJURY_STATUS_OUT"
+          }
+        },
+        {
+          "athlete": {
+            "displayName": "Henri Veesaar",
+            "firstName": "Henri",
+            "lastName": "Veesaar",
+            "notes": {
+              "items": [
+                {
+                  "date": "2026-09-21T19:50Z",
+                  "headline": "Veesaar was diagnosed with a torn right ACL and is expected to miss the 2026-27 season, the Hawks announced Monday.",
+                  "id": "-57577",
+                  "injury": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/basketball/leagues/nba/seasons/2027/athletes/5105571/injuries/-57577?lang=en&region=us"
+                  },
+                  "source": "RotoWire",
+                  "text": "Veesaar suffered the injury during a workout on Sept. 15, and an MRI confirmed the diagnosis. The No. 52 overall pick in the 2026 NBA Draft, Veesaar was expected to spend a lot of time with Atlanta's G League affiliate this season.",
+                  "type": "news"
+                }
+              ]
+            },
+            "position": {
+              "abbreviation": "C",
+              "displayName": "Center",
+              "id": "9",
+              "leaf": false,
+              "name": "Center"
+            },
+            "shortName": "H. Veesaar",
+            "status": {
+              "abbreviation": "Active",
+              "id": "1",
+              "name": "Active",
+              "type": "active"
+            },
+            "team": {
+              "abbreviation": "ATL",
+              "displayName": "Atlanta Hawks",
+              "id": "1",
+              "name": "Hawks",
+              "slug": "atlanta-hawks",
+              "uid": "s:40~l:46~t:1"
+            }
+          },
+          "date": "2026-09-21T19:50Z",
+          "details": {
+            "fantasyStatus": {
+              "abbreviation": "OFS",
+              "description": "OFS"
+            },
+            "location": "Leg",
+            "returnDate": "2027-07-01",
+            "side": "Right",
+            "type": "Knee"
+          },
+          "id": "-57577",
+          "source": {
+            "description": "basic/manual",
+            "id": "1",
+            "state": "basic"
+          },
+          "status": "Out",
+          "type": {
+            "abbreviation": "O",
+            "description": "out",
+            "id": "4",
+            "name": "INJURY_STATUS_OUT"
+          }
+        }
+      ]
+    },
+    {
+      "displayName": "Boston Celtics",
+      "id": "2",
+      "injuries": [
+        {
+          "athlete": {
+            "displayName": "Devin Carter",
+            "firstName": "Devin",
+            "lastName": "Carter",
+            "notes": {
+              "items": [
+                {
+                  "date": "2026-10-18T14:49Z",
+                  "headline": "Carter has been diagnosed with mononucleosis and is without a timetable for a return, Gary Washburn of The Boston Globe reports.",
+                  "id": "535118",
+                  "injury": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/basketball/leagues/nba/seasons/2027/athletes/4433188/injuries/535118?lang=en&region=us"
+                  },
+                  "source": "RotoWire",
+                  "text": "Carter missed Boston's final three preseason games with the illness and is now expected to miss time to begin the regular season. He can be considered week-to-week until Boston provides an update on his progress. The 2024 first-rounder signed a two-way pact with the Celtics on Saturday and will provide backcourt depth for the club.",
+                  "type": "news"
+                }
+              ]
+            },
+            "position": {
+              "abbreviation": "G",
+              "displayName": "Guard",
+              "id": "3",
+              "leaf": false,
+              "name": "Guard"
+            },
+            "shortName": "D. Carter",
+            "status": {
+              "abbreviation": "Active",
+              "id": "1",
+              "name": "Active",
+              "type": "active"
+            },
+            "team": {
+              "abbreviation": "BOS",
+              "displayName": "Boston Celtics",
+              "id": "2",
+              "name": "Celtics",
+              "slug": "boston-celtics",
+              "uid": "s:40~l:46~t:2"
+            }
+          },
+          "date": "2026-10-18T14:49Z",
+          "details": {
+            "fantasyStatus": {
+              "abbreviation": "OUT",
+              "description": "OUT"
+            },
+            "location": "Other",
+            "returnDate": "2026-11-08",
+            "type": "Illness"
+          },
+          "id": "535118",
+          "source": {
+            "description": "basic/manual",
+            "id": "1",
+            "state": "basic"
+          },
+          "status": "Out",
+          "type": {
+            "abbreviation": "O",
+            "description": "out",
+            "id": "4",
+            "name": "INJURY_STATUS_OUT"
+          }
+        }
+      ]
+    },
+    {
+      "displayName": "Brooklyn Nets",
+      "id": "17",
+      "injuries": [
+        {
+          "athlete": {
+            "displayName": "Tyler Bilodeau",
+            "firstName": "Tyler",
+            "lastName": "Bilodeau",
+            "notes": {
+              "items": [
+                {
+                  "date": "2026-10-19T17:33Z",
+                  "headline": "Bilodeau will miss the season opener against the Hornets on Wednesday due to a shoulder sprain, Sharif Phillips-Keaton of USA Today reports.",
+                  "id": "535147",
+                  "injury": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/basketball/leagues/nba/seasons/2027/athletes/5105626/injuries/535147?lang=en&region=us"
+                  },
+                  "source": "RotoWire",
+                  "text": "Bilodeau is on a two-way contract and was unlikely to crack the rotation right away. He'll likely get plenty of G League reps once he's healthy.",
+                  "type": "news"
+                }
+              ]
+            },
+            "position": {
+              "abbreviation": "F",
+              "displayName": "Forward",
+              "id": "7",
+              "leaf": false,
+              "name": "Forward"
+            },
+            "shortName": "T. Bilodeau",
+            "status": {
+              "abbreviation": "Active",
+              "id": "1",
+              "name": "Active",
+              "type": "active"
+            },
+            "team": {
+              "abbreviation": "BKN",
+              "displayName": "Brooklyn Nets",
+              "id": "17",
+              "name": "Nets",
+              "slug": "brooklyn-nets",
+              "uid": "s:40~l:46~t:17"
+            }
+          },
+          "date": "2026-10-19T17:33Z",
+          "details": {
+            "fantasyStatus": {
+              "abbreviation": "OUT",
+              "description": "OUT"
+            },
+            "location": "Arm",
+            "returnDate": "2026-10-24",
+            "side": "Not Specified",
+            "type": "Shoulder"
+          },
+          "id": "535147",
+          "source": {
+            "description": "basic/manual",
+            "id": "1",
+            "state": "basic"
+          },
+          "status": "Out",
+          "type": {
+            "abbreviation": "O",
+            "description": "out",
+            "id": "4",
+            "name": "INJURY_STATUS_OUT"
+          }
+        }
+      ]
+    },
+    {
+      "displayName": "Charlotte Hornets",
+      "id": "30",
+      "injuries": [
+        {
+          "athlete": {
+            "displayName": "Coby White",
+            "firstName": "Coby",
+            "lastName": "White",
+            "notes": {
+              "items": [
+                {
+                  "date": "2026-10-18T18:27Z",
+                  "headline": "Head coach Charles Lee said Sunday that White (calf) is without a definitive timetable for a return, though he's been ramping up and taking more contact in practice, Nick Carboni of WCNC Charlotte reports.",
+                  "id": "535131",
+                  "injury": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/basketball/leagues/nba/seasons/2027/athletes/4395651/injuries/535131?lang=en&region=us"
+                  },
+                  "source": "RotoWire",
+                  "text": "Lee wouldn't confirm whether White will miss Wednesday's regular-season opener against the Nets, so he can be considered highly questionable for that contest until further notice. If the 26-year-old guard needs to miss time to begin the regular season, Dennis Schroder and Christian Anderson would likely see an uptick in minutes.",
+                  "type": "news"
+                }
+              ]
+            },
+            "position": {
+              "abbreviation": "G",
+              "displayName": "Guard",
+              "id": "3",
+              "leaf": false,
+              "name": "Guard"
+            },
+            "shortName": "C. White",
+            "status": {
+              "abbreviation": "Active",
+              "id": "1",
+              "name": "Active",
+              "type": "active"
+            },
+            "team": {
+              "abbreviation": "CHA",
+              "displayName": "Charlotte Hornets",
+              "id": "30",
+              "name": "Hornets",
+              "slug": "charlotte-hornets",
+              "uid": "s:40~l:46~t:30"
+            }
+          },
+          "date": "2026-10-18T18:27Z",
+          "details": {
+            "detail": "Strain",
+            "fantasyStatus": {
+              "abbreviation": "GTD",
+              "description": "GTD"
+            },
+            "location": "Leg",
+            "returnDate": "2026-10-21",
+            "side": "Left",
+            "type": "Calf"
+          },
+          "id": "535131",
+          "source": {
+            "description": "basic/manual",
+            "id": "1",
+            "state": "basic"
+          },
+          "status": "Day-To-Day",
+          "type": {
+            "abbreviation": "DD",
+            "description": "day-to-day",
+            "id": "6",
+            "name": "INJURY_STATUS_DAYTODAY"
+          }
+        },
+        {
+          "athlete": {
+            "displayName": "Kon Knueppel",
+            "firstName": "Kon",
+            "lastName": "Knueppel",
+            "notes": {
+              "items": [
+                {
+                  "date": "2026-10-18T18:24Z",
+                  "headline": "Head coach Charles Lee said Sunday that Knueppel (hamstring) is still without a timetable for a return, though he's been ramping up and taking more contact in practice, Nick Carboni of WCNC Charlotte reports.",
+                  "id": "535130",
+                  "injury": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/basketball/leagues/nba/seasons/2027/athletes/5061575/injuries/535130?lang=en&region=us"
+                  },
+                  "source": "RotoWire",
+                  "text": "Knueppel missed the preseason with a left hamstring injury, though it's encouraging to see him ramping up his workload ahead of the regular season. Lee wouldn't comment on the second-year wing's status for Wednesday's regular-season opener against the Nets, so he can be considered highly questionable until more information comes to light.",
+                  "type": "news"
+                }
+              ]
+            },
+            "position": {
+              "abbreviation": "G",
+              "displayName": "Guard",
+              "id": "3",
+              "leaf": false,
+              "name": "Guard"
+            },
+            "shortName": "K. Knueppel",
+            "status": {
+              "abbreviation": "Active",
+              "id": "1",
+              "name": "Active",
+              "type": "active"
+            },
+            "team": {
+              "abbreviation": "CHA",
+              "displayName": "Charlotte Hornets",
+              "id": "30",
+              "name": "Hornets",
+              "slug": "charlotte-hornets",
+              "uid": "s:40~l:46~t:30"
+            }
+          },
+          "date": "2026-10-18T18:24Z",
+          "details": {
+            "fantasyStatus": {
+              "abbreviation": "GTD",
+              "description": "GTD"
+            },
+            "location": "Leg",
+            "returnDate": "2026-10-21",
+            "side": "Left",
+            "type": "Hamstring"
+          },
+          "id": "535130",
+          "source": {
+            "description": "basic/manual",
+            "id": "1",
+            "state": "basic"
+          },
+          "status": "Day-To-Day",
+          "type": {
+            "abbreviation": "DD",
+            "description": "day-to-day",
+            "id": "6",
+            "name": "INJURY_STATUS_DAYTODAY"
+          }
+        },
+        {
+          "athlete": {
+            "displayName": "Grayson Allen",
+            "firstName": "Grayson",
+            "lastName": "Allen",
+            "notes": {
+              "items": [
+                {
+                  "date": "2026-10-17T02:44Z",
+                  "headline": "Allen (knee) didn't play in Friday's 117-98 preseason loss to the Grizzlies.",
+                  "id": "534887",
+                  "injury": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/basketball/leagues/nba/seasons/2027/athletes/3135045/injuries/534887?lang=en&region=us"
+                  },
+                  "source": "RotoWire",
+                  "text": "Allen missed a third consecutive contest due to right knee soreness. If he's unable to play in Wednesday's regular-season opener against Atlanta, Sion James and Royce O'Neale could see increased minutes.",
+                  "type": "news"
+                }
+              ]
+            },
+            "position": {
+              "abbreviation": "G",
+              "displayName": "Guard",
+              "id": "3",
+              "leaf": false,
+              "name": "Guard"
+            },
+            "shortName": "G. Allen",
+            "status": {
+              "abbreviation": "Active",
+              "id": "1",
+              "name": "Active",
+              "type": "active"
+            },
+            "team": {
+              "abbreviation": "CHA",
+              "displayName": "Charlotte Hornets",
+              "id": "30",
+              "name": "Hornets",
+              "slug": "charlotte-hornets",
+              "uid": "s:40~l:46~t:30"
+            }
+          },
+          "date": "2026-10-17T02:44Z",
+          "details": {
+            "detail": "Soreness",
+            "fantasyStatus": {
+              "abbreviation": "GTD",
+              "description": "GTD"
+            },
+            "location": "Leg",
+            "returnDate": "2026-10-21",
+            "side": "Right",
+            "type": "Knee"
+          },
+          "id": "534887",
+          "source": {
+            "description": "basic/manual",
+            "id": "1",
+            "state": "basic"
+          },
+          "status": "Day-To-Day",
+          "type": {
+            "abbreviation": "DD",
+            "description": "day-to-day",
+            "id": "6",
+            "name": "INJURY_STATUS_DAYTODAY"
+          }
+        },
+        {
+          "athlete": {
+            "displayName": "Moussa Diabate",
+            "firstName": "Moussa",
+            "lastName": "Diabate",
+            "notes": {
+              "items": [
+                {
+                  "date": "2026-10-16T22:58Z",
+                  "headline": "Diabate has been ruled out for Friday's preseason finale against the Grizzlies due to a right elbow injury.",
+                  "id": "534774",
+                  "injury": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/basketball/leagues/nba/seasons/2027/athletes/4433249/injuries/534774?lang=en&region=us"
+                  },
+                  "source": "RotoWire",
+                  "text": "Diabate can be considered day-to-day moving forward, and his status for Wednesday's regular-season opener in Brooklyn remains unclear. If he's sidelined, Ryan Kalkbrenner and rookie Hannes Steinbach would be candidates for increased roles.",
+                  "type": "news"
+                }
+              ]
+            },
+            "position": {
+              "abbreviation": "F",
+              "displayName": "Forward",
+              "id": "7",
+              "leaf": false,
+              "name": "Forward"
+            },
+            "shortName": "M. Diabate",
+            "status": {
+              "abbreviation": "Active",
+              "id": "1",
+              "name": "Active",
+              "type": "active"
+            },
+            "team": {
+              "abbreviation": "CHA",
+              "displayName": "Charlotte Hornets",
+              "id": "30",
+              "name": "Hornets",
+              "slug": "charlotte-hornets",
+              "uid": "s:40~l:46~t:30"
+            }
+          },
+          "date": "2026-10-16T22:58Z",
+          "details": {
+            "fantasyStatus": {
+              "abbreviation": "GTD",
+              "description": "GTD"
+            },
+            "location": "Arm",
+            "returnDate": "2026-10-21",
+            "side": "Right",
+            "type": "Elbow"
+          },
+          "id": "534774",
+          "source": {
+            "description": "basic/manual",
+            "id": "1",
+            "state": "basic"
+          },
+          "status": "Day-To-Day",
+          "type": {
+            "abbreviation": "DD",
+            "description": "day-to-day",
+            "id": "6",
+            "name": "INJURY_STATUS_DAYTODAY"
+          }
+        },
+        {
+          "athlete": {
+            "displayName": "Kylan Boswell",
+            "firstName": "Kylan",
+            "lastName": "Boswell",
+            "notes": {
+              "items": [
+                {
+                  "date": "2026-10-05T21:28Z",
+                  "headline": "Boswell is rehabbing a right knee injury, and he's hopeful to be cleared for basketball activities prior to the start of the G League season in late October.",
+                  "id": "533223",
+                  "injury": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/basketball/leagues/nba/seasons/2027/athletes/4684269/injuries/533223?lang=en&region=us"
+                  },
+                  "source": "RotoWire",
+                  "text": "It doesn't sound like the two-way guard will be available for the preseason, but he's hopeful to not miss any time during the G League season. Boswell is not expected to be a significant part of the Hornets' rotation this season.",
+                  "type": "news"
+                }
+              ]
+            },
+            "position": {
+              "abbreviation": "G",
+              "displayName": "Guard",
+              "id": "3",
+              "leaf": false,
+              "name": "Guard"
+            },
+            "shortName": "K. Boswell",
+            "status": {
+              "abbreviation": "Active",
+              "id": "1",
+              "name": "Active",
+              "type": "active"
+            },
+            "team": {
+              "abbreviation": "CHA",
+              "displayName": "Charlotte Hornets",
+              "id": "30",
+              "name": "Hornets",
+              "slug": "charlotte-hornets",
+              "uid": "s:40~l:46~t:30"
+            }
+          },
+          "date": "2026-10-05T21:28Z",
+          "details": {
+            "fantasyStatus": {
+              "abbreviation": "GTD",
+              "description": "GTD"
+            },
+            "location": "Leg",
+            "returnDate": "2026-10-21",
+            "side": "Right",
+            "type": "Knee"
+          },
+          "id": "533223",
+          "source": {
+            "description": "basic/manual",
+            "id": "1",
+            "state": "basic"
+          },
+          "status": "Day-To-Day",
+          "type": {
+            "abbreviation": "DD",
+            "description": "day-to-day",
+            "id": "6",
+            "name": "INJURY_STATUS_DAYTODAY"
+          }
+        },
+        {
+          "athlete": {
+            "displayName": "Grant Williams",
+            "firstName": "Grant",
+            "lastName": "Williams",
+            "notes": {
+              "items": [
+                {
+                  "date": "2026-09-25T23:03Z",
+                  "headline": "Williams will miss the preseason after suffering a right hamstring injury, the Hornets announced Friday.",
+                  "id": "-57589",
+                  "injury": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/basketball/leagues/nba/seasons/2027/athletes/4066218/injuries/-57589?lang=en&region=us"
+                  },
+                  "source": "RotoWire",
+                  "text": "Williams will be re-evaluated the first week of the regular season, putting his status for Opening Night in the air. Williams will have a difficult path to minutes this season as he competes with the likes of Naz Reid, Royce O'Neale and Tidjane Salaun.",
+                  "type": "news"
+                }
+              ]
+            },
+            "position": {
+              "abbreviation": "F",
+              "displayName": "Forward",
+              "id": "7",
+              "leaf": false,
+              "name": "Forward"
+            },
+            "shortName": "G. Williams",
+            "status": {
+              "abbreviation": "Active",
+              "id": "1",
+              "name": "Active",
+              "type": "active"
+            },
+            "team": {
+              "abbreviation": "CHA",
+              "displayName": "Charlotte Hornets",
+              "id": "30",
+              "name": "Hornets",
+              "slug": "charlotte-hornets",
+              "uid": "s:40~l:46~t:30"
+            }
+          },
+          "date": "2026-09-25T23:03Z",
+          "details": {
+            "fantasyStatus": {
+              "abbreviation": "GTD",
+              "description": "GTD"
+            },
+            "location": "Leg",
+            "returnDate": "2026-10-21",
+            "side": "Right",
+            "type": "Hamstring"
+          },
+          "id": "-57589",
+          "source": {
+            "description": "basic/manual",
+            "id": "1",
+            "state": "basic"
+          },
+          "status": "Day-To-Day",
+          "type": {
+            "abbreviation": "DD",
+            "description": "day-to-day",
+            "id": "6",
+            "name": "INJURY_STATUS_DAYTODAY"
+          }
+        }
+      ]
+    },
+    {
+      "displayName": "LA Clippers",
+      "id": "12",
+      "injuries": [
+        {
+          "athlete": {
+            "displayName": "Bradley Beal",
+            "firstName": "Bradley",
+            "lastName": "Beal",
+            "notes": {
+              "items": [
+                {
+                  "date": "2026-10-15T01:03Z",
+                  "headline": "Beal (knee) will not be ready for the start of the regular season, NBA writer Justin Russo reports.",
+                  "id": "534472",
+                  "injury": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/basketball/leagues/nba/seasons/2027/athletes/6580/injuries/534472?lang=en&region=us"
+                  },
+                  "source": "RotoWire",
+                  "text": "Beal is dealing with knee inflammation that will keep him sidelined for Opening Night. While it's unclear how long the Clippers will be without the veteran guard, Darius Garland, Keaton Wagler and Kris Dunn should dominate the backcourt minutes in his absence. Beal's 2025-26 campaign was cut short by a hip injury after he averaged 8.2 points and 1.7 assists in 20.6 minutes across just six regular-season appearances.",
+                  "type": "news"
+                }
+              ]
+            },
+            "position": {
+              "abbreviation": "G",
+              "displayName": "Guard",
+              "id": "3",
+              "leaf": false,
+              "name": "Guard"
+            },
+            "shortName": "B. Beal",
+            "status": {
+              "abbreviation": "Active",
+              "id": "1",
+              "name": "Active",
+              "type": "active"
+            },
+            "team": {
+              "abbreviation": "LAC",
+              "displayName": "LA Clippers",
+              "id": "12",
+              "name": "Clippers",
+              "slug": "la-clippers",
+              "uid": "s:40~l:46~t:12"
+            }
+          },
+          "date": "2026-10-15T01:03Z",
+          "details": {
+            "detail": "Inflammation",
+            "fantasyStatus": {
+              "abbreviation": "OUT",
+              "description": "OUT"
+            },
+            "location": "Leg",
+            "returnDate": "2026-11-08",
+            "side": "Not Specified",
+            "type": "Knee"
+          },
+          "id": "534472",
+          "source": {
+            "description": "basic/manual",
+            "id": "1",
+            "state": "basic"
+          },
+          "status": "Out",
+          "type": {
+            "abbreviation": "O",
+            "description": "out",
+            "id": "4",
+            "name": "INJURY_STATUS_OUT"
+          }
+        },
+        {
+          "athlete": {
+            "displayName": "Max Strus",
+            "firstName": "Max",
+            "lastName": "Strus",
+            "notes": {
+              "items": [
+                {
+                  "date": "2026-10-05T22:21Z",
+                  "headline": "Strus has been diagnosed with a partially torn plantar fascia in his right foot and he will be re-evaluated in four weeks, Ohm Youngmisuk of ESPN.com reports.",
+                  "id": "533234",
+                  "injury": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/basketball/leagues/nba/seasons/2027/athletes/4065778/injuries/533234?lang=en&region=us"
+                  },
+                  "source": "RotoWire",
+                  "text": "Plantar fascia injuries can be tricky to recover from, with the only remedy typically being prolonged rest, so don't be surprised if Strus' absence extends well beyond this initial four-week window. With Strus now set to miss at least the first few weeks of the season, and Bradley Beal (knee) uncertain for opening night, Keaton Wagler could be thrust into the first unit sooner than expected.",
+                  "type": "news"
+                }
+              ]
+            },
+            "position": {
+              "abbreviation": "G",
+              "displayName": "Guard",
+              "id": "3",
+              "leaf": false,
+              "name": "Guard"
+            },
+            "shortName": "M. Strus",
+            "status": {
+              "abbreviation": "Active",
+              "id": "1",
+              "name": "Active",
+              "type": "active"
+            },
+            "team": {
+              "abbreviation": "LAC",
+              "displayName": "LA Clippers",
+              "id": "12",
+              "name": "Clippers",
+              "slug": "la-clippers",
+              "uid": "s:40~l:46~t:12"
+            }
+          },
+          "date": "2026-10-05T22:21Z",
+          "details": {
+            "fantasyStatus": {
+              "abbreviation": "OUT",
+              "description": "OUT"
+            },
+            "location": "Leg",
+            "returnDate": "2026-11-08",
+            "side": "Right",
+            "type": "Foot"
+          },
+          "id": "533234",
+          "source": {
+            "description": "basic/manual",
+            "id": "1",
+            "state": "basic"
+          },
+          "status": "Out",
+          "type": {
+            "abbreviation": "O",
+            "description": "out",
+            "id": "4",
+            "name": "INJURY_STATUS_OUT"
+          }
+        },
+        {
+          "athlete": {
+            "displayName": "Yanic Konan Niederhauser",
+            "firstName": "Yanic Konan",
+            "lastName": "Niederhauser",
+            "notes": {
+              "items": [
+                {
+                  "date": "2026-09-28T18:07Z",
+                  "headline": "Niederhauser (foot) won't be ready for the start of the season, Law Murray of The Athletic reports.",
+                  "id": "532876",
+                  "injury": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/basketball/leagues/nba/seasons/2027/athletes/5108024/injuries/532876?lang=en&region=us"
+                  },
+                  "source": "RotoWire",
+                  "text": "Niederhauser is progressing from March surgery but won't be able to suit up to begin the year. The Clippers are likely to take a cautious approach with the 2025 first-rounder. Isaiah Jackson should occupy the backup center spot behind Brook Lopez early in the campaign.",
+                  "type": "news"
+                }
+              ]
+            },
+            "position": {
+              "abbreviation": "C",
+              "displayName": "Center",
+              "id": "9",
+              "leaf": false,
+              "name": "Center"
+            },
+            "shortName": "Y. Niederhauser",
+            "status": {
+              "abbreviation": "Active",
+              "id": "1",
+              "name": "Active",
+              "type": "active"
+            },
+            "team": {
+              "abbreviation": "LAC",
+              "displayName": "LA Clippers",
+              "id": "12",
+              "name": "Clippers",
+              "slug": "la-clippers",
+              "uid": "s:40~l:46~t:12"
+            }
+          },
+          "date": "2026-09-28T18:07Z",
+          "details": {
+            "detail": "Surgery",
+            "fantasyStatus": {
+              "abbreviation": "OUT",
+              "description": "OUT"
+            },
+            "location": "Leg",
+            "returnDate": "2026-11-08",
+            "side": "Right",
+            "type": "Foot"
+          },
+          "id": "532876",
+          "source": {
+            "description": "basic/manual",
+            "id": "1",
+            "state": "basic"
+          },
+          "status": "Out",
+          "type": {
+            "abbreviation": "O",
+            "description": "out",
+            "id": "4",
+            "name": "INJURY_STATUS_OUT"
+          }
+        },
+        {
+          "athlete": {
+            "displayName": "Brandon Ingram",
+            "firstName": "Brandon",
+            "lastName": "Ingram",
+            "notes": {
+              "items": [
+                {
+                  "date": "2026-09-28T18:01Z",
+                  "headline": "Ingram won't be ready for the start of the season due to a partially torn Achilles, per Joey Linn of SI.com.",
+                  "id": "532875",
+                  "injury": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/basketball/leagues/nba/seasons/2027/athletes/3913176/injuries/532875?lang=en&region=us"
+                  },
+                  "source": "RotoWire",
+                  "text": "The Clippers learned about the injury this summer, though it's unclear exactly how far along Ingram is in his recovery. The star forward's timeline for a return is unclear, clouding his fantasy outlook in the meantime. Darius Garland should take on all the usage he can handle in Ingram's stead, while Kris Dunn and Max Strus could have additional streaming appeal early in the year.",
+                  "type": "news"
+                }
+              ]
+            },
+            "position": {
+              "abbreviation": "F",
+              "displayName": "Forward",
+              "id": "7",
+              "leaf": false,
+              "name": "Forward"
+            },
+            "shortName": "B. Ingram",
+            "status": {
+              "abbreviation": "Active",
+              "id": "1",
+              "name": "Active",
+              "type": "active"
+            },
+            "team": {
+              "abbreviation": "TOR",
+              "displayName": "Toronto Raptors",
+              "id": "28",
+              "name": "Raptors",
+              "slug": "toronto-raptors",
+              "uid": "s:40~l:46~t:28"
+            }
+          },
+          "date": "2026-09-28T18:01Z",
+          "details": {
+            "detail": "Surgery",
+            "fantasyStatus": {
+              "abbreviation": "OUT",
+              "description": "OUT"
+            },
+            "location": "Leg",
+            "returnDate": "2026-11-08",
+            "side": "Not Specified",
+            "type": "Achilles"
+          },
+          "id": "532875",
+          "source": {
+            "description": "basic/manual",
+            "id": "1",
+            "state": "basic"
+          },
+          "status": "Out",
+          "type": {
+            "abbreviation": "O",
+            "description": "out",
+            "id": "4",
+            "name": "INJURY_STATUS_OUT"
+          }
+        },
+        {
+          "athlete": {
+            "displayName": "Jordan Miller",
+            "firstName": "Jordan",
+            "lastName": "Miller",
+            "notes": {
+              "items": [
+                {
+                  "date": "2026-08-26T20:04Z",
+                  "headline": "Miller underwent surgery Wednesday to repair a torn left rotator cuff and will be re-evaluated in six months, per Law Murray of The Athletic.",
+                  "id": "532401",
+                  "injury": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/basketball/leagues/nba/seasons/2027/athletes/4396818/injuries/532401?lang=en&region=us"
+                  },
+                  "source": "RotoWire",
+                  "text": "It's a tough break for Miller, who had an opportunity to battle for a reserve role during training camp in the fall. The timeline for a return is likely to keep him on the shelf until after the All-Star break. Miller's extended stay on the sidelines gives Kobe Sanders a chance to crack the Clippers' rotation.",
+                  "type": "news"
+                }
+              ]
+            },
+            "position": {
+              "abbreviation": "G",
+              "displayName": "Guard",
+              "id": "3",
+              "leaf": false,
+              "name": "Guard"
+            },
+            "shortName": "J. Miller",
+            "status": {
+              "abbreviation": "Active",
+              "id": "1",
+              "name": "Active",
+              "type": "active"
+            },
+            "team": {
+              "abbreviation": "LAC",
+              "displayName": "LA Clippers",
+              "id": "12",
+              "name": "Clippers",
+              "slug": "la-clippers",
+              "uid": "s:40~l:46~t:12"
+            }
+          },
+          "date": "2026-08-26T20:04Z",
+          "details": {
+            "detail": "Surgery",
+            "fantasyStatus": {
+              "abbreviation": "OUT",
+              "description": "OUT"
+            },
+            "location": "Arm",
+            "returnDate": "2027-03-02",
+            "type": "Shoulder"
+          },
+          "id": "532401",
+          "source": {
+            "description": "basic/manual",
+            "id": "1",
+            "state": "basic"
+          },
+          "status": "Out",
+          "type": {
+            "abbreviation": "O",
+            "description": "out",
+            "id": "4",
+            "name": "INJURY_STATUS_OUT"
+          }
+        }
+      ]
+    }
+  ],
+  "season": {
+    "displayName": "2026-27",
+    "name": "Regular Season",
+    "type": 2,
+    "year": 2027
+  },
+  "status": "success",
+  "timestamp": "2026-10-20T15:14:12Z"
+}

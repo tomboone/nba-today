@@ -15,8 +15,9 @@ from datetime import date
 from pathlib import Path
 from typing import Any, Literal, cast
 
+from nba_today.season import espn_season
 from nba_today.settings import Settings
-from nba_today.sources.espn import get_scoreboard
+from nba_today.sources.espn import get_athletes, get_injuries, get_scoreboard, get_standings
 from nba_today.sources.http import make_client
 
 FIXTURES = Path(__file__).resolve().parent.parent / "tests" / "fixtures"
@@ -74,12 +75,13 @@ SCOREBOARD_EDGE_CASES: tuple[Callable[[Payload], bool], ...] = (
 )
 
 
-def _drop_bulk(value: Any) -> Any:
+def _drop_keys(value: Any, keys: frozenset[str]) -> Any:
+    """`value` with every dict key in `keys` removed, at any depth."""
     if isinstance(value, dict):
         items = cast(Payload, value).items()
-        return {k: _drop_bulk(v) for k, v in items if k not in SCOREBOARD_DROPPED_KEYS}
+        return {k: _drop_keys(v, keys) for k, v in items if k not in keys}
     if isinstance(value, list):
-        return [_drop_bulk(v) for v in cast(list[Any], value)]
+        return [_drop_keys(v, keys) for v in cast(list[Any], value)]
     return value
 
 
@@ -116,7 +118,100 @@ def record_espn_scoreboard(day: date) -> None:
     with make_client(_default("espn_site_api_base")) as client:
         payload = get_scoreboard(client, day)
     payload["events"] = _trim_events(payload.get("events", []))
-    write_fixture("espn", f"scoreboard_{day:%Y%m%d}", _drop_bulk(payload))
+    write_fixture("espn", f"scoreboard_{day:%Y%m%d}", _drop_keys(payload, SCOREBOARD_DROPPED_KEYS))
+
+
+# Logos and links ride along on every team and athlete in the endpoints below.
+LINK_KEYS = frozenset({"headshot", "links", "logos", "teamLogos"})
+
+
+# Every stat carries four labels and a sentence besides its name; `seasons` lists every season.
+STANDINGS_DROPPED_KEYS = LINK_KEYS | {
+    "description",
+    "displayName",
+    "seasons",
+    "shortDisplayName",
+    "uid",
+}
+
+
+@recorder("espn_standings", "ESPN regular-season standings for the season of --date, all 30 teams")
+def record_espn_standings(day: date) -> None:
+    with make_client(_default("espn_site_api_base")) as client:
+        payload = get_standings(client, day)
+    write_fixture(
+        "espn", f"standings_{espn_season(day)}", _drop_keys(payload, STANDINGS_DROPPED_KEYS)
+    )
+
+
+INJURY_TEAMS = 3
+INJURY_DROPPED_KEYS = LINK_KEYS | {"longComment", "shortComment"}
+
+
+def _listed_elsewhere(team: Payload) -> bool:
+    """Whether the team lists a player whose own `athlete.team` is a different team."""
+    return any(i["athlete"]["team"]["id"] != team["id"] for i in team["injuries"])
+
+
+def _statuses(team: Payload) -> set[str]:
+    return {i["status"] for i in team["injuries"]}
+
+
+def _trim_injury_teams(teams: list[Payload]) -> list[Payload]:
+    """The first few teams, plus the first to list each status they lack, plus the first one
+    listing a player who is on another team, in original order."""
+    kept = set(range(min(INJURY_TEAMS, len(teams))))
+    seen = set[str]().union(*(_statuses(teams[i]) for i in kept))
+    for i, team in enumerate(teams):
+        if not _statuses(team) <= seen:
+            seen |= _statuses(team)
+            kept.add(i)
+    if not any(_listed_elsewhere(teams[i]) for i in kept):
+        first = next((i for i, t in enumerate(teams) if _listed_elsewhere(t)), None)
+        if first is not None:
+            kept.add(first)
+    return [t for i, t in enumerate(teams) if i in kept]
+
+
+@recorder(
+    "espn_injuries",
+    "ESPN injury report as of now (--date only picks the season), trimmed to a few teams",
+)
+def record_espn_injuries(day: date) -> None:
+    with make_client(_default("espn_site_api_base")) as client:
+        payload = get_injuries(client, day)
+    payload["injuries"] = _trim_injury_teams(payload.get("injuries", []))
+    write_fixture("espn", "injuries", _drop_keys(payload, INJURY_DROPPED_KEYS))
+
+
+# The teams of the 2026-27 opening night (scoreboard_20261020), so key-player tests can pair
+# the two fixtures; each team's leading scorers, in ESPN's points-per-game order.
+ATHLETE_TEAMS = frozenset({"DET", "BOS", "NY", "PHI", "SA", "OKC"})
+ATHLETES_PER_TEAM = 7
+ATHLETE_DROPPED_KEYS = LINK_KEYS | {"glossary", "ranks", "totals"}
+
+
+def _trim_athletes(athletes: list[Payload]) -> list[Payload]:
+    per_team: dict[str, int] = {}
+    kept: list[Payload] = []
+    for athlete in athletes:
+        team = athlete["athlete"].get("teamShortName")
+        if team in ATHLETE_TEAMS and per_team.get(team, 0) < ATHLETES_PER_TEAM:
+            per_team[team] = per_team.get(team, 0) + 1
+            kept.append(athlete)
+    return kept
+
+
+@recorder(
+    "espn_athletes",
+    f"ESPN regular-season athlete stats for the season of --date, {ATHLETES_PER_TEAM} per team "
+    f"for {len(ATHLETE_TEAMS)} teams",
+)
+def record_espn_athletes(day: date) -> None:
+    with make_client(_default("espn_web_api_base")) as client:
+        payload = get_athletes(client, day)
+    payload["athletes"] = _trim_athletes(payload.get("athletes", []))
+    write_fixture("espn", f"athletes_{espn_season(day)}", _drop_keys(payload, ATHLETE_DROPPED_KEYS))
 
 
 def _registry() -> str:

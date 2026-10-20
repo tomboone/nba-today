@@ -1,0 +1,4669 @@
+{
+  "athletes": [
+    {
+      "athlete": {
+        "age": 28,
+        "debutYear": 2018,
+        "displayName": "Shai Gilgeous-Alexander",
+        "firstName": "Shai",
+        "guid": "4dcec409-3ff9-2881-2bc3-b4289ce6c36d",
+        "id": "4278073",
+        "lastName": "Gilgeous-Alexander",
+        "position": {
+          "abbreviation": "G",
+          "displayName": "Guard",
+          "id": "3",
+          "leaf": false,
+          "name": "Guard",
+          "slug": "guard"
+        },
+        "shortName": "S. Gilgeous-Alexander",
+        "slug": "shai-gilgeous-alexander",
+        "status": {
+          "abbreviation": "Active",
+          "id": "1",
+          "name": "Active",
+          "type": "active"
+        },
+        "teamId": "25",
+        "teamName": "Thunder",
+        "teamShortName": "OKC",
+        "teamUId": "s:40~l:46~t:25",
+        "teams": [
+          {
+            "abbreviation": "OKC",
+            "alternateColor": "ef3b24",
+            "color": "007ac1",
+            "displayName": "Oklahoma City Thunder",
+            "id": "25",
+            "name": "Thunder",
+            "shortDisplayName": "Thunder",
+            "slug": "oklahoma-city-thunder"
+          }
+        ],
+        "type": "basketball",
+        "uid": "s:40~l:46~a:4278073"
+      },
+      "categories": [
+        {
+          "displayName": "Own General",
+          "name": "general",
+          "splitId": "0",
+          "values": [
+            68.0,
+            33.22059,
+            2.0441177,
+            0.0,
+            3.0,
+            0.0,
+            8.0,
+            0.0,
+            2259.0,
+            292.0,
+            139.0,
+            4.2941175
+          ]
+        },
+        {
+          "displayName": "Own Offensive",
+          "name": "offensive",
+          "splitId": "0",
+          "values": [
+            31.132353,
+            10.75,
+            19.42647,
+            55.33700180053711,
+            1.6911764,
+            4.382353,
+            38.590604066848755,
+            7.9411764,
+            9.029411,
+            87.947998046875,
+            6.5882354,
+            2.2205882,
+            2117.0,
+            731.0,
+            1321.0,
+            115.0,
+            298.0,
+            540.0,
+            614.0,
+            448.0,
+            151.0
+          ]
+        },
+        {
+          "displayName": "Own Defensive",
+          "name": "defensive",
+          "splitId": "0",
+          "values": [
+            1.3970588,
+            0.7647059,
+            95.0,
+            52.0
+          ]
+        }
+      ]
+    },
+    {
+      "athlete": {
+        "age": 29,
+        "debutYear": 2016,
+        "displayName": "Jaylen Brown",
+        "firstName": "Jaylen",
+        "guid": "0d5cde01-f6d3-225f-dae5-44ef3304cda2",
+        "id": "3917376",
+        "lastName": "Brown",
+        "position": {
+          "abbreviation": "G",
+          "displayName": "Guard",
+          "id": "3",
+          "leaf": false,
+          "name": "Guard",
+          "slug": "guard"
+        },
+        "shortName": "J. Brown",
+        "slug": "jaylen-brown",
+        "status": {
+          "abbreviation": "Active",
+          "id": "1",
+          "name": "Active",
+          "type": "active"
+        },
+        "teamId": "2",
+        "teamName": "Celtics",
+        "teamShortName": "BOS",
+        "teamUId": "s:40~l:46~t:2",
+        "teams": [
+          {
+            "abbreviation": "BOS",
+            "alternateColor": "ffffff",
+            "color": "008348",
+            "displayName": "Boston Celtics",
+            "id": "2",
+            "name": "Celtics",
+            "shortDisplayName": "Celtics",
+            "slug": "boston-celtics"
+          }
+        ],
+        "type": "basketball",
+        "uid": "s:40~l:46~a:3917376"
+      },
+      "categories": [
+        {
+          "displayName": "Own General",
+          "name": "general",
+          "splitId": "0",
+          "values": [
+            71.0,
+            34.40845,
+            2.690141,
+            2.0,
+            12.0,
+            1.0,
+            14.0,
+            3.0,
+            2443.0,
+            492.0,
+            191.0,
+            6.9295774
+          ]
+        },
+        {
+          "displayName": "Own Offensive",
+          "name": "offensive",
+          "splitId": "0",
+          "values": [
+            28.704226,
+            10.366198,
+            21.732395,
+            47.69900131225586,
+            1.971831,
+            5.6901407,
+            34.65346395969391,
+            6.0,
+            7.549296,
+            79.47799682617188,
+            5.1267605,
+            3.6478872,
+            2038.0,
+            736.0,
+            1543.0,
+            140.0,
+            404.0,
+            426.0,
+            536.0,
+            364.0,
+            259.0
+          ]
+        },
+        {
+          "displayName": "Own Defensive",
+          "name": "defensive",
+          "splitId": "0",
+          "values": [
+            1.0140845,
+            0.3802817,
+            72.0,
+            27.0
+          ]
+        }
+      ]
+    },
+    {
+      "athlete": {
+        "age": 25,
+        "debutYear": 2020,
+        "displayName": "Tyrese Maxey",
+        "firstName": "Tyrese",
+        "guid": "4a24e9cd-a7a5-371b-9148-bef246046609",
+        "id": "4431678",
+        "lastName": "Maxey",
+        "position": {
+          "abbreviation": "G",
+          "displayName": "Guard",
+          "id": "3",
+          "leaf": false,
+          "name": "Guard",
+          "slug": "guard"
+        },
+        "shortName": "T. Maxey",
+        "slug": "tyrese-maxey",
+        "status": {
+          "abbreviation": "Active",
+          "id": "1",
+          "name": "Active",
+          "type": "active"
+        },
+        "teamId": "20",
+        "teamName": "76ers",
+        "teamShortName": "PHI",
+        "teamUId": "s:40~l:46~t:20",
+        "teams": [
+          {
+            "abbreviation": "PHI",
+            "alternateColor": "e01234",
+            "color": "1d428a",
+            "displayName": "Philadelphia 76ers",
+            "id": "20",
+            "name": "76ers",
+            "shortDisplayName": "76ers",
+            "slug": "philadelphia-76ers"
+          }
+        ],
+        "type": "basketball",
+        "uid": "s:40~l:46~a:4431678"
+      },
+      "categories": [
+        {
+          "displayName": "Own General",
+          "name": "general",
+          "splitId": "0",
+          "values": [
+            70.0,
+            38.014286,
+            2.1571429,
+            0.0,
+            4.0,
+            0.0,
+            7.0,
+            0.0,
+            2661.0,
+            290.0,
+            151.0,
+            4.142857
+          ]
+        },
+        {
+          "displayName": "Own Offensive",
+          "name": "offensive",
+          "splitId": "0",
+          "values": [
+            28.285715,
+            9.914286,
+            21.442858,
+            46.236000061035156,
+            3.142857,
+            8.557143,
+            36.72787845134735,
+            5.3142858,
+            5.957143,
+            89.20899963378906,
+            6.5857143,
+            2.442857,
+            1980.0,
+            694.0,
+            1501.0,
+            220.0,
+            599.0,
+            372.0,
+            417.0,
+            461.0,
+            171.0
+          ]
+        },
+        {
+          "displayName": "Own Defensive",
+          "name": "defensive",
+          "splitId": "0",
+          "values": [
+            1.8571428,
+            0.78571427,
+            130.0,
+            55.0
+          ]
+        }
+      ]
+    },
+    {
+      "athlete": {
+        "age": 30,
+        "debutYear": 2018,
+        "displayName": "Jalen Brunson",
+        "firstName": "Jalen",
+        "guid": "89519c75-cf8a-38e7-1151-b6247a2d4535",
+        "id": "3934672",
+        "lastName": "Brunson",
+        "position": {
+          "abbreviation": "G",
+          "displayName": "Guard",
+          "id": "3",
+          "leaf": false,
+          "name": "Guard",
+          "slug": "guard"
+        },
+        "shortName": "J. Brunson",
+        "slug": "jalen-brunson",
+        "status": {
+          "abbreviation": "Active",
+          "id": "1",
+          "name": "Active",
+          "type": "active"
+        },
+        "teamId": "18",
+        "teamName": "Knicks",
+        "teamShortName": "NY",
+        "teamUId": "s:40~l:46~t:18",
+        "teams": [
+          {
+            "abbreviation": "NY",
+            "alternateColor": "f58426",
+            "color": "1d428a",
+            "displayName": "New York Knicks",
+            "id": "18",
+            "name": "Knicks",
+            "shortDisplayName": "Knicks",
+            "slug": "new-york-knicks"
+          }
+        ],
+        "type": "basketball",
+        "uid": "s:40~l:46~a:3934672"
+      },
+      "categories": [
+        {
+          "displayName": "Own General",
+          "name": "general",
+          "splitId": "0",
+          "values": [
+            74.0,
+            35.0,
+            2.2972972,
+            0.0,
+            2.0,
+            0.0,
+            12.0,
+            0.0,
+            2590.0,
+            247.0,
+            170.0,
+            3.337838
+          ]
+        },
+        {
+          "displayName": "Own Offensive",
+          "name": "offensive",
+          "splitId": "0",
+          "values": [
+            26.04054,
+            9.310811,
+            19.932432,
+            46.71200180053711,
+            2.6351352,
+            7.135135,
+            36.93181872367859,
+            4.783784,
+            5.689189,
+            84.08599853515625,
+            6.7972975,
+            2.3648648,
+            1927.0,
+            689.0,
+            1475.0,
+            195.0,
+            528.0,
+            354.0,
+            421.0,
+            503.0,
+            175.0
+          ]
+        },
+        {
+          "displayName": "Own Defensive",
+          "name": "defensive",
+          "splitId": "0",
+          "values": [
+            0.7702703,
+            0.10810811,
+            57.0,
+            8.0
+          ]
+        }
+      ]
+    },
+    {
+      "athlete": {
+        "age": 22,
+        "displayName": "Victor Wembanyama",
+        "firstName": "Victor",
+        "guid": "0e8844b2-d923-3926-82d2-f19a29d69490",
+        "id": "5104157",
+        "lastName": "Wembanyama",
+        "position": {
+          "abbreviation": "F",
+          "displayName": "Forward",
+          "id": "7",
+          "leaf": false,
+          "name": "Forward",
+          "slug": "forward"
+        },
+        "shortName": "V. Wembanyama",
+        "slug": "victor-wembanyama",
+        "status": {
+          "abbreviation": "Active",
+          "id": "1",
+          "name": "Active",
+          "type": "active"
+        },
+        "teamId": "24",
+        "teamName": "Spurs",
+        "teamShortName": "SA",
+        "teamUId": "s:40~l:46~t:24",
+        "teams": [
+          {
+            "abbreviation": "SA",
+            "alternateColor": "c4ced4",
+            "color": "000000",
+            "displayName": "San Antonio Spurs",
+            "id": "24",
+            "name": "Spurs",
+            "shortDisplayName": "Spurs",
+            "slug": "san-antonio-spurs"
+          }
+        ],
+        "type": "basketball",
+        "uid": "s:40~l:46~a:5104157"
+      },
+      "categories": [
+        {
+          "displayName": "Own General",
+          "name": "general",
+          "splitId": "0",
+          "values": [
+            64.0,
+            29.15625,
+            2.4375,
+            1.0,
+            2.0,
+            0.0,
+            42.0,
+            1.0,
+            1866.0,
+            736.0,
+            156.0,
+            11.5
+          ]
+        },
+        {
+          "displayName": "Own Offensive",
+          "name": "offensive",
+          "splitId": "0",
+          "values": [
+            25.0,
+            8.640625,
+            16.875,
+            51.20399856567383,
+            1.90625,
+            5.46875,
+            34.857141971588135,
+            5.8125,
+            7.03125,
+            82.66699981689453,
+            3.109375,
+            2.421875,
+            1600.0,
+            553.0,
+            1080.0,
+            122.0,
+            350.0,
+            372.0,
+            450.0,
+            199.0,
+            155.0
+          ]
+        },
+        {
+          "displayName": "Own Defensive",
+          "name": "defensive",
+          "splitId": "0",
+          "values": [
+            1.03125,
+            3.078125,
+            66.0,
+            197.0
+          ]
+        }
+      ]
+    },
+    {
+      "athlete": {
+        "age": 25,
+        "displayName": "Cade Cunningham",
+        "firstName": "Cade",
+        "guid": "c28c6569-86f0-3c1e-bcab-b946fbc06ff6",
+        "id": "4432166",
+        "lastName": "Cunningham",
+        "position": {
+          "abbreviation": "G",
+          "displayName": "Guard",
+          "id": "3",
+          "leaf": false,
+          "name": "Guard",
+          "slug": "guard"
+        },
+        "shortName": "C. Cunningham",
+        "slug": "cade-cunningham",
+        "status": {
+          "abbreviation": "Active",
+          "id": "1",
+          "name": "Active",
+          "type": "active"
+        },
+        "teamId": "8",
+        "teamName": "Pistons",
+        "teamShortName": "DET",
+        "teamUId": "s:40~l:46~t:8",
+        "teams": [
+          {
+            "abbreviation": "DET",
+            "alternateColor": "c8102e",
+            "color": "1d428a",
+            "displayName": "Detroit Pistons",
+            "id": "8",
+            "name": "Pistons",
+            "shortDisplayName": "Pistons",
+            "slug": "detroit-pistons"
+          }
+        ],
+        "type": "basketball",
+        "uid": "s:40~l:46~a:4432166"
+      },
+      "categories": [
+        {
+          "displayName": "Own General",
+          "name": "general",
+          "splitId": "0",
+          "values": [
+            64.0,
+            33.9375,
+            3.0625,
+            0.0,
+            8.0,
+            0.0,
+            38.0,
+            3.0,
+            2172.0,
+            355.0,
+            196.0,
+            5.546875
+          ]
+        },
+        {
+          "displayName": "Own Offensive",
+          "name": "offensive",
+          "splitId": "0",
+          "values": [
+            23.921875,
+            8.5625,
+            18.578125,
+            46.0890007019043,
+            1.953125,
+            5.71875,
+            34.153005480766296,
+            4.84375,
+            5.96875,
+            81.1520004272461,
+            9.90625,
+            3.6875,
+            1531.0,
+            548.0,
+            1189.0,
+            125.0,
+            366.0,
+            310.0,
+            382.0,
+            634.0,
+            236.0
+          ]
+        },
+        {
+          "displayName": "Own Defensive",
+          "name": "defensive",
+          "splitId": "0",
+          "values": [
+            1.4375,
+            0.84375,
+            92.0,
+            54.0
+          ]
+        }
+      ]
+    },
+    {
+      "athlete": {
+        "age": 30,
+        "debutYear": 2015,
+        "displayName": "Karl-Anthony Towns",
+        "firstName": "Karl-Anthony",
+        "guid": "12998df5-b137-fe32-8e90-f3844e8d8ee6",
+        "id": "3136195",
+        "lastName": "Towns",
+        "position": {
+          "abbreviation": "C",
+          "displayName": "Center",
+          "id": "9",
+          "leaf": false,
+          "name": "Center",
+          "slug": "center"
+        },
+        "shortName": "K. Towns",
+        "slug": "karl-anthony-towns",
+        "status": {
+          "abbreviation": "Active",
+          "id": "1",
+          "name": "Active",
+          "type": "active"
+        },
+        "teamId": "18",
+        "teamName": "Knicks",
+        "teamShortName": "NY",
+        "teamUId": "s:40~l:46~t:18",
+        "teams": [
+          {
+            "abbreviation": "NY",
+            "alternateColor": "f58426",
+            "color": "1d428a",
+            "displayName": "New York Knicks",
+            "id": "18",
+            "name": "Knicks",
+            "shortDisplayName": "Knicks",
+            "slug": "new-york-knicks"
+          }
+        ],
+        "type": "basketball",
+        "uid": "s:40~l:46~a:3136195"
+      },
+      "categories": [
+        {
+          "displayName": "Own General",
+          "name": "general",
+          "splitId": "0",
+          "values": [
+            75.0,
+            30.96,
+            3.4,
+            2.0,
+            5.0,
+            0.0,
+            56.0,
+            1.0,
+            2322.0,
+            889.0,
+            255.0,
+            11.853333
+          ]
+        },
+        {
+          "displayName": "Own Offensive",
+          "name": "offensive",
+          "splitId": "0",
+          "values": [
+            20.053333,
+            6.8933334,
+            13.76,
+            50.09700012207031,
+            1.5066667,
+            4.0933332,
+            36.807817220687866,
+            4.76,
+            5.5466666,
+            85.81700134277344,
+            3.0133333,
+            2.4933333,
+            1504.0,
+            517.0,
+            1032.0,
+            113.0,
+            307.0,
+            357.0,
+            416.0,
+            226.0,
+            187.0
+          ]
+        },
+        {
+          "displayName": "Own Defensive",
+          "name": "defensive",
+          "splitId": "0",
+          "values": [
+            0.8666667,
+            0.53333336,
+            65.0,
+            40.0
+          ]
+        }
+      ]
+    },
+    {
+      "athlete": {
+        "age": 22,
+        "displayName": "Jalen Duren",
+        "firstName": "Jalen",
+        "guid": "6e30fca4-6751-37b6-b09a-2e4ecbec716e",
+        "id": "4433621",
+        "lastName": "Duren",
+        "position": {
+          "abbreviation": "C",
+          "displayName": "Center",
+          "id": "9",
+          "leaf": false,
+          "name": "Center",
+          "slug": "center"
+        },
+        "shortName": "J. Duren",
+        "slug": "jalen-duren",
+        "status": {
+          "abbreviation": "Active",
+          "id": "1",
+          "name": "Active",
+          "type": "active"
+        },
+        "teamId": "8",
+        "teamName": "Pistons",
+        "teamShortName": "DET",
+        "teamUId": "s:40~l:46~t:8",
+        "teams": [
+          {
+            "abbreviation": "DET",
+            "alternateColor": "c8102e",
+            "color": "1d428a",
+            "displayName": "Detroit Pistons",
+            "id": "8",
+            "name": "Pistons",
+            "shortDisplayName": "Pistons",
+            "slug": "detroit-pistons"
+          }
+        ],
+        "type": "basketball",
+        "uid": "s:40~l:46~a:4433621"
+      },
+      "categories": [
+        {
+          "displayName": "Own General",
+          "name": "general",
+          "splitId": "0",
+          "values": [
+            70.0,
+            28.22857,
+            2.7857144,
+            3.0,
+            7.0,
+            2.0,
+            41.0,
+            0.0,
+            1976.0,
+            737.0,
+            195.0,
+            10.528571
+          ]
+        },
+        {
+          "displayName": "Own Offensive",
+          "name": "offensive",
+          "splitId": "0",
+          "values": [
+            19.5,
+            7.457143,
+            11.471429,
+            65.00599670410156,
+            0.0,
+            0.0,
+            0.0,
+            4.5857143,
+            6.142857,
+            74.6510009765625,
+            1.9714285,
+            1.8571428,
+            1365.0,
+            522.0,
+            803.0,
+            0.0,
+            0.0,
+            321.0,
+            430.0,
+            138.0,
+            130.0
+          ]
+        },
+        {
+          "displayName": "Own Defensive",
+          "name": "defensive",
+          "splitId": "0",
+          "values": [
+            0.8142857,
+            0.8428571,
+            57.0,
+            59.0
+          ]
+        }
+      ]
+    },
+    {
+      "athlete": {
+        "age": 28,
+        "debutYear": 2017,
+        "displayName": "De'Aaron Fox",
+        "firstName": "De'Aaron",
+        "guid": "5f18d1cf-1c2e-3601-a04e-1a3fc84d8ef1",
+        "id": "4066259",
+        "lastName": "Fox",
+        "position": {
+          "abbreviation": "G",
+          "displayName": "Guard",
+          "id": "3",
+          "leaf": false,
+          "name": "Guard",
+          "slug": "guard"
+        },
+        "shortName": "D. Fox",
+        "slug": "deaaron-fox",
+        "status": {
+          "abbreviation": "Active",
+          "id": "1",
+          "name": "Active",
+          "type": "active"
+        },
+        "teamId": "24",
+        "teamName": "Spurs",
+        "teamShortName": "SA",
+        "teamUId": "s:40~l:46~t:24",
+        "teams": [
+          {
+            "abbreviation": "SA",
+            "alternateColor": "c4ced4",
+            "color": "000000",
+            "displayName": "San Antonio Spurs",
+            "id": "24",
+            "name": "Spurs",
+            "shortDisplayName": "Spurs",
+            "slug": "san-antonio-spurs"
+          }
+        ],
+        "type": "basketball",
+        "uid": "s:40~l:46~a:4066259"
+      },
+      "categories": [
+        {
+          "displayName": "Own General",
+          "name": "general",
+          "splitId": "0",
+          "values": [
+            72.0,
+            30.98611,
+            2.25,
+            0.0,
+            2.0,
+            0.0,
+            8.0,
+            0.0,
+            2231.0,
+            270.0,
+            162.0,
+            3.75
+          ]
+        },
+        {
+          "displayName": "Own Offensive",
+          "name": "offensive",
+          "splitId": "0",
+          "values": [
+            18.555555,
+            7.0694447,
+            14.541667,
+            48.6150016784668,
+            1.8194444,
+            5.486111,
+            33.16455781459808,
+            2.5972223,
+            3.4166667,
+            76.01599884033203,
+            6.1805553,
+            2.2777777,
+            1336.0,
+            509.0,
+            1047.0,
+            131.0,
+            395.0,
+            187.0,
+            246.0,
+            445.0,
+            164.0
+          ]
+        },
+        {
+          "displayName": "Own Defensive",
+          "name": "defensive",
+          "splitId": "0",
+          "values": [
+            1.2361112,
+            0.2638889,
+            89.0,
+            19.0
+          ]
+        }
+      ]
+    },
+    {
+      "athlete": {
+        "age": 24,
+        "displayName": "Chet Holmgren",
+        "firstName": "Chet",
+        "guid": "d28316e9-20cc-3cb2-b5d7-afdb6418315b",
+        "id": "4433255",
+        "lastName": "Holmgren",
+        "position": {
+          "abbreviation": "C",
+          "displayName": "Center",
+          "id": "9",
+          "leaf": false,
+          "name": "Center",
+          "slug": "center"
+        },
+        "shortName": "C. Holmgren",
+        "slug": "chet-holmgren",
+        "status": {
+          "abbreviation": "Active",
+          "id": "1",
+          "name": "Active",
+          "type": "active"
+        },
+        "teamId": "25",
+        "teamName": "Thunder",
+        "teamShortName": "OKC",
+        "teamUId": "s:40~l:46~t:25",
+        "teams": [
+          {
+            "abbreviation": "OKC",
+            "alternateColor": "ef3b24",
+            "color": "007ac1",
+            "displayName": "Oklahoma City Thunder",
+            "id": "25",
+            "name": "Thunder",
+            "shortDisplayName": "Thunder",
+            "slug": "oklahoma-city-thunder"
+          }
+        ],
+        "type": "basketball",
+        "uid": "s:40~l:46~a:4433255"
+      },
+      "categories": [
+        {
+          "displayName": "Own General",
+          "name": "general",
+          "splitId": "0",
+          "values": [
+            69.0,
+            28.942028,
+            2.289855,
+            0.0,
+            0.0,
+            0.0,
+            24.0,
+            0.0,
+            1997.0,
+            614.0,
+            158.0,
+            8.898551
+          ]
+        },
+        {
+          "displayName": "Own Offensive",
+          "name": "offensive",
+          "splitId": "0",
+          "values": [
+            17.115942,
+            6.289855,
+            11.289855,
+            55.71200180053712,
+            1.2753624,
+            3.5217392,
+            36.21399104595184,
+            3.2608695,
+            4.115942,
+            79.2249984741211,
+            1.6666666,
+            1.5507246,
+            1181.0,
+            434.0,
+            779.0,
+            88.0,
+            243.0,
+            225.0,
+            284.0,
+            115.0,
+            107.0
+          ]
+        },
+        {
+          "displayName": "Own Defensive",
+          "name": "defensive",
+          "splitId": "0",
+          "values": [
+            0.6231884,
+            1.8985507,
+            43.0,
+            131.0
+          ]
+        }
+      ]
+    },
+    {
+      "athlete": {
+        "age": 28,
+        "debutYear": 2020,
+        "displayName": "Payton Pritchard",
+        "firstName": "Payton",
+        "guid": "930f5cd6-6d49-6508-6824-19fc78e33a32",
+        "id": "4066354",
+        "lastName": "Pritchard",
+        "position": {
+          "abbreviation": "G",
+          "displayName": "Guard",
+          "id": "3",
+          "leaf": false,
+          "name": "Guard",
+          "slug": "guard"
+        },
+        "shortName": "P. Pritchard",
+        "slug": "payton-pritchard",
+        "status": {
+          "abbreviation": "Active",
+          "id": "1",
+          "name": "Active",
+          "type": "active"
+        },
+        "teamId": "2",
+        "teamName": "Celtics",
+        "teamShortName": "BOS",
+        "teamUId": "s:40~l:46~t:2",
+        "teams": [
+          {
+            "abbreviation": "BOS",
+            "alternateColor": "ffffff",
+            "color": "008348",
+            "displayName": "Boston Celtics",
+            "id": "2",
+            "name": "Celtics",
+            "shortDisplayName": "Celtics",
+            "slug": "boston-celtics"
+          }
+        ],
+        "type": "basketball",
+        "uid": "s:40~l:46~a:4066354"
+      },
+      "categories": [
+        {
+          "displayName": "Own General",
+          "name": "general",
+          "splitId": "0",
+          "values": [
+            79.0,
+            32.35443,
+            1.493671,
+            0.0,
+            0.0,
+            0.0,
+            5.0,
+            0.0,
+            2556.0,
+            312.0,
+            118.0,
+            3.949367
+          ]
+        },
+        {
+          "displayName": "Own Offensive",
+          "name": "offensive",
+          "splitId": "0",
+          "values": [
+            17.025316,
+            6.405063,
+            13.810126,
+            46.37900161743164,
+            2.6835444,
+            7.113924,
+            37.72242069244385,
+            1.5316455,
+            1.721519,
+            88.97100067138672,
+            5.164557,
+            1.3797468,
+            1345.0,
+            506.0,
+            1091.0,
+            212.0,
+            562.0,
+            121.0,
+            136.0,
+            408.0,
+            109.0
+          ]
+        },
+        {
+          "displayName": "Own Defensive",
+          "name": "defensive",
+          "splitId": "0",
+          "values": [
+            0.73417723,
+            0.12658228,
+            58.0,
+            10.0
+          ]
+        }
+      ]
+    },
+    {
+      "athlete": {
+        "age": 29,
+        "debutYear": 2017,
+        "displayName": "OG Anunoby",
+        "firstName": "OG",
+        "guid": "31ec117d-6e14-d4f0-9414-9d2467197179",
+        "id": "3934719",
+        "lastName": "Anunoby",
+        "position": {
+          "abbreviation": "F",
+          "displayName": "Forward",
+          "id": "7",
+          "leaf": false,
+          "name": "Forward",
+          "slug": "forward"
+        },
+        "shortName": "O. Anunoby",
+        "slug": "og-anunoby",
+        "status": {
+          "abbreviation": "Active",
+          "id": "1",
+          "name": "Active",
+          "type": "active"
+        },
+        "teamId": "18",
+        "teamName": "Knicks",
+        "teamShortName": "NY",
+        "teamUId": "s:40~l:46~t:18",
+        "teams": [
+          {
+            "abbreviation": "NY",
+            "alternateColor": "f58426",
+            "color": "1d428a",
+            "displayName": "New York Knicks",
+            "id": "18",
+            "name": "Knicks",
+            "shortDisplayName": "Knicks",
+            "slug": "new-york-knicks"
+          }
+        ],
+        "type": "basketball",
+        "uid": "s:40~l:46~a:3934719"
+      },
+      "categories": [
+        {
+          "displayName": "Own General",
+          "name": "general",
+          "splitId": "0",
+          "values": [
+            67.0,
+            33.19403,
+            2.4477613,
+            0.0,
+            2.0,
+            0.0,
+            5.0,
+            0.0,
+            2224.0,
+            351.0,
+            164.0,
+            5.238806
+          ]
+        },
+        {
+          "displayName": "Own Offensive",
+          "name": "offensive",
+          "splitId": "0",
+          "values": [
+            16.686567,
+            5.80597,
+            12.0,
+            48.382999420166016,
+            2.3432837,
+            6.074627,
+            38.57493996620178,
+            2.7313433,
+            3.2985075,
+            82.80500030517578,
+            2.164179,
+            1.8358209,
+            1118.0,
+            389.0,
+            804.0,
+            157.0,
+            407.0,
+            183.0,
+            221.0,
+            145.0,
+            123.0
+          ]
+        },
+        {
+          "displayName": "Own Defensive",
+          "name": "defensive",
+          "splitId": "0",
+          "values": [
+            1.5522388,
+            0.7164179,
+            104.0,
+            48.0
+          ]
+        }
+      ]
+    },
+    {
+      "athlete": {
+        "age": 21,
+        "displayName": "Stephon Castle",
+        "firstName": "Stephon",
+        "guid": "26c7892b-12d0-3b1d-9645-f881921a1a20",
+        "id": "4845367",
+        "lastName": "Castle",
+        "position": {
+          "abbreviation": "G",
+          "displayName": "Guard",
+          "id": "3",
+          "leaf": false,
+          "name": "Guard",
+          "slug": "guard"
+        },
+        "shortName": "S. Castle",
+        "slug": "stephon-castle",
+        "status": {
+          "abbreviation": "Active",
+          "id": "1",
+          "name": "Active",
+          "type": "active"
+        },
+        "teamId": "24",
+        "teamName": "Spurs",
+        "teamShortName": "SA",
+        "teamUId": "s:40~l:46~t:24",
+        "teams": [
+          {
+            "abbreviation": "SA",
+            "alternateColor": "c4ced4",
+            "color": "000000",
+            "displayName": "San Antonio Spurs",
+            "id": "24",
+            "name": "Spurs",
+            "shortDisplayName": "Spurs",
+            "slug": "san-antonio-spurs"
+          }
+        ],
+        "type": "basketball",
+        "uid": "s:40~l:46~a:4845367"
+      },
+      "categories": [
+        {
+          "displayName": "Own General",
+          "name": "general",
+          "splitId": "0",
+          "values": [
+            68.0,
+            29.970589,
+            3.264706,
+            1.0,
+            3.0,
+            0.0,
+            18.0,
+            5.0,
+            2038.0,
+            362.0,
+            222.0,
+            5.3235292
+          ]
+        },
+        {
+          "displayName": "Own Offensive",
+          "name": "offensive",
+          "splitId": "0",
+          "values": [
+            16.661764,
+            5.6617646,
+            12.014706,
+            47.124000549316406,
+            1.1911764,
+            3.5882354,
+            33.196720480918884,
+            4.147059,
+            5.647059,
+            73.43800354003906,
+            7.382353,
+            3.1911764,
+            1133.0,
+            385.0,
+            817.0,
+            81.0,
+            244.0,
+            282.0,
+            384.0,
+            502.0,
+            217.0
+          ]
+        },
+        {
+          "displayName": "Own Defensive",
+          "name": "defensive",
+          "splitId": "0",
+          "values": [
+            1.1470588,
+            0.27941176,
+            78.0,
+            19.0
+          ]
+        }
+      ]
+    },
+    {
+      "athlete": {
+        "age": 32,
+        "debutYear": 2017,
+        "displayName": "Derrick White",
+        "firstName": "Derrick",
+        "guid": "8aba42b7-4c1e-6ccd-3150-97691c299668",
+        "id": "3078576",
+        "lastName": "White",
+        "position": {
+          "abbreviation": "G",
+          "displayName": "Guard",
+          "id": "3",
+          "leaf": false,
+          "name": "Guard",
+          "slug": "guard"
+        },
+        "shortName": "D. White",
+        "slug": "derrick-white",
+        "status": {
+          "abbreviation": "Active",
+          "id": "1",
+          "name": "Active",
+          "type": "active"
+        },
+        "teamId": "2",
+        "teamName": "Celtics",
+        "teamShortName": "BOS",
+        "teamUId": "s:40~l:46~t:2",
+        "teams": [
+          {
+            "abbreviation": "BOS",
+            "alternateColor": "ffffff",
+            "color": "008348",
+            "displayName": "Boston Celtics",
+            "id": "2",
+            "name": "Celtics",
+            "shortDisplayName": "Celtics",
+            "slug": "boston-celtics"
+          }
+        ],
+        "type": "basketball",
+        "uid": "s:40~l:46~a:3078576"
+      },
+      "categories": [
+        {
+          "displayName": "Own General",
+          "name": "general",
+          "splitId": "0",
+          "values": [
+            77.0,
+            34.090908,
+            1.5454545,
+            1.0,
+            2.0,
+            0.0,
+            1.0,
+            0.0,
+            2625.0,
+            339.0,
+            119.0,
+            4.4025974
+          ]
+        },
+        {
+          "displayName": "Own Offensive",
+          "name": "offensive",
+          "splitId": "0",
+          "values": [
+            16.454546,
+            5.6753244,
+            14.38961,
+            39.439998626708984,
+            2.7142856,
+            8.311688,
+            32.65624940395355,
+            2.3896103,
+            2.6493506,
+            90.19599914550781,
+            5.376623,
+            1.7402598,
+            1267.0,
+            437.0,
+            1108.0,
+            209.0,
+            640.0,
+            184.0,
+            204.0,
+            414.0,
+            134.0
+          ]
+        },
+        {
+          "displayName": "Own Defensive",
+          "name": "defensive",
+          "splitId": "0",
+          "values": [
+            1.1428572,
+            1.2727273,
+            88.0,
+            98.0
+          ]
+        }
+      ]
+    },
+    {
+      "athlete": {
+        "age": 21,
+        "displayName": "VJ Edgecombe",
+        "firstName": "VJ",
+        "guid": "d5a0355a-95f4-38ed-b96d-ea0302ebbd0b",
+        "id": "5124612",
+        "lastName": "Edgecombe",
+        "position": {
+          "abbreviation": "G",
+          "displayName": "Guard",
+          "id": "3",
+          "leaf": false,
+          "name": "Guard",
+          "slug": "guard"
+        },
+        "shortName": "V. Edgecombe",
+        "slug": "vj-edgecombe",
+        "status": {
+          "abbreviation": "Active",
+          "id": "1",
+          "name": "Active",
+          "type": "active"
+        },
+        "teamId": "20",
+        "teamName": "76ers",
+        "teamShortName": "PHI",
+        "teamUId": "s:40~l:46~t:20",
+        "teams": [
+          {
+            "abbreviation": "PHI",
+            "alternateColor": "e01234",
+            "color": "1d428a",
+            "displayName": "Philadelphia 76ers",
+            "id": "20",
+            "name": "76ers",
+            "shortDisplayName": "76ers",
+            "slug": "philadelphia-76ers"
+          }
+        ],
+        "type": "basketball",
+        "uid": "s:40~l:46~a:5124612"
+      },
+      "categories": [
+        {
+          "displayName": "Own General",
+          "name": "general",
+          "splitId": "0",
+          "values": [
+            75.0,
+            34.97333,
+            2.8533332,
+            0.0,
+            3.0,
+            0.0,
+            7.0,
+            0.0,
+            2623.0,
+            423.0,
+            214.0,
+            5.64
+          ]
+        },
+        {
+          "displayName": "Own Offensive",
+          "name": "offensive",
+          "splitId": "0",
+          "values": [
+            15.986667,
+            6.0133333,
+            13.733334,
+            43.7859992980957,
+            1.9866667,
+            5.613333,
+            35.391923785209656,
+            1.9733334,
+            2.4133334,
+            81.76799774169922,
+            4.2,
+            1.8266667,
+            1199.0,
+            451.0,
+            1030.0,
+            149.0,
+            421.0,
+            148.0,
+            181.0,
+            315.0,
+            137.0
+          ]
+        },
+        {
+          "displayName": "Own Defensive",
+          "name": "defensive",
+          "splitId": "0",
+          "values": [
+            1.4266666,
+            0.52,
+            107.0,
+            39.0
+          ]
+        }
+      ]
+    },
+    {
+      "athlete": {
+        "age": 35,
+        "debutYear": 2011,
+        "displayName": "Nikola Vucevic",
+        "firstName": "Nikola",
+        "guid": "2c9b229f-cbd5-8e0b-cf3a-236f74f23867",
+        "id": "6478",
+        "lastName": "Vucevic",
+        "position": {
+          "abbreviation": "C",
+          "displayName": "Center",
+          "id": "9",
+          "leaf": false,
+          "name": "Center",
+          "slug": "center"
+        },
+        "shortName": "N. Vucevic",
+        "slug": "nikola-vucevic",
+        "status": {
+          "abbreviation": "Active",
+          "id": "1",
+          "name": "Active",
+          "type": "active"
+        },
+        "teamId": "2",
+        "teamName": "Celtics",
+        "teamShortName": "BOS",
+        "teamUId": "s:40~l:46~t:2",
+        "teams": [
+          {
+            "abbreviation": "BOS",
+            "alternateColor": "ffffff",
+            "color": "008348",
+            "displayName": "Boston Celtics",
+            "id": "2",
+            "name": "Celtics",
+            "shortDisplayName": "Celtics",
+            "slug": "boston-celtics"
+          },
+          {
+            "abbreviation": "CHI",
+            "alternateColor": "000000",
+            "color": "ce1141",
+            "displayName": "Chicago Bulls",
+            "id": "4",
+            "name": "Bulls",
+            "shortDisplayName": "Bulls",
+            "slug": "chicago-bulls"
+          }
+        ],
+        "type": "basketball",
+        "uid": "s:40~l:46~a:6478"
+      },
+      "categories": [
+        {
+          "displayName": "Own General",
+          "name": "general",
+          "splitId": "0",
+          "values": [
+            64.0,
+            28.40625,
+            1.984375,
+            0.0,
+            2.0,
+            0.0,
+            23.0,
+            0.0,
+            1818.0,
+            537.0,
+            127.0,
+            8.390625
+          ]
+        },
+        {
+          "displayName": "Own Offensive",
+          "name": "offensive",
+          "splitId": "0",
+          "values": [
+            15.078125,
+            6.15625,
+            12.484375,
+            49.3120002746582,
+            1.5625,
+            4.234375,
+            36.900368332862854,
+            1.203125,
+            1.453125,
+            82.7959976196289,
+            3.328125,
+            1.328125,
+            965.0,
+            394.0,
+            799.0,
+            100.0,
+            271.0,
+            77.0,
+            93.0,
+            213.0,
+            85.0
+          ]
+        },
+        {
+          "displayName": "Own Defensive",
+          "name": "defensive",
+          "splitId": "0",
+          "values": [
+            0.609375,
+            0.640625,
+            39.0,
+            41.0
+          ]
+        }
+      ]
+    },
+    {
+      "athlete": {
+        "age": 30,
+        "debutYear": 2018,
+        "displayName": "Mikal Bridges",
+        "firstName": "Mikal",
+        "guid": "cb79ebc7-b282-8247-5296-7b803d2cbc9e",
+        "id": "3147657",
+        "lastName": "Bridges",
+        "position": {
+          "abbreviation": "G",
+          "displayName": "Guard",
+          "id": "3",
+          "leaf": false,
+          "name": "Guard",
+          "slug": "guard"
+        },
+        "shortName": "M. Bridges",
+        "slug": "mikal-bridges",
+        "status": {
+          "abbreviation": "Active",
+          "id": "1",
+          "name": "Active",
+          "type": "active"
+        },
+        "teamId": "18",
+        "teamName": "Knicks",
+        "teamShortName": "NY",
+        "teamUId": "s:40~l:46~t:18",
+        "teams": [
+          {
+            "abbreviation": "NY",
+            "alternateColor": "f58426",
+            "color": "1d428a",
+            "displayName": "New York Knicks",
+            "id": "18",
+            "name": "Knicks",
+            "shortDisplayName": "Knicks",
+            "slug": "new-york-knicks"
+          }
+        ],
+        "type": "basketball",
+        "uid": "s:40~l:46~a:3147657"
+      },
+      "categories": [
+        {
+          "displayName": "Own General",
+          "name": "general",
+          "splitId": "0",
+          "values": [
+            82.0,
+            32.82927,
+            1.9512196,
+            0.0,
+            1.0,
+            0.0,
+            1.0,
+            0.0,
+            2692.0,
+            312.0,
+            160.0,
+            3.804878
+          ]
+        },
+        {
+          "displayName": "Own Offensive",
+          "name": "offensive",
+          "splitId": "0",
+          "values": [
+            14.402439,
+            5.756098,
+            11.743902,
+            49.01300048828125,
+            1.902439,
+            5.121951,
+            37.142857909202576,
+            0.9878049,
+            1.195122,
+            82.65299987792969,
+            3.707317,
+            1.0121951,
+            1181.0,
+            472.0,
+            963.0,
+            156.0,
+            420.0,
+            81.0,
+            98.0,
+            304.0,
+            83.0
+          ]
+        },
+        {
+          "displayName": "Own Defensive",
+          "name": "defensive",
+          "splitId": "0",
+          "values": [
+            1.304878,
+            0.75609756,
+            107.0,
+            62.0
+          ]
+        }
+      ]
+    },
+    {
+      "athlete": {
+        "age": 26,
+        "debutYear": 2020,
+        "displayName": "Devin Vassell",
+        "firstName": "Devin",
+        "guid": "4a925ef3-a49b-2fc8-b55e-da12e9bcfdb6",
+        "id": "4395630",
+        "lastName": "Vassell",
+        "position": {
+          "abbreviation": "G",
+          "displayName": "Guard",
+          "id": "3",
+          "leaf": false,
+          "name": "Guard",
+          "slug": "guard"
+        },
+        "shortName": "D. Vassell",
+        "slug": "devin-vassell",
+        "status": {
+          "abbreviation": "Active",
+          "id": "1",
+          "name": "Active",
+          "type": "active"
+        },
+        "teamId": "24",
+        "teamName": "Spurs",
+        "teamShortName": "SA",
+        "teamUId": "s:40~l:46~t:24",
+        "teams": [
+          {
+            "abbreviation": "SA",
+            "alternateColor": "c4ced4",
+            "color": "000000",
+            "displayName": "San Antonio Spurs",
+            "id": "24",
+            "name": "Spurs",
+            "shortDisplayName": "Spurs",
+            "slug": "san-antonio-spurs"
+          }
+        ],
+        "type": "basketball",
+        "uid": "s:40~l:46~a:4395630"
+      },
+      "categories": [
+        {
+          "displayName": "Own General",
+          "name": "general",
+          "splitId": "0",
+          "values": [
+            67.0,
+            30.507463,
+            1.5820895,
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            2044.0,
+            269.0,
+            106.0,
+            4.0149255
+          ]
+        },
+        {
+          "displayName": "Own Offensive",
+          "name": "offensive",
+          "splitId": "0",
+          "values": [
+            13.910448,
+            4.925373,
+            11.268657,
+            43.70899963378906,
+            2.477612,
+            6.447761,
+            38.42592537403107,
+            1.5820895,
+            1.9402986,
+            81.53800201416016,
+            2.4925373,
+            0.8955224,
+            932.0,
+            330.0,
+            755.0,
+            166.0,
+            432.0,
+            106.0,
+            130.0,
+            167.0,
+            60.0
+          ]
+        },
+        {
+          "displayName": "Own Defensive",
+          "name": "defensive",
+          "splitId": "0",
+          "values": [
+            0.8507463,
+            0.37313432,
+            57.0,
+            25.0
+          ]
+        }
+      ]
+    },
+    {
+      "athlete": {
+        "age": 26,
+        "displayName": "Quentin Grimes",
+        "firstName": "Quentin",
+        "guid": "dbe4d07d-9166-07d7-19f0-52cc771d179d",
+        "id": "4397014",
+        "lastName": "Grimes",
+        "position": {
+          "abbreviation": "G",
+          "displayName": "Guard",
+          "id": "3",
+          "leaf": false,
+          "name": "Guard",
+          "slug": "guard"
+        },
+        "shortName": "Q. Grimes",
+        "slug": "quentin-grimes",
+        "status": {
+          "abbreviation": "Active",
+          "id": "1",
+          "name": "Active",
+          "type": "active"
+        },
+        "teamId": "20",
+        "teamName": "76ers",
+        "teamShortName": "PHI",
+        "teamUId": "s:40~l:46~t:20",
+        "teams": [
+          {
+            "abbreviation": "PHI",
+            "alternateColor": "e01234",
+            "color": "1d428a",
+            "displayName": "Philadelphia 76ers",
+            "id": "20",
+            "name": "76ers",
+            "shortDisplayName": "76ers",
+            "slug": "philadelphia-76ers"
+          }
+        ],
+        "type": "basketball",
+        "uid": "s:40~l:46~a:4397014"
+      },
+      "categories": [
+        {
+          "displayName": "Own General",
+          "name": "general",
+          "splitId": "0",
+          "values": [
+            75.0,
+            29.413334,
+            2.0666666,
+            0.0,
+            0.0,
+            0.0,
+            2.0,
+            0.0,
+            2206.0,
+            273.0,
+            155.0,
+            3.64
+          ]
+        },
+        {
+          "displayName": "Own Offensive",
+          "name": "offensive",
+          "splitId": "0",
+          "values": [
+            13.413333,
+            4.5333333,
+            10.066667,
+            45.03300094604492,
+            1.6933334,
+            5.0666666,
+            33.42105150222778,
+            2.6533334,
+            3.16,
+            83.96600341796875,
+            3.2533333,
+            1.7733333,
+            1006.0,
+            340.0,
+            755.0,
+            127.0,
+            380.0,
+            199.0,
+            237.0,
+            244.0,
+            133.0
+          ]
+        },
+        {
+          "displayName": "Own Defensive",
+          "name": "defensive",
+          "splitId": "0",
+          "values": [
+            0.85333335,
+            0.37333333,
+            64.0,
+            28.0
+          ]
+        }
+      ]
+    },
+    {
+      "athlete": {
+        "age": 34,
+        "debutYear": 2011,
+        "displayName": "Tobias Harris",
+        "firstName": "Tobias",
+        "guid": "7975a3ae-314d-5282-e1d0-b9d4d47e151a",
+        "id": "6440",
+        "lastName": "Harris",
+        "position": {
+          "abbreviation": "F",
+          "displayName": "Forward",
+          "id": "7",
+          "leaf": false,
+          "name": "Forward",
+          "slug": "forward"
+        },
+        "shortName": "T. Harris",
+        "slug": "tobias-harris",
+        "status": {
+          "abbreviation": "Active",
+          "id": "1",
+          "name": "Active",
+          "type": "active"
+        },
+        "teamId": "8",
+        "teamName": "Pistons",
+        "teamShortName": "DET",
+        "teamUId": "s:40~l:46~t:8",
+        "teams": [
+          {
+            "abbreviation": "DET",
+            "alternateColor": "c8102e",
+            "color": "1d428a",
+            "displayName": "Detroit Pistons",
+            "id": "8",
+            "name": "Pistons",
+            "shortDisplayName": "Pistons",
+            "slug": "detroit-pistons"
+          }
+        ],
+        "type": "basketball",
+        "uid": "s:40~l:46~a:6440"
+      },
+      "categories": [
+        {
+          "displayName": "Own General",
+          "name": "general",
+          "splitId": "0",
+          "values": [
+            63.0,
+            27.698412,
+            1.6984127,
+            0.0,
+            5.0,
+            0.0,
+            3.0,
+            0.0,
+            1745.0,
+            323.0,
+            107.0,
+            5.126984
+          ]
+        },
+        {
+          "displayName": "Own Offensive",
+          "name": "offensive",
+          "splitId": "0",
+          "values": [
+            13.269841,
+            4.904762,
+            10.460318,
+            46.888999938964844,
+            1.3015873,
+            3.5396826,
+            36.77130043506622,
+            2.1587303,
+            2.4920635,
+            86.6240005493164,
+            2.4920635,
+            1.0,
+            836.0,
+            309.0,
+            659.0,
+            82.0,
+            223.0,
+            136.0,
+            157.0,
+            157.0,
+            63.0
+          ]
+        },
+        {
+          "displayName": "Own Defensive",
+          "name": "defensive",
+          "splitId": "0",
+          "values": [
+            0.9206349,
+            0.41269842,
+            58.0,
+            26.0
+          ]
+        }
+      ]
+    },
+    {
+      "athlete": {
+        "age": 27,
+        "debutYear": 2019,
+        "displayName": "Keldon Johnson",
+        "firstName": "Keldon",
+        "guid": "691dfac0-35e1-b597-c503-f0211c8f7f6f",
+        "id": "4395723",
+        "lastName": "Johnson",
+        "position": {
+          "abbreviation": "F",
+          "displayName": "Forward",
+          "id": "7",
+          "leaf": false,
+          "name": "Forward",
+          "slug": "forward"
+        },
+        "shortName": "K. Johnson",
+        "slug": "keldon-johnson",
+        "status": {
+          "abbreviation": "Active",
+          "id": "1",
+          "name": "Active",
+          "type": "active"
+        },
+        "teamId": "24",
+        "teamName": "Spurs",
+        "teamShortName": "SA",
+        "teamUId": "s:40~l:46~t:24",
+        "teams": [
+          {
+            "abbreviation": "SA",
+            "alternateColor": "c4ced4",
+            "color": "000000",
+            "displayName": "San Antonio Spurs",
+            "id": "24",
+            "name": "Spurs",
+            "shortDisplayName": "Spurs",
+            "slug": "san-antonio-spurs"
+          }
+        ],
+        "type": "basketball",
+        "uid": "s:40~l:46~a:4395723"
+      },
+      "categories": [
+        {
+          "displayName": "Own General",
+          "name": "general",
+          "splitId": "0",
+          "values": [
+            82.0,
+            23.304878,
+            1.9756098,
+            0.0,
+            1.0,
+            0.0,
+            5.0,
+            0.0,
+            1911.0,
+            440.0,
+            162.0,
+            5.365854
+          ]
+        },
+        {
+          "displayName": "Own Offensive",
+          "name": "offensive",
+          "splitId": "0",
+          "values": [
+            13.182927,
+            5.0487804,
+            9.719512,
+            51.944999694824226,
+            1.2073171,
+            3.3292682,
+            36.263737082481384,
+            1.8780488,
+            2.3658535,
+            79.38099670410156,
+            1.3536586,
+            0.85365856,
+            1081.0,
+            414.0,
+            797.0,
+            99.0,
+            273.0,
+            154.0,
+            194.0,
+            111.0,
+            70.0
+          ]
+        },
+        {
+          "displayName": "Own Defensive",
+          "name": "defensive",
+          "splitId": "0",
+          "values": [
+            0.5609756,
+            0.13414635,
+            46.0,
+            11.0
+          ]
+        }
+      ]
+    },
+    {
+      "athlete": {
+        "age": 32,
+        "debutYear": 2018,
+        "displayName": "Duncan Robinson",
+        "firstName": "Duncan",
+        "guid": "36432468-246f-8e5e-4079-cf34dafef796",
+        "id": "3157465",
+        "lastName": "Robinson",
+        "position": {
+          "abbreviation": "F",
+          "displayName": "Forward",
+          "id": "7",
+          "leaf": false,
+          "name": "Forward",
+          "slug": "forward"
+        },
+        "shortName": "D. Robinson",
+        "slug": "duncan-robinson",
+        "status": {
+          "abbreviation": "Active",
+          "id": "1",
+          "name": "Active",
+          "type": "active"
+        },
+        "teamId": "8",
+        "teamName": "Pistons",
+        "teamShortName": "DET",
+        "teamUId": "s:40~l:46~t:8",
+        "teams": [
+          {
+            "abbreviation": "DET",
+            "alternateColor": "c8102e",
+            "color": "1d428a",
+            "displayName": "Detroit Pistons",
+            "id": "8",
+            "name": "Pistons",
+            "shortDisplayName": "Pistons",
+            "slug": "detroit-pistons"
+          }
+        ],
+        "type": "basketball",
+        "uid": "s:40~l:46~a:3157465"
+      },
+      "categories": [
+        {
+          "displayName": "Own General",
+          "name": "general",
+          "splitId": "0",
+          "values": [
+            77.0,
+            27.441559,
+            2.1818182,
+            0.0,
+            4.0,
+            0.0,
+            0.0,
+            0.0,
+            2113.0,
+            205.0,
+            168.0,
+            2.6623378
+          ]
+        },
+        {
+          "displayName": "Own Offensive",
+          "name": "offensive",
+          "splitId": "0",
+          "values": [
+            12.194805,
+            4.12987,
+            9.064935,
+            45.558998107910156,
+            2.857143,
+            6.961039,
+            41.044774651527405,
+            1.0779221,
+            1.4285715,
+            75.45500183105469,
+            2.064935,
+            0.7012987,
+            939.0,
+            318.0,
+            698.0,
+            220.0,
+            536.0,
+            83.0,
+            110.0,
+            159.0,
+            54.0
+          ]
+        },
+        {
+          "displayName": "Own Defensive",
+          "name": "defensive",
+          "splitId": "0",
+          "values": [
+            0.5714286,
+            0.2857143,
+            44.0,
+            22.0
+          ]
+        }
+      ]
+    },
+    {
+      "athlete": {
+        "age": 31,
+        "debutYear": 2017,
+        "displayName": "Josh Hart",
+        "firstName": "Josh",
+        "guid": "4384c489-e5e6-695a-1c5f-b3e66edcb897",
+        "id": "3062679",
+        "lastName": "Hart",
+        "position": {
+          "abbreviation": "G",
+          "displayName": "Guard",
+          "id": "3",
+          "leaf": false,
+          "name": "Guard",
+          "slug": "guard"
+        },
+        "shortName": "J. Hart",
+        "slug": "josh-hart",
+        "status": {
+          "abbreviation": "Active",
+          "id": "1",
+          "name": "Active",
+          "type": "active"
+        },
+        "teamId": "18",
+        "teamName": "Knicks",
+        "teamShortName": "NY",
+        "teamUId": "s:40~l:46~t:18",
+        "teams": [
+          {
+            "abbreviation": "NY",
+            "alternateColor": "f58426",
+            "color": "1d428a",
+            "displayName": "New York Knicks",
+            "id": "18",
+            "name": "Knicks",
+            "shortDisplayName": "Knicks",
+            "slug": "new-york-knicks"
+          }
+        ],
+        "type": "basketball",
+        "uid": "s:40~l:46~a:3062679"
+      },
+      "categories": [
+        {
+          "displayName": "Own General",
+          "name": "general",
+          "splitId": "0",
+          "values": [
+            66.0,
+            30.212122,
+            2.5,
+            1.0,
+            3.0,
+            0.0,
+            13.0,
+            2.0,
+            1994.0,
+            486.0,
+            165.0,
+            7.3636365
+          ]
+        },
+        {
+          "displayName": "Own Offensive",
+          "name": "offensive",
+          "splitId": "0",
+          "values": [
+            12.0,
+            4.560606,
+            8.969697,
+            50.845001220703125,
+            1.5151515,
+            3.6666667,
+            41.322314739227295,
+            1.3636364,
+            1.8939394,
+            72.0,
+            4.8030305,
+            1.939394,
+            792.0,
+            301.0,
+            592.0,
+            100.0,
+            242.0,
+            90.0,
+            125.0,
+            317.0,
+            128.0
+          ]
+        },
+        {
+          "displayName": "Own Defensive",
+          "name": "defensive",
+          "splitId": "0",
+          "values": [
+            1.1363636,
+            0.25757575,
+            75.0,
+            17.0
+          ]
+        }
+      ]
+    },
+    {
+      "athlete": {
+        "age": 20,
+        "displayName": "Dylan Harper",
+        "firstName": "Dylan",
+        "guid": "d8fd1989-052d-3e45-91f2-6fda54fa5c8e",
+        "id": "5037871",
+        "lastName": "Harper",
+        "position": {
+          "abbreviation": "G",
+          "displayName": "Guard",
+          "id": "3",
+          "leaf": false,
+          "name": "Guard",
+          "slug": "guard"
+        },
+        "shortName": "D. Harper",
+        "slug": "dylan-harper",
+        "status": {
+          "abbreviation": "Active",
+          "id": "1",
+          "name": "Active",
+          "type": "active"
+        },
+        "teamId": "24",
+        "teamName": "Spurs",
+        "teamShortName": "SA",
+        "teamUId": "s:40~l:46~t:24",
+        "teams": [
+          {
+            "abbreviation": "SA",
+            "alternateColor": "c4ced4",
+            "color": "000000",
+            "displayName": "San Antonio Spurs",
+            "id": "24",
+            "name": "Spurs",
+            "shortDisplayName": "Spurs",
+            "slug": "san-antonio-spurs"
+          }
+        ],
+        "type": "basketball",
+        "uid": "s:40~l:46~a:5037871"
+      },
+      "categories": [
+        {
+          "displayName": "Own General",
+          "name": "general",
+          "splitId": "0",
+          "values": [
+            69.0,
+            22.57971,
+            2.0144928,
+            2.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            1558.0,
+            234.0,
+            139.0,
+            3.3913043
+          ]
+        },
+        {
+          "displayName": "Own Offensive",
+          "name": "offensive",
+          "splitId": "0",
+          "values": [
+            11.782609,
+            4.7971015,
+            9.507246,
+            50.457000732421875,
+            0.884058,
+            2.5797102,
+            34.26966369152069,
+            1.3043479,
+            1.7246376,
+            75.62999725341797,
+            3.8550725,
+            1.4347826,
+            813.0,
+            331.0,
+            656.0,
+            61.0,
+            178.0,
+            90.0,
+            119.0,
+            266.0,
+            99.0
+          ]
+        },
+        {
+          "displayName": "Own Defensive",
+          "name": "defensive",
+          "splitId": "0",
+          "values": [
+            0.7826087,
+            0.3478261,
+            54.0,
+            24.0
+          ]
+        }
+      ]
+    },
+    {
+      "athlete": {
+        "age": 25,
+        "displayName": "Julian Champagnie",
+        "firstName": "Julian",
+        "guid": "8724b1cd-46be-3408-bc8b-77b4ed951a59",
+        "id": "4592479",
+        "lastName": "Champagnie",
+        "position": {
+          "abbreviation": "F",
+          "displayName": "Forward",
+          "id": "7",
+          "leaf": false,
+          "name": "Forward",
+          "slug": "forward"
+        },
+        "shortName": "J. Champagnie",
+        "slug": "julian-champagnie",
+        "status": {
+          "abbreviation": "Active",
+          "id": "1",
+          "name": "Active",
+          "type": "active"
+        },
+        "teamId": "24",
+        "teamName": "Spurs",
+        "teamShortName": "SA",
+        "teamUId": "s:40~l:46~t:24",
+        "teams": [
+          {
+            "abbreviation": "SA",
+            "alternateColor": "c4ced4",
+            "color": "000000",
+            "displayName": "San Antonio Spurs",
+            "id": "24",
+            "name": "Spurs",
+            "shortDisplayName": "Spurs",
+            "slug": "san-antonio-spurs"
+          }
+        ],
+        "type": "basketball",
+        "uid": "s:40~l:46~a:4592479"
+      },
+      "categories": [
+        {
+          "displayName": "Own General",
+          "name": "general",
+          "splitId": "0",
+          "values": [
+            82.0,
+            27.634146,
+            1.597561,
+            0.0,
+            1.0,
+            0.0,
+            7.0,
+            0.0,
+            2266.0,
+            473.0,
+            131.0,
+            5.768293
+          ]
+        },
+        {
+          "displayName": "Own Offensive",
+          "name": "offensive",
+          "splitId": "0",
+          "values": [
+            11.109756,
+            3.6707318,
+            8.402439,
+            43.6870002746582,
+            2.378049,
+            6.243902,
+            38.0859375,
+            1.3902439,
+            1.6463414,
+            84.44400024414062,
+            1.5487804,
+            0.8414634,
+            911.0,
+            301.0,
+            689.0,
+            195.0,
+            512.0,
+            114.0,
+            135.0,
+            127.0,
+            69.0
+          ]
+        },
+        {
+          "displayName": "Own Defensive",
+          "name": "defensive",
+          "splitId": "0",
+          "values": [
+            0.75609756,
+            0.46341464,
+            62.0,
+            38.0
+          ]
+        }
+      ]
+    },
+    {
+      "athlete": {
+        "age": 27,
+        "debutYear": 2020,
+        "displayName": "Isaiah Joe",
+        "firstName": "Isaiah",
+        "guid": "df47e397-5af2-42fa-965a-0574219eec8d",
+        "id": "4395702",
+        "lastName": "Joe",
+        "position": {
+          "abbreviation": "G",
+          "displayName": "Guard",
+          "id": "3",
+          "leaf": false,
+          "name": "Guard",
+          "slug": "guard"
+        },
+        "shortName": "I. Joe",
+        "slug": "isaiah-joe",
+        "status": {
+          "abbreviation": "Active",
+          "id": "1",
+          "name": "Active",
+          "type": "active"
+        },
+        "teamId": "25",
+        "teamName": "Thunder",
+        "teamShortName": "OKC",
+        "teamUId": "s:40~l:46~t:25",
+        "teams": [
+          {
+            "abbreviation": "OKC",
+            "alternateColor": "ef3b24",
+            "color": "007ac1",
+            "displayName": "Oklahoma City Thunder",
+            "id": "25",
+            "name": "Thunder",
+            "shortDisplayName": "Thunder",
+            "slug": "oklahoma-city-thunder"
+          }
+        ],
+        "type": "basketball",
+        "uid": "s:40~l:46~a:4395702"
+      },
+      "categories": [
+        {
+          "displayName": "Own General",
+          "name": "general",
+          "splitId": "0",
+          "values": [
+            71.0,
+            21.225351,
+            1.7042253,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1507.0,
+            181.0,
+            121.0,
+            2.5492957
+          ]
+        },
+        {
+          "displayName": "Own Offensive",
+          "name": "offensive",
+          "splitId": "0",
+          "values": [
+            11.056338,
+            3.4788733,
+            7.647887,
+            45.487998962402344,
+            2.5492957,
+            6.028169,
+            42.289718985557556,
+            1.5492958,
+            1.7323943,
+            89.43099975585938,
+            1.3239436,
+            0.63380283,
+            785.0,
+            247.0,
+            543.0,
+            181.0,
+            428.0,
+            110.0,
+            123.0,
+            94.0,
+            45.0
+          ]
+        },
+        {
+          "displayName": "Own Defensive",
+          "name": "defensive",
+          "splitId": "0",
+          "values": [
+            0.70422536,
+            0.15492958,
+            50.0,
+            11.0
+          ]
+        }
+      ]
+    },
+    {
+      "athlete": {
+        "age": 27,
+        "displayName": "Neemias Queta",
+        "firstName": "Neemias",
+        "guid": "b8e37325-e0f0-e077-d241-8fc8eecf3cdc",
+        "id": "4397424",
+        "lastName": "Queta",
+        "position": {
+          "abbreviation": "C",
+          "displayName": "Center",
+          "id": "9",
+          "leaf": false,
+          "name": "Center",
+          "slug": "center"
+        },
+        "shortName": "N. Queta",
+        "slug": "neemias-queta",
+        "status": {
+          "abbreviation": "Active",
+          "id": "1",
+          "name": "Active",
+          "type": "active"
+        },
+        "teamId": "2",
+        "teamName": "Celtics",
+        "teamShortName": "BOS",
+        "teamUId": "s:40~l:46~t:2",
+        "teams": [
+          {
+            "abbreviation": "BOS",
+            "alternateColor": "ffffff",
+            "color": "008348",
+            "displayName": "Boston Celtics",
+            "id": "2",
+            "name": "Celtics",
+            "shortDisplayName": "Celtics",
+            "slug": "boston-celtics"
+          }
+        ],
+        "type": "basketball",
+        "uid": "s:40~l:46~a:4397424"
+      },
+      "categories": [
+        {
+          "displayName": "Own General",
+          "name": "general",
+          "splitId": "0",
+          "values": [
+            76.0,
+            25.342106,
+            2.8421052,
+            1.0,
+            1.0,
+            0.0,
+            17.0,
+            0.0,
+            1926.0,
+            636.0,
+            216.0,
+            8.368421
+          ]
+        },
+        {
+          "displayName": "Own Offensive",
+          "name": "offensive",
+          "splitId": "0",
+          "values": [
+            10.210526,
+            4.2894735,
+            6.5657897,
+            65.33100128173828,
+            0.013157895,
+            0.10526316,
+            12.5,
+            1.6184211,
+            2.3026316,
+            70.28600311279297,
+            1.6578947,
+            0.9868421,
+            776.0,
+            326.0,
+            499.0,
+            1.0,
+            8.0,
+            123.0,
+            175.0,
+            126.0,
+            75.0
+          ]
+        },
+        {
+          "displayName": "Own Defensive",
+          "name": "defensive",
+          "splitId": "0",
+          "values": [
+            0.7894737,
+            1.3157895,
+            60.0,
+            100.0
+          ]
+        }
+      ]
+    },
+    {
+      "athlete": {
+        "age": 28,
+        "debutYear": 2018,
+        "displayName": "Kevin Huerter",
+        "firstName": "Kevin",
+        "guid": "96dd28ae-3e67-3401-95f5-96693f737892",
+        "id": "4066372",
+        "lastName": "Huerter",
+        "position": {
+          "abbreviation": "G",
+          "displayName": "Guard",
+          "id": "3",
+          "leaf": false,
+          "name": "Guard",
+          "slug": "guard"
+        },
+        "shortName": "K. Huerter",
+        "slug": "kevin-huerter",
+        "status": {
+          "abbreviation": "Active",
+          "id": "1",
+          "name": "Active",
+          "type": "active"
+        },
+        "teamId": "8",
+        "teamName": "Pistons",
+        "teamShortName": "DET",
+        "teamUId": "s:40~l:46~t:8",
+        "teams": [
+          {
+            "abbreviation": "CHI",
+            "alternateColor": "000000",
+            "color": "ce1141",
+            "displayName": "Chicago Bulls",
+            "id": "4",
+            "name": "Bulls",
+            "shortDisplayName": "Bulls",
+            "slug": "chicago-bulls"
+          },
+          {
+            "abbreviation": "DET",
+            "alternateColor": "c8102e",
+            "color": "1d428a",
+            "displayName": "Detroit Pistons",
+            "id": "8",
+            "name": "Pistons",
+            "shortDisplayName": "Pistons",
+            "slug": "detroit-pistons"
+          }
+        ],
+        "type": "basketball",
+        "uid": "s:40~l:46~a:4066372"
+      },
+      "categories": [
+        {
+          "displayName": "Own General",
+          "name": "general",
+          "splitId": "0",
+          "values": [
+            69.0,
+            22.449276,
+            1.6666666,
+            0.0,
+            1.0,
+            1.0,
+            1.0,
+            0.0,
+            1549.0,
+            240.0,
+            115.0,
+            3.4782608
+          ]
+        },
+        {
+          "displayName": "Own Offensive",
+          "name": "offensive",
+          "splitId": "0",
+          "values": [
+            10.043478,
+            3.8985507,
+            8.637681,
+            45.13399887084961,
+            1.4492754,
+            4.710145,
+            30.769231915473938,
+            0.79710144,
+            1.0289855,
+            77.46499633789062,
+            2.5797102,
+            1.0434783,
+            693.0,
+            269.0,
+            596.0,
+            100.0,
+            325.0,
+            55.0,
+            71.0,
+            178.0,
+            72.0
+          ]
+        },
+        {
+          "displayName": "Own Defensive",
+          "name": "defensive",
+          "splitId": "0",
+          "values": [
+            0.9130435,
+            0.47826087,
+            63.0,
+            33.0
+          ]
+        }
+      ]
+    },
+    {
+      "athlete": {
+        "age": 25,
+        "debutYear": 2020,
+        "displayName": "Isaiah Stewart",
+        "firstName": "Isaiah",
+        "guid": "85d20eec-daee-3fa1-9545-0011fb961cd8",
+        "id": "4432810",
+        "lastName": "Stewart",
+        "position": {
+          "abbreviation": "C",
+          "displayName": "Center",
+          "id": "9",
+          "leaf": false,
+          "name": "Center",
+          "slug": "center"
+        },
+        "shortName": "I. Stewart",
+        "slug": "isaiah-stewart",
+        "status": {
+          "abbreviation": "Active",
+          "id": "1",
+          "name": "Active",
+          "type": "active"
+        },
+        "teamId": "8",
+        "teamName": "Pistons",
+        "teamShortName": "DET",
+        "teamUId": "s:40~l:46~t:8",
+        "teams": [
+          {
+            "abbreviation": "DET",
+            "alternateColor": "c8102e",
+            "color": "1d428a",
+            "displayName": "Detroit Pistons",
+            "id": "8",
+            "name": "Pistons",
+            "shortDisplayName": "Pistons",
+            "slug": "detroit-pistons"
+          }
+        ],
+        "type": "basketball",
+        "uid": "s:40~l:46~a:4432810"
+      },
+      "categories": [
+        {
+          "displayName": "Own General",
+          "name": "general",
+          "splitId": "0",
+          "values": [
+            58.0,
+            22.706896,
+            2.862069,
+            3.0,
+            13.0,
+            2.0,
+            2.0,
+            0.0,
+            1317.0,
+            290.0,
+            166.0,
+            5.0
+          ]
+        },
+        {
+          "displayName": "Own Offensive",
+          "name": "offensive",
+          "splitId": "0",
+          "values": [
+            10.0172415,
+            3.810345,
+            6.9310346,
+            54.974998474121094,
+            0.6896552,
+            2.0689654,
+            33.33333432674408,
+            1.7068965,
+            2.2586207,
+            75.572998046875,
+            1.137931,
+            1.1551725,
+            581.0,
+            221.0,
+            402.0,
+            40.0,
+            120.0,
+            99.0,
+            131.0,
+            66.0,
+            67.0
+          ]
+        },
+        {
+          "displayName": "Own Defensive",
+          "name": "defensive",
+          "splitId": "0",
+          "values": [
+            0.27586207,
+            1.6034483,
+            16.0,
+            93.0
+          ]
+        }
+      ]
+    },
+    {
+      "athlete": {
+        "age": 23,
+        "displayName": "Ausar Thompson",
+        "firstName": "Ausar",
+        "guid": "ee7a682c-a3e6-39eb-9bfa-2b7a84ae7e76",
+        "id": "4684742",
+        "lastName": "Thompson",
+        "position": {
+          "abbreviation": "G",
+          "displayName": "Guard",
+          "id": "3",
+          "leaf": false,
+          "name": "Guard",
+          "slug": "guard"
+        },
+        "shortName": "A. Thompson",
+        "slug": "ausar-thompson",
+        "status": {
+          "abbreviation": "Active",
+          "id": "1",
+          "name": "Active",
+          "type": "active"
+        },
+        "teamId": "8",
+        "teamName": "Pistons",
+        "teamShortName": "DET",
+        "teamUId": "s:40~l:46~t:8",
+        "teams": [
+          {
+            "abbreviation": "DET",
+            "alternateColor": "c8102e",
+            "color": "1d428a",
+            "displayName": "Detroit Pistons",
+            "id": "8",
+            "name": "Pistons",
+            "shortDisplayName": "Pistons",
+            "slug": "detroit-pistons"
+          }
+        ],
+        "type": "basketball",
+        "uid": "s:40~l:46~a:4684742"
+      },
+      "categories": [
+        {
+          "displayName": "Own General",
+          "name": "general",
+          "splitId": "0",
+          "values": [
+            73.0,
+            25.972603,
+            2.7123287,
+            3.0,
+            6.0,
+            1.0,
+            3.0,
+            0.0,
+            1896.0,
+            418.0,
+            198.0,
+            5.7260275
+          ]
+        },
+        {
+          "displayName": "Own Offensive",
+          "name": "offensive",
+          "splitId": "0",
+          "values": [
+            9.876713,
+            4.150685,
+            7.9041095,
+            52.51300048828125,
+            0.08219178,
+            0.32876712,
+            25.0,
+            1.4931507,
+            2.6164384,
+            57.06800079345703,
+            3.1232877,
+            1.5068493,
+            721.0,
+            303.0,
+            577.0,
+            6.0,
+            24.0,
+            109.0,
+            191.0,
+            228.0,
+            110.0
+          ]
+        },
+        {
+          "displayName": "Own Defensive",
+          "name": "defensive",
+          "splitId": "0",
+          "values": [
+            2.0,
+            0.94520545,
+            146.0,
+            69.0
+          ]
+        }
+      ]
+    },
+    {
+      "athlete": {
+        "age": 27,
+        "displayName": "Aaron Wiggins",
+        "firstName": "Aaron",
+        "guid": "f22ab0b7-91ee-77c3-f4c9-40138ecdaa1b",
+        "id": "4397183",
+        "lastName": "Wiggins",
+        "position": {
+          "abbreviation": "G",
+          "displayName": "Guard",
+          "id": "3",
+          "leaf": false,
+          "name": "Guard",
+          "slug": "guard"
+        },
+        "shortName": "A. Wiggins",
+        "slug": "aaron-wiggins",
+        "status": {
+          "abbreviation": "Active",
+          "id": "1",
+          "name": "Active",
+          "type": "active"
+        },
+        "teamId": "25",
+        "teamName": "Thunder",
+        "teamShortName": "OKC",
+        "teamUId": "s:40~l:46~t:25",
+        "teams": [
+          {
+            "abbreviation": "OKC",
+            "alternateColor": "ef3b24",
+            "color": "007ac1",
+            "displayName": "Oklahoma City Thunder",
+            "id": "25",
+            "name": "Thunder",
+            "shortDisplayName": "Thunder",
+            "slug": "oklahoma-city-thunder"
+          }
+        ],
+        "type": "basketball",
+        "uid": "s:40~l:46~a:4397183"
+      },
+      "categories": [
+        {
+          "displayName": "Own General",
+          "name": "general",
+          "splitId": "0",
+          "values": [
+            65.0,
+            21.753845,
+            1.2769231,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1414.0,
+            199.0,
+            83.0,
+            3.0615385
+          ]
+        },
+        {
+          "displayName": "Own Offensive",
+          "name": "offensive",
+          "splitId": "0",
+          "values": [
+            9.4,
+            3.5538461,
+            8.246154,
+            43.09700012207031,
+            1.4769231,
+            4.1538463,
+            35.555556416511536,
+            0.8153846,
+            1.1076924,
+            73.61100006103516,
+            1.676923,
+            1.2461538,
+            611.0,
+            231.0,
+            536.0,
+            96.0,
+            270.0,
+            53.0,
+            72.0,
+            109.0,
+            81.0
+          ]
+        },
+        {
+          "displayName": "Own Defensive",
+          "name": "defensive",
+          "splitId": "0",
+          "values": [
+            0.9230769,
+            0.43076923,
+            60.0,
+            28.0
+          ]
+        }
+      ]
+    },
+    {
+      "athlete": {
+        "age": 28,
+        "displayName": "Sam Hauser",
+        "firstName": "Sam",
+        "guid": "d8f2574f-c194-f40f-6795-26ddea4c7166",
+        "id": "4065804",
+        "lastName": "Hauser",
+        "position": {
+          "abbreviation": "F",
+          "displayName": "Forward",
+          "id": "7",
+          "leaf": false,
+          "name": "Forward",
+          "slug": "forward"
+        },
+        "shortName": "S. Hauser",
+        "slug": "sam-hauser",
+        "status": {
+          "abbreviation": "Active",
+          "id": "1",
+          "name": "Active",
+          "type": "active"
+        },
+        "teamId": "2",
+        "teamName": "Celtics",
+        "teamShortName": "BOS",
+        "teamUId": "s:40~l:46~t:2",
+        "teams": [
+          {
+            "abbreviation": "BOS",
+            "alternateColor": "ffffff",
+            "color": "008348",
+            "displayName": "Boston Celtics",
+            "id": "2",
+            "name": "Celtics",
+            "shortDisplayName": "Celtics",
+            "slug": "boston-celtics"
+          }
+        ],
+        "type": "basketball",
+        "uid": "s:40~l:46~a:4065804"
+      },
+      "categories": [
+        {
+          "displayName": "Own General",
+          "name": "general",
+          "splitId": "0",
+          "values": [
+            78.0,
+            24.794872,
+            1.448718,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1934.0,
+            300.0,
+            113.0,
+            3.8461537
+          ]
+        },
+        {
+          "displayName": "Own Offensive",
+          "name": "offensive",
+          "splitId": "0",
+          "values": [
+            9.217949,
+            3.2307692,
+            7.705128,
+            41.93000030517578,
+            2.5384614,
+            6.4615383,
+            39.28571343421936,
+            0.21794872,
+            0.25641027,
+            85.0,
+            1.4615384,
+            0.44871795,
+            719.0,
+            252.0,
+            601.0,
+            198.0,
+            504.0,
+            17.0,
+            20.0,
+            114.0,
+            35.0
+          ]
+        },
+        {
+          "displayName": "Own Defensive",
+          "name": "defensive",
+          "splitId": "0",
+          "values": [
+            0.4871795,
+            0.2948718,
+            38.0,
+            23.0
+          ]
+        }
+      ]
+    },
+    {
+      "athlete": {
+        "age": 34,
+        "debutYear": 2014,
+        "displayName": "Jordan Clarkson",
+        "firstName": "Jordan",
+        "guid": "e50b7c1f-0792-372f-d2b9-ce80188f029f",
+        "id": "2528426",
+        "lastName": "Clarkson",
+        "position": {
+          "abbreviation": "G",
+          "displayName": "Guard",
+          "id": "3",
+          "leaf": false,
+          "name": "Guard",
+          "slug": "guard"
+        },
+        "shortName": "J. Clarkson",
+        "slug": "jordan-clarkson",
+        "status": {
+          "abbreviation": "Active",
+          "id": "1",
+          "name": "Active",
+          "type": "active"
+        },
+        "teamId": "18",
+        "teamName": "Knicks",
+        "teamShortName": "NY",
+        "teamUId": "s:40~l:46~t:18",
+        "teams": [
+          {
+            "abbreviation": "NY",
+            "alternateColor": "f58426",
+            "color": "1d428a",
+            "displayName": "New York Knicks",
+            "id": "18",
+            "name": "Knicks",
+            "shortDisplayName": "Knicks",
+            "slug": "new-york-knicks"
+          }
+        ],
+        "type": "basketball",
+        "uid": "s:40~l:46~a:2528426"
+      },
+      "categories": [
+        {
+          "displayName": "Own General",
+          "name": "general",
+          "splitId": "0",
+          "values": [
+            72.0,
+            17.76389,
+            1.7083334,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1279.0,
+            127.0,
+            123.0,
+            1.7638888
+          ]
+        },
+        {
+          "displayName": "Own Offensive",
+          "name": "offensive",
+          "splitId": "0",
+          "values": [
+            8.638889,
+            3.2916667,
+            7.3055553,
+            45.05699920654297,
+            0.9722222,
+            2.9722223,
+            32.710281014442444,
+            1.0833334,
+            1.3055556,
+            82.97899627685547,
+            1.3333334,
+            0.875,
+            622.0,
+            237.0,
+            526.0,
+            70.0,
+            214.0,
+            78.0,
+            94.0,
+            96.0,
+            63.0
+          ]
+        },
+        {
+          "displayName": "Own Defensive",
+          "name": "defensive",
+          "splitId": "0",
+          "values": [
+            0.41666666,
+            0.125,
+            30.0,
+            9.0
+          ]
+        }
+      ]
+    },
+    {
+      "athlete": {
+        "age": 22,
+        "displayName": "Cason Wallace",
+        "firstName": "Cason",
+        "guid": "883078c3-d6cf-3df9-8844-45ff07b999e3",
+        "id": "4683692",
+        "lastName": "Wallace",
+        "position": {
+          "abbreviation": "G",
+          "displayName": "Guard",
+          "id": "3",
+          "leaf": false,
+          "name": "Guard",
+          "slug": "guard"
+        },
+        "shortName": "C. Wallace",
+        "slug": "cason-wallace",
+        "status": {
+          "abbreviation": "Active",
+          "id": "1",
+          "name": "Active",
+          "type": "active"
+        },
+        "teamId": "25",
+        "teamName": "Thunder",
+        "teamShortName": "OKC",
+        "teamUId": "s:40~l:46~t:25",
+        "teams": [
+          {
+            "abbreviation": "OKC",
+            "alternateColor": "ef3b24",
+            "color": "007ac1",
+            "displayName": "Oklahoma City Thunder",
+            "id": "25",
+            "name": "Thunder",
+            "shortDisplayName": "Thunder",
+            "slug": "oklahoma-city-thunder"
+          }
+        ],
+        "type": "basketball",
+        "uid": "s:40~l:46~a:4683692"
+      },
+      "categories": [
+        {
+          "displayName": "Own General",
+          "name": "general",
+          "splitId": "0",
+          "values": [
+            77.0,
+            26.571428,
+            2.0,
+            0.0,
+            2.0,
+            1.0,
+            1.0,
+            0.0,
+            2046.0,
+            238.0,
+            154.0,
+            3.090909
+          ]
+        },
+        {
+          "displayName": "Own Offensive",
+          "name": "offensive",
+          "splitId": "0",
+          "values": [
+            8.571428,
+            3.2727273,
+            7.5844154,
+            43.1510009765625,
+            1.3116883,
+            3.7402596,
+            35.06944477558136,
+            0.71428573,
+            0.8831169,
+            80.88200378417969,
+            2.5974026,
+            0.9480519,
+            660.0,
+            252.0,
+            584.0,
+            101.0,
+            288.0,
+            55.0,
+            68.0,
+            200.0,
+            73.0
+          ]
+        },
+        {
+          "displayName": "Own Defensive",
+          "name": "defensive",
+          "splitId": "0",
+          "values": [
+            1.9480519,
+            0.36363637,
+            150.0,
+            28.0
+          ]
+        }
+      ]
+    },
+    {
+      "athlete": {
+        "age": 27,
+        "debutYear": 2019,
+        "displayName": "Luguentz Dort",
+        "firstName": "Luguentz",
+        "guid": "7f199b67-58d7-790d-458c-29e62293032b",
+        "id": "4397020",
+        "lastName": "Dort",
+        "position": {
+          "abbreviation": "G",
+          "displayName": "Guard",
+          "id": "3",
+          "leaf": false,
+          "name": "Guard",
+          "slug": "guard"
+        },
+        "shortName": "L. Dort",
+        "slug": "luguentz-dort",
+        "status": {
+          "abbreviation": "Active",
+          "id": "1",
+          "name": "Active",
+          "type": "active"
+        },
+        "teamId": "25",
+        "teamName": "Thunder",
+        "teamShortName": "OKC",
+        "teamUId": "s:40~l:46~t:25",
+        "teams": [
+          {
+            "abbreviation": "OKC",
+            "alternateColor": "ef3b24",
+            "color": "007ac1",
+            "displayName": "Oklahoma City Thunder",
+            "id": "25",
+            "name": "Thunder",
+            "shortDisplayName": "Thunder",
+            "slug": "oklahoma-city-thunder"
+          }
+        ],
+        "type": "basketball",
+        "uid": "s:40~l:46~a:4397020"
+      },
+      "categories": [
+        {
+          "displayName": "Own General",
+          "name": "general",
+          "splitId": "0",
+          "values": [
+            69.0,
+            26.797102,
+            2.594203,
+            2.0,
+            3.0,
+            1.0,
+            0.0,
+            0.0,
+            1849.0,
+            245.0,
+            179.0,
+            3.5507247
+          ]
+        },
+        {
+          "displayName": "Own Offensive",
+          "name": "offensive",
+          "splitId": "0",
+          "values": [
+            8.347826,
+            2.9275362,
+            7.594203,
+            38.54999923706055,
+            1.8550725,
+            5.3913045,
+            34.40860211849213,
+            0.6376812,
+            0.8405797,
+            75.86199951171875,
+            1.231884,
+            0.7826087,
+            576.0,
+            202.0,
+            524.0,
+            128.0,
+            372.0,
+            44.0,
+            58.0,
+            85.0,
+            54.0
+          ]
+        },
+        {
+          "displayName": "Own Defensive",
+          "name": "defensive",
+          "splitId": "0",
+          "values": [
+            0.89855075,
+            0.39130434,
+            62.0,
+            27.0
+          ]
+        }
+      ]
+    },
+    {
+      "athlete": {
+        "age": 22,
+        "displayName": "Jared McCain",
+        "firstName": "Jared",
+        "guid": "8c566cd5-1e08-353e-8490-f62a71496016",
+        "id": "4683778",
+        "lastName": "McCain",
+        "position": {
+          "abbreviation": "G",
+          "displayName": "Guard",
+          "id": "3",
+          "leaf": false,
+          "name": "Guard",
+          "slug": "guard"
+        },
+        "shortName": "J. McCain",
+        "slug": "jared-mccain",
+        "status": {
+          "abbreviation": "Active",
+          "id": "1",
+          "name": "Active",
+          "type": "active"
+        },
+        "teamId": "25",
+        "teamName": "Thunder",
+        "teamShortName": "OKC",
+        "teamUId": "s:40~l:46~t:25",
+        "teams": [
+          {
+            "abbreviation": "OKC",
+            "alternateColor": "ef3b24",
+            "color": "007ac1",
+            "displayName": "Oklahoma City Thunder",
+            "id": "25",
+            "name": "Thunder",
+            "shortDisplayName": "Thunder",
+            "slug": "oklahoma-city-thunder"
+          },
+          {
+            "abbreviation": "PHI",
+            "alternateColor": "e01234",
+            "color": "1d428a",
+            "displayName": "Philadelphia 76ers",
+            "id": "20",
+            "name": "76ers",
+            "shortDisplayName": "76ers",
+            "slug": "philadelphia-76ers"
+          }
+        ],
+        "type": "basketball",
+        "uid": "s:40~l:46~a:4683778"
+      },
+      "categories": [
+        {
+          "displayName": "Own General",
+          "name": "general",
+          "splitId": "0",
+          "values": [
+            67.0,
+            17.313433,
+            1.2089552,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1160.0,
+            137.0,
+            81.0,
+            2.0447762
+          ]
+        },
+        {
+          "displayName": "Own Offensive",
+          "name": "offensive",
+          "splitId": "0",
+          "values": [
+            8.328359,
+            3.0447762,
+            7.1641793,
+            42.5,
+            1.4776119,
+            3.835821,
+            38.52140009403229,
+            0.76119405,
+            0.880597,
+            86.44100189208984,
+            1.3432835,
+            0.8358209,
+            558.0,
+            204.0,
+            480.0,
+            99.0,
+            257.0,
+            51.0,
+            59.0,
+            90.0,
+            56.0
+          ]
+        },
+        {
+          "displayName": "Own Defensive",
+          "name": "defensive",
+          "splitId": "0",
+          "values": [
+            0.52238804,
+            0.07462686,
+            35.0,
+            5.0
+          ]
+        }
+      ]
+    },
+    {
+      "athlete": {
+        "age": 27,
+        "displayName": "Luka Garza",
+        "firstName": "Luka",
+        "guid": "c76eb9b0-4a15-adf3-128c-d3dabf9b8857",
+        "id": "4277951",
+        "lastName": "Garza",
+        "position": {
+          "abbreviation": "C",
+          "displayName": "Center",
+          "id": "9",
+          "leaf": false,
+          "name": "Center",
+          "slug": "center"
+        },
+        "shortName": "L. Garza",
+        "slug": "luka-garza",
+        "status": {
+          "abbreviation": "Active",
+          "id": "1",
+          "name": "Active",
+          "type": "active"
+        },
+        "teamId": "2",
+        "teamName": "Celtics",
+        "teamShortName": "BOS",
+        "teamUId": "s:40~l:46~t:2",
+        "teams": [
+          {
+            "abbreviation": "BOS",
+            "alternateColor": "ffffff",
+            "color": "008348",
+            "displayName": "Boston Celtics",
+            "id": "2",
+            "name": "Celtics",
+            "shortDisplayName": "Celtics",
+            "slug": "boston-celtics"
+          }
+        ],
+        "type": "basketball",
+        "uid": "s:40~l:46~a:4277951"
+      },
+      "categories": [
+        {
+          "displayName": "Own General",
+          "name": "general",
+          "splitId": "0",
+          "values": [
+            69.0,
+            16.202898,
+            2.3333333,
+            0.0,
+            1.0,
+            0.0,
+            2.0,
+            0.0,
+            1118.0,
+            281.0,
+            161.0,
+            4.072464
+          ]
+        },
+        {
+          "displayName": "Own Offensive",
+          "name": "offensive",
+          "splitId": "0",
+          "values": [
+            8.072464,
+            2.9855072,
+            5.173913,
+            57.70299911499024,
+            0.79710144,
+            1.8405797,
+            43.30708682537079,
+            1.3043479,
+            1.6956521,
+            76.9229965209961,
+            0.95652175,
+            0.6666667,
+            557.0,
+            206.0,
+            357.0,
+            55.0,
+            127.0,
+            90.0,
+            117.0,
+            66.0,
+            46.0
+          ]
+        },
+        {
+          "displayName": "Own Defensive",
+          "name": "defensive",
+          "splitId": "0",
+          "values": [
+            0.39130434,
+            0.4057971,
+            27.0,
+            28.0
+          ]
+        }
+      ]
+    },
+    {
+      "athlete": {
+        "age": 23,
+        "displayName": "Dominick Barlow",
+        "firstName": "Dominick",
+        "guid": "b6f6857f-9a83-30a6-85a7-2e02c49d5ae5",
+        "id": "4870562",
+        "lastName": "Barlow",
+        "position": {
+          "abbreviation": "F",
+          "displayName": "Forward",
+          "id": "7",
+          "leaf": false,
+          "name": "Forward",
+          "slug": "forward"
+        },
+        "shortName": "D. Barlow",
+        "slug": "dominick-barlow",
+        "status": {
+          "abbreviation": "Active",
+          "id": "1",
+          "name": "Active",
+          "type": "active"
+        },
+        "teamId": "20",
+        "teamName": "76ers",
+        "teamShortName": "PHI",
+        "teamUId": "s:40~l:46~t:20",
+        "teams": [
+          {
+            "abbreviation": "PHI",
+            "alternateColor": "e01234",
+            "color": "1d428a",
+            "displayName": "Philadelphia 76ers",
+            "id": "20",
+            "name": "76ers",
+            "shortDisplayName": "76ers",
+            "slug": "philadelphia-76ers"
+          }
+        ],
+        "type": "basketball",
+        "uid": "s:40~l:46~a:4870562"
+      },
+      "categories": [
+        {
+          "displayName": "Own General",
+          "name": "general",
+          "splitId": "0",
+          "values": [
+            71.0,
+            23.788733,
+            2.1126761,
+            0.0,
+            1.0,
+            0.0,
+            2.0,
+            0.0,
+            1689.0,
+            340.0,
+            150.0,
+            4.7887325
+          ]
+        },
+        {
+          "displayName": "Own Offensive",
+          "name": "offensive",
+          "splitId": "0",
+          "values": [
+            7.6760564,
+            3.028169,
+            5.619718,
+            53.8849983215332,
+            0.29577464,
+            1.1549295,
+            25.609755516052246,
+            1.3239436,
+            1.8450705,
+            71.75599670410156,
+            1.2253522,
+            0.7887324,
+            545.0,
+            215.0,
+            399.0,
+            21.0,
+            82.0,
+            94.0,
+            131.0,
+            87.0,
+            56.0
+          ]
+        },
+        {
+          "displayName": "Own Defensive",
+          "name": "defensive",
+          "splitId": "0",
+          "values": [
+            0.8873239,
+            0.74647886,
+            63.0,
+            53.0
+          ]
+        }
+      ]
+    },
+    {
+      "athlete": {
+        "age": 28,
+        "displayName": "Jose Alvarado",
+        "firstName": "Jose",
+        "guid": "18344833-a108-3e67-e097-893870b766ce",
+        "id": "4277869",
+        "lastName": "Alvarado",
+        "position": {
+          "abbreviation": "G",
+          "displayName": "Guard",
+          "id": "3",
+          "leaf": false,
+          "name": "Guard",
+          "slug": "guard"
+        },
+        "shortName": "J. Alvarado",
+        "slug": "jose-alvarado",
+        "status": {
+          "abbreviation": "Active",
+          "id": "1",
+          "name": "Active",
+          "type": "active"
+        },
+        "teamId": "18",
+        "teamName": "Knicks",
+        "teamShortName": "NY",
+        "teamUId": "s:40~l:46~t:18",
+        "teams": [
+          {
+            "abbreviation": "NO",
+            "alternateColor": "b4975a",
+            "color": "0a2240",
+            "displayName": "New Orleans Pelicans",
+            "id": "3",
+            "name": "Pelicans",
+            "shortDisplayName": "Pelicans",
+            "slug": "new-orleans-pelicans"
+          },
+          {
+            "abbreviation": "NY",
+            "alternateColor": "f58426",
+            "color": "1d428a",
+            "displayName": "New York Knicks",
+            "id": "18",
+            "name": "Knicks",
+            "shortDisplayName": "Knicks",
+            "slug": "new-york-knicks"
+          }
+        ],
+        "type": "basketball",
+        "uid": "s:40~l:46~a:4277869"
+      },
+      "categories": [
+        {
+          "displayName": "Own General",
+          "name": "general",
+          "splitId": "0",
+          "values": [
+            69.0,
+            19.855072,
+            1.8695652,
+            2.0,
+            3.0,
+            1.0,
+            1.0,
+            0.0,
+            1370.0,
+            171.0,
+            129.0,
+            2.4782608
+          ]
+        },
+        {
+          "displayName": "Own Offensive",
+          "name": "offensive",
+          "splitId": "0",
+          "values": [
+            7.3913045,
+            2.710145,
+            6.5072465,
+            41.64799880981445,
+            1.4637681,
+            4.1594205,
+            35.19163727760315,
+            0.5072464,
+            0.6666667,
+            76.08699798583984,
+            3.3913043,
+            1.115942,
+            510.0,
+            187.0,
+            449.0,
+            101.0,
+            287.0,
+            35.0,
+            46.0,
+            234.0,
+            77.0
+          ]
+        },
+        {
+          "displayName": "Own Defensive",
+          "name": "defensive",
+          "splitId": "0",
+          "values": [
+            0.95652175,
+            0.11594203,
+            66.0,
+            8.0
+          ]
+        }
+      ]
+    },
+    {
+      "athlete": {
+        "age": 33,
+        "debutYear": 2012,
+        "displayName": "Andre Drummond",
+        "firstName": "Andre",
+        "guid": "355269b7-21fc-8104-b40e-d7c81ec96c9a",
+        "id": "6585",
+        "lastName": "Drummond",
+        "position": {
+          "abbreviation": "C",
+          "displayName": "Center",
+          "id": "9",
+          "leaf": false,
+          "name": "Center",
+          "slug": "center"
+        },
+        "shortName": "A. Drummond",
+        "slug": "andre-drummond",
+        "status": {
+          "abbreviation": "Active",
+          "id": "1",
+          "name": "Active",
+          "type": "active"
+        },
+        "teamId": "20",
+        "teamName": "76ers",
+        "teamShortName": "PHI",
+        "teamUId": "s:40~l:46~t:20",
+        "teams": [
+          {
+            "abbreviation": "PHI",
+            "alternateColor": "e01234",
+            "color": "1d428a",
+            "displayName": "Philadelphia 76ers",
+            "id": "20",
+            "name": "76ers",
+            "shortDisplayName": "76ers",
+            "slug": "philadelphia-76ers"
+          }
+        ],
+        "type": "basketball",
+        "uid": "s:40~l:46~a:6585"
+      },
+      "categories": [
+        {
+          "displayName": "Own General",
+          "name": "general",
+          "splitId": "0",
+          "values": [
+            63.0,
+            19.539682,
+            1.9841269,
+            0.0,
+            5.0,
+            0.0,
+            17.0,
+            0.0,
+            1231.0,
+            532.0,
+            125.0,
+            8.444445
+          ]
+        },
+        {
+          "displayName": "Own Offensive",
+          "name": "offensive",
+          "splitId": "0",
+          "values": [
+            6.3968253,
+            2.5238094,
+            5.3492064,
+            47.180999755859375,
+            0.50793654,
+            1.4285715,
+            35.555556416511536,
+            0.84126985,
+            1.3333334,
+            63.095001220703125,
+            1.2698413,
+            0.96825397,
+            403.0,
+            159.0,
+            337.0,
+            32.0,
+            90.0,
+            53.0,
+            84.0,
+            80.0,
+            61.0
+          ]
+        },
+        {
+          "displayName": "Own Defensive",
+          "name": "defensive",
+          "splitId": "0",
+          "values": [
+            0.6031746,
+            0.7777778,
+            38.0,
+            49.0
+          ]
+        }
+      ]
+    },
+    {
+      "athlete": {
+        "age": 22,
+        "displayName": "Justin Edwards",
+        "firstName": "Justin",
+        "guid": "4af59974-aade-3656-b812-14c681b66b01",
+        "id": "4711297",
+        "lastName": "Edwards",
+        "position": {
+          "abbreviation": "F",
+          "displayName": "Forward",
+          "id": "7",
+          "leaf": false,
+          "name": "Forward",
+          "slug": "forward"
+        },
+        "shortName": "J. Edwards",
+        "slug": "justin-edwards",
+        "status": {
+          "abbreviation": "Active",
+          "id": "1",
+          "name": "Active",
+          "type": "active"
+        },
+        "teamId": "20",
+        "teamName": "76ers",
+        "teamShortName": "PHI",
+        "teamUId": "s:40~l:46~t:20",
+        "teams": [
+          {
+            "abbreviation": "PHI",
+            "alternateColor": "e01234",
+            "color": "1d428a",
+            "displayName": "Philadelphia 76ers",
+            "id": "20",
+            "name": "76ers",
+            "shortDisplayName": "76ers",
+            "slug": "philadelphia-76ers"
+          }
+        ],
+        "type": "basketball",
+        "uid": "s:40~l:46~a:4711297"
+      },
+      "categories": [
+        {
+          "displayName": "Own General",
+          "name": "general",
+          "splitId": "0",
+          "values": [
+            64.0,
+            15.265625,
+            1.421875,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            977.0,
+            94.0,
+            91.0,
+            1.46875
+          ]
+        },
+        {
+          "displayName": "Own Offensive",
+          "name": "offensive",
+          "splitId": "0",
+          "values": [
+            6.03125,
+            2.234375,
+            5.0,
+            44.6879997253418,
+            1.046875,
+            2.8125,
+            37.22222149372101,
+            0.515625,
+            0.609375,
+            84.61499786376953,
+            1.25,
+            0.5625,
+            386.0,
+            143.0,
+            320.0,
+            67.0,
+            180.0,
+            33.0,
+            39.0,
+            80.0,
+            36.0
+          ]
+        },
+        {
+          "displayName": "Own Defensive",
+          "name": "defensive",
+          "splitId": "0",
+          "values": [
+            0.84375,
+            0.171875,
+            54.0,
+            11.0
+          ]
+        }
+      ]
+    },
+    {
+      "athlete": {
+        "age": 23,
+        "displayName": "Adem Bona",
+        "firstName": "Adem",
+        "guid": "edd470bb-ce90-30b4-9a2e-2cd43662b19a",
+        "id": "5105637",
+        "lastName": "Bona",
+        "position": {
+          "abbreviation": "C",
+          "displayName": "Center",
+          "id": "9",
+          "leaf": false,
+          "name": "Center",
+          "slug": "center"
+        },
+        "shortName": "A. Bona",
+        "slug": "adem-bona",
+        "status": {
+          "abbreviation": "Active",
+          "id": "1",
+          "name": "Active",
+          "type": "active"
+        },
+        "teamId": "20",
+        "teamName": "76ers",
+        "teamShortName": "PHI",
+        "teamUId": "s:40~l:46~t:20",
+        "teams": [
+          {
+            "abbreviation": "PHI",
+            "alternateColor": "e01234",
+            "color": "1d428a",
+            "displayName": "Philadelphia 76ers",
+            "id": "20",
+            "name": "76ers",
+            "shortDisplayName": "76ers",
+            "slug": "philadelphia-76ers"
+          }
+        ],
+        "type": "basketball",
+        "uid": "s:40~l:46~a:5105637"
+      },
+      "categories": [
+        {
+          "displayName": "Own General",
+          "name": "general",
+          "splitId": "0",
+          "values": [
+            71.0,
+            17.380281,
+            2.1549296,
+            0.0,
+            4.0,
+            0.0,
+            1.0,
+            0.0,
+            1234.0,
+            307.0,
+            153.0,
+            4.3239436
+          ]
+        },
+        {
+          "displayName": "Own Offensive",
+          "name": "offensive",
+          "splitId": "0",
+          "values": [
+            4.8450704,
+            1.8450705,
+            3.0985916,
+            59.54499816894532,
+            0.028169014,
+            0.08450704,
+            33.33333432674408,
+            1.1267606,
+            1.5915493,
+            70.7959976196289,
+            0.45070422,
+            0.7887324,
+            344.0,
+            131.0,
+            220.0,
+            2.0,
+            6.0,
+            80.0,
+            113.0,
+            32.0,
+            56.0
+          ]
+        },
+        {
+          "displayName": "Own Defensive",
+          "name": "defensive",
+          "splitId": "0",
+          "values": [
+            0.4225352,
+            1.1549295,
+            30.0,
+            82.0
+          ]
+        }
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "descriptions": [
+        "Games Played",
+        "The average number of minutes per game.",
+        "The average fouls committed per game.",
+        "The number of fouls that the officials thought were unnecessary or excessive.",
+        "The number of times an player or coach was called for a technical foul (unsportsmanlike conduct or violations).",
+        "The number of times a player or coach is removed from the game as a result of a serious offense.",
+        "The number of times double digit values were accumulated in 2 of the following categories: points, rebounds, assists, steals, and blocked shots",
+        "The number of times double digit values were accumulated in 3 of the following categories: points, rebounds, assists, steals, and blocked shots",
+        "The total number of minutes played.",
+        "The total number of rebounds (offensive and defensive).",
+        "The number of times a player had illegal contact with the opponent.",
+        "The average rebounds per game."
+      ],
+      "displayName": "Own General",
+      "displayNames": [
+        "Games Played",
+        "Minutes Per Game",
+        "Fouls Per Game",
+        "Flagrant Fouls",
+        "Technical Fouls",
+        "Ejections",
+        "Double Double",
+        "Triple Double",
+        "Minutes",
+        "Rebounds",
+        "Fouls",
+        "Rebounds Per Game"
+      ],
+      "labels": [
+        "GP",
+        "MIN",
+        "PF",
+        "FLAG",
+        "TECH",
+        "EJECT",
+        "DD2",
+        "TD3",
+        "MIN",
+        "REB",
+        "PF",
+        "REB"
+      ],
+      "name": "general",
+      "names": [
+        "gamesPlayed",
+        "avgMinutes",
+        "avgFouls",
+        "flagrantFouls",
+        "technicalFouls",
+        "ejections",
+        "doubleDouble",
+        "tripleDouble",
+        "minutes",
+        "rebounds",
+        "fouls",
+        "avgRebounds"
+      ]
+    },
+    {
+      "descriptions": [
+        "The average number of points scored per game.",
+        "The average field goals made per game.",
+        "The average field goals attempted per game.",
+        "The ratio of field goals made to field goals attempted: FGM / FGA",
+        "The average three point field goals made per game.",
+        "The average three point field goals attempted per game.",
+        "The ratio of 3pt field goals made to 3pt field goals attempted: 3PM / 3PA.",
+        "The average free throw shots made per game.",
+        "The average free throw shots attempted per game.",
+        "The ratio of free throws made to free throws attempted: FTM / FTA",
+        "The average assists per game.",
+        "The average turnovers committed per game.",
+        "The number of points scored.",
+        "The number of times a 2pt field goal was made.",
+        "The number of times a 2pt field goal was attempted.",
+        "The number of times a 3pt field goal was made.",
+        "The number of times a 3pt field goal was attempted.",
+        "The number of times a free throw was made.",
+        "The number of times a free throw was attempted.",
+        "The number of times a player who passes the ball to a teammate in a way that leads to a score by field goal, meaning that he or she was \"assisting\" in the basket. There is some judgment involved in deciding whether a passer should be credited with an assist.",
+        "The number of times a player loses possession to the other team."
+      ],
+      "displayName": "Own Offensive",
+      "displayNames": [
+        "Points Per Game",
+        "Average Field Goals Made",
+        "Average Field Goals Attempted",
+        "Field Goal Percentage",
+        "Average 3-Point Field Goals Made",
+        "Average 3-Point Field Goals Attempted",
+        "3-Point Field Goal Percentage",
+        "Average Free Throws Made",
+        "Average Free Throws Attempted",
+        "Free Throw Percentage",
+        "Assists Per Game",
+        "Turnovers Per Game",
+        "Points",
+        "Field Goals Made",
+        "Field Goals Attempted",
+        "3-Point Field Goals Made",
+        "3-Point Field Goals Attempted",
+        "Free Throws Made",
+        "Free Throws Attempted",
+        "Assists",
+        "Turnovers"
+      ],
+      "labels": [
+        "PTS",
+        "FGM",
+        "FGA",
+        "FG%",
+        "3PM",
+        "3PA",
+        "3P%",
+        "FTM",
+        "FTA",
+        "FT%",
+        "AST",
+        "TO",
+        "PTS",
+        "FGM",
+        "FGA",
+        "3PM",
+        "3PA",
+        "FTM",
+        "FTA",
+        "AST",
+        "TO"
+      ],
+      "name": "offensive",
+      "names": [
+        "avgPoints",
+        "avgFieldGoalsMade",
+        "avgFieldGoalsAttempted",
+        "fieldGoalPct",
+        "avgThreePointFieldGoalsMade",
+        "avgThreePointFieldGoalsAttempted",
+        "threePointFieldGoalPct",
+        "avgFreeThrowsMade",
+        "avgFreeThrowsAttempted",
+        "freeThrowPct",
+        "avgAssists",
+        "avgTurnovers",
+        "points",
+        "fieldGoalsMade",
+        "fieldGoalsAttempted",
+        "threePointFieldGoalsMade",
+        "threePointFieldGoalsAttempted",
+        "freeThrowsMade",
+        "freeThrowsAttempted",
+        "assists",
+        "turnovers"
+      ]
+    },
+    {
+      "descriptions": [
+        "The average steals per game.",
+        "The average blocks per game.",
+        "The number of times a defensive player forced a turnover by intercepting or deflecting a pass or a dribble of an offensive player.",
+        "Short for blocked shot, number of times when a defensive player legally deflects a field goal attempt from an offensive player."
+      ],
+      "displayName": "Own Defensive",
+      "displayNames": [
+        "Steals Per Game",
+        "Blocks Per Game",
+        "Steals",
+        "Blocks"
+      ],
+      "labels": [
+        "STL",
+        "BLK",
+        "STL",
+        "BLK"
+      ],
+      "name": "defensive",
+      "names": [
+        "avgSteals",
+        "avgBlocks",
+        "steals",
+        "blocks"
+      ]
+    }
+  ],
+  "currentSeason": {
+    "displayName": "2026-27",
+    "endDate": "2027-06-26T06:59:00.000+00:00",
+    "startDate": "2026-09-30T07:00:00.000+00:00",
+    "type": {
+      "endDate": "2027-04-12T06:59:00.000+00:00",
+      "id": "2",
+      "name": "Regular Season",
+      "startDate": "2026-10-20T07:00:00.000+00:00",
+      "type": 2,
+      "week": {
+        "endDate": "2026-10-27T06:59:00.000+00:00",
+        "number": 1,
+        "startDate": "2026-10-20T07:00:00.000+00:00",
+        "text": "Week 1"
+      }
+    },
+    "year": 2027
+  },
+  "league": {
+    "abbreviation": "NBA",
+    "id": "46",
+    "name": "National Basketball Association",
+    "shortName": "NBA",
+    "slug": "nba",
+    "uid": "s:40~l:46"
+  },
+  "pagination": {
+    "count": 582,
+    "first": "http://site.api.espn.com:80/apis/common/v3/sports/basketball/nba/statistics/byathlete?isqualified=false&season=2026&seasontype=2&sort=offensive.avgPoints%3Adesc&limit=1000",
+    "last": "http://site.api.espn.com:80/apis/common/v3/sports/basketball/nba/statistics/byathlete?isqualified=false&season=2026&seasontype=2&sort=offensive.avgPoints%3Adesc&limit=1000&page=1",
+    "limit": 1000,
+    "page": 1,
+    "pages": 1
+  },
+  "requestedSeason": {
+    "displayName": "2025-26",
+    "endDate": "2026-06-27T06:59:00.000+00:00",
+    "startDate": "2025-10-01T07:00:00.000+00:00",
+    "type": {
+      "endDate": "2026-04-13T06:59:00.000+00:00",
+      "id": "2",
+      "name": "Regular Season",
+      "startDate": "2025-10-21T07:00:00.000+00:00",
+      "type": 2,
+      "week": {}
+    },
+    "year": 2026
+  }
+}
