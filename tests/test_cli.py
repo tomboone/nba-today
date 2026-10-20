@@ -1,7 +1,10 @@
 import json
 import re
+import signal
+from collections.abc import Callable
 from datetime import UTC, datetime
 from pathlib import Path
+from types import FrameType
 from zoneinfo import ZoneInfo
 
 import httpx
@@ -10,6 +13,7 @@ import respx
 from typer.testing import CliRunner
 
 from nba_today.cli import app
+from nba_today.scheduler import Scheduler
 from nba_today.settings import Settings
 from nba_today.sources.snapshot import SnapshotStore
 from tests.mocked_sources import FakeNbaSession, mock_espn, seed_snapshots, use_nba_session
@@ -156,10 +160,47 @@ def test_preview_from_snapshots_writes_html_and_text_without_network(
     assert not (env / "outbox").exists()
 
 
-@pytest.mark.parametrize("command", ["run", "health"])
 @pytest.mark.usefixtures("env")
-def test_stub_exits_1(command: str) -> None:
-    result = runner.invoke(app, [command])
+def test_run_without_a_configured_transport_exits_2_at_boot() -> None:
+    with respx.mock(assert_all_called=False) as router:
+        anything = router.route().mock(return_value=httpx.Response(500))
+        result = runner.invoke(app, ["run"])
+
+    assert result.exit_code == 2
+    assert "no transport is configured" in result.output
+    assert anything.call_count == 0
+
+
+def test_run_drives_the_scheduler_until_a_signal_stops_it(
+    env: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setenv("DRY_RUN", "true")
+    handlers: dict[int, Callable[[int, FrameType | None], object]] = {}
+
+    def install(signum: int, handler: Callable[[int, FrameType | None], object]) -> None:
+        handlers[signum] = handler
+
+    stopped: list[bool] = []
+
+    def stop_at_once(scheduler: Scheduler) -> None:
+        handlers[signal.SIGTERM](signal.SIGTERM, None)
+        stopped.append(scheduler._stop.is_set())  # pyright: ignore[reportPrivateUsage]
+
+    # Never install real handlers in the test process.
+    monkeypatch.setattr("nba_today.cli.signal.signal", install)
+    monkeypatch.setattr(Scheduler, "run_forever", stop_at_once)
+
+    result = runner.invoke(app, ["run"])
+
+    assert result.exit_code == 0, result.output
+    assert set(handlers) == {signal.SIGTERM, signal.SIGINT}
+    assert stopped == [True]
+    assert '"msg": "scheduler stopped"' in result.output
+
+
+@pytest.mark.usefixtures("env")
+def test_stub_exits_1() -> None:
+    result = runner.invoke(app, ["health"])
 
     assert result.exit_code == 1
     assert '"msg": "command not implemented yet"' in result.output
