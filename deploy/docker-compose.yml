@@ -2,9 +2,27 @@ name: nba-today
 
 services:
   nba-today:
-    # `latest` tracks main.
+    # `latest` tracks main; pin `sha-<7>` to roll back (README).
     image: ghcr.io/tomboone/nba-today:latest
     env_file: .env
     volumes:
       - ./data:/data
     restart: unless-stopped
+    labels:
+      - com.centurylinklabs.watchtower.enable=true
+      - com.centurylinklabs.watchtower.scope=nba-today
+
+  # Polls GHCR every 5 minutes and restarts only enabled containers in the `nba-today` scope, so it
+  # leaves mlb-today's containers on the same host alone. The instance carries its own scope label,
+  # as Watchtower's multiple-instance docs require.
+  watchtower:
+    image: containrrr/watchtower:1.7.1
+    command: ["--label-enable", "--scope", "nba-today", "--interval", "300", "--cleanup"]
+    environment:
+      # Watchtower's client defaults to API 1.25, which Docker Engine 29+ rejects.
+      DOCKER_API_VERSION: "1.44"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: unless-stopped
+    labels:
+      - com.centurylinklabs.watchtower.scope=nba-today

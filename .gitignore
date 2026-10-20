@@ -17,6 +17,7 @@ htmlcov/
 
 # Local data volume (snapshots, state, outbox)
 /data/
+/deploy/data/
 
 # Editors and OS
 .idea/
