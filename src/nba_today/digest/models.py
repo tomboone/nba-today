@@ -1,7 +1,7 @@
 """The digest: everything the email shows (spec §6).
 
-Fields a later builder fills (injuries, ratings, key player, results, standings, leaderboard)
-default to empty or `None`, so each section can be built and tested on its own.
+Fields a later builder fills (results, standings, leaderboard) default to empty or `None`, so
+each section can be built and tested on its own.
 """
 
 from datetime import date, datetime

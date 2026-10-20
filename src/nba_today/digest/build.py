@@ -6,12 +6,24 @@ sources' times can differ by minutes, and the NBA plays no doubleheaders.
 """
 
 import logging
+from dataclasses import dataclass
 from datetime import date
 from zoneinfo import ZoneInfo
 
 from nba_today import teams
 from nba_today.digest.bundle import SourceBundle
-from nba_today.digest.models import Broadcasts, Matchup, MatchupSide
+from nba_today.digest.models import (
+    Broadcasts,
+    InjuryReport,
+    KeyPlayer,
+    Matchup,
+    MatchupSide,
+    TeamRatings,
+)
+from nba_today.digest.qualify import is_qualified
+from nba_today.sources.fetched import Fetched
+from nba_today.sources.models.espn_athletes import AthleteStats, EspnAthletes
+from nba_today.sources.models.espn_injuries import EspnInjuries
 from nba_today.sources.models.espn_scoreboard import (
     REGULAR_SEASON,
     Broadcast,
@@ -24,6 +36,7 @@ from nba_today.sources.models.espn_standings import Entry, EspnStandings
 from nba_today.sources.models.nba_schedule import Broadcaster, Broadcasters, NbaSchedule
 from nba_today.sources.models.nba_schedule import Game as NbaGame
 from nba_today.sources.models.nba_schedule import Team as NbaTeam
+from nba_today.sources.models.nba_team_stats import TeamAdvanced
 
 log = logging.getLogger(__name__)
 
@@ -34,8 +47,24 @@ LABEL_SEPARATOR = " · "
 # (`NBA Cup - Group Play`) and one-offs such as `NBA Mexico City Game 2025` show nothing.
 CUP_LABEL = "NBA Cup"
 CUP_GROUP_LABEL = "Group"
+OUT = "Out"
+DAY_TO_DAY = "Day-To-Day"
 
 type Standings = dict[str, Entry]
+
+
+@dataclass(frozen=True, slots=True)
+class _ByTeam:
+    """What each matchup side reads from the sources beyond the scoreboard, keyed by tricode.
+
+    A team missing from a mapping, or a source that is unavailable, leaves that field at its
+    empty default: an empty injury report, no ratings, no key player.
+    """
+
+    standings: Standings
+    injuries: dict[str, InjuryReport]
+    ratings: dict[str, TeamRatings]
+    key_players: dict[str, KeyPlayer]
 
 
 def build_matchups(day: date, bundle: SourceBundle) -> list[Matchup]:
@@ -49,6 +78,12 @@ def build_matchups(day: date, bundle: SourceBundle) -> list[Matchup]:
         return []
     schedule = None if bundle.nba_schedule is None else bundle.nba_schedule.data
     standings = {} if bundle.espn_standings is None else _standings(bundle.espn_standings.data)
+    by_team = _ByTeam(
+        standings=standings,
+        injuries=_injury_reports(bundle.espn_injuries),
+        ratings=_ratings(bundle.nba_team_advanced),
+        key_players=_key_players(bundle.espn_athletes, standings),
+    )
     matchups: list[Matchup] = []
     for event in bundle.espn_scoreboard_today.data.events:
         if not is_counted(event) or event.date is None:
@@ -56,7 +91,7 @@ def build_matchups(day: date, bundle: SourceBundle) -> list[Matchup]:
         if event.date.astimezone(EASTERN).date() != day:
             continue
         try:
-            matchups.append(_matchup(event, schedule, standings))
+            matchups.append(_matchup(event, schedule, by_team))
         except teams.UnknownTeam:
             log.warning("skipping game with an unknown team", extra={"event": event.id})
     return sorted(matchups, key=lambda m: (m.tip_off, m.home.tricode))
@@ -80,7 +115,7 @@ def match_nba_game(event: Event, schedule: NbaSchedule) -> NbaGame | None:
     return None
 
 
-def _matchup(event: Event, schedule: NbaSchedule | None, standings: Standings) -> Matchup:
+def _matchup(event: Event, schedule: NbaSchedule | None, by_team: _ByTeam) -> Matchup:
     assert event.date is not None
     competition = _competition(event)
     nba_game = None if schedule is None else match_nba_game(event, schedule)
@@ -96,20 +131,20 @@ def _matchup(event: Event, schedule: NbaSchedule | None, standings: Standings) -
         label=_label(event, competition, nba_game),
         arena=None if venue is None else venue.full_name,
         city=None if address is None else address.city,
-        away=_side(event, "away", standings),
-        home=_side(event, "home", standings),
+        away=_side(event, "away", by_team),
+        home=_side(event, "home", by_team),
         tv=tv,
     )
 
 
-def _side(event: Event, home_away: str, standings: Standings) -> MatchupSide:
+def _side(event: Event, home_away: str, by_team: _ByTeam) -> MatchupSide:
     """Records from the scoreboard, else the standings; last-10 and streak from the standings.
 
     The NBA Cup final carries no record on the scoreboard, since it does not count in the
     standings.
     """
     tricode = _team(event, home_away).tricode
-    entry = standings.get(tricode)
+    entry = by_team.standings.get(tricode)
     record = _record(_competitor(event, home_away))
     if record is None and entry is not None:
         record = (entry.wins, entry.losses)
@@ -120,6 +155,9 @@ def _side(event: Event, home_away: str, standings: Standings) -> MatchupSide:
         losses=losses,
         last_ten=None if entry is None else entry.last_ten_games,
         streak=None if entry is None else entry.streak,
+        injuries=by_team.injuries.get(tricode, InjuryReport()),
+        ratings=by_team.ratings.get(tricode),
+        key_player=by_team.key_players.get(tricode),
     )
 
 
@@ -200,6 +238,127 @@ def _standings(standings: EspnStandings) -> Standings:
                 continue
             by_tricode[tricode] = entry
     return by_tricode
+
+
+def _injury_reports(injuries: Fetched[EspnInjuries] | None) -> dict[str, InjuryReport]:
+    """Each team's report, in ESPN's order within a status; a status other than Out or
+    Day-To-Day goes to `other` verbatim.
+
+    A player is matched to a team through their own `athlete.team`, not the group ESPN lists them
+    under: the two can disagree. An entry with no name, no status, or no known team is skipped.
+    """
+    if injuries is None:
+        return {}
+    out: dict[str, list[str]] = {}
+    day_to_day: dict[str, list[str]] = {}
+    other: dict[str, list[tuple[str, str]]] = {}
+    for group in injuries.data.injuries:
+        for injury in group.injuries:
+            athlete = injury.athlete
+            if athlete is None or athlete.display_name is None or injury.status is None:
+                continue
+            team = athlete.team
+            tricode = None if team is None else _espn_tricode(team.id, team.abbreviation)
+            if tricode is None:
+                continue
+            if injury.status == OUT:
+                out.setdefault(tricode, []).append(athlete.display_name)
+            elif injury.status == DAY_TO_DAY:
+                day_to_day.setdefault(tricode, []).append(athlete.display_name)
+            else:
+                other.setdefault(tricode, []).append((athlete.display_name, injury.status))
+    return {
+        tricode: InjuryReport(
+            out=out.get(tricode, []),
+            day_to_day=day_to_day.get(tricode, []),
+            other=other.get(tricode, []),
+        )
+        for tricode in out.keys() | day_to_day.keys() | other.keys()
+    }
+
+
+def _ratings(team_advanced: Fetched[list[TeamAdvanced]] | None) -> dict[str, TeamRatings]:
+    """Each team's ratings by tricode; a row missing a rating or naming an unknown team is
+    skipped."""
+    if team_advanced is None:
+        return {}
+    ratings: dict[str, TeamRatings] = {}
+    for row in team_advanced.data:
+        if (
+            row.team_id is None
+            or row.off_rating is None
+            or row.def_rating is None
+            or row.net_rating is None
+            or row.pace is None
+        ):
+            continue
+        try:
+            tricode = teams.by_nba_id(row.team_id).tricode
+        except teams.UnknownTeam:
+            log.warning("skipping team ratings with an unknown team", extra={"id": row.team_id})
+            continue
+        ratings[tricode] = TeamRatings(
+            off_rtg=row.off_rating, def_rtg=row.def_rating, net_rtg=row.net_rating, pace=row.pace
+        )
+    return ratings
+
+
+def _key_players(
+    athletes: Fetched[EspnAthletes] | None, standings: Standings
+) -> dict[str, KeyPlayer]:
+    """Each team's qualified player with the highest PPG; ties break on RPG, then name.
+
+    Team games played are the standings' wins plus losses, keeping key players ESPN-only. A team
+    with no qualified player, or missing from the standings, has no entry.
+    """
+    if athletes is None:
+        return {}
+    candidates: dict[str, list[KeyPlayer]] = {}
+    for row in athletes.data.athletes:
+        qualified = _qualified_player(row, standings)
+        if qualified is not None:
+            tricode, player = qualified
+            candidates.setdefault(tricode, []).append(player)
+    return {
+        tricode: min(players, key=lambda p: (-p.ppg, -p.rpg, p.name))
+        for tricode, players in candidates.items()
+    }
+
+
+def _qualified_player(row: AthleteStats, standings: Standings) -> tuple[str, KeyPlayer] | None:
+    """The athlete's tricode and line if they qualify; `None` if not, or if a stat is missing."""
+    athlete, general, offensive = row.athlete, row.general, row.offensive
+    if athlete is None or general is None or offensive is None or athlete.display_name is None:
+        return None
+    gp, mpg, rpg = general.games_played, general.avg_minutes, general.avg_rebounds
+    ppg, apg = offensive.avg_points, offensive.avg_assists
+    if gp is None or mpg is None or rpg is None or ppg is None or apg is None:
+        return None
+    tricode = _espn_tricode(athlete.team_id, athlete.team_short_name)
+    entry = None if tricode is None else standings.get(tricode)
+    if tricode is None or entry is None or entry.wins is None or entry.losses is None:
+        return None
+    if not is_qualified(gp, mpg, entry.wins + entry.losses):
+        return None
+    return tricode, KeyPlayer(name=athlete.display_name, ppg=ppg, rpg=rpg, apg=apg)
+
+
+def _espn_tricode(espn_id: int | None, abbreviation: str | None) -> str | None:
+    """The tricode for an ESPN team id, else its abbreviation; `None` if neither is known.
+
+    An unknown team is logged; a missing one (an athlete with no team) is not.
+    """
+    try:
+        if espn_id is not None:
+            return teams.by_espn_id(espn_id).tricode
+        if abbreviation is not None:
+            return teams.by_espn_abbr(abbreviation).tricode
+    except teams.UnknownTeam:
+        log.warning(
+            "skipping a row with an unknown team",
+            extra={"id": espn_id, "abbreviation": abbreviation},
+        )
+    return None
 
 
 def _competition(event: Event) -> Competition:
