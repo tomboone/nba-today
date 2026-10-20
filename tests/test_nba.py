@@ -180,10 +180,20 @@ def test_home_ott_and_several_tv_broadcasters_keep_source_order() -> None:
     }
 
 
-def test_opening_night_has_national_tv_and_ott() -> None:
+def test_opening_night_lists_national_streaming_under_tv() -> None:
     game = _game(SEASON_2026_27, OPENING_NIGHT, "BOS", "DET")
 
     assert _displays(game) == {"national_tv_broadcasters": ["NBC", "Peacock"]}
+
+
+def test_national_ott_parses() -> None:
+    # No game in the 2025-26 or 2026-27 schedule fills this list (checked 2026-10-20): Peacock
+    # and Prime Video come under national TV. It is parsed in case that changes.
+    game = Game.model_validate(
+        {"broadcasters": {"nationalOttBroadcasters": [{"broadcasterDisplay": "Peacock"}]}}
+    )
+
+    assert _displays(game) == {"national_ott_broadcasters": ["Peacock"]}
 
 
 def test_game_late_in_utc_is_listed_under_its_eastern_date() -> None:
