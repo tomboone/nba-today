@@ -1,0 +1,989 @@
+{
+  "events": [
+    {
+      "competitions": [
+        {
+          "attendance": 19005,
+          "broadcast": "Prime Video",
+          "broadcasts": [
+            {
+              "market": "national",
+              "names": [
+                "Prime Video"
+              ]
+            }
+          ],
+          "competitors": [
+            {
+              "homeAway": "home",
+              "id": "19",
+              "leaders": [
+                {
+                  "abbreviation": "Pts",
+                  "displayName": "Points",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "Paolo Banchero",
+                        "fullName": "Paolo Banchero",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4432573.png",
+                        "id": "4432573",
+                        "jersey": "5",
+                        "position": {
+                          "abbreviation": "F"
+                        },
+                        "shortName": "P. Banchero",
+                        "team": {
+                          "id": "19"
+                        }
+                      },
+                      "displayValue": "25",
+                      "team": {
+                        "id": "19"
+                      },
+                      "value": 25.0
+                    }
+                  ],
+                  "name": "points",
+                  "shortDisplayName": "Pts"
+                },
+                {
+                  "abbreviation": "Reb",
+                  "displayName": "Rebounds",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "Franz Wagner",
+                        "fullName": "Franz Wagner",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4566434.png",
+                        "id": "4566434",
+                        "jersey": "22",
+                        "position": {
+                          "abbreviation": "F"
+                        },
+                        "shortName": "F. Wagner",
+                        "team": {
+                          "id": "19"
+                        }
+                      },
+                      "displayValue": "7",
+                      "team": {
+                        "id": "19"
+                      },
+                      "value": 7.0
+                    }
+                  ],
+                  "name": "rebounds",
+                  "shortDisplayName": "Reb"
+                },
+                {
+                  "abbreviation": "Ast",
+                  "displayName": "Assists",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "Paolo Banchero",
+                        "fullName": "Paolo Banchero",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4432573.png",
+                        "id": "4432573",
+                        "jersey": "5",
+                        "position": {
+                          "abbreviation": "F"
+                        },
+                        "shortName": "P. Banchero",
+                        "team": {
+                          "id": "19"
+                        }
+                      },
+                      "displayValue": "6",
+                      "team": {
+                        "id": "19"
+                      },
+                      "value": 6.0
+                    }
+                  ],
+                  "name": "assists",
+                  "shortDisplayName": "Ast"
+                },
+                {
+                  "abbreviation": "RAT",
+                  "displayName": "Rating",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "Paolo Banchero",
+                        "fullName": "Paolo Banchero",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4432573.png",
+                        "id": "4432573",
+                        "jersey": "5",
+                        "position": {
+                          "abbreviation": "F"
+                        },
+                        "shortName": "P. Banchero",
+                        "team": {
+                          "id": "19"
+                        }
+                      },
+                      "displayValue": "25 PTS, 6 AST",
+                      "team": {
+                        "id": "19"
+                      },
+                      "value": 42.849998474121094
+                    }
+                  ],
+                  "name": "rating",
+                  "shortDisplayName": "RAT"
+                }
+              ],
+              "linescores": [
+                {
+                  "displayValue": "38",
+                  "period": 1,
+                  "value": 38.0
+                },
+                {
+                  "displayValue": "30",
+                  "period": 2,
+                  "value": 30.0
+                },
+                {
+                  "displayValue": "34",
+                  "period": 3,
+                  "value": 34.0
+                },
+                {
+                  "displayValue": "19",
+                  "period": 4,
+                  "value": 19.0
+                }
+              ],
+              "order": 0,
+              "records": [
+                {
+                  "abbreviation": "Total",
+                  "name": "overall",
+                  "summary": "45-37",
+                  "type": "total"
+                },
+                {
+                  "name": "Home",
+                  "summary": "25-15",
+                  "type": "home"
+                },
+                {
+                  "name": "Road",
+                  "summary": "19-20",
+                  "type": "road"
+                }
+              ],
+              "score": "121",
+              "team": {
+                "abbreviation": "ORL",
+                "alternateColor": "9ca0a3",
+                "color": "0150b5",
+                "displayName": "Orlando Magic",
+                "id": "19",
+                "isActive": true,
+                "location": "Orlando",
+                "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/orl.png",
+                "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/scoreboard/orl.png",
+                "name": "Magic",
+                "shortDisplayName": "Magic",
+                "uid": "s:40~l:46~t:19",
+                "venue": {
+                  "id": "3432"
+                }
+              },
+              "type": "team",
+              "uid": "s:40~l:46~t:19",
+              "winner": true
+            },
+            {
+              "homeAway": "away",
+              "id": "30",
+              "leaders": [
+                {
+                  "abbreviation": "Pts",
+                  "displayName": "Points",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "LaMelo Ball",
+                        "fullName": "LaMelo Ball",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4432816.png",
+                        "id": "4432816",
+                        "jersey": "1",
+                        "position": {
+                          "abbreviation": "G"
+                        },
+                        "shortName": "L. Ball",
+                        "team": {
+                          "id": "30"
+                        }
+                      },
+                      "displayValue": "23",
+                      "team": {
+                        "id": "30"
+                      },
+                      "value": 23.0
+                    }
+                  ],
+                  "name": "points",
+                  "shortDisplayName": "Pts"
+                },
+                {
+                  "abbreviation": "Reb",
+                  "displayName": "Rebounds",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "Moussa Diabate",
+                        "fullName": "Moussa Diabate",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4433249.png",
+                        "id": "4433249",
+                        "jersey": "14",
+                        "position": {
+                          "abbreviation": "F"
+                        },
+                        "shortName": "M. Diabate",
+                        "team": {
+                          "id": "30"
+                        }
+                      },
+                      "displayValue": "8",
+                      "team": {
+                        "id": "30"
+                      },
+                      "value": 8.0
+                    }
+                  ],
+                  "name": "rebounds",
+                  "shortDisplayName": "Reb"
+                },
+                {
+                  "abbreviation": "Ast",
+                  "displayName": "Assists",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "LaMelo Ball",
+                        "fullName": "LaMelo Ball",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4432816.png",
+                        "id": "4432816",
+                        "jersey": "1",
+                        "position": {
+                          "abbreviation": "G"
+                        },
+                        "shortName": "L. Ball",
+                        "team": {
+                          "id": "30"
+                        }
+                      },
+                      "displayValue": "5",
+                      "team": {
+                        "id": "30"
+                      },
+                      "value": 5.0
+                    }
+                  ],
+                  "name": "assists",
+                  "shortDisplayName": "Ast"
+                },
+                {
+                  "abbreviation": "RAT",
+                  "displayName": "Rating",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "LaMelo Ball",
+                        "fullName": "LaMelo Ball",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4432816.png",
+                        "id": "4432816",
+                        "jersey": "1",
+                        "position": {
+                          "abbreviation": "G"
+                        },
+                        "shortName": "L. Ball",
+                        "team": {
+                          "id": "30"
+                        }
+                      },
+                      "displayValue": "23 PTS",
+                      "team": {
+                        "id": "30"
+                      },
+                      "value": 31.899999618530273
+                    }
+                  ],
+                  "name": "rating",
+                  "shortDisplayName": "RAT"
+                }
+              ],
+              "linescores": [
+                {
+                  "displayValue": "16",
+                  "period": 1,
+                  "value": 16.0
+                },
+                {
+                  "displayValue": "21",
+                  "period": 2,
+                  "value": 21.0
+                },
+                {
+                  "displayValue": "34",
+                  "period": 3,
+                  "value": 34.0
+                },
+                {
+                  "displayValue": "19",
+                  "period": 4,
+                  "value": 19.0
+                }
+              ],
+              "order": 1,
+              "records": [
+                {
+                  "abbreviation": "Total",
+                  "name": "overall",
+                  "summary": "44-38",
+                  "type": "total"
+                },
+                {
+                  "name": "Home",
+                  "summary": "21-20",
+                  "type": "home"
+                },
+                {
+                  "name": "Road",
+                  "summary": "23-18",
+                  "type": "road"
+                }
+              ],
+              "score": "90",
+              "team": {
+                "abbreviation": "CHA",
+                "alternateColor": "1d1060",
+                "color": "008ca8",
+                "displayName": "Charlotte Hornets",
+                "id": "30",
+                "isActive": true,
+                "location": "Charlotte",
+                "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/cha.png",
+                "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/scoreboard/cha.png",
+                "name": "Hornets",
+                "shortDisplayName": "Hornets",
+                "uid": "s:40~l:46~t:30",
+                "venue": {
+                  "id": "1893"
+                }
+              },
+              "type": "team",
+              "uid": "s:40~l:46~t:30",
+              "winner": false
+            }
+          ],
+          "conferenceCompetition": false,
+          "date": "2026-04-17T23:30Z",
+          "format": {
+            "regulation": {
+              "periods": 4
+            }
+          },
+          "id": "401866758",
+          "neutralSite": false,
+          "notes": [
+            {
+              "headline": "NBA Play-In - East - 8th Seed Game",
+              "type": "event"
+            }
+          ],
+          "playByPlayAvailable": true,
+          "recent": false,
+          "startDate": "2026-04-17T23:30Z",
+          "status": {
+            "clock": 720.0,
+            "displayClock": "12:00",
+            "period": 4,
+            "type": {
+              "completed": true,
+              "description": "Final",
+              "detail": "Final",
+              "id": "3",
+              "name": "STATUS_FINAL",
+              "shortDetail": "Final",
+              "state": "post"
+            }
+          },
+          "timeValid": true,
+          "type": {
+            "abbreviation": "STD",
+            "id": "1"
+          },
+          "uid": "s:40~l:46~e:401866758~c:401866758",
+          "venue": {
+            "address": {
+              "city": "Orlando",
+              "state": "FL"
+            },
+            "fullName": "Kia Center",
+            "id": "3432",
+            "indoor": true
+          }
+        }
+      ],
+      "date": "2026-04-17T23:30Z",
+      "id": "401866758",
+      "name": "Charlotte Hornets at Orlando Magic",
+      "season": {
+        "slug": "play-in-season",
+        "type": 5,
+        "year": 2026
+      },
+      "shortName": "CHA @ ORL",
+      "status": {
+        "clock": 720.0,
+        "displayClock": "12:00",
+        "period": 4,
+        "type": {
+          "completed": true,
+          "description": "Final",
+          "detail": "Final",
+          "id": "3",
+          "name": "STATUS_FINAL",
+          "shortDetail": "Final",
+          "state": "post"
+        }
+      },
+      "uid": "s:40~l:46~e:401866758"
+    },
+    {
+      "competitions": [
+        {
+          "attendance": 17071,
+          "broadcast": "Prime Video",
+          "broadcasts": [
+            {
+              "market": "national",
+              "names": [
+                "Prime Video"
+              ]
+            }
+          ],
+          "competitors": [
+            {
+              "homeAway": "home",
+              "id": "21",
+              "leaders": [
+                {
+                  "abbreviation": "Pts",
+                  "displayName": "Points",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "Jalen Green",
+                        "fullName": "Jalen Green",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4437244.png",
+                        "id": "4437244",
+                        "jersey": "4",
+                        "position": {
+                          "abbreviation": "G"
+                        },
+                        "shortName": "J. Green",
+                        "team": {
+                          "id": "21"
+                        }
+                      },
+                      "displayValue": "36",
+                      "team": {
+                        "id": "21"
+                      },
+                      "value": 36.0
+                    }
+                  ],
+                  "name": "points",
+                  "shortDisplayName": "Pts"
+                },
+                {
+                  "abbreviation": "Reb",
+                  "displayName": "Rebounds",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "Jordan Goodwin",
+                        "fullName": "Jordan Goodwin",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4278402.png",
+                        "id": "4278402",
+                        "jersey": "23",
+                        "position": {
+                          "abbreviation": "G"
+                        },
+                        "shortName": "J. Goodwin",
+                        "team": {
+                          "id": "21"
+                        }
+                      },
+                      "displayValue": "9",
+                      "team": {
+                        "id": "21"
+                      },
+                      "value": 9.0
+                    }
+                  ],
+                  "name": "rebounds",
+                  "shortDisplayName": "Reb"
+                },
+                {
+                  "abbreviation": "Ast",
+                  "displayName": "Assists",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "Devin Booker",
+                        "fullName": "Devin Booker",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3136193.png",
+                        "id": "3136193",
+                        "jersey": "15",
+                        "position": {
+                          "abbreviation": "G"
+                        },
+                        "shortName": "D. Booker",
+                        "team": {
+                          "id": "21"
+                        }
+                      },
+                      "displayValue": "8",
+                      "team": {
+                        "id": "21"
+                      },
+                      "value": 8.0
+                    }
+                  ],
+                  "name": "assists",
+                  "shortDisplayName": "Ast"
+                },
+                {
+                  "abbreviation": "RAT",
+                  "displayName": "Rating",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "Jalen Green",
+                        "fullName": "Jalen Green",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4437244.png",
+                        "id": "4437244",
+                        "jersey": "4",
+                        "position": {
+                          "abbreviation": "G"
+                        },
+                        "shortName": "J. Green",
+                        "team": {
+                          "id": "21"
+                        }
+                      },
+                      "displayValue": "36 PTS, 6 REB, 3 BLK",
+                      "team": {
+                        "id": "21"
+                      },
+                      "value": 65.5999984741211
+                    }
+                  ],
+                  "name": "rating",
+                  "shortDisplayName": "RAT"
+                }
+              ],
+              "linescores": [
+                {
+                  "displayValue": "33",
+                  "period": 1,
+                  "value": 33.0
+                },
+                {
+                  "displayValue": "17",
+                  "period": 2,
+                  "value": 17.0
+                },
+                {
+                  "displayValue": "28",
+                  "period": 3,
+                  "value": 28.0
+                },
+                {
+                  "displayValue": "33",
+                  "period": 4,
+                  "value": 33.0
+                }
+              ],
+              "order": 0,
+              "records": [
+                {
+                  "abbreviation": "Total",
+                  "name": "overall",
+                  "summary": "45-37",
+                  "type": "total"
+                },
+                {
+                  "name": "Home",
+                  "summary": "25-16",
+                  "type": "home"
+                },
+                {
+                  "name": "Road",
+                  "summary": "20-21",
+                  "type": "road"
+                }
+              ],
+              "score": "111",
+              "team": {
+                "abbreviation": "PHX",
+                "alternateColor": "e56020",
+                "color": "29127a",
+                "displayName": "Phoenix Suns",
+                "id": "21",
+                "isActive": true,
+                "location": "Phoenix",
+                "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/phx.png",
+                "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/scoreboard/phx.png",
+                "name": "Suns",
+                "shortDisplayName": "Suns",
+                "uid": "s:40~l:46~t:21",
+                "venue": {
+                  "id": "1949"
+                }
+              },
+              "type": "team",
+              "uid": "s:40~l:46~t:21",
+              "winner": true
+            },
+            {
+              "homeAway": "away",
+              "id": "9",
+              "leaders": [
+                {
+                  "abbreviation": "Pts",
+                  "displayName": "Points",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "Brandin Podziemski",
+                        "fullName": "Brandin Podziemski",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4709138.png",
+                        "id": "4709138",
+                        "jersey": "2",
+                        "position": {
+                          "abbreviation": "G"
+                        },
+                        "shortName": "B. Podziemski",
+                        "team": {
+                          "id": "9"
+                        }
+                      },
+                      "displayValue": "23",
+                      "team": {
+                        "id": "9"
+                      },
+                      "value": 23.0
+                    }
+                  ],
+                  "name": "points",
+                  "shortDisplayName": "Pts"
+                },
+                {
+                  "abbreviation": "Reb",
+                  "displayName": "Rebounds",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "Brandin Podziemski",
+                        "fullName": "Brandin Podziemski",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4709138.png",
+                        "id": "4709138",
+                        "jersey": "2",
+                        "position": {
+                          "abbreviation": "G"
+                        },
+                        "shortName": "B. Podziemski",
+                        "team": {
+                          "id": "9"
+                        }
+                      },
+                      "displayValue": "10",
+                      "team": {
+                        "id": "9"
+                      },
+                      "value": 10.0
+                    }
+                  ],
+                  "name": "rebounds",
+                  "shortDisplayName": "Reb"
+                },
+                {
+                  "abbreviation": "Ast",
+                  "displayName": "Assists",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "Draymond Green",
+                        "fullName": "Draymond Green",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/6589.png",
+                        "id": "6589",
+                        "jersey": "23",
+                        "position": {
+                          "abbreviation": "F"
+                        },
+                        "shortName": "D. Green",
+                        "team": {
+                          "id": "9"
+                        }
+                      },
+                      "displayValue": "6",
+                      "team": {
+                        "id": "9"
+                      },
+                      "value": 6.0
+                    }
+                  ],
+                  "name": "assists",
+                  "shortDisplayName": "Ast"
+                },
+                {
+                  "abbreviation": "RAT",
+                  "displayName": "Rating",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "Brandin Podziemski",
+                        "fullName": "Brandin Podziemski",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4709138.png",
+                        "id": "4709138",
+                        "jersey": "2",
+                        "position": {
+                          "abbreviation": "G"
+                        },
+                        "shortName": "B. Podziemski",
+                        "team": {
+                          "id": "9"
+                        }
+                      },
+                      "displayValue": "23 PTS, 10 REB",
+                      "team": {
+                        "id": "9"
+                      },
+                      "value": 35.0
+                    }
+                  ],
+                  "name": "rating",
+                  "shortDisplayName": "RAT"
+                }
+              ],
+              "linescores": [
+                {
+                  "displayValue": "15",
+                  "period": 1,
+                  "value": 15.0
+                },
+                {
+                  "displayValue": "30",
+                  "period": 2,
+                  "value": 30.0
+                },
+                {
+                  "displayValue": "24",
+                  "period": 3,
+                  "value": 24.0
+                },
+                {
+                  "displayValue": "27",
+                  "period": 4,
+                  "value": 27.0
+                }
+              ],
+              "order": 1,
+              "records": [
+                {
+                  "abbreviation": "Total",
+                  "name": "overall",
+                  "summary": "37-45",
+                  "type": "total"
+                },
+                {
+                  "name": "Home",
+                  "summary": "22-19",
+                  "type": "home"
+                },
+                {
+                  "name": "Road",
+                  "summary": "15-26",
+                  "type": "road"
+                }
+              ],
+              "score": "96",
+              "team": {
+                "abbreviation": "GS",
+                "alternateColor": "1d428a",
+                "color": "fdb927",
+                "displayName": "Golden State Warriors",
+                "id": "9",
+                "isActive": true,
+                "location": "Golden State",
+                "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/gs.png",
+                "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/scoreboard/gs.png",
+                "name": "Warriors",
+                "shortDisplayName": "Warriors",
+                "uid": "s:40~l:46~t:9",
+                "venue": {
+                  "id": "2465"
+                }
+              },
+              "type": "team",
+              "uid": "s:40~l:46~t:9",
+              "winner": false
+            }
+          ],
+          "conferenceCompetition": false,
+          "date": "2026-04-18T02:00Z",
+          "format": {
+            "regulation": {
+              "periods": 4
+            }
+          },
+          "id": "401866759",
+          "neutralSite": false,
+          "notes": [
+            {
+              "headline": "NBA Play-In - West - 8th Seed Game",
+              "type": "event"
+            }
+          ],
+          "playByPlayAvailable": true,
+          "recent": false,
+          "startDate": "2026-04-18T02:00Z",
+          "status": {
+            "clock": 720.0,
+            "displayClock": "12:00",
+            "period": 4,
+            "type": {
+              "completed": true,
+              "description": "Final",
+              "detail": "Final",
+              "id": "3",
+              "name": "STATUS_FINAL",
+              "shortDetail": "Final",
+              "state": "post"
+            }
+          },
+          "timeValid": true,
+          "type": {
+            "abbreviation": "STD",
+            "id": "1"
+          },
+          "uid": "s:40~l:46~e:401866759~c:401866759",
+          "venue": {
+            "address": {
+              "city": "Phoenix",
+              "state": "AZ"
+            },
+            "fullName": "Mortgage Matchup Center",
+            "id": "1949",
+            "indoor": true
+          }
+        }
+      ],
+      "date": "2026-04-18T02:00Z",
+      "id": "401866759",
+      "name": "Golden State Warriors at Phoenix Suns",
+      "season": {
+        "slug": "play-in-season",
+        "type": 5,
+        "year": 2026
+      },
+      "shortName": "GS @ PHX",
+      "status": {
+        "clock": 720.0,
+        "displayClock": "12:00",
+        "period": 4,
+        "type": {
+          "completed": true,
+          "description": "Final",
+          "detail": "Final",
+          "id": "3",
+          "name": "STATUS_FINAL",
+          "shortDetail": "Final",
+          "state": "post"
+        }
+      },
+      "uid": "s:40~l:46~e:401866759"
+    }
+  ],
+  "leagues": [
+    {
+      "abbreviation": "NBA",
+      "calendarEndDate": "2026-06-27T06:59Z",
+      "calendarIsWhitelist": true,
+      "calendarStartDate": "2025-10-01T07:00Z",
+      "calendarType": "day",
+      "id": "46",
+      "logos": [
+        {
+          "alt": "",
+          "height": 500,
+          "href": "https://a.espncdn.com/i/teamlogos/leagues/500/nba.png",
+          "lastUpdated": "2018-06-05T12:07Z",
+          "rel": [
+            "full",
+            "default"
+          ],
+          "width": 500
+        },
+        {
+          "alt": "",
+          "height": 500,
+          "href": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/leagues/500-dark/nba.png&w=500&h=500&transparent=true",
+          "lastUpdated": "2026-10-19T21:04Z",
+          "rel": [
+            "full",
+            "dark"
+          ],
+          "width": 500
+        }
+      ],
+      "name": "National Basketball Association",
+      "season": {
+        "displayName": "2025-26",
+        "endDate": "2026-06-27T06:59Z",
+        "startDate": "2025-10-01T07:00Z",
+        "type": {
+          "abbreviation": "reg",
+          "id": "2",
+          "name": "Regular Season",
+          "type": 2
+        },
+        "year": 2026
+      },
+      "slug": "nba",
+      "uid": "s:40~l:46"
+    }
+  ],
+  "provider": {
+    "displayName": "Draft Kings",
+    "id": "100",
+    "name": "Draft Kings",
+    "priority": 1
+  }
+}

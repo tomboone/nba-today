@@ -12,9 +12,12 @@ __pycache__/
 # Tool caches
 .pytest_cache/
 .ruff_cache/
+.coverage
+htmlcov/
 
 # Local data volume (snapshots, state, outbox)
 /data/
+/deploy/data/
 
 # Editors and OS
 .idea/

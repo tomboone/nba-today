@@ -1,0 +1,1985 @@
+{
+  "leagueSchedule": {
+    "gameDates": [
+      {
+        "gameDate": "10/20/2026 00:00:00",
+        "games": [
+          {
+            "arenaCity": "Detroit",
+            "arenaName": "Little Caesars Arena",
+            "arenaState": "MI",
+            "awayTeam": {
+              "losses": 0,
+              "score": 0,
+              "seed": 0,
+              "teamCity": "Boston",
+              "teamId": 1610612738,
+              "teamName": "Celtics",
+              "teamSlug": "celtics",
+              "teamTricode": "BOS",
+              "wins": 0
+            },
+            "awayTeamTime": "2026-10-20T15:00:00Z",
+            "branchLink": "",
+            "broadcasters": {
+              "awayOttBroadcasters": [],
+              "awayRadioBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "WBZ-FM",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "98.5 The Sports Hub",
+                  "broadcasterId": 1471,
+                  "broadcasterMedia": "radio",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "away",
+                  "broadcasterTeamId": 1610612738,
+                  "broadcasterVideoLink": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "awayTvBroadcasters": [],
+              "homeOttBroadcasters": [],
+              "homeRadioBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "WXYT",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "97.1 FM The Ticket",
+                  "broadcasterId": 1188,
+                  "broadcasterMedia": "radio",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "home",
+                  "broadcasterTeamId": 1610612765,
+                  "broadcasterVideoLink": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "homeTvBroadcasters": [],
+              "nationalOttBroadcasters": [],
+              "nationalRadioBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "SiriusXM",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "SiriusXM",
+                  "broadcasterId": 1001098,
+                  "broadcasterMedia": "radio",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "natl",
+                  "broadcasterTeamId": -1,
+                  "broadcasterVideoLink": "https://www.siriusxm.com/sports/nba",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "nationalTvBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "NBC",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "NBC",
+                  "broadcasterId": 1001452,
+                  "broadcasterMedia": "tv",
+                  "broadcasterRanking": 5,
+                  "broadcasterScope": "natl",
+                  "broadcasterTeamId": -1,
+                  "broadcasterVideoLink": "",
+                  "localizationRegion": "National",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                },
+                {
+                  "broadcasterAbbreviation": "Peacock",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "Peacock",
+                  "broadcasterId": 1001453,
+                  "broadcasterMedia": "tv",
+                  "broadcasterRanking": 3,
+                  "broadcasterScope": "natl",
+                  "broadcasterTeamId": -1,
+                  "broadcasterVideoLink": "https://peacocktv.app.link/lYEmpEqZc7b",
+                  "localizationRegion": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ]
+            },
+            "day": "Tue",
+            "gameCode": "20261020/BOSDET",
+            "gameDateEst": "2026-10-20T00:00:00Z",
+            "gameDateTimeEst": "2026-10-20T15:00:00Z",
+            "gameDateTimeUTC": "2026-10-20T19:00:00Z",
+            "gameDateUTC": "2026-10-20T04:00:00Z",
+            "gameId": "0022600001",
+            "gameLabel": "",
+            "gameSequence": 1,
+            "gameStatus": 1,
+            "gameStatusText": "3:00 pm ET",
+            "gameSubLabel": "",
+            "gameSubtype": "",
+            "gameTimeEst": "1900-01-01T15:00:00Z",
+            "gameTimeUTC": "1900-01-01T19:00:00Z",
+            "homeTeam": {
+              "losses": 0,
+              "score": 0,
+              "seed": 0,
+              "teamCity": "Detroit",
+              "teamId": 1610612765,
+              "teamName": "Pistons",
+              "teamSlug": "pistons",
+              "teamTricode": "DET",
+              "wins": 0
+            },
+            "homeTeamTime": "2026-10-20T15:00:00Z",
+            "ifNecessary": false,
+            "isNeutral": false,
+            "monthNum": 10,
+            "postponedStatus": "N",
+            "seriesGameNumber": "",
+            "seriesText": "",
+            "weekName": "Week 1",
+            "weekNumber": 1
+          },
+          {
+            "arenaCity": "New York",
+            "arenaName": "Madison Square Garden",
+            "arenaState": "NY",
+            "awayTeam": {
+              "losses": 0,
+              "score": 0,
+              "seed": 0,
+              "teamCity": "Philadelphia",
+              "teamId": 1610612755,
+              "teamName": "76ers",
+              "teamSlug": "sixers",
+              "teamTricode": "PHI",
+              "wins": 0
+            },
+            "awayTeamTime": "2026-10-20T19:00:00Z",
+            "branchLink": "",
+            "broadcasters": {
+              "awayOttBroadcasters": [],
+              "awayRadioBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "WPEN",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "97.5 The Fanatic",
+                  "broadcasterId": 1434,
+                  "broadcasterMedia": "radio",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "away",
+                  "broadcasterTeamId": 1610612755,
+                  "broadcasterVideoLink": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "awayTvBroadcasters": [],
+              "homeOttBroadcasters": [],
+              "homeRadioBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "WHSQ",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "880 ESPN New York",
+                  "broadcasterId": 1001199,
+                  "broadcasterMedia": "radio",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "home",
+                  "broadcasterTeamId": 1610612752,
+                  "broadcasterVideoLink": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "homeTvBroadcasters": [],
+              "nationalOttBroadcasters": [],
+              "nationalRadioBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "ESPNR",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "ESPN Radio",
+                  "broadcasterId": 3,
+                  "broadcasterMedia": "radio",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "natl",
+                  "broadcasterTeamId": -1,
+                  "broadcasterVideoLink": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                },
+                {
+                  "broadcasterAbbreviation": "SiriusXM",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "SiriusXM",
+                  "broadcasterId": 1001098,
+                  "broadcasterMedia": "radio",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "natl",
+                  "broadcasterTeamId": -1,
+                  "broadcasterVideoLink": "https://www.siriusxm.com/sports/nba",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "nationalTvBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "NBC",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "NBC",
+                  "broadcasterId": 1001452,
+                  "broadcasterMedia": "tv",
+                  "broadcasterRanking": 5,
+                  "broadcasterScope": "natl",
+                  "broadcasterTeamId": -1,
+                  "broadcasterVideoLink": "",
+                  "localizationRegion": "National",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                },
+                {
+                  "broadcasterAbbreviation": "Peacock",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "Peacock",
+                  "broadcasterId": 1001453,
+                  "broadcasterMedia": "tv",
+                  "broadcasterRanking": 3,
+                  "broadcasterScope": "natl",
+                  "broadcasterTeamId": -1,
+                  "broadcasterVideoLink": "https://peacocktv.app.link/kN5MpKqZc7b",
+                  "localizationRegion": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ]
+            },
+            "day": "Tue",
+            "gameCode": "20261020/PHINYK",
+            "gameDateEst": "2026-10-20T00:00:00Z",
+            "gameDateTimeEst": "2026-10-20T19:00:00Z",
+            "gameDateTimeUTC": "2026-10-20T23:00:00Z",
+            "gameDateUTC": "2026-10-20T04:00:00Z",
+            "gameId": "0022600002",
+            "gameLabel": "",
+            "gameSequence": 2,
+            "gameStatus": 1,
+            "gameStatusText": "7:00 pm ET",
+            "gameSubLabel": "",
+            "gameSubtype": "",
+            "gameTimeEst": "1900-01-01T19:00:00Z",
+            "gameTimeUTC": "1900-01-01T23:00:00Z",
+            "homeTeam": {
+              "losses": 0,
+              "score": 0,
+              "seed": 0,
+              "teamCity": "New York",
+              "teamId": 1610612752,
+              "teamName": "Knicks",
+              "teamSlug": "knicks",
+              "teamTricode": "NYK",
+              "wins": 0
+            },
+            "homeTeamTime": "2026-10-20T19:00:00Z",
+            "ifNecessary": false,
+            "isNeutral": false,
+            "monthNum": 10,
+            "postponedStatus": "N",
+            "seriesGameNumber": "",
+            "seriesText": "",
+            "weekName": "Week 1",
+            "weekNumber": 1
+          },
+          {
+            "arenaCity": "San Antonio",
+            "arenaName": "Frost Bank Center",
+            "arenaState": "TX",
+            "awayTeam": {
+              "losses": 0,
+              "score": 0,
+              "seed": 0,
+              "teamCity": "Oklahoma City",
+              "teamId": 1610612760,
+              "teamName": "Thunder",
+              "teamSlug": "thunder",
+              "teamTricode": "OKC",
+              "wins": 0
+            },
+            "awayTeamTime": "2026-10-20T20:30:00Z",
+            "branchLink": "",
+            "broadcasters": {
+              "awayOttBroadcasters": [],
+              "awayRadioBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "WWLS",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "WWLS 98.1FM OKC",
+                  "broadcasterId": 1140,
+                  "broadcasterMedia": "radio",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "away",
+                  "broadcasterTeamId": 1610612760,
+                  "broadcasterVideoLink": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "awayTvBroadcasters": [],
+              "homeOttBroadcasters": [],
+              "homeRadioBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "WOAI/KXTN",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "WOAI/KXTN",
+                  "broadcasterId": 1000260,
+                  "broadcasterMedia": "radio",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "home",
+                  "broadcasterTeamId": 1610612759,
+                  "broadcasterVideoLink": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "homeTvBroadcasters": [],
+              "nationalOttBroadcasters": [],
+              "nationalRadioBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "SiriusXM",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "SiriusXM",
+                  "broadcasterId": 1001098,
+                  "broadcasterMedia": "radio",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "natl",
+                  "broadcasterTeamId": -1,
+                  "broadcasterVideoLink": "https://www.siriusxm.com/sports/nba",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "nationalTvBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "NBC",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "NBC",
+                  "broadcasterId": 1001452,
+                  "broadcasterMedia": "tv",
+                  "broadcasterRanking": 5,
+                  "broadcasterScope": "natl",
+                  "broadcasterTeamId": -1,
+                  "broadcasterVideoLink": "",
+                  "localizationRegion": "National",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                },
+                {
+                  "broadcasterAbbreviation": "Peacock",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "Peacock",
+                  "broadcasterId": 1001453,
+                  "broadcasterMedia": "tv",
+                  "broadcasterRanking": 3,
+                  "broadcasterScope": "natl",
+                  "broadcasterTeamId": -1,
+                  "broadcasterVideoLink": "https://peacocktv.app.link/HJcxWCqZc7b",
+                  "localizationRegion": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ]
+            },
+            "day": "Tue",
+            "gameCode": "20261020/OKCSAS",
+            "gameDateEst": "2026-10-20T00:00:00Z",
+            "gameDateTimeEst": "2026-10-20T21:30:00Z",
+            "gameDateTimeUTC": "2026-10-21T01:30:00Z",
+            "gameDateUTC": "2026-10-20T04:00:00Z",
+            "gameId": "0022600003",
+            "gameLabel": "",
+            "gameSequence": 3,
+            "gameStatus": 1,
+            "gameStatusText": "9:30 pm ET",
+            "gameSubLabel": "",
+            "gameSubtype": "",
+            "gameTimeEst": "1900-01-01T21:30:00Z",
+            "gameTimeUTC": "1900-01-01T01:30:00Z",
+            "homeTeam": {
+              "losses": 0,
+              "score": 0,
+              "seed": 0,
+              "teamCity": "San Antonio",
+              "teamId": 1610612759,
+              "teamName": "Spurs",
+              "teamSlug": "spurs",
+              "teamTricode": "SAS",
+              "wins": 0
+            },
+            "homeTeamTime": "2026-10-20T20:30:00Z",
+            "ifNecessary": false,
+            "isNeutral": false,
+            "monthNum": 10,
+            "postponedStatus": "N",
+            "seriesGameNumber": "",
+            "seriesText": "",
+            "weekName": "Week 1",
+            "weekNumber": 1
+          }
+        ]
+      },
+      {
+        "gameDate": "10/21/2026 00:00:00",
+        "games": [
+          {
+            "arenaCity": "Miami",
+            "arenaName": "Kaseya Center",
+            "arenaState": "FL",
+            "awayTeam": {
+              "losses": 0,
+              "score": 0,
+              "seed": 0,
+              "teamCity": "Minnesota",
+              "teamId": 1610612750,
+              "teamName": "Timberwolves",
+              "teamSlug": "timberwolves",
+              "teamTricode": "MIN",
+              "wins": 0
+            },
+            "awayTeamTime": "2026-10-21T18:30:00Z",
+            "branchLink": "",
+            "broadcasters": {
+              "awayOttBroadcasters": [],
+              "awayRadioBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "WCCO",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "830 WCCO",
+                  "broadcasterId": 1380,
+                  "broadcasterMedia": "radio",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "away",
+                  "broadcasterTeamId": 1610612750,
+                  "broadcasterVideoLink": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "awayTvBroadcasters": [],
+              "homeOttBroadcasters": [],
+              "homeRadioBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "WQAM-FM/WAQI",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "FM 104.3 WQAM / S: WAQI 710",
+                  "broadcasterId": 1001523,
+                  "broadcasterMedia": "radio",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "home",
+                  "broadcasterTeamId": 1610612748,
+                  "broadcasterVideoLink": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "homeTvBroadcasters": [],
+              "nationalOttBroadcasters": [],
+              "nationalRadioBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "SiriusXM",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "SiriusXM",
+                  "broadcasterId": 1001098,
+                  "broadcasterMedia": "radio",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "natl",
+                  "broadcasterTeamId": -1,
+                  "broadcasterVideoLink": "https://www.siriusxm.com/sports/nba",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "nationalTvBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "ESPN",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "ESPN",
+                  "broadcasterId": 2,
+                  "broadcasterMedia": "tv",
+                  "broadcasterRanking": 2,
+                  "broadcasterScope": "natl",
+                  "broadcasterTeamId": -1,
+                  "broadcasterVideoLink": "https://espn.smart.link/b4uxwf8ow?ex_cid=NBA&gameId=401909091&referringapp=nba",
+                  "localizationRegion": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ]
+            },
+            "day": "Wed",
+            "gameCode": "20261021/MINMIA",
+            "gameDateEst": "2026-10-21T00:00:00Z",
+            "gameDateTimeEst": "2026-10-21T19:30:00Z",
+            "gameDateTimeUTC": "2026-10-21T23:30:00Z",
+            "gameDateUTC": "2026-10-21T04:00:00Z",
+            "gameId": "0022600004",
+            "gameLabel": "",
+            "gameSequence": 3,
+            "gameStatus": 1,
+            "gameStatusText": "7:30 pm ET",
+            "gameSubLabel": "",
+            "gameSubtype": "",
+            "gameTimeEst": "1900-01-01T19:30:00Z",
+            "gameTimeUTC": "1900-01-01T23:30:00Z",
+            "homeTeam": {
+              "losses": 0,
+              "score": 0,
+              "seed": 0,
+              "teamCity": "Miami",
+              "teamId": 1610612748,
+              "teamName": "Heat",
+              "teamSlug": "heat",
+              "teamTricode": "MIA",
+              "wins": 0
+            },
+            "homeTeamTime": "2026-10-21T19:30:00Z",
+            "ifNecessary": false,
+            "isNeutral": false,
+            "monthNum": 10,
+            "postponedStatus": "N",
+            "seriesGameNumber": "",
+            "seriesText": "",
+            "weekName": "Week 1",
+            "weekNumber": 1
+          },
+          {
+            "arenaCity": "Los Angeles",
+            "arenaName": "Crypto.com Arena",
+            "arenaState": "CA",
+            "awayTeam": {
+              "losses": 0,
+              "score": 0,
+              "seed": 0,
+              "teamCity": "Golden State",
+              "teamId": 1610612744,
+              "teamName": "Warriors",
+              "teamSlug": "warriors",
+              "teamTricode": "GSW",
+              "wins": 0
+            },
+            "awayTeamTime": "2026-10-21T19:00:00Z",
+            "branchLink": "",
+            "broadcasters": {
+              "awayOttBroadcasters": [],
+              "awayRadioBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "KGMZ-FM",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "95.7 The Game",
+                  "broadcasterId": 1597,
+                  "broadcasterMedia": "radio",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "away",
+                  "broadcasterTeamId": 1610612744,
+                  "broadcasterVideoLink": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "awayTvBroadcasters": [],
+              "homeOttBroadcasters": [],
+              "homeRadioBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "KSPN/KFWB",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "ESPN LA 710/980 KFWB",
+                  "broadcasterId": 1001605,
+                  "broadcasterMedia": "radio",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "home",
+                  "broadcasterTeamId": 1610612747,
+                  "broadcasterVideoLink": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "homeTvBroadcasters": [],
+              "nationalOttBroadcasters": [],
+              "nationalRadioBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "SiriusXM",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "SiriusXM",
+                  "broadcasterId": 1001098,
+                  "broadcasterMedia": "radio",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "natl",
+                  "broadcasterTeamId": -1,
+                  "broadcasterVideoLink": "https://www.siriusxm.com/sports/nba",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "nationalTvBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "ESPN",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "ESPN",
+                  "broadcasterId": 2,
+                  "broadcasterMedia": "tv",
+                  "broadcasterRanking": 2,
+                  "broadcasterScope": "natl",
+                  "broadcasterTeamId": -1,
+                  "broadcasterVideoLink": "https://espn.smart.link/b4uxwf8ow?ex_cid=NBA&gameId=401909092&referringapp=nba",
+                  "localizationRegion": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ]
+            },
+            "day": "Wed",
+            "gameCode": "20261021/GSWLAL",
+            "gameDateEst": "2026-10-21T00:00:00Z",
+            "gameDateTimeEst": "2026-10-21T22:00:00Z",
+            "gameDateTimeUTC": "2026-10-22T02:00:00Z",
+            "gameDateUTC": "2026-10-21T04:00:00Z",
+            "gameId": "0022600005",
+            "gameLabel": "",
+            "gameSequence": 9,
+            "gameStatus": 1,
+            "gameStatusText": "10:00 pm ET",
+            "gameSubLabel": "",
+            "gameSubtype": "",
+            "gameTimeEst": "1900-01-01T22:00:00Z",
+            "gameTimeUTC": "1900-01-01T02:00:00Z",
+            "homeTeam": {
+              "losses": 0,
+              "score": 0,
+              "seed": 0,
+              "teamCity": "Los Angeles",
+              "teamId": 1610612747,
+              "teamName": "Lakers",
+              "teamSlug": "lakers",
+              "teamTricode": "LAL",
+              "wins": 0
+            },
+            "homeTeamTime": "2026-10-21T19:00:00Z",
+            "ifNecessary": false,
+            "isNeutral": false,
+            "monthNum": 10,
+            "postponedStatus": "N",
+            "seriesGameNumber": "",
+            "seriesText": "",
+            "weekName": "Week 1",
+            "weekNumber": 1
+          },
+          {
+            "arenaCity": "Orlando",
+            "arenaName": "Kia Center",
+            "arenaState": "FL",
+            "awayTeam": {
+              "losses": 0,
+              "score": 0,
+              "seed": 0,
+              "teamCity": "Atlanta",
+              "teamId": 1610612737,
+              "teamName": "Hawks",
+              "teamSlug": "hawks",
+              "teamTricode": "ATL",
+              "wins": 0
+            },
+            "awayTeamTime": "2026-10-21T19:00:00Z",
+            "branchLink": "",
+            "broadcasters": {
+              "awayOttBroadcasters": [],
+              "awayRadioBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "WZGC",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "WZGC",
+                  "broadcasterId": 1491,
+                  "broadcasterMedia": "radio",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "away",
+                  "broadcasterTeamId": 1610612737,
+                  "broadcasterVideoLink": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "awayTvBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "WANF/WPCH.2",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "ANF / Peachtree Sports Network",
+                  "broadcasterId": 1001611,
+                  "broadcasterMedia": "tv",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "away",
+                  "broadcasterTeamId": 1610612737,
+                  "broadcasterVideoLink": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "homeOttBroadcasters": [],
+              "homeRadioBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "W283AN",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "104.5 The Beat",
+                  "broadcasterId": 1001154,
+                  "broadcasterMedia": "radio",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "home",
+                  "broadcasterTeamId": 1610612753,
+                  "broadcasterVideoLink": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "homeTvBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "WRDQ/DAZN-ORL",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "MagicTV 27/DAZN-ORL",
+                  "broadcasterId": 1001821,
+                  "broadcasterMedia": "tv",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "home",
+                  "broadcasterTeamId": 1610612753,
+                  "broadcasterVideoLink": "https://www.dazn.com/home/c5xvsne8v9dz1l3kgw64u7w0d?origin=GMF",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "nationalOttBroadcasters": [],
+              "nationalRadioBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "SiriusXM",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "SiriusXM",
+                  "broadcasterId": 1001098,
+                  "broadcasterMedia": "radio",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "natl",
+                  "broadcasterTeamId": -1,
+                  "broadcasterVideoLink": "https://www.siriusxm.com/sports/nba",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "nationalTvBroadcasters": []
+            },
+            "day": "Wed",
+            "gameCode": "20261021/ATLORL",
+            "gameDateEst": "2026-10-21T00:00:00Z",
+            "gameDateTimeEst": "2026-10-21T19:00:00Z",
+            "gameDateTimeUTC": "2026-10-21T23:00:00Z",
+            "gameDateUTC": "2026-10-21T04:00:00Z",
+            "gameId": "0022600085",
+            "gameLabel": "",
+            "gameSequence": 1,
+            "gameStatus": 1,
+            "gameStatusText": "7:00 pm ET",
+            "gameSubLabel": "",
+            "gameSubtype": "",
+            "gameTimeEst": "1900-01-01T19:00:00Z",
+            "gameTimeUTC": "1900-01-01T23:00:00Z",
+            "homeTeam": {
+              "losses": 0,
+              "score": 0,
+              "seed": 0,
+              "teamCity": "Orlando",
+              "teamId": 1610612753,
+              "teamName": "Magic",
+              "teamSlug": "magic",
+              "teamTricode": "ORL",
+              "wins": 0
+            },
+            "homeTeamTime": "2026-10-21T19:00:00Z",
+            "ifNecessary": false,
+            "isNeutral": false,
+            "monthNum": 10,
+            "postponedStatus": "N",
+            "seriesGameNumber": "",
+            "seriesText": "",
+            "weekName": "Week 1",
+            "weekNumber": 1
+          },
+          {
+            "arenaCity": "Washington",
+            "arenaName": "Capital One Arena",
+            "arenaState": "DC",
+            "awayTeam": {
+              "losses": 0,
+              "score": 0,
+              "seed": 0,
+              "teamCity": "Milwaukee",
+              "teamId": 1610612749,
+              "teamName": "Bucks",
+              "teamSlug": "bucks",
+              "teamTricode": "MIL",
+              "wins": 0
+            },
+            "awayTeamTime": "2026-10-21T18:00:00Z",
+            "branchLink": "",
+            "broadcasters": {
+              "awayOttBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "DTC-MIL",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "Bucks+",
+                  "broadcasterId": 1001028,
+                  "broadcasterMedia": "ott",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "away",
+                  "broadcasterTeamId": 1610612749,
+                  "broadcasterVideoLink": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "awayRadioBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "WTMJ",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "AM 620 WTMJ",
+                  "broadcasterId": 1025,
+                  "broadcasterMedia": "radio",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "away",
+                  "broadcasterTeamId": 1610612749,
+                  "broadcasterVideoLink": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "awayTvBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "WCGV",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "MY24",
+                  "broadcasterId": 143,
+                  "broadcasterMedia": "tv",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "away",
+                  "broadcasterTeamId": 1610612749,
+                  "broadcasterVideoLink": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "homeOttBroadcasters": [],
+              "homeRadioBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "WJFK/WTEM/WDCH",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "106.7 The Fan/The Team 980 AM/Bloomberg 99.1",
+                  "broadcasterId": 1001849,
+                  "broadcasterMedia": "radio",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "home",
+                  "broadcasterTeamId": 1610612764,
+                  "broadcasterVideoLink": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "homeTvBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "MNMT/Monumental+",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "MNMT/Monumental+",
+                  "broadcasterId": 1001846,
+                  "broadcasterMedia": "tv",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "home",
+                  "broadcasterTeamId": 1610612764,
+                  "broadcasterVideoLink": "https://www.monumentalsportsnetwork.com/game/bucks-wizards-102126?utm_source=NBA&utm_medium=SchedulePage&utm_campaign=NBA_affiliate_2025&utm_id=affiliate&platform=web",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "nationalOttBroadcasters": [],
+              "nationalRadioBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "SiriusXM",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "SiriusXM",
+                  "broadcasterId": 1001098,
+                  "broadcasterMedia": "radio",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "natl",
+                  "broadcasterTeamId": -1,
+                  "broadcasterVideoLink": "https://www.siriusxm.com/sports/nba",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "nationalTvBroadcasters": []
+            },
+            "day": "Wed",
+            "gameCode": "20261021/MILWAS",
+            "gameDateEst": "2026-10-21T00:00:00Z",
+            "gameDateTimeEst": "2026-10-21T19:00:00Z",
+            "gameDateTimeUTC": "2026-10-21T23:00:00Z",
+            "gameDateUTC": "2026-10-21T04:00:00Z",
+            "gameId": "0022600086",
+            "gameLabel": "",
+            "gameSequence": 2,
+            "gameStatus": 1,
+            "gameStatusText": "7:00 pm ET",
+            "gameSubLabel": "",
+            "gameSubtype": "",
+            "gameTimeEst": "1900-01-01T19:00:00Z",
+            "gameTimeUTC": "1900-01-01T23:00:00Z",
+            "homeTeam": {
+              "losses": 0,
+              "score": 0,
+              "seed": 0,
+              "teamCity": "Washington",
+              "teamId": 1610612764,
+              "teamName": "Wizards",
+              "teamSlug": "wizards",
+              "teamTricode": "WAS",
+              "wins": 0
+            },
+            "homeTeamTime": "2026-10-21T19:00:00Z",
+            "ifNecessary": false,
+            "isNeutral": false,
+            "monthNum": 10,
+            "postponedStatus": "N",
+            "seriesGameNumber": "",
+            "seriesText": "",
+            "weekName": "Week 1",
+            "weekNumber": 1
+          },
+          {
+            "arenaCity": "Brooklyn",
+            "arenaName": "Barclays Center",
+            "arenaState": "NY",
+            "awayTeam": {
+              "losses": 0,
+              "score": 0,
+              "seed": 0,
+              "teamCity": "Charlotte",
+              "teamId": 1610612766,
+              "teamName": "Hornets",
+              "teamSlug": "hornets",
+              "teamTricode": "CHA",
+              "wins": 0
+            },
+            "awayTeamTime": "2026-10-21T19:30:00Z",
+            "branchLink": "",
+            "broadcasters": {
+              "awayOttBroadcasters": [],
+              "awayRadioBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "WFNZ-FM",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "WFNZ 92.7 FM",
+                  "broadcasterId": 1000862,
+                  "broadcasterMedia": "radio",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "away",
+                  "broadcasterTeamId": 1610612766,
+                  "broadcasterVideoLink": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "awayTvBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "WSOC/DAZN-CHA",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "WSOC 9/DAZN-CHA",
+                  "broadcasterId": 1001874,
+                  "broadcasterMedia": "tv",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "away",
+                  "broadcasterTeamId": 1610612766,
+                  "broadcasterVideoLink": "https://www.dazn.com/home/1i5pgfq8pcq7c1smbfunaqtyf4?origin=GMF",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "homeOttBroadcasters": [],
+              "homeRadioBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "WFAN-FM/AM",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "101.9 FM / 660 AM",
+                  "broadcasterId": 1001797,
+                  "broadcasterMedia": "radio",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "home",
+                  "broadcasterTeamId": 1610612751,
+                  "broadcasterVideoLink": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "homeTvBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "YES",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "DAZN (YES)",
+                  "broadcasterId": 175,
+                  "broadcasterMedia": "tv",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "home",
+                  "broadcasterTeamId": 1610612751,
+                  "broadcasterVideoLink": "https://www.dazn.com/home/1oui0p3440a1p1tijokbrzvyq2?origin=GMF",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                },
+                {
+                  "broadcasterAbbreviation": "YES/DAZN-YES",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "YES/DAZN (YES)",
+                  "broadcasterId": 1001884,
+                  "broadcasterMedia": "tv",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "home",
+                  "broadcasterTeamId": 1610612751,
+                  "broadcasterVideoLink": "https://www.dazn.com/home/1oui0p3440a1p1tijokbrzvyq2?origin=GMF",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "nationalOttBroadcasters": [],
+              "nationalRadioBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "SiriusXM",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "SiriusXM",
+                  "broadcasterId": 1001098,
+                  "broadcasterMedia": "radio",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "natl",
+                  "broadcasterTeamId": -1,
+                  "broadcasterVideoLink": "https://www.siriusxm.com/sports/nba",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "nationalTvBroadcasters": []
+            },
+            "day": "Wed",
+            "gameCode": "20261021/CHABKN",
+            "gameDateEst": "2026-10-21T00:00:00Z",
+            "gameDateTimeEst": "2026-10-21T19:30:00Z",
+            "gameDateTimeUTC": "2026-10-21T23:30:00Z",
+            "gameDateUTC": "2026-10-21T04:00:00Z",
+            "gameId": "0022600087",
+            "gameLabel": "",
+            "gameSequence": 4,
+            "gameStatus": 1,
+            "gameStatusText": "7:30 pm ET",
+            "gameSubLabel": "",
+            "gameSubtype": "",
+            "gameTimeEst": "1900-01-01T19:30:00Z",
+            "gameTimeUTC": "1900-01-01T23:30:00Z",
+            "homeTeam": {
+              "losses": 0,
+              "score": 0,
+              "seed": 0,
+              "teamCity": "Brooklyn",
+              "teamId": 1610612751,
+              "teamName": "Nets",
+              "teamSlug": "nets",
+              "teamTricode": "BKN",
+              "wins": 0
+            },
+            "homeTeamTime": "2026-10-21T19:30:00Z",
+            "ifNecessary": false,
+            "isNeutral": false,
+            "monthNum": 10,
+            "postponedStatus": "N",
+            "seriesGameNumber": "",
+            "seriesText": "",
+            "weekName": "Week 1",
+            "weekNumber": 1
+          },
+          {
+            "arenaCity": "Toronto",
+            "arenaName": "Scotiabank Arena",
+            "arenaState": "ON",
+            "awayTeam": {
+              "losses": 0,
+              "score": 0,
+              "seed": 0,
+              "teamCity": "Chicago",
+              "teamId": 1610612741,
+              "teamName": "Bulls",
+              "teamSlug": "bulls",
+              "teamTricode": "CHI",
+              "wins": 0
+            },
+            "awayTeamTime": "2026-10-21T18:30:00Z",
+            "branchLink": "",
+            "broadcasters": {
+              "awayOttBroadcasters": [],
+              "awayRadioBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "WSCR",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "104.3 The Score",
+                  "broadcasterId": 1687,
+                  "broadcasterMedia": "radio",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "away",
+                  "broadcasterTeamId": 1610612741,
+                  "broadcasterVideoLink": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "awayTvBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "CHSN/CHSN App",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "CHSN/CHSN App",
+                  "broadcasterId": 1001830,
+                  "broadcasterMedia": "tv",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "away",
+                  "broadcasterTeamId": 1610612741,
+                  "broadcasterVideoLink": "https://www.chsn.com/game/1021-at-630-pm-ct--chicago-bulls-vs-toronto-raptors-1787075401187?utm_source=NBA&utm_medium=NBA_Schedule_Page&utm_campaign=NBA_Affiliate_2025&utm_id=Affiliate",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "homeOttBroadcasters": [],
+              "homeRadioBroadcasters": [],
+              "homeTvBroadcasters": [],
+              "nationalOttBroadcasters": [],
+              "nationalRadioBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "SiriusXM",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "SiriusXM",
+                  "broadcasterId": 1001098,
+                  "broadcasterMedia": "radio",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "natl",
+                  "broadcasterTeamId": -1,
+                  "broadcasterVideoLink": "https://www.siriusxm.com/sports/nba",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "nationalTvBroadcasters": []
+            },
+            "day": "Wed",
+            "gameCode": "20261021/CHITOR",
+            "gameDateEst": "2026-10-21T00:00:00Z",
+            "gameDateTimeEst": "2026-10-21T19:30:00Z",
+            "gameDateTimeUTC": "2026-10-21T23:30:00Z",
+            "gameDateUTC": "2026-10-21T04:00:00Z",
+            "gameId": "0022600088",
+            "gameLabel": "",
+            "gameSequence": 5,
+            "gameStatus": 1,
+            "gameStatusText": "7:30 pm ET",
+            "gameSubLabel": "",
+            "gameSubtype": "",
+            "gameTimeEst": "1900-01-01T19:30:00Z",
+            "gameTimeUTC": "1900-01-01T23:30:00Z",
+            "homeTeam": {
+              "losses": 0,
+              "score": 0,
+              "seed": 0,
+              "teamCity": "Toronto",
+              "teamId": 1610612761,
+              "teamName": "Raptors",
+              "teamSlug": "raptors",
+              "teamTricode": "TOR",
+              "wins": 0
+            },
+            "homeTeamTime": "2026-10-21T19:30:00Z",
+            "ifNecessary": false,
+            "isNeutral": false,
+            "monthNum": 10,
+            "postponedStatus": "N",
+            "seriesGameNumber": "",
+            "seriesText": "",
+            "weekName": "Week 1",
+            "weekNumber": 1
+          },
+          {
+            "arenaCity": "Memphis",
+            "arenaName": "FedExForum",
+            "arenaState": "TN",
+            "awayTeam": {
+              "losses": 0,
+              "score": 0,
+              "seed": 0,
+              "teamCity": "Utah",
+              "teamId": 1610612762,
+              "teamName": "Jazz",
+              "teamSlug": "jazz",
+              "teamTricode": "UTA",
+              "wins": 0
+            },
+            "awayTeamTime": "2026-10-21T18:00:00Z",
+            "branchLink": "",
+            "broadcasters": {
+              "awayOttBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "DTC-UTA",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "Jazz+",
+                  "broadcasterId": 1001035,
+                  "broadcasterMedia": "ott",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "away",
+                  "broadcasterTeamId": 1610612762,
+                  "broadcasterVideoLink": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "awayRadioBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "KSL-FM/KTUB",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "KSL 97.5 FM / S: KTUB",
+                  "broadcasterId": 1001848,
+                  "broadcasterMedia": "radio",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "away",
+                  "broadcasterTeamId": 1610612762,
+                  "broadcasterVideoLink": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "awayTvBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "KJZZ",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "KJZZ",
+                  "broadcasterId": 122,
+                  "broadcasterMedia": "tv",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "away",
+                  "broadcasterTeamId": 1610612762,
+                  "broadcasterVideoLink": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "homeOttBroadcasters": [],
+              "homeRadioBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "WMFS",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "ESPN 92.9FM/680AM",
+                  "broadcasterId": 1000152,
+                  "broadcasterMedia": "radio",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "home",
+                  "broadcasterTeamId": 1610612763,
+                  "broadcasterVideoLink": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "homeTvBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "DAZN-MEM",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "DAZN-MEM",
+                  "broadcasterId": 1001814,
+                  "broadcasterMedia": "tv",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "home",
+                  "broadcasterTeamId": 1610612763,
+                  "broadcasterVideoLink": "https://www.dazn.com/home/118evy6kfga4613kbepzvkzb5n?origin=GMF",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "nationalOttBroadcasters": [],
+              "nationalRadioBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "SiriusXM",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "SiriusXM",
+                  "broadcasterId": 1001098,
+                  "broadcasterMedia": "radio",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "natl",
+                  "broadcasterTeamId": -1,
+                  "broadcasterVideoLink": "https://www.siriusxm.com/sports/nba",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "nationalTvBroadcasters": []
+            },
+            "day": "Wed",
+            "gameCode": "20261021/UTAMEM",
+            "gameDateEst": "2026-10-21T00:00:00Z",
+            "gameDateTimeEst": "2026-10-21T20:00:00Z",
+            "gameDateTimeUTC": "2026-10-22T00:00:00Z",
+            "gameDateUTC": "2026-10-21T04:00:00Z",
+            "gameId": "0022600089",
+            "gameLabel": "",
+            "gameSequence": 6,
+            "gameStatus": 1,
+            "gameStatusText": "8:00 pm ET",
+            "gameSubLabel": "",
+            "gameSubtype": "",
+            "gameTimeEst": "1900-01-01T20:00:00Z",
+            "gameTimeUTC": "1900-01-01T00:00:00Z",
+            "homeTeam": {
+              "losses": 0,
+              "score": 0,
+              "seed": 0,
+              "teamCity": "Memphis",
+              "teamId": 1610612763,
+              "teamName": "Grizzlies",
+              "teamSlug": "grizzlies",
+              "teamTricode": "MEM",
+              "wins": 0
+            },
+            "homeTeamTime": "2026-10-21T19:00:00Z",
+            "ifNecessary": false,
+            "isNeutral": false,
+            "monthNum": 10,
+            "postponedStatus": "N",
+            "seriesGameNumber": "",
+            "seriesText": "",
+            "weekName": "Week 1",
+            "weekNumber": 1
+          },
+          {
+            "arenaCity": "New Orleans",
+            "arenaName": "Smoothie King Center",
+            "arenaState": "LA",
+            "awayTeam": {
+              "losses": 0,
+              "score": 0,
+              "seed": 0,
+              "teamCity": "Indiana",
+              "teamId": 1610612754,
+              "teamName": "Pacers",
+              "teamSlug": "pacers",
+              "teamTricode": "IND",
+              "wins": 0
+            },
+            "awayTeamTime": "2026-10-21T20:00:00Z",
+            "branchLink": "",
+            "broadcasters": {
+              "awayOttBroadcasters": [],
+              "awayRadioBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "WFNI-FM/AM",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "93.5/107.5 The Fan",
+                  "broadcasterId": 1641,
+                  "broadcasterMedia": "radio",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "away",
+                  "broadcasterTeamId": 1610612754,
+                  "broadcasterVideoLink": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "awayTvBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "DAZN-IND",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "DAZN-IND",
+                  "broadcasterId": 1001818,
+                  "broadcasterMedia": "tv",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "away",
+                  "broadcasterTeamId": 1610612754,
+                  "broadcasterVideoLink": "https://www.dazn.com/home/batq22uys5sd11ae1dgo7ouc0?origin=GMF",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "homeOttBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "DTC-NOP",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "Pelicans+",
+                  "broadcasterId": 1001030,
+                  "broadcasterMedia": "ott",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "home",
+                  "broadcasterTeamId": 1610612740,
+                  "broadcasterVideoLink": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "homeRadioBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "WWL",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "WWL 870 AM / 105.3 FM",
+                  "broadcasterId": 1437,
+                  "broadcasterMedia": "radio",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "home",
+                  "broadcasterTeamId": 1610612740,
+                  "broadcasterVideoLink": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "homeTvBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "GCSEN/WVUE",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "GCSEN / WVUE",
+                  "broadcasterId": 1001216,
+                  "broadcasterMedia": "tv",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "home",
+                  "broadcasterTeamId": 1610612740,
+                  "broadcasterVideoLink": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "nationalOttBroadcasters": [],
+              "nationalRadioBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "SiriusXM",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "SiriusXM",
+                  "broadcasterId": 1001098,
+                  "broadcasterMedia": "radio",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "natl",
+                  "broadcasterTeamId": -1,
+                  "broadcasterVideoLink": "https://www.siriusxm.com/sports/nba",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "nationalTvBroadcasters": []
+            },
+            "day": "Wed",
+            "gameCode": "20261021/INDNOP",
+            "gameDateEst": "2026-10-21T00:00:00Z",
+            "gameDateTimeEst": "2026-10-21T20:00:00Z",
+            "gameDateTimeUTC": "2026-10-22T00:00:00Z",
+            "gameDateUTC": "2026-10-21T04:00:00Z",
+            "gameId": "0022600090",
+            "gameLabel": "",
+            "gameSequence": 7,
+            "gameStatus": 1,
+            "gameStatusText": "8:00 pm ET",
+            "gameSubLabel": "",
+            "gameSubtype": "",
+            "gameTimeEst": "1900-01-01T20:00:00Z",
+            "gameTimeUTC": "1900-01-01T00:00:00Z",
+            "homeTeam": {
+              "losses": 0,
+              "score": 0,
+              "seed": 0,
+              "teamCity": "New Orleans",
+              "teamId": 1610612740,
+              "teamName": "Pelicans",
+              "teamSlug": "pelicans",
+              "teamTricode": "NOP",
+              "wins": 0
+            },
+            "homeTeamTime": "2026-10-21T19:00:00Z",
+            "ifNecessary": false,
+            "isNeutral": false,
+            "monthNum": 10,
+            "postponedStatus": "N",
+            "seriesGameNumber": "",
+            "seriesText": "",
+            "weekName": "Week 1",
+            "weekNumber": 1
+          },
+          {
+            "arenaCity": "Houston",
+            "arenaName": "Toyota Center",
+            "arenaState": "TX",
+            "awayTeam": {
+              "losses": 0,
+              "score": 0,
+              "seed": 0,
+              "teamCity": "Dallas",
+              "teamId": 1610612742,
+              "teamName": "Mavericks",
+              "teamSlug": "mavericks",
+              "teamTricode": "DAL",
+              "wins": 0
+            },
+            "awayTeamTime": "2026-10-21T19:30:00Z",
+            "branchLink": "",
+            "broadcasters": {
+              "awayOttBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "DTC-DAL",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "MavsTV+",
+                  "broadcasterId": 1001022,
+                  "broadcasterMedia": "ott",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "away",
+                  "broadcasterTeamId": 1610612742,
+                  "broadcasterVideoLink": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "awayRadioBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "KRLD-FM/KFZO-FM",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "105.3 The Fan / S: KFZO-FM",
+                  "broadcasterId": 1001885,
+                  "broadcasterMedia": "radio",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "away",
+                  "broadcasterTeamId": 1610612742,
+                  "broadcasterVideoLink": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "awayTvBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "KFAA/WFAA",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "KFAA/WFAA",
+                  "broadcasterId": 1001226,
+                  "broadcasterMedia": "tv",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "away",
+                  "broadcasterTeamId": 1610612742,
+                  "broadcasterVideoLink": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "homeOttBroadcasters": [],
+              "homeRadioBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "KBME/KTRH",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "790 AM / 740 AM",
+                  "broadcasterId": 1000272,
+                  "broadcasterMedia": "radio",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "home",
+                  "broadcasterTeamId": 1610612745,
+                  "broadcasterVideoLink": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "homeTvBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "SCHN/SCHN+",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "SCHN/SCHN+",
+                  "broadcasterId": 1001834,
+                  "broadcasterMedia": "tv",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "home",
+                  "broadcasterTeamId": 1610612745,
+                  "broadcasterVideoLink": "https://www.schnplus.com/live",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "nationalOttBroadcasters": [],
+              "nationalRadioBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "SiriusXM",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "SiriusXM",
+                  "broadcasterId": 1001098,
+                  "broadcasterMedia": "radio",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "natl",
+                  "broadcasterTeamId": -1,
+                  "broadcasterVideoLink": "https://www.siriusxm.com/sports/nba",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "nationalTvBroadcasters": []
+            },
+            "day": "Wed",
+            "gameCode": "20261021/DALHOU",
+            "gameDateEst": "2026-10-21T00:00:00Z",
+            "gameDateTimeEst": "2026-10-21T20:30:00Z",
+            "gameDateTimeUTC": "2026-10-22T00:30:00Z",
+            "gameDateUTC": "2026-10-21T04:00:00Z",
+            "gameId": "0022600091",
+            "gameLabel": "",
+            "gameSequence": 8,
+            "gameStatus": 1,
+            "gameStatusText": "8:30 pm ET",
+            "gameSubLabel": "",
+            "gameSubtype": "",
+            "gameTimeEst": "1900-01-01T20:30:00Z",
+            "gameTimeUTC": "1900-01-01T00:30:00Z",
+            "homeTeam": {
+              "losses": 0,
+              "score": 0,
+              "seed": 0,
+              "teamCity": "Houston",
+              "teamId": 1610612745,
+              "teamName": "Rockets",
+              "teamSlug": "rockets",
+              "teamTricode": "HOU",
+              "wins": 0
+            },
+            "homeTeamTime": "2026-10-21T19:30:00Z",
+            "ifNecessary": false,
+            "isNeutral": false,
+            "monthNum": 10,
+            "postponedStatus": "N",
+            "seriesGameNumber": "",
+            "seriesText": "",
+            "weekName": "Week 1",
+            "weekNumber": 1
+          },
+          {
+            "arenaCity": "Portland",
+            "arenaName": "Moda Center",
+            "arenaState": "OR",
+            "awayTeam": {
+              "losses": 0,
+              "score": 0,
+              "seed": 0,
+              "teamCity": "Phoenix",
+              "teamId": 1610612756,
+              "teamName": "Suns",
+              "teamSlug": "suns",
+              "teamTricode": "PHX",
+              "wins": 0
+            },
+            "awayTeamTime": "2026-10-21T19:00:00Z",
+            "branchLink": "",
+            "broadcasters": {
+              "awayOttBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "DTC-PHX",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "Suns+",
+                  "broadcasterId": 1001033,
+                  "broadcasterMedia": "ott",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "away",
+                  "broadcasterTeamId": 1610612756,
+                  "broadcasterVideoLink": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "awayRadioBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "KTAR-FM/KSUN",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "AZ Sports 98.7 FM / S: KSUN 1400AM",
+                  "broadcasterId": 1001855,
+                  "broadcasterMedia": "radio",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "away",
+                  "broadcasterTeamId": 1610612756,
+                  "broadcasterVideoLink": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "awayTvBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "KTVK/KPHE",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "3TV / AZFS",
+                  "broadcasterId": 1000998,
+                  "broadcasterMedia": "tv",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "away",
+                  "broadcasterTeamId": 1610612756,
+                  "broadcasterVideoLink": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                },
+                {
+                  "broadcasterAbbreviation": "KTVK/KPHE/AZFS App",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "3TV/AZFS/Suns+ on AZFS App",
+                  "broadcasterId": 1001840,
+                  "broadcasterMedia": "tv",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "away",
+                  "broadcasterTeamId": 1610612756,
+                  "broadcasterVideoLink": "https://www.azfamilysports.com/game/1021-at-630-pm-mst--phoenix-suns-at-portland-trail-blazers-1789149508058?utm_source=NBA&utm_medium=SchedulePage&utm_campaign=NBA_affiliate_2026&utm_id=affiliate",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "homeOttBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "DTC-POR",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "BlazerVision",
+                  "broadcasterId": 1001128,
+                  "broadcasterMedia": "ott",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "home",
+                  "broadcasterTeamId": 1610612757,
+                  "broadcasterVideoLink": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "homeRadioBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "KPOJ",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "Rip City Radio 620",
+                  "broadcasterId": 1472,
+                  "broadcasterMedia": "radio",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "home",
+                  "broadcasterTeamId": 1610612757,
+                  "broadcasterVideoLink": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "homeTvBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "KUNP",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "KUNP",
+                  "broadcasterId": 1001196,
+                  "broadcasterMedia": "tv",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "home",
+                  "broadcasterTeamId": 1610612757,
+                  "broadcasterVideoLink": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "nationalOttBroadcasters": [],
+              "nationalRadioBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "SiriusXM",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "SiriusXM",
+                  "broadcasterId": 1001098,
+                  "broadcasterMedia": "radio",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "natl",
+                  "broadcasterTeamId": -1,
+                  "broadcasterVideoLink": "https://www.siriusxm.com/sports/nba",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "nationalTvBroadcasters": []
+            },
+            "day": "Wed",
+            "gameCode": "20261021/PHXPOR",
+            "gameDateEst": "2026-10-21T00:00:00Z",
+            "gameDateTimeEst": "2026-10-21T22:00:00Z",
+            "gameDateTimeUTC": "2026-10-22T02:00:00Z",
+            "gameDateUTC": "2026-10-21T04:00:00Z",
+            "gameId": "0022600092",
+            "gameLabel": "",
+            "gameSequence": 10,
+            "gameStatus": 1,
+            "gameStatusText": "10:00 pm ET",
+            "gameSubLabel": "",
+            "gameSubtype": "",
+            "gameTimeEst": "1900-01-01T22:00:00Z",
+            "gameTimeUTC": "1900-01-01T02:00:00Z",
+            "homeTeam": {
+              "losses": 0,
+              "score": 0,
+              "seed": 0,
+              "teamCity": "Portland",
+              "teamId": 1610612757,
+              "teamName": "Trail Blazers",
+              "teamSlug": "blazers",
+              "teamTricode": "POR",
+              "wins": 0
+            },
+            "homeTeamTime": "2026-10-21T19:00:00Z",
+            "ifNecessary": false,
+            "isNeutral": false,
+            "monthNum": 10,
+            "postponedStatus": "N",
+            "seriesGameNumber": "",
+            "seriesText": "",
+            "weekName": "Week 1",
+            "weekNumber": 1
+          },
+          {
+            "arenaCity": "Inglewood",
+            "arenaName": "Intuit Dome",
+            "arenaState": "CA",
+            "awayTeam": {
+              "losses": 0,
+              "score": 0,
+              "seed": 0,
+              "teamCity": "Sacramento",
+              "teamId": 1610612758,
+              "teamName": "Kings",
+              "teamSlug": "kings",
+              "teamTricode": "SAC",
+              "wins": 0
+            },
+            "awayTeamTime": "2026-10-21T19:30:00Z",
+            "branchLink": "",
+            "broadcasters": {
+              "awayOttBroadcasters": [],
+              "awayRadioBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "Kings Radio",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "Kings Radio",
+                  "broadcasterId": 1001847,
+                  "broadcasterMedia": "radio",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "away",
+                  "broadcasterTeamId": 1610612758,
+                  "broadcasterVideoLink": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "awayTvBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "NBCSCA/PCK-SAC",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "NBCSCA/PCK-SAC",
+                  "broadcasterId": 1001842,
+                  "broadcasterMedia": "tv",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "away",
+                  "broadcasterTeamId": 1610612758,
+                  "broadcasterVideoLink": "https://www.nbc.com/watch/nba/kings-vs-clippers/30000295",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "homeOttBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "DTC-LAC",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "ClipperVision",
+                  "broadcasterId": 1001036,
+                  "broadcasterMedia": "ott",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "home",
+                  "broadcasterTeamId": 1610612746,
+                  "broadcasterVideoLink": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "homeRadioBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "KLAC/KWKW",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "AM 570 LA Sports / 1330 AM (S)",
+                  "broadcasterId": 1000284,
+                  "broadcasterMedia": "radio",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "home",
+                  "broadcasterTeamId": 1610612746,
+                  "broadcasterVideoLink": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "homeTvBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "KTLA",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "KTLA",
+                  "broadcasterId": 172,
+                  "broadcasterMedia": "tv",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "home",
+                  "broadcasterTeamId": 1610612746,
+                  "broadcasterVideoLink": "",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "nationalOttBroadcasters": [],
+              "nationalRadioBroadcasters": [
+                {
+                  "broadcasterAbbreviation": "SiriusXM",
+                  "broadcasterDescription": "",
+                  "broadcasterDisplay": "SiriusXM",
+                  "broadcasterId": 1001098,
+                  "broadcasterMedia": "radio",
+                  "broadcasterRanking": null,
+                  "broadcasterScope": "natl",
+                  "broadcasterTeamId": -1,
+                  "broadcasterVideoLink": "https://www.siriusxm.com/sports/nba",
+                  "regionId": 1,
+                  "tapeDelayComments": ""
+                }
+              ],
+              "nationalTvBroadcasters": []
+            },
+            "day": "Wed",
+            "gameCode": "20261021/SACLAC",
+            "gameDateEst": "2026-10-21T00:00:00Z",
+            "gameDateTimeEst": "2026-10-21T22:30:00Z",
+            "gameDateTimeUTC": "2026-10-22T02:30:00Z",
+            "gameDateUTC": "2026-10-21T04:00:00Z",
+            "gameId": "0022600093",
+            "gameLabel": "",
+            "gameSequence": 11,
+            "gameStatus": 1,
+            "gameStatusText": "10:30 pm ET",
+            "gameSubLabel": "",
+            "gameSubtype": "",
+            "gameTimeEst": "1900-01-01T22:30:00Z",
+            "gameTimeUTC": "1900-01-01T02:30:00Z",
+            "homeTeam": {
+              "losses": 0,
+              "score": 0,
+              "seed": 0,
+              "teamCity": "LA",
+              "teamId": 1610612746,
+              "teamName": "Clippers",
+              "teamSlug": "clippers",
+              "teamTricode": "LAC",
+              "wins": 0
+            },
+            "homeTeamTime": "2026-10-21T19:30:00Z",
+            "ifNecessary": false,
+            "isNeutral": false,
+            "monthNum": 10,
+            "postponedStatus": "N",
+            "seriesGameNumber": "",
+            "seriesText": "",
+            "weekName": "Week 1",
+            "weekNumber": 1
+          }
+        ]
+      }
+    ],
+    "leagueId": "00",
+    "seasonYear": "2026-27"
+  },
+  "meta": {
+    "request": "http://nba.cloud/league/00/2026-27/scheduleleaguev2?Format=json",
+    "time": "2026-10-20T11:31:26.3126Z",
+    "version": 1
+  }
+}

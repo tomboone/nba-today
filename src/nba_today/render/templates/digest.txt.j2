@@ -1,0 +1,150 @@
+{#- The digest's plain-text alternative: the same sections as `digest.mjml.j2`, in the same order. -#}
+{{ "NBA Today" if digest.kind == "full" else "NBA Scores" }} — {{ digest.date | long_date }}
+{% for label, when in stale %}
+
+! {{ label }} could not be fetched; showing its snapshot from {{ when | stamp }}.
+{% endfor %}
+{% if unavailable %}
+
+! Not available today: {{ unavailable | join(", ") }}.
+{% endif %}
+{% if digest.kind == "full" and digest.matchups %}
+
+
+TODAY'S MATCHUPS
+{% for tip_off, matchups in digest.matchups | groupby("tip_off") %}
+
+{{ tip_off | ampm }} ET
+{% for m in matchups %}
+{% set label = m | game_label %}
+{% if label %}
+  {{ label }}
+{% endif %}
+{% for s in (m.away, m.home) %}
+{% set rec = s.wins | record(s.losses) %}
+  {{ "@ " if loop.last else "" }}{{ s.tricode }}{% if rec %} ({{ rec }}){% endif %}{% if s.last_ten %}, L10 {{ s.last_ten }}{% endif %}{% if s.streak %}, {{ s.streak }}{% endif %}
+
+{% if s.injuries.out %}
+      Out: {{ s.injuries.out | join(", ") }}
+{% endif %}
+{% if s.injuries.day_to_day %}
+      DTD: {{ s.injuries.day_to_day | join(", ") }}
+{% endif %}
+{% for name, injury in s.injuries.other %}
+      {{ injury }}: {{ name }}
+{% endfor %}
+{% if s.ratings %}
+      ORtg {{ s.ratings.off_rtg | one }} · DRtg {{ s.ratings.def_rtg | one }} · Net {{ s.ratings.net_rtg | signed }} · Pace {{ s.ratings.pace | one }}
+{% endif %}
+{% if s.key_player %}
+      Key: {{ s.key_player.name }} {{ s.key_player.ppg | one }}/{{ s.key_player.rpg | one }}/{{ s.key_player.apg | one }}
+{% endif %}
+{% endfor %}
+{% set where = [m.arena, m.city] | select | join(", ") %}
+{% if where %}
+    {{ where }}
+{% endif %}
+{% set tv = [] %}
+{% if m.tv.national %}{% set _ = tv.append("National: " ~ m.tv.national | join(", ")) %}{% endif %}
+{% if m.tv.home %}{% set _ = tv.append(m.home.tricode ~ ": " ~ m.tv.home | join(", ")) %}{% endif %}
+{% if m.tv.away %}{% set _ = tv.append(m.away.tricode ~ ": " ~ m.tv.away | join(", ")) %}{% endif %}
+{% if tv %}
+    TV: {{ tv | join(" · ") }}
+{% endif %}
+{% endfor %}
+{% endfor %}
+{% endif %}
+{% if digest.results %}
+
+
+LAST NIGHT'S RESULTS
+{% for r in digest.results %}
+
+{% set label = r | game_label %}
+{% if label %}
+{{ label }}
+{% endif %}
+{% if r.away.score is not none and r.home.score is not none %}
+{% set note = r | score_note %}
+{{ r.away.tricode }} {{ r.away.score }}, {{ r.home.tricode }} {{ r.home.score }}{% if note %} ({{ note }}){% endif %}
+
+{% for s in (r.away, r.home) if s.leaders %}
+{% set l = s.leaders %}
+{% set parts = [] %}
+{% if l.points %}{% set _ = parts.append(l.points.name ~ " " ~ l.points.value ~ " pts") %}{% endif %}
+{% if l.rebounds %}{% set _ = parts.append(l.rebounds.name ~ " " ~ l.rebounds.value ~ " reb") %}{% endif %}
+{% if l.assists %}{% set _ = parts.append(l.assists.name ~ " " ~ l.assists.value ~ " ast") %}{% endif %}
+  {{ s.tricode }}: {{ parts | join(" · ") }}
+{% endfor %}
+{% else %}
+{{ r.away.tricode }} @ {{ r.home.tricode }}: {{ r | status }}
+{% endif %}
+{% endfor %}
+{% endif %}
+{% if digest.standings %}
+
+
+STANDINGS (lines after the 6th seed and the 10th)
+{% for conference in digest.standings %}
+
+{{ conference.conference }}
+{{ "%3s %-7s %3s %3s %5s %5s %5s %5s" | format("", "", "W", "L", "PCT", "GB", "L10", "STRK") }}
+{% for row in conference.rows %}
+{{ "%3s %-7s %3s %3s %5s %5s %5s %5s" | format(row.seed, (row.tricode ~ " " ~ (row.clinch | clinch_mark)) | trim, row.wins, row.losses, row.pct, row.gb, row.last_ten or "", row.streak or "") }}
+{% if row.seed in line_seeds %}
+{{ "-" * 43 }}
+{% endif %}
+{% endfor %}
+{% endfor %}
+{% if clinch_legend %}
+
+{{ clinch_legend }}
+{% endif %}
+{% endif %}
+{% if digest.postseason %}
+{% set picture = digest.postseason %}
+
+
+POSTSEASON (playoff seeds in parentheses · series as of last night)
+{% if picture.finals %}
+
+NBA Finals
+  {{ picture.finals | series_line }}
+{% endif %}
+{% for conference in picture.conferences if conference.rounds or conference.play_in %}
+
+{{ conference.conference }}
+{% for round in conference.rounds %}
+  {{ round.label }}
+{% for s in round.series %}
+    {{ s | series_line }}
+{% endfor %}
+{% endfor %}
+{% if conference.play_in %}
+  Play-In
+{% for g in conference.play_in %}
+    {{ g | play_in_line }}
+{% endfor %}
+{% endif %}
+{% endfor %}
+{% endif %}
+{% if digest.leaderboard %}
+
+
+PIE LEADERS (top 25 among players with 70% of team games and 20+ minutes · NBA.com, as of {{ digest.leaderboard.as_of | stamp }})
+
+{{ "%3s  %-24s %-4s %5s %5s %5s %5s %5s" | format("", "Player", "Team", "PTS", "REB", "AST", "TS%", "PIE") }}
+{% for row in digest.leaderboard.rows %}
+{{ "%3s  %-24s %-4s %5s %5s %5s %5s %5s" | format(row.rank, row.name, row.tricode, row.pts | one, row.reb | one, row.ast | one, row.ts_pct | percent, row.pie | percent) }}
+{% endfor %}
+{% elif no_qualified_players %}
+
+
+PIE LEADERS
+
+No qualified players yet.
+{% endif %}
+
+
+--
+Data: ESPN, NBA.com. Not affiliated with the NBA.

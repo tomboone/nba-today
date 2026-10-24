@@ -54,9 +54,11 @@ src/nba_today/
     fetched.py           # Fetched[T] + fetch_or_snapshot                                 (port)
     espn.py              # ESPN client: scoreboard, standings, injuries, athlete stats
     nba.py               # NBA.com client: season schedule, team advanced, player base + advanced
-    models/              # pydantic models of raw payloads, one module per endpoint
+    models/              # pydantic models of raw payloads, one module per endpoint; the scoreboard
+                         # module also holds `is_counted`, so `digest/` can use it without httpx
   digest/
     models.py            # Digest and children (§6)
+    bundle.py            # SourceBundle: one Fetched[...] | None per snapshot name
     build.py             # raw payloads → Digest (pure functions, no I/O)
   render/
     templates/digest.mjml.j2
@@ -136,6 +138,7 @@ Games are matched across sources on **(Eastern date, home tricode, away tricode)
 | `espn_standings` | `GET {ESPN_SITE_API_BASE}/apis/v2/sports/basketball/nba/standings?season={espn_year}&seasontype=2` | Standings, last-10, streak, team games played |
 | `espn_injuries` | `GET {ESPN_SITE_API_BASE}/apis/site/v2/sports/basketball/nba/injuries` | Injury report |
 | `espn_athletes` | `GET {ESPN_WEB_API_BASE}/apis/common/v3/sports/basketball/nba/statistics/byathlete?season={espn_year}&seasontype=2&isqualified=false&limit=1000&sort=offensive.avgPoints:desc` | Key players |
+| `espn_postseason` | `GET {ESPN_SITE_API_BASE}/apis/site/v2/sports/basketball/nba/scoreboard?dates={YYYYMM}&limit=1000`, once per month from April | Postseason picture (§13); postseason phase only |
 
 Scoreboard fields:
 - `events[].date` (UTC tip-off), `events[].season.type` (counted-game filter), `status.type.{name,state,completed,detail}`, `status.period`.
@@ -146,7 +149,7 @@ Scoreboard fields:
 
 Standings fields: `children[]` (one per conference) → `standings.entries[]` → `team.{id,abbreviation}` and `stats[name]` for `wins`, `losses`, `winPercent`, `gamesBehind`, `playoffSeed`, `streak`, `clincher`, plus `Last Ten Games` (`displayValue`).
 - Entries are **not sorted**: sort by `playoffSeed`.
-- `clincher` codes seen in 2025-26: `z` (clinched best record in league), `y` (clinched division), `x` (clinched playoff berth), `xp`/`pb` (clinched play-in), `e` (eliminated), `*`. Map them to the enum in §6. The exact mapping is pinned against fixtures in the standings ticket.
+- `clincher` codes seen in 2025-26: `z` (clinched best record in conference), `*` (clinched best record in league), `y` (clinched division), `x` (clinched playoff berth), `xp`/`pb` (clinched play-in, seeds 7-8 and 9-10), `e` (eliminated). Map them to the enum in §6: `z` and `*` are both `best_record`, `xp` and `pb` both `play_in`, and an unknown code is `None` with a warning. Pinned against the final 2025-26 standings fixture in NEU-1786 (DET is `z`, OKC `*`).
 
 Injuries: `injuries[]` per team → `injuries[].{status, athlete.displayName, athlete.team.abbreviation}`. `status` is `Out` or `Day-To-Day`. Any other value renders verbatim.
 
@@ -179,12 +182,17 @@ Digest
   unavailable: list[str]           # snapshot names with no snapshot either
   matchups: list[Matchup]          # empty on scores_only; sorted by tip-off, then home tricode
   results: list[Result]            # yesterday's counted games, in tip-off order
-  standings: list[ConferenceStandings] | None   # East, West; None when unavailable
+  standings: list[ConferenceStandings] | None   # East, West; None when unavailable or postseason
+  postseason: PostseasonPicture | None  # postseason phase only (§13): finals, then East and West,
+                                        # each with rounds (latest first) and play-in games
   leaderboard: Leaderboard | None  # None when unavailable or no qualified players
 
-Matchup: tip_off (tz-aware), label: str | None, arena: str, city: str,
-         away: MatchupSide, home: MatchupSide, tv: Broadcasts
-MatchupSide: tricode, wins, losses, last_ten: str | None, streak: str | None,
+Matchup: tip_off (tz-aware), label: str | None, arena: str | None, city: str | None,  # None: no venue
+         away: MatchupSide, home: MatchupSide, tv: Broadcasts,
+         series: SeriesState | None        # playoff games only (§13)
+SeriesState: round_label: str | None, game_number: int | None, summary: str | None  # "BOS leads 3-1"
+MatchupSide: tricode, wins: int | None, losses: int | None,  # scoreboard record, else standings
+             last_ten: str | None, streak: str | None,
              injuries: InjuryReport, ratings: TeamRatings | None, key_player: KeyPlayer | None
 InjuryReport: out: list[str], day_to_day: list[str], other: list[tuple[str, str]]  # (name, status)
 TeamRatings: off_rtg, def_rtg, net_rtg, pace
@@ -192,7 +200,7 @@ KeyPlayer: name, ppg, rpg, apg
 Broadcasts: national: list[str], home: list[str], away: list[str]   # TV and streaming merged, deduped, in source order
 
 Result: status: "final" | "postponed" | str, overtimes: int (0 = regulation), label: str | None,
-        away: ResultSide, home: ResultSide
+        away: ResultSide, home: ResultSide, series: SeriesState | None
 ResultSide: tricode, score: int | None, leaders: GameLeaders | None
 GameLeaders: points: Leader | None, rebounds: Leader | None, assists: Leader | None
 Leader: name, value: int
@@ -209,7 +217,9 @@ LeaderRow: rank, name, tricode, pts, reb, ast, ts_pct, pie
 Build rules:
 - **Counted-game filter** applies to both scoreboards (§4.2).
 - **Broadcasts:** if the NBA schedule is available (fresh or stale), use its national, home, and away lists for the matched game. Otherwise, or when no NBA game matches, use ESPN `broadcasts`: `market` national/home/away maps to the same buckets, and a `NBA League Pass` name is dropped.
-- **Label:** ESPN `notes[0].headline` if present, else NBA `gameLabel`/`gameSubLabel`, else `None`. Regular-season Cup group games carry no label.
+- **Label:** ESPN `notes[0].headline` if present, else NBA `gameLabel` · `gameSubLabel`, else `None`. A regular-season game keeps its label only if it is an NBA Cup knockout (the label names the NBA Cup and not a group): Cup group games (`NBA Cup - Group Play`) and one-offs such as `NBA Mexico City Game 2025` carry no label.
+- **Matchups:** only today's counted games, and only those whose tip-off falls on the digest date (Eastern), since a stale snapshot can be an earlier day's scoreboard. Records come from the scoreboard's `records[type=total]`, else from `espn_standings` (the Cup final has no scoreboard record).
+- **Results:** only yesterday's counted games whose tip-off falls on the day before the digest date (Eastern), for the same stale-snapshot reason, in tip-off order. A game that never tipped off (postponed, or any status at period 0) has no score or leaders, since ESPN sends `"0"` placeholders. A non-final status renders ESPN's `detail`, else its status name. A side with no leader category at all has `leaders = None`. Decided in NEU-1785.
 - **Qualified player:** `player.GP >= ceil(0.70 * team_games_played)` and `player.MIN >= 20.0`. For the leaderboard, team games played comes from `nba_team_advanced.GP`, keeping the leaderboard NBA-only. For key players, it comes from `espn_standings`, keeping that ESPN-only. A team with no qualified player has `key_player = None`.
 - **Key player:** the qualified player on that team with the highest PPG. Ties break on RPG, then name.
 - **Leaderboard:** qualified players sorted by PIE desc, then PTS desc; top 25. `ts_pct` and `pie` render as percentages with one decimal.
@@ -290,9 +300,13 @@ Port from mlb-today unchanged: `Transport` protocol, `Message`, `SendReceipt`, `
 
 Built after go-live and verified against 2025-26 postseason fixtures before the April 2027 play-in.
 
-- **Phase detection:** the digest's `phase` is `postseason` when the date is after the last regular-season game (from the NBA schedule, or ESPN season type 3/5 on the scoreboard).
-- **Series state:** on postseason matchups and results, from ESPN `competitions[0].series` (summary such as "BOS leads series 2-1") or NBA `seriesText`, and the game number from the NBA schedule's `gameLabel`/`seriesGameNumber`. The exact fields are pinned against recorded fixtures.
-- **Postseason picture:** replaces standings. Play-in games (with results) while the play-in runs, then each conference's series by round with their state. Source: an ESPN scoreboard date-range query over the postseason so far (`dates=YYYYMMDD-YYYYMMDD`), reduced to series, under a tenth snapshot name `espn_postseason` (fetched only in the postseason phase). If that proves unworkable, a `/planit` pass on that ticket picks the NBA schedule's `seriesText` instead.
+- **Phase detection:** the digest's `phase` is `postseason` when any counted game today or yesterday (the same games the matchups and results read) has ESPN season type 3 or 5. Decided in NEU-1793.
+- **Series state:** on playoff matchups and results (season type 3 only; the play-in keeps its label and has no series), pinned against the 2025-26 fixtures in NEU-1793. The round and game number come from ESPN's note (`East 1st Round - Game 4`), else NBA `gameLabel` and `seriesGameNumber`. The summary is built from ESPN `series.competitors[].{id, wins}` and `completed` in NBA.com's wording and tricodes (`BOS leads 3-1`, `Series tied 2-2`, `NYK wins 4-1`), else NBA `seriesText`. ESPN's own `summary` is not used: it carries ESPN abbreviations (`SA`). ESPN also attaches a playoff `series` to the regular-season meeting of the same teams, which is why the season type gates it. The email shows the series line in place of the label.
+- **Postseason picture:** replaces standings. Play-in games (with results) while the play-in runs, then each conference's series by round with their state. Source: the ESPN scoreboard asked one month at a time (`dates=YYYYMM&limit=1000`) from April through today's month, keeping only play-in and playoff events, under a tenth snapshot name `espn_postseason` (fetched only in the postseason phase), and reduced to series in the builder. A date range (`dates=YYYYMMDD-YYYYMMDD`) returned `400 Failed to get events endpoint` for every range tried on 2026-10-20, while months and single dates worked, so NEU-1794 chose months over the NBA schedule's `seriesText`: ESPN is primary (ADR-0004), while the NBA schedule is enrichment and absent whenever `NBA_ENRICHMENT` is off or NBA.com blocks the fetch. Decided in NEU-1794:
+  - Games before the digest date give scores and series state; the digest date's own games only add a play-in game or a series that starts tonight, since they have not tipped off at send time.
+  - The play-in is listed until a playoff game has been played, so the first round's opening day shows both.
+  - Seeds 1-6 come from `espn_standings`; a play-in team takes the seed its first-round opponent pairs with (1 v 8, 2 v 7), since ESPN's standings may still show its regular-season place. Play-in games carry their places in ESPN's note (`7th Place vs 8th Place`) and no seeds.
+  - Rounds are listed latest first under each conference, the NBA Finals above both.
 - **Leaderboard and team ratings** stay on regular-season stats during the postseason.
 
 ## 14. Out of scope

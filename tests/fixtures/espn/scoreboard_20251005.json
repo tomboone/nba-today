@@ -1,0 +1,993 @@
+{
+  "events": [
+    {
+      "competitions": [
+        {
+          "attendance": 11371,
+          "broadcast": "",
+          "broadcasts": [
+            {
+              "market": "away",
+              "names": [
+                "Thunder App",
+                "NBA League Pass"
+              ]
+            }
+          ],
+          "competitors": [
+            {
+              "homeAway": "home",
+              "id": "30",
+              "leaders": [
+                {
+                  "abbreviation": "Pts",
+                  "displayName": "Points",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "Kon Knueppel",
+                        "fullName": "Kon Knueppel",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5061575.png",
+                        "id": "5061575",
+                        "jersey": "7",
+                        "position": {
+                          "abbreviation": "G"
+                        },
+                        "shortName": "K. Knueppel",
+                        "team": {
+                          "id": "30"
+                        }
+                      },
+                      "displayValue": "18",
+                      "team": {
+                        "id": "30"
+                      },
+                      "value": 18.0
+                    }
+                  ],
+                  "name": "points",
+                  "shortDisplayName": "Pts"
+                },
+                {
+                  "abbreviation": "Reb",
+                  "displayName": "Rebounds",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "Miles Bridges",
+                        "fullName": "Miles Bridges",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4066383.png",
+                        "id": "4066383",
+                        "jersey": "22",
+                        "position": {
+                          "abbreviation": "F"
+                        },
+                        "shortName": "M. Bridges",
+                        "team": {
+                          "id": "30"
+                        }
+                      },
+                      "displayValue": "8",
+                      "team": {
+                        "id": "30"
+                      },
+                      "value": 8.0
+                    }
+                  ],
+                  "name": "rebounds",
+                  "shortDisplayName": "Reb"
+                },
+                {
+                  "abbreviation": "Ast",
+                  "displayName": "Assists",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "Tre Mann",
+                        "fullName": "Tre Mann",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4432819.png",
+                        "id": "4432819",
+                        "jersey": "1",
+                        "position": {
+                          "abbreviation": "G"
+                        },
+                        "shortName": "T. Mann",
+                        "team": {
+                          "id": "30"
+                        }
+                      },
+                      "displayValue": "5",
+                      "team": {
+                        "id": "30"
+                      },
+                      "value": 5.0
+                    }
+                  ],
+                  "name": "assists",
+                  "shortDisplayName": "Ast"
+                },
+                {
+                  "abbreviation": "RAT",
+                  "displayName": "Rating",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "Kon Knueppel",
+                        "fullName": "Kon Knueppel",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5061575.png",
+                        "id": "5061575",
+                        "jersey": "7",
+                        "position": {
+                          "abbreviation": "G"
+                        },
+                        "shortName": "K. Knueppel",
+                        "team": {
+                          "id": "30"
+                        }
+                      },
+                      "displayValue": "18 PTS",
+                      "team": {
+                        "id": "30"
+                      },
+                      "value": 25.700000762939453
+                    }
+                  ],
+                  "name": "rating",
+                  "shortDisplayName": "RAT"
+                }
+              ],
+              "linescores": [
+                {
+                  "displayValue": "26",
+                  "period": 1,
+                  "value": 26.0
+                },
+                {
+                  "displayValue": "31",
+                  "period": 2,
+                  "value": 31.0
+                },
+                {
+                  "displayValue": "31",
+                  "period": 3,
+                  "value": 31.0
+                },
+                {
+                  "displayValue": "26",
+                  "period": 4,
+                  "value": 26.0
+                }
+              ],
+              "order": 0,
+              "records": [
+                {
+                  "abbreviation": "Game",
+                  "name": "overall",
+                  "summary": "0-1",
+                  "type": "total"
+                },
+                {
+                  "name": "Home",
+                  "summary": "0-1",
+                  "type": "home"
+                },
+                {
+                  "name": "Road",
+                  "summary": "0-0",
+                  "type": "road"
+                }
+              ],
+              "score": "114",
+              "team": {
+                "abbreviation": "CHA",
+                "alternateColor": "1d1060",
+                "color": "008ca8",
+                "displayName": "Charlotte Hornets",
+                "id": "30",
+                "isActive": true,
+                "location": "Charlotte",
+                "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/cha.png",
+                "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/scoreboard/cha.png",
+                "name": "Hornets",
+                "shortDisplayName": "Hornets",
+                "uid": "s:40~l:46~t:30",
+                "venue": {
+                  "id": "1893"
+                }
+              },
+              "type": "team",
+              "uid": "s:40~l:46~t:30",
+              "winner": false
+            },
+            {
+              "homeAway": "away",
+              "id": "25",
+              "leaders": [
+                {
+                  "abbreviation": "Pts",
+                  "displayName": "Points",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "Aaron Wiggins",
+                        "fullName": "Aaron Wiggins",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4397183.png",
+                        "id": "4397183",
+                        "jersey": "2",
+                        "position": {
+                          "abbreviation": "G"
+                        },
+                        "shortName": "A. Wiggins",
+                        "team": {
+                          "id": "25"
+                        }
+                      },
+                      "displayValue": "23",
+                      "team": {
+                        "id": "25"
+                      },
+                      "value": 23.0
+                    }
+                  ],
+                  "name": "points",
+                  "shortDisplayName": "Pts"
+                },
+                {
+                  "abbreviation": "Reb",
+                  "displayName": "Rebounds",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "Malevy Leons",
+                        "fullName": "Malevy Leons",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4897449.png",
+                        "id": "4897449",
+                        "jersey": "33",
+                        "position": {
+                          "abbreviation": "F"
+                        },
+                        "shortName": "M. Leons",
+                        "team": {
+                          "id": "9"
+                        }
+                      },
+                      "displayValue": "11",
+                      "team": {
+                        "id": "25"
+                      },
+                      "value": 11.0
+                    }
+                  ],
+                  "name": "rebounds",
+                  "shortDisplayName": "Reb"
+                },
+                {
+                  "abbreviation": "Ast",
+                  "displayName": "Assists",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "Nikola Topic",
+                        "fullName": "Nikola Topic",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5159925.png",
+                        "id": "5159925",
+                        "jersey": "44",
+                        "position": {
+                          "abbreviation": "G"
+                        },
+                        "shortName": "N. Topic",
+                        "team": {
+                          "id": "25"
+                        }
+                      },
+                      "displayValue": "7",
+                      "team": {
+                        "id": "25"
+                      },
+                      "value": 7.0
+                    }
+                  ],
+                  "name": "assists",
+                  "shortDisplayName": "Ast"
+                },
+                {
+                  "abbreviation": "RAT",
+                  "displayName": "Rating",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "Aaron Wiggins",
+                        "fullName": "Aaron Wiggins",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4397183.png",
+                        "id": "4397183",
+                        "jersey": "2",
+                        "position": {
+                          "abbreviation": "G"
+                        },
+                        "shortName": "A. Wiggins",
+                        "team": {
+                          "id": "25"
+                        }
+                      },
+                      "displayValue": "23 PTS, 6 AST",
+                      "team": {
+                        "id": "25"
+                      },
+                      "value": 39.349998474121094
+                    }
+                  ],
+                  "name": "rating",
+                  "shortDisplayName": "RAT"
+                }
+              ],
+              "linescores": [
+                {
+                  "displayValue": "36",
+                  "period": 1,
+                  "value": 36.0
+                },
+                {
+                  "displayValue": "34",
+                  "period": 2,
+                  "value": 34.0
+                },
+                {
+                  "displayValue": "37",
+                  "period": 3,
+                  "value": 37.0
+                },
+                {
+                  "displayValue": "28",
+                  "period": 4,
+                  "value": 28.0
+                }
+              ],
+              "order": 1,
+              "records": [
+                {
+                  "abbreviation": "Game",
+                  "name": "overall",
+                  "summary": "1-0",
+                  "type": "total"
+                },
+                {
+                  "name": "Home",
+                  "summary": "0-0",
+                  "type": "home"
+                },
+                {
+                  "name": "Road",
+                  "summary": "1-0",
+                  "type": "road"
+                }
+              ],
+              "score": "135",
+              "team": {
+                "abbreviation": "OKC",
+                "alternateColor": "ef3b24",
+                "color": "007ac1",
+                "displayName": "Oklahoma City Thunder",
+                "id": "25",
+                "isActive": true,
+                "location": "Oklahoma City",
+                "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/okc.png",
+                "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/scoreboard/okc.png",
+                "name": "Thunder",
+                "shortDisplayName": "Thunder",
+                "uid": "s:40~l:46~t:25",
+                "venue": {
+                  "id": "2559"
+                }
+              },
+              "type": "team",
+              "uid": "s:40~l:46~t:25",
+              "winner": true
+            }
+          ],
+          "conferenceCompetition": false,
+          "date": "2025-10-05T21:00Z",
+          "format": {
+            "regulation": {
+              "periods": 4
+            }
+          },
+          "id": "401812676",
+          "neutralSite": true,
+          "notes": [],
+          "playByPlayAvailable": true,
+          "recent": false,
+          "startDate": "2025-10-05T21:00Z",
+          "status": {
+            "clock": 720.0,
+            "displayClock": "12:00",
+            "period": 4,
+            "type": {
+              "completed": true,
+              "description": "Final",
+              "detail": "Final",
+              "id": "3",
+              "name": "STATUS_FINAL",
+              "shortDetail": "Final",
+              "state": "post"
+            }
+          },
+          "timeValid": true,
+          "type": {
+            "abbreviation": "STD",
+            "id": "1"
+          },
+          "uid": "s:40~l:46~e:401812676~c:401812676",
+          "venue": {
+            "address": {
+              "city": "North Charleston",
+              "state": "SC"
+            },
+            "fullName": "North Charleston Coliseum",
+            "id": "268",
+            "indoor": true
+          }
+        }
+      ],
+      "date": "2025-10-05T21:00Z",
+      "id": "401812676",
+      "name": "Oklahoma City Thunder at Charlotte Hornets",
+      "season": {
+        "slug": "preseason",
+        "type": 1,
+        "year": 2026
+      },
+      "shortName": "OKC VS CHA",
+      "status": {
+        "clock": 720.0,
+        "displayClock": "12:00",
+        "period": 4,
+        "type": {
+          "completed": true,
+          "description": "Final",
+          "detail": "Final",
+          "id": "3",
+          "name": "STATUS_FINAL",
+          "shortDetail": "Final",
+          "state": "post"
+        }
+      },
+      "uid": "s:40~l:46~e:401812676"
+    },
+    {
+      "competitions": [
+        {
+          "attendance": 18064,
+          "broadcast": "ESPN",
+          "broadcasts": [
+            {
+              "market": "national",
+              "names": [
+                "ESPN"
+              ]
+            },
+            {
+              "market": "home",
+              "names": [
+                "NBC Sports BA"
+              ]
+            },
+            {
+              "market": "away",
+              "names": [
+                "Spectrum Sports Net",
+                "Spectrum Sports Net +"
+              ]
+            }
+          ],
+          "competitors": [
+            {
+              "homeAway": "home",
+              "id": "9",
+              "leaders": [
+                {
+                  "abbreviation": "Pts",
+                  "displayName": "Points",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "Moses Moody",
+                        "fullName": "Moses Moody",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4432171.png",
+                        "id": "4432171",
+                        "jersey": "4",
+                        "position": {
+                          "abbreviation": "G"
+                        },
+                        "shortName": "M. Moody",
+                        "team": {
+                          "id": "9"
+                        }
+                      },
+                      "displayValue": "19",
+                      "team": {
+                        "id": "9"
+                      },
+                      "value": 19.0
+                    }
+                  ],
+                  "name": "points",
+                  "shortDisplayName": "Pts"
+                },
+                {
+                  "abbreviation": "Reb",
+                  "displayName": "Rebounds",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "Jonathan Kuminga",
+                        "fullName": "Jonathan Kuminga",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4433247.png",
+                        "id": "4433247",
+                        "jersey": "24",
+                        "position": {
+                          "abbreviation": "F"
+                        },
+                        "shortName": "J. Kuminga",
+                        "team": {
+                          "id": "1"
+                        }
+                      },
+                      "displayValue": "6",
+                      "team": {
+                        "id": "9"
+                      },
+                      "value": 6.0
+                    }
+                  ],
+                  "name": "rebounds",
+                  "shortDisplayName": "Reb"
+                },
+                {
+                  "abbreviation": "Ast",
+                  "displayName": "Assists",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "Draymond Green",
+                        "fullName": "Draymond Green",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/6589.png",
+                        "id": "6589",
+                        "jersey": "23",
+                        "position": {
+                          "abbreviation": "F"
+                        },
+                        "shortName": "D. Green",
+                        "team": {
+                          "id": "9"
+                        }
+                      },
+                      "displayValue": "5",
+                      "team": {
+                        "id": "9"
+                      },
+                      "value": 5.0
+                    }
+                  ],
+                  "name": "assists",
+                  "shortDisplayName": "Ast"
+                },
+                {
+                  "abbreviation": "RAT",
+                  "displayName": "Rating",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "Moses Moody",
+                        "fullName": "Moses Moody",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4432171.png",
+                        "id": "4432171",
+                        "jersey": "4",
+                        "position": {
+                          "abbreviation": "G"
+                        },
+                        "shortName": "M. Moody",
+                        "team": {
+                          "id": "9"
+                        }
+                      },
+                      "displayValue": "19 PTS",
+                      "team": {
+                        "id": "9"
+                      },
+                      "value": 28.600000381469727
+                    }
+                  ],
+                  "name": "rating",
+                  "shortDisplayName": "RAT"
+                }
+              ],
+              "linescores": [
+                {
+                  "displayValue": "32",
+                  "period": 1,
+                  "value": 32.0
+                },
+                {
+                  "displayValue": "30",
+                  "period": 2,
+                  "value": 30.0
+                },
+                {
+                  "displayValue": "40",
+                  "period": 3,
+                  "value": 40.0
+                },
+                {
+                  "displayValue": "9",
+                  "period": 4,
+                  "value": 9.0
+                }
+              ],
+              "order": 0,
+              "records": [
+                {
+                  "abbreviation": "Game",
+                  "name": "overall",
+                  "summary": "1-0",
+                  "type": "total"
+                },
+                {
+                  "name": "Home",
+                  "summary": "1-0",
+                  "type": "home"
+                },
+                {
+                  "name": "Road",
+                  "summary": "0-0",
+                  "type": "road"
+                }
+              ],
+              "score": "111",
+              "team": {
+                "abbreviation": "GS",
+                "alternateColor": "1d428a",
+                "color": "fdb927",
+                "displayName": "Golden State Warriors",
+                "id": "9",
+                "isActive": true,
+                "location": "Golden State",
+                "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/gs.png",
+                "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/scoreboard/gs.png",
+                "name": "Warriors",
+                "shortDisplayName": "Warriors",
+                "uid": "s:40~l:46~t:9",
+                "venue": {
+                  "id": "2465"
+                }
+              },
+              "type": "team",
+              "uid": "s:40~l:46~t:9",
+              "winner": true
+            },
+            {
+              "homeAway": "away",
+              "id": "13",
+              "leaders": [
+                {
+                  "abbreviation": "Pts",
+                  "displayName": "Points",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": false,
+                        "displayName": "Gabe Vincent",
+                        "fullName": "Gabe Vincent",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3137259.png",
+                        "id": "3137259",
+                        "jersey": "4",
+                        "position": {
+                          "abbreviation": "G"
+                        },
+                        "shortName": "G. Vincent",
+                        "team": {
+                          "id": "1"
+                        }
+                      },
+                      "displayValue": "16",
+                      "team": {
+                        "id": "13"
+                      },
+                      "value": 16.0
+                    }
+                  ],
+                  "name": "points",
+                  "shortDisplayName": "Pts"
+                },
+                {
+                  "abbreviation": "Reb",
+                  "displayName": "Rebounds",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "Jarred Vanderbilt",
+                        "fullName": "Jarred Vanderbilt",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4278077.png",
+                        "id": "4278077",
+                        "jersey": "2",
+                        "position": {
+                          "abbreviation": "F"
+                        },
+                        "shortName": "J. Vanderbilt",
+                        "team": {
+                          "id": "13"
+                        }
+                      },
+                      "displayValue": "7",
+                      "team": {
+                        "id": "13"
+                      },
+                      "value": 7.0
+                    }
+                  ],
+                  "name": "rebounds",
+                  "shortDisplayName": "Reb"
+                },
+                {
+                  "abbreviation": "Ast",
+                  "displayName": "Assists",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": false,
+                        "displayName": "Gabe Vincent",
+                        "fullName": "Gabe Vincent",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3137259.png",
+                        "id": "3137259",
+                        "jersey": "4",
+                        "position": {
+                          "abbreviation": "G"
+                        },
+                        "shortName": "G. Vincent",
+                        "team": {
+                          "id": "1"
+                        }
+                      },
+                      "displayValue": "5",
+                      "team": {
+                        "id": "13"
+                      },
+                      "value": 5.0
+                    }
+                  ],
+                  "name": "assists",
+                  "shortDisplayName": "Ast"
+                },
+                {
+                  "abbreviation": "RAT",
+                  "displayName": "Rating",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": false,
+                        "displayName": "Gabe Vincent",
+                        "fullName": "Gabe Vincent",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3137259.png",
+                        "id": "3137259",
+                        "jersey": "4",
+                        "position": {
+                          "abbreviation": "G"
+                        },
+                        "shortName": "G. Vincent",
+                        "team": {
+                          "id": "1"
+                        }
+                      },
+                      "displayValue": "16 PTS",
+                      "team": {
+                        "id": "13"
+                      },
+                      "value": 24.350000381469727
+                    }
+                  ],
+                  "name": "rating",
+                  "shortDisplayName": "RAT"
+                }
+              ],
+              "linescores": [
+                {
+                  "displayValue": "31",
+                  "period": 1,
+                  "value": 31.0
+                },
+                {
+                  "displayValue": "24",
+                  "period": 2,
+                  "value": 24.0
+                },
+                {
+                  "displayValue": "25",
+                  "period": 3,
+                  "value": 25.0
+                },
+                {
+                  "displayValue": "23",
+                  "period": 4,
+                  "value": 23.0
+                }
+              ],
+              "order": 1,
+              "records": [
+                {
+                  "abbreviation": "Game",
+                  "name": "overall",
+                  "summary": "0-2",
+                  "type": "total"
+                },
+                {
+                  "name": "Home",
+                  "summary": "0-1",
+                  "type": "home"
+                },
+                {
+                  "name": "Road",
+                  "summary": "0-1",
+                  "type": "road"
+                }
+              ],
+              "score": "103",
+              "team": {
+                "abbreviation": "LAL",
+                "alternateColor": "fdb927",
+                "color": "552583",
+                "displayName": "Los Angeles Lakers",
+                "id": "13",
+                "isActive": true,
+                "location": "Los Angeles",
+                "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/lal.png",
+                "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/scoreboard/lal.png",
+                "name": "Lakers",
+                "shortDisplayName": "Lakers",
+                "uid": "s:40~l:46~t:13",
+                "venue": {
+                  "id": "1841"
+                }
+              },
+              "type": "team",
+              "uid": "s:40~l:46~t:13",
+              "winner": false
+            }
+          ],
+          "conferenceCompetition": false,
+          "date": "2025-10-06T00:30Z",
+          "format": {
+            "regulation": {
+              "periods": 4
+            }
+          },
+          "id": "401812677",
+          "neutralSite": false,
+          "notes": [],
+          "playByPlayAvailable": true,
+          "recent": false,
+          "startDate": "2025-10-06T00:30Z",
+          "status": {
+            "clock": 720.0,
+            "displayClock": "12:00",
+            "period": 4,
+            "type": {
+              "completed": true,
+              "description": "Final",
+              "detail": "Final",
+              "id": "3",
+              "name": "STATUS_FINAL",
+              "shortDetail": "Final",
+              "state": "post"
+            }
+          },
+          "timeValid": true,
+          "type": {
+            "abbreviation": "STD",
+            "id": "1"
+          },
+          "uid": "s:40~l:46~e:401812677~c:401812677",
+          "venue": {
+            "address": {
+              "city": "San Francisco",
+              "state": "CA"
+            },
+            "fullName": "Chase Center",
+            "id": "6270",
+            "indoor": true
+          }
+        }
+      ],
+      "date": "2025-10-06T00:30Z",
+      "id": "401812677",
+      "name": "Los Angeles Lakers at Golden State Warriors",
+      "season": {
+        "slug": "preseason",
+        "type": 1,
+        "year": 2026
+      },
+      "shortName": "LAL @ GS",
+      "status": {
+        "clock": 720.0,
+        "displayClock": "12:00",
+        "period": 4,
+        "type": {
+          "completed": true,
+          "description": "Final",
+          "detail": "Final",
+          "id": "3",
+          "name": "STATUS_FINAL",
+          "shortDetail": "Final",
+          "state": "post"
+        }
+      },
+      "uid": "s:40~l:46~e:401812677"
+    }
+  ],
+  "leagues": [
+    {
+      "abbreviation": "NBA",
+      "calendarEndDate": "2026-06-27T06:59Z",
+      "calendarIsWhitelist": true,
+      "calendarStartDate": "2025-10-01T07:00Z",
+      "calendarType": "day",
+      "id": "46",
+      "logos": [
+        {
+          "alt": "",
+          "height": 500,
+          "href": "https://a.espncdn.com/i/teamlogos/leagues/500/nba.png",
+          "lastUpdated": "2018-06-05T12:07Z",
+          "rel": [
+            "full",
+            "default"
+          ],
+          "width": 500
+        },
+        {
+          "alt": "",
+          "height": 500,
+          "href": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/leagues/500-dark/nba.png&w=500&h=500&transparent=true",
+          "lastUpdated": "2026-10-19T21:04Z",
+          "rel": [
+            "full",
+            "dark"
+          ],
+          "width": 500
+        }
+      ],
+      "name": "National Basketball Association",
+      "season": {
+        "displayName": "2025-26",
+        "endDate": "2026-06-27T06:59Z",
+        "startDate": "2025-10-01T07:00Z",
+        "type": {
+          "abbreviation": "reg",
+          "id": "2",
+          "name": "Regular Season",
+          "type": 2
+        },
+        "year": 2026
+      },
+      "slug": "nba",
+      "uid": "s:40~l:46"
+    }
+  ],
+  "provider": {
+    "displayName": "Draft Kings",
+    "id": "100",
+    "name": "Draft Kings",
+    "priority": 1
+  }
+}

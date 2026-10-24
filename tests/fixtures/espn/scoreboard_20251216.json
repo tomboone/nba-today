@@ -1,0 +1,513 @@
+{
+  "events": [
+    {
+      "competitions": [
+        {
+          "attendance": 18609,
+          "broadcast": "Prime Video",
+          "broadcasts": [
+            {
+              "market": "national",
+              "names": [
+                "Prime Video"
+              ]
+            }
+          ],
+          "competitors": [
+            {
+              "homeAway": "home",
+              "id": "18",
+              "leaders": [
+                {
+                  "abbreviation": "Pts",
+                  "displayName": "Points",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "OG Anunoby",
+                        "fullName": "OG Anunoby",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3934719.png",
+                        "id": "3934719",
+                        "jersey": "8",
+                        "position": {
+                          "abbreviation": "F"
+                        },
+                        "shortName": "O. Anunoby",
+                        "team": {
+                          "id": "18"
+                        }
+                      },
+                      "displayValue": "28",
+                      "team": {
+                        "id": "18"
+                      },
+                      "value": 28.0
+                    }
+                  ],
+                  "name": "points",
+                  "shortDisplayName": "Pts"
+                },
+                {
+                  "abbreviation": "Reb",
+                  "displayName": "Rebounds",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "Mitchell Robinson",
+                        "fullName": "Mitchell Robinson",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4351852.png",
+                        "id": "4351852",
+                        "jersey": "4",
+                        "position": {
+                          "abbreviation": "C"
+                        },
+                        "shortName": "M. Robinson",
+                        "team": {
+                          "id": "18"
+                        }
+                      },
+                      "displayValue": "15",
+                      "team": {
+                        "id": "18"
+                      },
+                      "value": 15.0
+                    }
+                  ],
+                  "name": "rebounds",
+                  "shortDisplayName": "Reb"
+                },
+                {
+                  "abbreviation": "Ast",
+                  "displayName": "Assists",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "Jalen Brunson",
+                        "fullName": "Jalen Brunson",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3934672.png",
+                        "id": "3934672",
+                        "jersey": "11",
+                        "position": {
+                          "abbreviation": "G"
+                        },
+                        "shortName": "J. Brunson",
+                        "team": {
+                          "id": "18"
+                        }
+                      },
+                      "displayValue": "8",
+                      "team": {
+                        "id": "18"
+                      },
+                      "value": 8.0
+                    }
+                  ],
+                  "name": "assists",
+                  "shortDisplayName": "Ast"
+                },
+                {
+                  "abbreviation": "RAT",
+                  "displayName": "Rating",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "OG Anunoby",
+                        "fullName": "OG Anunoby",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3934719.png",
+                        "id": "3934719",
+                        "jersey": "8",
+                        "position": {
+                          "abbreviation": "F"
+                        },
+                        "shortName": "O. Anunoby",
+                        "team": {
+                          "id": "18"
+                        }
+                      },
+                      "displayValue": "28 PTS, 9 REB",
+                      "team": {
+                        "id": "18"
+                      },
+                      "value": 48.650001525878906
+                    }
+                  ],
+                  "name": "rating",
+                  "shortDisplayName": "RAT"
+                }
+              ],
+              "linescores": [
+                {
+                  "displayValue": "28",
+                  "period": 1,
+                  "value": 28.0
+                },
+                {
+                  "displayValue": "31",
+                  "period": 2,
+                  "value": 31.0
+                },
+                {
+                  "displayValue": "30",
+                  "period": 3,
+                  "value": 30.0
+                },
+                {
+                  "displayValue": "35",
+                  "period": 4,
+                  "value": 35.0
+                }
+              ],
+              "order": 0,
+              "record": "4-1",
+              "score": "124",
+              "team": {
+                "abbreviation": "NY",
+                "alternateColor": "f58426",
+                "color": "1d428a",
+                "displayName": "New York Knicks",
+                "id": "18",
+                "isActive": true,
+                "location": "New York",
+                "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/ny.png",
+                "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/scoreboard/ny.png",
+                "name": "Knicks",
+                "shortDisplayName": "Knicks",
+                "uid": "s:40~l:46~t:18",
+                "venue": {
+                  "id": "1830"
+                }
+              },
+              "type": "team",
+              "uid": "s:40~l:46~t:18",
+              "winner": true
+            },
+            {
+              "homeAway": "away",
+              "id": "24",
+              "leaders": [
+                {
+                  "abbreviation": "Pts",
+                  "displayName": "Points",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "Dylan Harper",
+                        "fullName": "Dylan Harper",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5037871.png",
+                        "id": "5037871",
+                        "jersey": "2",
+                        "position": {
+                          "abbreviation": "G"
+                        },
+                        "shortName": "D. Harper",
+                        "team": {
+                          "id": "24"
+                        }
+                      },
+                      "displayValue": "21",
+                      "team": {
+                        "id": "24"
+                      },
+                      "value": 21.0
+                    }
+                  ],
+                  "name": "points",
+                  "shortDisplayName": "Pts"
+                },
+                {
+                  "abbreviation": "Reb",
+                  "displayName": "Rebounds",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "Dylan Harper",
+                        "fullName": "Dylan Harper",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5037871.png",
+                        "id": "5037871",
+                        "jersey": "2",
+                        "position": {
+                          "abbreviation": "G"
+                        },
+                        "shortName": "D. Harper",
+                        "team": {
+                          "id": "24"
+                        }
+                      },
+                      "displayValue": "7",
+                      "team": {
+                        "id": "24"
+                      },
+                      "value": 7.0
+                    }
+                  ],
+                  "name": "rebounds",
+                  "shortDisplayName": "Reb"
+                },
+                {
+                  "abbreviation": "Ast",
+                  "displayName": "Assists",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "Stephon Castle",
+                        "fullName": "Stephon Castle",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4845367.png",
+                        "id": "4845367",
+                        "jersey": "5",
+                        "position": {
+                          "abbreviation": "G"
+                        },
+                        "shortName": "S. Castle",
+                        "team": {
+                          "id": "24"
+                        }
+                      },
+                      "displayValue": "12",
+                      "team": {
+                        "id": "24"
+                      },
+                      "value": 12.0
+                    }
+                  ],
+                  "name": "assists",
+                  "shortDisplayName": "Ast"
+                },
+                {
+                  "abbreviation": "RAT",
+                  "displayName": "Rating",
+                  "leaders": [
+                    {
+                      "athlete": {
+                        "active": true,
+                        "displayName": "Stephon Castle",
+                        "fullName": "Stephon Castle",
+                        "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4845367.png",
+                        "id": "4845367",
+                        "jersey": "5",
+                        "position": {
+                          "abbreviation": "G"
+                        },
+                        "shortName": "S. Castle",
+                        "team": {
+                          "id": "24"
+                        }
+                      },
+                      "displayValue": "15 PTS, 7 REB, 12 AST",
+                      "team": {
+                        "id": "24"
+                      },
+                      "value": 36.5
+                    }
+                  ],
+                  "name": "rating",
+                  "shortDisplayName": "RAT"
+                }
+              ],
+              "linescores": [
+                {
+                  "displayValue": "30",
+                  "period": 1,
+                  "value": 30.0
+                },
+                {
+                  "displayValue": "31",
+                  "period": 2,
+                  "value": 31.0
+                },
+                {
+                  "displayValue": "33",
+                  "period": 3,
+                  "value": 33.0
+                },
+                {
+                  "displayValue": "19",
+                  "period": 4,
+                  "value": 19.0
+                }
+              ],
+              "order": 1,
+              "record": "1-4",
+              "score": "113",
+              "team": {
+                "abbreviation": "SA",
+                "alternateColor": "c4ced4",
+                "color": "000000",
+                "displayName": "San Antonio Spurs",
+                "id": "24",
+                "isActive": true,
+                "location": "San Antonio",
+                "logo": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/sa.png",
+                "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/scoreboard/sa.png",
+                "name": "Spurs",
+                "shortDisplayName": "Spurs",
+                "uid": "s:40~l:46~t:24",
+                "venue": {
+                  "id": "780"
+                }
+              },
+              "type": "team",
+              "uid": "s:40~l:46~t:24",
+              "winner": false
+            }
+          ],
+          "conferenceCompetition": false,
+          "date": "2025-12-17T01:30Z",
+          "format": {
+            "regulation": {
+              "periods": 4
+            }
+          },
+          "id": "401809839",
+          "neutralSite": true,
+          "notes": [
+            {
+              "headline": "NBA Cup Championship",
+              "type": "event"
+            }
+          ],
+          "playByPlayAvailable": true,
+          "recent": false,
+          "series": {
+            "competitors": [
+              {
+                "href": "http://sports.core.api.espn.pvt/v2/sports/basketball/leagues/nba/seasons/2026/teams/18?lang=en&region=us",
+                "id": "18",
+                "ties": 0,
+                "uid": "s:40~l:46~t:18",
+                "wins": 4
+              },
+              {
+                "href": "http://sports.core.api.espn.pvt/v2/sports/basketball/leagues/nba/seasons/2026/teams/24?lang=en&region=us",
+                "id": "24",
+                "ties": 0,
+                "uid": "s:40~l:46~t:24",
+                "wins": 1
+              }
+            ],
+            "completed": true,
+            "summary": "NY wins series 4-1",
+            "title": "Playoff Series",
+            "totalCompetitions": 7,
+            "type": "playoff"
+          },
+          "startDate": "2025-12-17T01:30Z",
+          "status": {
+            "clock": 720.0,
+            "displayClock": "12:00",
+            "period": 4,
+            "type": {
+              "completed": true,
+              "description": "Final",
+              "detail": "Final",
+              "id": "3",
+              "name": "STATUS_FINAL",
+              "shortDetail": "Final",
+              "state": "post"
+            }
+          },
+          "timeValid": true,
+          "type": {
+            "abbreviation": "CC",
+            "id": "39"
+          },
+          "uid": "s:40~l:46~e:401809839~c:401809839",
+          "venue": {
+            "address": {
+              "city": "Las Vegas",
+              "state": "NV"
+            },
+            "fullName": "T-Mobile Arena",
+            "id": "5060",
+            "indoor": true
+          }
+        }
+      ],
+      "date": "2025-12-17T01:30Z",
+      "id": "401809839",
+      "name": "San Antonio Spurs at New York Knicks",
+      "season": {
+        "slug": "regular-season",
+        "type": 2,
+        "year": 2026
+      },
+      "shortName": "SA VS NY",
+      "status": {
+        "clock": 720.0,
+        "displayClock": "12:00",
+        "period": 4,
+        "type": {
+          "completed": true,
+          "description": "Final",
+          "detail": "Final",
+          "id": "3",
+          "name": "STATUS_FINAL",
+          "shortDetail": "Final",
+          "state": "post"
+        }
+      },
+      "uid": "s:40~l:46~e:401809839"
+    }
+  ],
+  "leagues": [
+    {
+      "abbreviation": "NBA",
+      "calendarEndDate": "2026-06-27T06:59Z",
+      "calendarIsWhitelist": true,
+      "calendarStartDate": "2025-10-01T07:00Z",
+      "calendarType": "day",
+      "id": "46",
+      "logos": [
+        {
+          "alt": "",
+          "height": 500,
+          "href": "https://a.espncdn.com/i/teamlogos/leagues/500/nba.png",
+          "lastUpdated": "2018-06-05T12:07Z",
+          "rel": [
+            "full",
+            "default"
+          ],
+          "width": 500
+        },
+        {
+          "alt": "",
+          "height": 500,
+          "href": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/leagues/500-dark/nba.png&w=500&h=500&transparent=true",
+          "lastUpdated": "2026-10-19T21:04Z",
+          "rel": [
+            "full",
+            "dark"
+          ],
+          "width": 500
+        }
+      ],
+      "name": "National Basketball Association",
+      "season": {
+        "displayName": "2025-26",
+        "endDate": "2026-06-27T06:59Z",
+        "startDate": "2025-10-01T07:00Z",
+        "type": {
+          "abbreviation": "reg",
+          "id": "2",
+          "name": "Regular Season",
+          "type": 2
+        },
+        "year": 2026
+      },
+      "slug": "nba",
+      "uid": "s:40~l:46"
+    }
+  ],
+  "provider": {
+    "displayName": "Draft Kings",
+    "id": "100",
+    "name": "Draft Kings",
+    "priority": 1
+  }
+}
