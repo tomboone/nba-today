@@ -114,9 +114,9 @@ in the last 26 hours.
 removing the old one. It runs with `--scope nba-today`, so it only touches containers labelled with that scope.
 To update by hand: `docker compose pull && docker compose up -d`.
 
-mlb-today's Watchtower on the same host must be scoped too (NEU-1797) before this one starts. An unscoped
-Watchtower updates every enabled container whatever its scope, and when it starts it stops every other Watchtower
-on the host ([Watchtower docs](https://containrrr.dev/watchtower/running-multiple-instances/)).
+mlb-today's Watchtower on the same host is scoped too (NEU-1797). Each instance updates only the enabled containers
+in its own scope, and when it starts it stops only the other Watchtowers in that scope, so no two instances may share
+one ([Watchtower docs](https://watchtower.nickfedor.com/advanced-features/running-multiple-instances/)).
 
 **Roll back** by pinning a commit: change the `image` tag in `docker-compose.yml` to `sha-<7>` and run
 `docker compose up -d`. Watchtower keeps following that tag, which never moves, so updates stop until you switch
