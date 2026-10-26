@@ -16,11 +16,8 @@ services:
   # leaves mlb-today's containers on the same host alone. The instance carries its own scope label,
   # as Watchtower's multiple-instance docs require.
   watchtower:
-    image: containrrr/watchtower:1.7.1
+    image: nickfedor/watchtower:1.23.2
     command: ["--label-enable", "--scope", "nba-today", "--interval", "300", "--cleanup"]
-    environment:
-      # Watchtower's client defaults to API 1.25, which Docker Engine 29+ rejects.
-      DOCKER_API_VERSION: "1.44"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     restart: unless-stopped
