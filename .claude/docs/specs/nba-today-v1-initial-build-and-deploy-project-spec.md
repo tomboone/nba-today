@@ -26,7 +26,7 @@ Build nba-today, from an empty repo, into a single containerized Python service.
 | Leaderboard | The top 25 **qualified players** by PIE: Player, Team, PTS, REB, AST, TS%, PIE. |
 | Postseason | Series state on postseason matchups and results, and a **postseason picture** in place of standings. Built in the final milestone (§13). |
 | Toolchain | uv, ruff (lint and format), pyright (strict), pytest, respx, syrupy, httpx, curl_cffi, pydantic v2 plus pydantic-settings, typer, Python 3.13. Same `pyproject.toml` tool config as mlb-today. |
-| Build and deploy | GitHub Actions lints and tests every PR. On push to `main` it builds and pushes `ghcr.io/tomboone/nba-today` (`:latest` and `:sha-<7>`). The repo and package are public, MIT. On kumadrome, a Watchtower **scoped to nba-today** pulls new images. |
+| Build and deploy | GitHub Actions lints and tests every PR. On push to `main` it builds and pushes `ghcr.io/tomboone/nba-today` (`:latest` and `:sha-<7>`). The repo and package are public, MIT. On kumadrome, a Watchtower **scoped to nba-today** pulls new images. *(Superseded by NEU-2243: see §11.)* |
 | Alerting | Structured JSON logs to stdout. healthchecks.io ping on success, `/fail` on a failed send. No Sentry. |
 | Branch flow | Greenfield: every ticket branches from and PRs into `main`. There is no release branch. |
 
@@ -285,6 +285,7 @@ Port from mlb-today unchanged: `Transport` protocol, `Message`, `SendReceipt`, `
 
 - **`Dockerfile`:** port from mlb-today (multi-stage `python:3.13-slim`, `uv sync --frozen --no-dev`, non-root user, `HEALTHCHECK CMD nba-today health`, `CMD ["nba-today", "run"]`). Check that the `curl_cffi` wheel installs on the slim image for the build arch.
 - **Workflows:** `ci.yml` (PRs and pushes: uv sync, ruff check, ruff format --check, pyright, pytest) and `image.yml` (push to `main` → `:latest` and `:sha-<7>`). Port from mlb-today. There is no `:edge` tag.
+  - *Superseded by NEU-2243 (2026-11-09):* `ci.yml` calls the shared `neuroticsasquat-ch/workflows@v1` (python, image-check, and image-publish after `ci` on `main`); `image.yml` is gone. See the ops spec `docs/specs/ops-shared-ci-workflows-project-spec.md`.
 - **`deploy/docker-compose.yml`:** the `nba-today` service (`ghcr.io/tomboone/nba-today:latest`, `env_file: .env`, `./data:/data`, `restart: unless-stopped`, labels `com.centurylinklabs.watchtower.enable=true` and `com.centurylinklabs.watchtower.scope=nba-today`) and a `watchtower` service (`containrrr/watchtower:1.7.1`, `--label-enable --scope nba-today --interval 300 --cleanup`, `DOCKER_API_VERSION=1.44`).
 - **Watchtower scoping, to verify in the deploy ticket:** kumadrome already runs mlb-today's *unscoped* `--label-enable` Watchtower. Confirm from Watchtower's docs or source whether an unscoped instance ignores containers with a scope label. If it does not, file a one-line ticket in mlb-today to add `--scope mlb-today` and the matching label.
 - **`deploy/README.md`:** port from mlb-today, trimmed for kumadrome. Docker is already installed there. Cover: a sparse clone of `deploy/` into `~/nba-today`, `.env`, `docker compose up -d`, logs, and running `preview`. Remote `sudo` is not available to Claude; any `sudo` step is handed to the user as `ssh -t kumadrome 'sudo …'`.

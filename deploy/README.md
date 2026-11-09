@@ -6,7 +6,8 @@ GitHub repository, the outside accounts involved are [Resend](https://resend.com
 verified domain), [healthchecks.io](https://healthchecks.io) (alerting), and optionally Fastmail as the SMTP
 fallback.
 
-Images are published by `.github/workflows/image.yml` on every push to `main`:
+Each push to `main` publishes from the `publish` job in `.github/workflows/ci.yml`, once that commit's `ci` check has
+passed. It pushes `sha-<7>`, plus `latest` while the commit is still the tip of `main`:
 
 | Tag | Use |
 |---|---|
